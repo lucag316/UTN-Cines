@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Configuración del charset y viewport para asegurar la compatibilidad con dispositivos móviles -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Título de la página que aparecerá en la pestaña del navegador -->
+    <title>Registrarse</title>
+    
+    <!-- Enlace al archivo de estilos CSS -->
+    <link rel="stylesheet" href="../login/login.css">
+</head>
+<body>
+    <!-- Navegación con el logo de la aplicación -->
+    <nav>
+        <a href="#"><img src="../images/cat.png" alt="logo" height="50"></a>
+    </nav>
+    
+    <!-- Contenedor principal del formulario -->
+    <div class="form-wrapper">
+        <!-- Encabezado del formulario -->
+        <h2>CREAR CUENTA</h2>
+        
+        <!-- Formulario para el registro de usuario -->
+        <form action="#">
+            <!-- Campo para el nombre completo -->
+            <div class="form-control">
+                <input type="text" required>
+                <label>NOMBRE COMPLETO</label>
+            </div>
+            
+            <!-- Campo para el correo electrónico -->
+            <div class="form-control">
+                <input type="email" required>
+                <label>CORREO ELECTRONICO</label>
+            </div>
+            
+            <!-- Campo para la contraseña -->
+            <div class="form-control">
+                <input type="password" required>
+                <label>CONTRASEÑA</label>
+            </div>
+            
+            <!-- Campo para confirmar la contraseña -->
+            <div class="form-control">
+                <input type="password" required>
+                <label>CONFIRMAR CONTRASEÑA</label>
+            </div>
+            
+            <!-- Botón para enviar el formulario -->
+            <button type="submit">REGISTRARSE</button>
+        </form>
+        
+        <!-- Enlace para redirigir a la página de inicio de sesión si el usuario ya tiene una cuenta -->
+        <p class="count">¿YA TENÉS CUENTA? <a href="login.html">INGRESAR</a></p>
+    </div>
+</body>
+</html>
