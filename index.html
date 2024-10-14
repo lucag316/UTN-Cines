@@ -10,12 +10,15 @@
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Logo</a>
+            <a class="navbar-brand" href="#">
+                <img src="images/marca.png" class="nav_img" alt="">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+    
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
@@ -25,12 +28,16 @@
                         <a class="nav-link" href="#">Promociones</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#">Carrito</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#">Usuario</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+    
 
     <!-- Main content -->
     <main class="container mt-4">
@@ -43,11 +50,11 @@
                 </div>
 
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/800x400" class="d-block w-100" alt="...">
+                    <img src="images/sliders/Venom3-anticipadas_SliderSup.jpg" class="d-block w-100" alt="...">
                 </div>
 
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/800x400" class="d-block w-100" alt="...">
+                    <img src="images/sliders/combo-guason2_Web_Slider-sup.jpg" class="d-block w-100" alt="...">
                 </div>
                 
             </div>
@@ -61,97 +68,117 @@
             </button>
         </div>
 
-        <!-- Filtros -->
+       <!-- Filtros -->
         <div class="row mt-4">
+            <!-- Filtro Lugar -->
             <div class="col-6">
-                <button class="btn btn-secondary w-100">Lugar</button>
+                <select class="form-select w-100">
+                    <option selected disabled>Selecciona Lugar</option>
+                    <option value="ciudad1">Avellaneda</option>
+                    <option value="ciudad2">Puerto Madero</option>
+                    <option value="ciudad3">Monte Grande</option>
+                </select>
             </div>
+
+            <!-- Filtro Géneros -->
             <div class="col-6">
-                <button class="btn btn-secondary w-100">Géneros</button>
+                <select class="form-select w-100">
+                    <option selected disabled>Selecciona Género</option>
+                    <option value="accion">Acción</option>
+                    <option value="comedia">Comedia</option>
+                    <option value="drama">Drama</option>
+                    <option value="terror">Terror</option>
+                    <option value="ciencia_ficcion">Ciencia Ficción</option>
+                </select>
             </div>
+
+            <!-- Buscador de Películas -->
+            <div class="col-12 col-md-4 mt-3 mt-md-0">
+                <input type="text" class="form-control" placeholder="Buscar películas...">
+            </div>
+
+
         </div>
+
 
         <!-- Catálogo de Películas -->
         <div class="row mt-4">
             <div class="col-6 col-md-3">
-                <div class="card">
-                    <img src="images/alice-la-gemela-del-diablo-500x760.jpg" class="card-img-top" alt="Película 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Alice la gemela del diablo</h5>
+                <a href="#" class="text-decoration-none">
+
+                    <div class="card">
+                        <img src="images/alice-la-gemela-del-diablo-500x760.jpg" class="card-img-top" alt="Película 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Alice la gemela del diablo</h5>
+                        </div>
                     </div>
-                </div>
+                </a>
+
             </div>
             <div class="col-6 col-md-3">
-                <div class="card">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Película 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Película 2</h5>
+                <a href="#" class="text-decoration-none">
+
+                    <div class="card">
+                        <img src="images/deadpool-wolverine.jpg" class="" alt="Película 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Deadpool & Wolverine</h5>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-6 col-md-3">
-                <div class="card">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Película 3">
-                    <div class="card-body">
-                        <h5 class="card-title">Película 3</h5>
+                <a href="#" class="text-decoration-none">
+                    <div class="card">
+                        <img src="images/harry-potter-y-el-prisionero-de-azkaban.jpg" class="" alt="Película 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Harry potter</h5>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-6 col-md-3">
-                <div class="card">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Película 4">
-                    <div class="card-body">
-                        <h5 class="card-title">Película 4</h5>
+                <a href="#" class="text-decoration-none">
+
+                    <div class="card">
+                        <img src="images/transformers-uno.jpg" class="card-img-top" alt="Película 4">
+                        <div class="card-body">
+                            <h5 class="card-title">Transformers</h5>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-6 col-md-3">
-                <div class="card">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Película 4">
-                    <div class="card-body">
-                        <h5 class="card-title">Película 4</h5>
+                <a href="#" class="text-decoration-none">
+
+                    <div class="card">
+                        <img src="images/venom-el-ultimo-baile.jpg" class="card-img-top" alt="Película 4">
+                        <div class="card-body">
+                            <h5 class="card-title">Venom</h5>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-6 col-md-3">
-                <div class="card">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Película 4">
-                    <div class="card-body">
-                        <h5 class="card-title">Película 4</h5>
+                <a href="#" class="text-decoration-none">
+
+                    <div class="card">
+                        <img src="https://via.placeholder.com/150" class="card-img-top" alt="Película 4">
+                        <div class="card-body">
+                            <h5 class="card-title">Película 4</h5>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-6 col-md-3">
-                <div class="card">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Película 4">
-                    <div class="card-body">
-                        <h5 class="card-title">Película 4</h5>
+                <a href="#" class="text-decoration-none">
+
+                    <div class="card">
+                        <img src="https://via.placeholder.com/150" class="card-img-top" alt="Película 4">
+                        <div class="card-body">
+                            <h5 class="card-title">Película 4</h5>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-3">
-                <div class="card">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Película 4">
-                    <div class="card-body">
-                        <h5 class="card-title">Película 4</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-3">
-                <div class="card">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Película 4">
-                    <div class="card-body">
-                        <h5 class="card-title">Película 4</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-3">
-                <div class="card">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Película 4">
-                    <div class="card-body">
-                        <h5 class="card-title">Película 4</h5>
-                    </div>
-                </div>
+                </a>
             </div>
             <div class="col-6 col-md-3">
                 <div class="card">
@@ -185,7 +212,18 @@
                     </div>
                 </div>
             </div>
+            <div class="col-6 col-md-3">
+                <div class="card">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Película 4">
+                    <div class="card-body">
+                        <h5 class="card-title">Película 4</h5>
+                    </div>
+                </div>
+            </div>
+            
         </div>
+
+
     </main>
 
     <!-- Footer -->
