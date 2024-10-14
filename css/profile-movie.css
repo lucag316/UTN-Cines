@@ -10,7 +10,6 @@ body {
     justify-content: center; /* Centrar el contenido horizontalmente */
     align-items: flex-start; /* Alinear contenido en la parte superior */
     height: 100vh; /* Ocupa toda la altura de la ventana */
-    
 }
 
 /* Contenedor principal que divide la página en dos secciones */
