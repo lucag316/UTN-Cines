@@ -143,7 +143,32 @@ h2 {
     text-transform: uppercase; /* Todo en mayúsculas */
 }
 
+/* Estilos para el botón Comprar */
+.container-buy-button {
+    display: flex;
+    justify-content: center; /* Centrar el botón horizontalmente */
+    margin-top: 30px; /* Margen superior para separar del resumen */
+}
 
+.btn-buy {
+    background-color: #f1c40f; /* Color de fondo del botón */
+    color: #1b1b1b; /* Color del texto del botón */
+    border: none; /* Eliminar borde por defecto */
+    padding: 15px 30px; /* Tamaño del botón */
+    font-size: 18px; /* Tamaño del texto */
+    font-weight: bold; /* Negrita para el texto */
+    border-radius: 10px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor a una mano */
+    transition: background-color 0.3s ease; /* Transición suave al cambiar color */
+}
+
+/* Efecto hover en el botón Comprar */
+.btn-buy:hover {
+    background-color: #e67e22; /* Cambia de color cuando pasas el ratón */
+    color: #fff; /* Cambia el color del texto */
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+}
 
 /* Animación para la aparición suave de los elementos */
 @keyframes fadeIn {
@@ -168,19 +193,20 @@ h2 {
         width: 100%; /* Secciones ocupan el 100% del ancho */
     }
     .right-section{
-        margin-top: 20px;
+        margin-top: 30px;
     }
 
     /* Ajustar imagen de portada para pantallas pequeñas */
     .portada {
         max-width: 80%;
+        display: block;
         margin: 0 auto; /* Centrar la imagen */
     }
 
     /* Ajustar el iframe del tráiler */
     .trailer iframe {
         width: 90%;
-        height: 180px;
+        height: 15rem;
     }
 
     /* Ajustar el resumen */
