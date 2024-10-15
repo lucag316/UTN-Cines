@@ -151,7 +151,7 @@ h2 {
 }
 
 .btn-buy {
-    background-color: #f1c40f; /* Color de fondo del botón */
+    background-color: #ecd061; /* Color de fondo del botón */
     color: #1b1b1b; /* Color del texto del botón */
     border: none; /* Eliminar borde por defecto */
     padding: 15px 30px; /* Tamaño del botón */
@@ -164,8 +164,7 @@ h2 {
 
 /* Efecto hover en el botón Comprar */
 .btn-buy:hover {
-    background-color: #e67e22; /* Cambia de color cuando pasas el ratón */
-    color: #fff; /* Cambia el color del texto */
+    background-color: #f1c40f; /* Cambia de color cuando pasas el ratón */
     transform: scale(1.05);
     transition: all 0.3s ease-in-out;
 }
