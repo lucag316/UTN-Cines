@@ -2,61 +2,61 @@
 /* General Styles                        */
 /* -------------------------------------- */
 
+/* Estilo base del body */
 body {
-    font-family: 'Montserrat', sans-serif; /* Fuente principal */
+    font-family: 'Montserrat', sans-serif; /* Fuente Montserrat como principal */
     background-color: #1c1c1c; /* Fondo gris oscuro */
     padding: 0;
     margin: 0;
-    color: #ffffff; /* Color de texto blanco */
+    color: #ffffff; /* Texto blanco */
 }
 
-/* Estilo para el título principal */
+/* Título principal (h1) */
 h1 {
-    font-size: 4em; /* Tamaño grande para destacar el título */
+    font-size: 4em; /* Tamaño grande del título */
     margin: 40px 0 20px; /* Espacios superior e inferior */
-    text-align: center;
-    background: linear-gradient(90deg, #c0392b, #e74c3c); /* Degradado de color rojo */
+    text-align: center; /* Alinear al centro */
+    background: linear-gradient(90deg, #c0392b, #e74c3c); /* Degradado rojo */
     font-weight: 700; /* Negrita */
-    text-transform: uppercase; /* Todo en mayúsculas */
+    text-transform: uppercase; /* Mayúsculas */
     letter-spacing: 2px; /* Espaciado entre letras */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Sombra al texto para darle profundidad */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Sombra al texto */
 }
 
-/* Estilo para subtítulos en carruseles */
+/* Subtítulos (h3) */
 h3 {
-    font-size: 2.2em; /* Tamaño más pequeño que el título principal */
+    font-size: 2.2em; /* Tamaño del subtítulo */
     font-weight: 600; /* Semi negrita */
-    color: #f2f2f2; /* Color claro */
+    color: #f2f2f2; /* Color blanco claro */
     margin: 30px 0 0; /* Espacio superior */
-    text-align: center;
-    position: relative;
-    padding-bottom: 10px; /* Espacio para el borde */
-    border-bottom: 2px solid #e74c3c; /* Borde inferior de color rojo */
-    text-transform: uppercase; /* Todo en mayúsculas */
+    text-align: center; /* Centrado */
+    padding-bottom: 10px; /* Espacio inferior para borde */
+    border-bottom: 2px solid #e74c3c; /* Borde inferior rojo */
+    text-transform: uppercase; /* Mayúsculas */
     letter-spacing: 1px; /* Espaciado entre letras */
-    transition: color 0.3s ease, border-bottom-color 0.3s ease; /* Transición suave */
+    transition: color 0.3s ease, border-bottom-color 0.3s ease; /* Transiciones suaves */
 }
 
 /* Efecto hover en subtítulos */
 h3:hover {
     color: #c0392b; /* Cambia el color del texto en hover */
-    border-bottom-color: #c0392b; /* Cambia el color del borde inferior en hover */
+    border-bottom-color: #c0392b; /* Cambia el borde en hover */
 }
 
 /* -------------------------------------- */
-/* Carrusel Styles                       */
+/* Carousel Styles                        */
 /* -------------------------------------- */
 
 /* Contenedor general del carrusel */
 .carousel-container {
     width: 90%; /* Ancho del contenedor */
-    margin: 40px auto 0; /* Espacio superior y centrado */
+    margin: 40px auto 0; /* Margen superior y centrado */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 60px; /* Espacio entre carruseles */
-    background-color: #2e2e2e; /* Fondo gris más claro */
+    background-color: #2e2e2e; /* Fondo gris claro */
     padding: 30px; /* Relleno interno */
     border-radius: 15px; /* Bordes redondeados */
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); /* Sombra suave */
@@ -64,66 +64,127 @@ h3:hover {
 
 /* Carrusel principal */
 .carousel {
-    width: 100%;
+    width: 100%; /* Ocupa el ancho completo del contenedor */
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    position: relative;
-    overflow: hidden;
-    padding: 20px;
+    position: relative; /* Posicionamiento relativo para manejar flechas */
+    overflow: hidden; /* Oculta el contenido fuera del área visible */
+    padding: 20px; /* Relleno interno */
     background-color: #3a3a3a; /* Fondo del carrusel */
     border-radius: 10px; /* Bordes redondeados */
 }
 
-/* Pista del carrusel (donde se desplazan los items) */
+/* Pista del carrusel (donde se mueven los items) */
 .carousel-track {
-    display: flex; /* Flexbox para alinear los elementos */
-    transition: transform 0.5s ease-in-out; /* Transición suave para el movimiento */
-    margin-left: 15px; /* Espacio a la izquierda para evitar que los items se corten */
+    display: flex; /* Flexbox para alinear los items horizontalmente */
+    align-items: center; /* Centrado vertical */
+    transition: transform 0.5s ease-in-out; /* Transición suave en el movimiento */
+    margin-left: 20px; /* Espacio a la izquierda */
 }
 
-/* Elementos individuales del carrusel (promociones) */
+/* Items individuales del carrusel */
 .carousel-item {
-    min-width: 22%; /* Ancho mínimo */
-    flex: 22%; /* Porcentaje de ancho */
-    padding: 20px;
-    text-align: center;
-    font-size: 18px;
+    width: 320px; /* Establecer un ancho fijo para los ítems */
+    height: 200px; /* Altura fija */
+    padding: 15px; /* Relleno interno */
+    text-align: center; /* Texto centrado */
+    font-size: 18px; /* Tamaño del texto */
     background-color: #505050; /* Fondo gris para los items */
     color: #ffffff; /* Texto blanco */
-    border-radius: 10px;
-    height: 200px; /* Altura fija */
-    margin: 0 20px; /* Margen horizontal */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.3s ease-in-out, background-color 0.3s; /* Animaciones */
+    border-radius: 10px; /* Bordes redondeados */
+    margin: 0 15px; /* Espacio entre los items */
+    display: flex; /* Flexbox para centrar contenido */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out; /* Transiciones suaves */
+    flex-shrink: 0; /* Evitar que se reduzca el tamaño */
 }
 
-/* Efecto hover en los items del carrusel */
+/* Estilo específico para el texto dentro de los items */
+.carousel-item span {
+    font-weight: bold; /* Negrita */
+    font-size: 1.2em; /* Tamaño más grande del texto */
+    color: #e74c3c; /* Texto en rojo para destacar */
+    margin-bottom: 5px; /* Espacio inferior */
+    display: block; /* Muestra como bloque separado */
+    letter-spacing: 1px; /* Espaciado entre letras */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Sombra al texto */
+}
+
+/* Efecto hover en items del carrusel */
 .carousel-item:hover {
-    transform: scale(1.05); /* Zoom al pasar el mouse */
-    background-color: #737373; /* Color más claro en hover */
+    transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
+    background-color: #737373; /* Fondo más claro en hover */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* Sombra más marcada */
+    cursor: pointer; /* Cambia el cursor */
 }
 
-/* Estilo de las flechas de navegación */
+/* Flechas de navegación del carrusel */
 .arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%); /* Centra verticalmente */
+    position: absolute; /* Posicionamiento absoluto */
+    top: 50%; /* Centrado vertical */
+    transform: translateY(-50%); /* Ajuste fino de la posición */
     background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
     color: white;
     font-size: 30px;
-    cursor: pointer;
-    padding: 15px;
-    border-radius: 50%; /* Bordes redondeados */
-    z-index: 2; /* Asegura que las flechas estén encima */
+    cursor: pointer; /* Cambia el cursor */
+    padding: 15px; /* Espacio interno */
+    border-radius: 50%; /* Forma circular */
+    z-index: 2; /* Asegura que estén sobre los items */
 }
 
+/* Flecha izquierda */
 .arrow.left {
-    left: 10px; /* Posicionamiento de la flecha izquierda */
+    left: 10px; /* Posicionamiento a la izquierda */
 }
 
+/* Flecha derecha */
 .arrow.right {
-    right: 10px; /* Posicionamiento de la flecha derecha */
+    right: 10px; /* Posicionamiento a la derecha */
+}
+
+/* -------------------------------------- */
+/* Responsive Design                      */
+/* -------------------------------------- */
+
+/* Ajustes para pantallas medianas (tablets) */
+@media (max-width: 1024px) {
+    h1 {
+        font-size: 3em; /* Reducir tamaño del título principal */
+    }
+
+    h3 {
+        font-size: 1.8em; /* Reducir tamaño de subtítulos */
+    }
+
+    .carousel-item {
+        width: 320px; /* Establecer un ancho fijo para los ítems */
+        height: 200px; /* Altura fija */
+    }
+}
+
+/* Ajustes para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5em; /* Reducir aún más el título */
+    }
+
+    h3 {
+        font-size: 1.5em; /* Reducir tamaño de subtítulos */
+    }
+
+    .carousel-container {
+        gap: 30px; /* Reducir espacio entre carruseles */
+    }
+
+    .carousel-item {
+        width: 250px; /* Establecer un ancho fijo para los ítems */
+        height: 220px; /* Altura fija */
+    }
+
+    .arrow {
+        font-size: 24px; /* Reducir tamaño de flechas */
+        padding: 10px;
+    }
 }
