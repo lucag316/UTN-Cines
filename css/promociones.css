@@ -1,4 +1,7 @@
-/* General Styles */
+/* -------------------------------------- */
+/* General Styles                        */
+/* -------------------------------------- */
+
 body {
     font-family: 'Montserrat', sans-serif; /* Fuente principal */
     background-color: #1c1c1c; /* Fondo gris oscuro */
@@ -7,49 +10,52 @@ body {
     color: #ffffff; /* Color de texto blanco */
 }
 
+/* Estilo para el título principal */
 h1 {
     font-size: 4em; /* Tamaño grande para destacar el título */
-    margin-top: 40px; /* Espacio superior */
-    margin-bottom: 20px; /* Espacio inferior */
+    margin: 40px 0 20px; /* Espacios superior e inferior */
     text-align: center;
-    background: linear-gradient(90deg, #f39c12, #f1c40f); /* Degradado de color */
+    background: linear-gradient(90deg, #c0392b, #e74c3c); /* Degradado de color rojo */
     font-weight: 700; /* Negrita */
     text-transform: uppercase; /* Todo en mayúsculas */
     letter-spacing: 2px; /* Espaciado entre letras */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Sombra al texto para darle profundidad */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Sombra al texto para darle profundidad */
 }
 
-
-/* Subtítulos dentro del carrusel (h3) */
+/* Estilo para subtítulos en carruseles */
 h3 {
-    font-size: 2.2em; /* Tamaño un poco más pequeño */
+    font-size: 2.2em; /* Tamaño más pequeño que el título principal */
     font-weight: 600; /* Semi negrita */
     color: #f2f2f2; /* Color claro */
-    margin-top: 30px;
-    margin-bottom: 0px; /* Espacio inferior reducido para acercar al carrusel */
+    margin: 30px 0 0; /* Espacio superior */
     text-align: center;
     position: relative;
     padding-bottom: 10px; /* Espacio para el borde */
-    border-bottom: 2px solid #f1c40f; /* Borde inferior de color amarillo */
+    border-bottom: 2px solid #e74c3c; /* Borde inferior de color rojo */
     text-transform: uppercase; /* Todo en mayúsculas */
     letter-spacing: 1px; /* Espaciado entre letras */
-    transition: color 0.3s ease, border-bottom-color 0.3s ease; /* Transición suave para hover */
+    transition: color 0.3s ease, border-bottom-color 0.3s ease; /* Transición suave */
 }
-/* Efecto hover en los subtítulos */
+
+/* Efecto hover en subtítulos */
 h3:hover {
-    color: #f39c12; /* Cambia el color del texto en hover */
-    border-bottom-color: #f39c12; /* Cambia el color del borde inferior en hover */
+    color: #c0392b; /* Cambia el color del texto en hover */
+    border-bottom-color: #c0392b; /* Cambia el color del borde inferior en hover */
 }
+
+/* -------------------------------------- */
+/* Carrusel Styles                       */
+/* -------------------------------------- */
+
 /* Contenedor general del carrusel */
 .carousel-container {
     width: 90%; /* Ancho del contenedor */
-    margin: 0 auto;
-    margin-top: 40px; /* Espacio superior */
+    margin: 40px auto 0; /* Espacio superior y centrado */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 60px; /* Menor espacio entre los carruseles */
+    gap: 60px; /* Espacio entre carruseles */
     background-color: #2e2e2e; /* Fondo gris más claro */
     padding: 30px; /* Relleno interno */
     border-radius: 15px; /* Bordes redondeados */
@@ -58,7 +64,6 @@ h3:hover {
 
 /* Carrusel principal */
 .carousel {
-    
     width: 100%;
     display: flex;
     align-items: center;
@@ -73,50 +78,52 @@ h3:hover {
 /* Pista del carrusel (donde se desplazan los items) */
 .carousel-track {
     display: flex; /* Flexbox para alinear los elementos */
-    transition: transform 0.5s ease-in-out; /* Transición suave para el movimiento del carrusel */
+    transition: transform 0.5s ease-in-out; /* Transición suave para el movimiento */
     margin-left: 15px; /* Espacio a la izquierda para evitar que los items se corten */
 }
 
 /* Elementos individuales del carrusel (promociones) */
 .carousel-item {
-    min-width: 25%;
-    flex: 25%;
+    min-width: 22%; /* Ancho mínimo */
+    flex: 22%; /* Porcentaje de ancho */
     padding: 20px;
     text-align: center;
     font-size: 18px;
     background-color: #505050; /* Fondo gris para los items */
     color: #ffffff; /* Texto blanco */
     border-radius: 10px;
-    height: 200px;
-    margin: 0 20px;
+    height: 200px; /* Altura fija */
+    margin: 0 20px; /* Margen horizontal */
     display: flex;
     justify-content: center;
     align-items: center;
     transition: transform 0.3s ease-in-out, background-color 0.3s; /* Animaciones */
 }
 
+/* Efecto hover en los items del carrusel */
 .carousel-item:hover {
     transform: scale(1.05); /* Zoom al pasar el mouse */
     background-color: #737373; /* Color más claro en hover */
 }
+
 /* Estilo de las flechas de navegación */
 .arrow {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
+    transform: translateY(-50%); /* Centra verticalmente */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
     color: white;
     font-size: 30px;
     cursor: pointer;
     padding: 15px;
-    border-radius: 50%;
-    z-index: 2;
+    border-radius: 50%; /* Bordes redondeados */
+    z-index: 2; /* Asegura que las flechas estén encima */
 }
 
 .arrow.left {
-    left: 10px;
+    left: 10px; /* Posicionamiento de la flecha izquierda */
 }
 
 .arrow.right {
-    right: 10px;
+    right: 10px; /* Posicionamiento de la flecha derecha */
 }
