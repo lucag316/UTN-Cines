@@ -1,76 +1,122 @@
 /* General Styles */
 body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #f4f4f4;
-    padding: 0px;
-    margin: 0px;
+    font-family: 'Montserrat', sans-serif; /* Fuente principal */
+    background-color: #1c1c1c; /* Fondo gris oscuro */
+    padding: 0;
+    margin: 0;
+    color: #ffffff; /* Color de texto blanco */
 }
 
+h1 {
+    font-size: 4em; /* Tamaño grande para destacar el título */
+    margin-top: 40px; /* Espacio superior */
+    margin-bottom: 20px; /* Espacio inferior */
+    text-align: center;
+    background: linear-gradient(90deg, #f39c12, #f1c40f); /* Degradado de color */
+    font-weight: 700; /* Negrita */
+    text-transform: uppercase; /* Todo en mayúsculas */
+    letter-spacing: 2px; /* Espaciado entre letras */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Sombra al texto para darle profundidad */
+}
+
+
+/* Subtítulos dentro del carrusel (h3) */
+h3 {
+    font-size: 2.2em; /* Tamaño un poco más pequeño */
+    font-weight: 600; /* Semi negrita */
+    color: #f2f2f2; /* Color claro */
+    margin-top: 30px;
+    margin-bottom: 0px; /* Espacio inferior reducido para acercar al carrusel */
+    text-align: center;
+    position: relative;
+    padding-bottom: 10px; /* Espacio para el borde */
+    border-bottom: 2px solid #f1c40f; /* Borde inferior de color amarillo */
+    text-transform: uppercase; /* Todo en mayúsculas */
+    letter-spacing: 1px; /* Espaciado entre letras */
+    transition: color 0.3s ease, border-bottom-color 0.3s ease; /* Transición suave para hover */
+}
+/* Efecto hover en los subtítulos */
+h3:hover {
+    color: #f39c12; /* Cambia el color del texto en hover */
+    border-bottom-color: #f39c12; /* Cambia el color del borde inferior en hover */
+}
+/* Contenedor general del carrusel */
 .carousel-container {
-    width: 90%;
+    width: 90%; /* Ancho del contenedor */
     margin: 0 auto;
-    margin-top: 80px;
+    margin-top: 40px; /* Espacio superior */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 100px; /* Separación entre los carruseles */
-    border: 2px solid red;
+    gap: 60px; /* Menor espacio entre los carruseles */
+    background-color: #2e2e2e; /* Fondo gris más claro */
+    padding: 30px; /* Relleno interno */
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); /* Sombra suave */
 }
 
+/* Carrusel principal */
 .carousel {
-    border: 2px solid rgb(0, 255, 76);
+    
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     position: relative;
     overflow: hidden;
-    padding: 0 20px; /* Espacio a los lados del carrusel */
+    padding: 20px;
+    background-color: #3a3a3a; /* Fondo del carrusel */
+    border-radius: 10px; /* Bordes redondeados */
 }
 
+/* Pista del carrusel (donde se desplazan los items) */
 .carousel-track {
-    border: 2px solid rgb(0, 4, 255);
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    margin-left: 20px; /* Asegura un espacio a la izquierda para que no se corte la promo */
+    display: flex; /* Flexbox para alinear los elementos */
+    transition: transform 0.5s ease-in-out; /* Transición suave para el movimiento del carrusel */
+    margin-left: 15px; /* Espacio a la izquierda para evitar que los items se corten */
 }
 
+/* Elementos individuales del carrusel (promociones) */
 .carousel-item {
-    border: 2px solid rgb(0, 217, 255);
-    min-width: calc(33.333% - 20px); /* Ajusta para mostrar 3 elementos completos */
-    flex: 0 0 calc(33.333% - 20px); /* Mostrar 3 elementos por pantalla, considerando márgenes */
-    box-sizing: border-box;
-    padding: 15px;
+    min-width: 25%;
+    flex: 25%;
+    padding: 20px;
     text-align: center;
-    font-size: 20px;
-    background-color: #adadad;
+    font-size: 18px;
+    background-color: #505050; /* Fondo gris para los items */
+    color: #ffffff; /* Texto blanco */
     border-radius: 10px;
-    height: 200px; /* Altura de las promociones */
-    margin: 0 10px; /* Espacio horizontal entre items */
+    height: 200px;
+    margin: 0 20px;
     display: flex;
     justify-content: center;
-    align-items: center; /* Centra el contenido de las promos */
+    align-items: center;
+    transition: transform 0.3s ease-in-out, background-color 0.3s; /* Animaciones */
 }
 
+.carousel-item:hover {
+    transform: scale(1.05); /* Zoom al pasar el mouse */
+    background-color: #737373; /* Color más claro en hover */
+}
+/* Estilo de las flechas de navegación */
 .arrow {
-    border: 2px solid rgb(200, 255, 0);
     position: absolute;
-    top: 50%; /* Mantener la flecha en el centro verticalmente */
+    top: 50%;
     transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     font-size: 30px;
     cursor: pointer;
-    padding: 10px;
+    padding: 15px;
     border-radius: 50%;
-    z-index: 2; /* Asegura que las flechas estén por encima */
+    z-index: 2;
 }
 
 .arrow.left {
-    left: 10px; /* Ajustar la posición a la izquierda */
+    left: 10px;
 }
 
 .arrow.right {
-    right: 10px; /* Ajustar la posición a la derecha */
+    right: 10px;
 }
