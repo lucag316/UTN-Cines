@@ -1,0 +1,44 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #333;
+    color: #fff;
+}
+
+.navbar {
+    padding: 1rem;
+}
+
+.nav_img{
+    max-width: 45px;
+}
+
+.card {
+    background-color: #444;
+    border: none;
+    margin: 10px;
+    
+}
+
+.card img{
+    height: 250px;
+    max-height: 250px;
+    object-fit: cover;
+}
+.card-title {
+    color: #fff;
+    text-align: center;
+}
+
+footer a {
+    font-size: 1.5rem;
+}
+
+footer i {
+    font-size: 2rem;
+}
+
