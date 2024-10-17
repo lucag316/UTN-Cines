@@ -28,17 +28,6 @@ body::before {
     background-size: cover; /* Cubre el área del fondo */
 }
 
-/* Estilos para la navegación */
-nav {
-    position: fixed; /* Fija la navegación en la parte superior */
-    padding: 25px 60px; /* Espaciado interno */
-    z-index: 1; /* Asegura que esté por encima de otros elementos */
-}
-
-/* Estilo del logo en la navegación */
-nav a img {
-    width: 167px; /* Ancho del logo */
-}
 
 /* Contenedor del formulario */
 .form-wrapper {
@@ -191,14 +180,6 @@ form .form-help :where(label, a) {
 @media (max-width: 740px) {
     body::before {
         display: none; /* Oculta la imagen de fondo en pantallas pequeñas */
-    }
-
-    nav, .form-wrapper {
-        padding: 20px; /* Reduce el padding en pantallas pequeñas */
-    }
-
-    nav a img {
-        width: 140px; /* Reduce el tamaño del logo */
     }
 
     .form-wrapper {
