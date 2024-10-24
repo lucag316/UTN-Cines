@@ -7,6 +7,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif; /* Fuente Montserrat como principal */
 }
 
 /* FOOTER */
@@ -18,6 +19,7 @@
     padding: 40px 20px; /* Espaciado interno */
     margin-top: 100px; /* Separación superior del contenido */
     width: 100%; /* Ancho completo */
+  
 }
 
 /* Contenedor principal del footer */
@@ -126,4 +128,21 @@
         min-width: 100%; /* Cada sección ocupa el 100% del ancho en pantallas pequeñas */
         margin-bottom: 20px; /* Margen inferior entre las secciones en pantallas pequeñas */
     }
+}
+
+/* COMPLEMENTO PARA ASEGURAR QUE EL FOOTER SE MANTENGA ABAJO EN EL LOGIN PRINCIPAL*/
+
+/* Asegura que el footer esté siempre en la parte inferior, aunque haya poco contenido */
+html, body {
+    height: 100%; /* Hace que el documento ocupe toda la altura del viewport */
+}
+
+body {
+    display: flex; /* Flexbox para el body */
+    flex-direction: column; /* Los elementos hijos del body (navbar, contenido, footer) se organizan en columna */
+    justify-content: space-between; /* Espaciado entre el contenido y el footer */
+}
+
+.form-wrapper {
+    flex: 1; /* Hace que el contenedor principal ocupe el espacio disponible */
 }
