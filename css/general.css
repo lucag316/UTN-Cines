@@ -7,6 +7,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif; /* Fuente Montserrat como principal */
 }
 
 /* FOOTER */
@@ -49,7 +50,7 @@
 .footer-container-contacto:hover h5,
 .footer-container-redes:hover h5,
 .footer-container-info:hover h5 {
-    color: #f1c40f; /* Color dorado en el subtítulo al pasar el mouse */
+    color: #e74c3c; /* Color dorado en el subtítulo al pasar el mouse */
 }
 
 /* Estilos para los subtítulos (h5) de cada sección */
