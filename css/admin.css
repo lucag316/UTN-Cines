@@ -9,19 +9,18 @@ header {
 
 .card {
     transition: transform 0.3s;
+    height: 100%;
 }
 
 .card:hover {
     transform: scale(1.05);
 }
 
-.card_img{
-    min-height: 321px;
-}
+
 
 .card-body {
     text-align: center;
-    min-height: 176px;
+    color: white;
 }
 
 
