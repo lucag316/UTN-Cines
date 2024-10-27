@@ -1,0 +1,101 @@
+/* Estilos Generales */
+body {
+    background-color: #121212; /* Color de fondo oscuro */
+    color: #E0E0E0; /* Color de texto claro */
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Encabezados */
+h2, h3, h4 {
+    color: #E0E0E0; 
+    font-weight: bold; /* Hacer el texto más grueso */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra de texto */
+    transition: color 0.3s, text-shadow 0.3s; /* Transiciones suaves */
+}
+
+/* Estilos del Contenedor */
+.container {
+    background-color: #1E1E1E; /* Fondo gris oscuro para el contenedor */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Sombra sutil */
+    opacity: 0; /* Comienza invisible */
+    transform: translateY(20px); /* Mueve el contenedor hacia abajo */
+    animation: fadeIn 0.5s forwards; /* Aplica la animación */
+}
+@keyframes fadeIn {
+    to {
+        opacity: 1; /* Termina visible */
+        transform: translateY(0); /* Regresa a su posición original */
+    }
+}
+
+/* Etiquetas de formulario */
+.form-label {
+    font-weight: bold; /* Hacer el texto más grueso */
+    transition: color 0.3s; /* Transición suave */
+}
+
+/* Efecto de hover en las etiquetas */
+.item-formulario:hover .form-label {
+    color: #FFD700; /* Cambiar color al pasar el mouse */
+}
+
+/* Estilos de Select y Input */
+.form-select, .form-control {
+    background-color: #333; /* Fondo oscuro para los inputs */
+    color: white; /* Texto blanco */
+    border: 1px solid transparent; /* Bordes transparentes por defecto */
+    transition: border-color 0.3s, transform 0.3s; /* Transiciones suaves */
+}
+
+/* Efecto de hover en Select e Input */
+.form-select:hover, .form-control:hover {
+    border-color: #FFD700; /* Color dorado al hacer hover */
+    transform: scale(1.05); /* Efecto de zoom al hacer hover */
+}
+
+/* Enfoque en los inputs */
+.form-select:focus, 
+.form-control:focus {
+    border-color: #FF8C00; /* Color naranja al enfocar */
+    outline: none; /* Sin contorno al enfocar */
+}
+
+/* Botones */
+.btn {
+    background-color: #FF8C00; /* Color naranja */
+    color: #FFFFFF; /* Texto blanco */
+    border: none; /* Sin bordes */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+/* Efecto de hover en botones */
+.btn:hover {
+    background-color: #FFD700; /* Color dorado al pasar el mouse */
+}
+
+/* Resumen de Compra */
+#resumen {
+    background-color: #1E1E1E; /* Fondo gris oscuro para el resumen */
+    border: 1px solid #FFD700; /* Bordes dorados */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transiciones suaves */
+}
+
+/* Efecto al pasar el mouse sobre el resumen */
+#resumen:hover {
+    transform: scale(1.05); /* Efecto de zoom */
+    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.2); /* Sombra al hacer hover */
+}
+
+/* Estilos de enlaces */
+a {
+    color: #FF8C00; /* Color naranja para enlaces */
+    text-decoration: none; /* Sin subrayado */
+}
+
+/* Efecto de hover en enlaces */
+a:hover {
+    text-decoration: underline; /* Subrayado al pasar el mouse */
+}
