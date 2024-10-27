@@ -1,0 +1,44 @@
+/* Estilos para el contenedor de butacas */
+.butacas-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 columnas */
+    gap: 1rem; /* Espaciado entre butacas */
+    margin: 20px 0; /* Margen superior e inferior */
+}
+
+.butaca {
+    width: 50px; /* Ancho de la butaca */
+    height: 50px; /* Alto de la butaca */
+    background-color: #f0f0f0; /* Color de fondo */
+    border: 1px solid #ccc; /* Borde */
+    display: flex; /* Flexbox para centrar texto */
+    align-items: center; /* Centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente */
+    cursor: pointer; /* Cursor de puntero */
+    transition: background-color 0.3s; /* Transición para cambio de color */
+}
+
+.butaca.seleccionada {
+    background-color: #007bff; /* Color cuando está seleccionada */
+    color: #fff; /* Color de texto */
+}
+
+.butaca {
+    cursor: pointer;
+    padding: 10px;
+    margin: 5px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    text-align: center;
+    width: 40px;
+    border-radius: 5px;
+}
+
+.butaca.selected {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.border-start {
+    width: 30%;
+}
