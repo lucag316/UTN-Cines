@@ -1,34 +1,40 @@
 // Array para almacenar las butacas seleccionadas
 let butacasSeleccionadas = [];
 
+/**
+ * Selecciona o deselecciona una butaca al hacer clic, y actualiza el resumen de compra.
+ * @param {HTMLElement} element - Elemento HTML que representa la butaca seleccionada.
+ */
 function seleccionarButaca(element) {
     const numeroButaca = element.innerText;
-    // Verificar si la butaca ya está seleccionada
     const index = butacasSeleccionadas.indexOf(numeroButaca);
-    
+
     if (index === -1) { 
-        // Selecciona la butaca si no está en la lista
+        // Añade la butaca a la lista si no estaba seleccionada
         butacasSeleccionadas.push(numeroButaca);
         element.classList.add("selected");
     } else { 
-        // Deselecciona la butaca si ya estaba seleccionada
+        // Elimina la butaca de la lista si ya estaba seleccionada
         butacasSeleccionadas.splice(index, 1);
         element.classList.remove("selected");
     }
 
-    // Actualiza el resumen de butacas seleccionadas
+    // Muestra las butacas seleccionadas en el resumen
     document.getElementById("resumen-butacas").innerText = butacasSeleccionadas.length > 0 
         ? butacasSeleccionadas.join(", ") 
         : "Ninguna";
 }
 
-// Función para volver a la selección de entradas
+/**
+ * Redirige a la página de selección de entradas.
+ */
 function volverASeleccionEntradas() {
-    window.location.href = 'compra-entradas.html'; // Cambiar a la ruta correcta
+    window.location.href = 'compra-entradas.html';
 }
 
-// Función para continuar al pago
+/**
+ * Redirige a la página de confirmación de compra.
+ */
 function continuarAPago() {
-    // Aquí puedes agregar la lógica para pasar a la página de pago
-    window.location.href = 'confirmar-compra.html'; // Cambiar a la ruta correcta
+    window.location.href = 'confirmacion-compra.html';
 }

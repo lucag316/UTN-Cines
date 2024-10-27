@@ -81,16 +81,10 @@
                     <div class="butaca" onclick="seleccionarButaca(this)">20</div>
                 </div>
             </div>
-
-            <!-- Botones -->
-            <div class="col-12 text-center mt-4">
-                <button type="button" class="btn btn-secondary me-3" onclick="volverASeleccionEntradas()">Volver</button>
-                <button type="button" class="btn btn-primary" onclick="continuarAPago()">Continuar</button>
-            </div>
         </div>
 
         <!-- Resumen de compra -->
-        <div class="border-start ms-4 ps-4">
+        <div class="contenedor-resumen ms-4 ps-4">
             <h3 class="text-center mb-4">Resumen de Compra</h3>
             <div id="resumen" class="border p-3 rounded">
                 <h4>Detalles</h4>
@@ -104,6 +98,12 @@
                 <p><strong>Total:</strong> $<span id="resumen-total">0.00</span></p>
             </div>
         </div>
+    </div>
+
+    <!-- Botones debajo en el centro -->
+    <div class="col-12 text-center mt-4 botones-centrados">
+        <button type="button" class="btn btn-secondary me-3" onclick="volverASeleccionEntradas()">Volver</button>
+        <button type="button" class="btn btn-primary" onclick="continuarAPago()">Continuar</button>
     </div>
 
 

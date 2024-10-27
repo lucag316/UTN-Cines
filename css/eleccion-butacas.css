@@ -1,44 +1,126 @@
-/* Estilos para el contenedor de butacas */
+
+/* Encabezados */
+h2, h3, h4 {
+    color: #E0E0E0; 
+    font-weight: bold; /* Hacer el texto más grueso */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra de texto */
+    transition: color 0.3s, text-shadow 0.3s; /* Transiciones suaves */
+}
+
+/* Contenedor de Butacas */
 .butacas-container {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 columnas */
-    gap: 1rem; /* Espaciado entre butacas */
-    margin: 20px 0; /* Margen superior e inferior */
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin: 20px 0;
 }
 
+/* Estilo base para las butacas */
 .butaca {
-    width: 50px; /* Ancho de la butaca */
-    height: 50px; /* Alto de la butaca */
-    background-color: #f0f0f0; /* Color de fondo */
-    border: 1px solid #ccc; /* Borde */
-    display: flex; /* Flexbox para centrar texto */
-    align-items: center; /* Centrar verticalmente */
-    justify-content: center; /* Centrar horizontalmente */
-    cursor: pointer; /* Cursor de puntero */
-    transition: background-color 0.3s; /* Transición para cambio de color */
-}
-
-.butaca.seleccionada {
-    background-color: #007bff; /* Color cuando está seleccionada */
-    color: #fff; /* Color de texto */
-}
-
-.butaca {
-    cursor: pointer;
-    padding: 10px;
-    margin: 5px;
-    background-color: #f0f0f0;
+    width: 50px;
+    height: 50px;
+    background-color: #333;
+    color: #E0E0E0;
     border: 1px solid #ddd;
-    text-align: center;
-    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
     border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
+/* Estado seleccionado para las butacas */
 .butaca.selected {
-    background-color: #007bff;
-    color: #fff;
+    background-color: #FF8C00;
+    color: #FFFFFF;
+    border-color: #FFD700;
+    box-shadow: 0 4px 15px rgba(255, 140, 0, 0.5);
+    transform: scale(1.05);
 }
 
-.border-start {
-    width: 30%;
+/* Estado de butaca deshabilitada */
+.butaca.disabled {
+    background-color: #555;
+    color: #888;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Hover en butacas */
+.butaca:hover:not(.selected):not(.disabled) {
+    background-color: #FFD700;
+    color: #333;
+    transform: scale(1.05);
+}
+
+.contenedor-resumen {
+    border-left: 1px solid white;
+}
+/* Estilo del resumen de compra */
+#resumen {
+    width: 100%;
+    background-color: #1E1E1E;
+    border: 1px solid #FFD700;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+    transition: box-shadow 0.3s;
+    max-height: 400px;
+}
+
+.botones-centrados {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Media queries para hacer responsivo */
+@media (max-width: 992px) {
+    /* A 4 columnas para pantallas medianas y pequeñas */
+    .butacas-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    /* Disposición del contenedor de butacas y resumen en una columna */
+    .d-flex {
+        flex-direction: column;
+    }
+
+
+
+    .contenedor-resumen {
+        border-left: none ;
+        margin-top: 30px;
+    }
+
+    /* Ajuste de botones debajo del ticket */
+    .col-12.text-center.mt-4 {
+        margin-top: 20px;
+    }
+
+    #resumen {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .botones-centrados {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 576px) {
+
+
+    #resumen {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .col-12.text-center.mt-4 {
+        width: 100%;
+        margin-top: 20px;
+    }
 }
