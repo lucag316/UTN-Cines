@@ -38,6 +38,7 @@ h1:hover, h2:hover {
 /* Main y Formulario */
 #main-consulta {
     max-width: 80%;
+    width: 80%;
     background-color: #303030;
     border-radius: 15px;
     padding: 30px;
