@@ -192,3 +192,15 @@ form .form-help :where(label, a) {
     }
 }
 
+/* Contenedor del logo */
+.logo-container {
+    margin-bottom: 30px; /* Espacio entre el logo y el campo para completar*/
+    text-align: center;
+}
+
+.logo-container img {
+    max-width: 100%; /* Logo responsivo */
+    height: auto; /* Mantiene la proporción */
+    max-height: 60px; /* Tamaño máximo para el logo */      
+}
+
