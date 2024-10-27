@@ -55,6 +55,11 @@ h2, h3, h4 {
 }
 
 .contenedor-resumen {
+    margin: 0 auto; /* Centramos el contenedor */
+    width: 100%;
+    max-width: 500px; /* Limita el ancho máximo */
+    padding-left: 20px;
+    padding-right: 20px;
     border-left: 1px solid white;
 }
 /* Estilo del resumen de compra */
@@ -64,8 +69,14 @@ h2, h3, h4 {
     border: 1px solid #FFD700;
     padding: 20px;
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
-    transition: box-shadow 0.3s;
     max-height: 400px;
+    transition: transform 0.3s, box-shadow 0.3s; /* Transiciones suaves */
+}
+
+/* Efecto al pasar el mouse sobre el resumen */
+#resumen:hover {
+    transform: scale(1.05); /* Efecto de zoom */
+    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.2); /* Sombra al hacer hover */
 }
 
 .botones-centrados {
@@ -73,6 +84,19 @@ h2, h3, h4 {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+}
+
+.btn {
+    background-color: #FF8C00; /* Color naranja */
+    color: #FFFFFF; /* Texto blanco */
+    border: none; /* Sin bordes */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+/* Efecto de hover en botones */
+.btn:hover {
+    background-color: #FFD700; /* Color dorado al pasar el mouse */
 }
 
 /* Media queries para hacer responsivo */
@@ -83,44 +107,62 @@ h2, h3, h4 {
     }
 }
 
+/* Ajustes para contenedor-resumen en pantallas medianas y pequeñas */
 @media (max-width: 768px) {
-    /* Disposición del contenedor de butacas y resumen en una columna */
+    /* Cambiar la dirección a columna y centrar */
     .d-flex {
         flex-direction: column;
+        align-items: center; /* Centra todos los elementos */
     }
 
-
-
+    /* Contenedor de resumen sin margen ni padding y 100% ancho */
     .contenedor-resumen {
-        border-left: none ;
-        margin-top: 30px;
+        border-left: none; /* Eliminar borde izquierdo */
+        padding: 0 !important; /* Quitar cualquier padding */
+        margin: 0 !important; /* Quitar márgenes */
+        width: 100%; /* Ancho completo */
+        margin-top: 30px !important;
     }
 
-    /* Ajuste de botones debajo del ticket */
-    .col-12.text-center.mt-4 {
-        margin-top: 20px;
+    .contenedor-resumen h3 {
+        border-top: 1px solid white;
+        padding-top: 20px;
     }
 
+    /* Ajuste del resumen de compra */
     #resumen {
-        width: 100%;
-        margin-top: 20px;
+        width: 100%; /* Ancho completo */
+        margin: 0 auto; /* Centrar horizontalmente */
+        padding: 0; /* Quitar el padding interno */
     }
 
+    /* Botones en el centro */
     .botones-centrados {
-        margin-top: 0;
+        margin-top: 20px;
+        justify-content: center;
+        width: 100%; /* Asegura que ocupe el ancho completo */
     }
 }
 
 @media (max-width: 576px) {
-
-
-    #resumen {
-        width: 100%;
-        margin-top: 20px;
+    /* Ajustar el resumen de compra y el contenedor de resumen en pantallas más pequeñas */
+    .contenedor-resumen {
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100%; /* Ancho completo */
     }
 
+    #resumen {
+        width: 100%; /* Ancho completo */
+        margin: 0 auto; /* Centrar horizontalmente */
+        padding: 0; /* Eliminar padding */
+    }
+
+    /* Ajuste adicional para botones en pantallas pequeñas */
     .col-12.text-center.mt-4 {
-        width: 100%;
         margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        width: 100%;
     }
 }
