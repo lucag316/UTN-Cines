@@ -6,10 +6,13 @@
     <title>Catálogo de Películas</title>
 
     <link rel="shortchut icon" href="icons/favicon1.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/general.css">
+
 </head>
 
 <body>
@@ -18,7 +21,7 @@
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
-                <img src="images/marca.png" class="nav_img" alt="">
+                <img src="images/marca.png" class="nav_img" alt="" id="marca_img">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -35,8 +38,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Carrito</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="html/login.html">Usuario</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Usuario
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="html/perfil.html">Perfil</a></li>
+                            <li><a class="dropdown-item" href="html/login.html">Login</a></li>
+                            <!-- <li><a class="dropdown-item" href="html/register.html">Registrarme</a></li> -->
+                            <li><a class="dropdown-item" href="html/admin.html">Admin</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -74,20 +85,20 @@
         </div>
 
         <!-- Filtros -->
-        <div class="row mt-4">
+        <div class="row mt-4 justify-content-center align-items-center filtros">
             <!-- Filtro Lugar -->
-            <div class="col-6">
-                <select class="form-select w-100">
+            <div class="col-12 col-md-3 mb-2">
+                <select class="form-select w-100 filtro">
                     <option selected disabled>Selecciona Lugar</option>
                     <option value="ciudad1">Avellaneda</option>
                     <option value="ciudad2">Puerto Madero</option>
                     <option value="ciudad3">Monte Grande</option>
                 </select>
             </div>
-
+        
             <!-- Filtro Géneros -->
-            <div class="col-6">
-                <select class="form-select w-100">
+            <div class="col-12 col-md-3 mb-2">
+                <select class="form-select w-100 filtro" id="select_genero">
                     <option selected disabled>Selecciona Género</option>
                     <option value="accion">Acción</option>
                     <option value="comedia">Comedia</option>
@@ -96,142 +107,19 @@
                     <option value="ciencia_ficcion">Ciencia Ficción</option>
                 </select>
             </div>
-
+        
             <!-- Buscador de Películas -->
-            <div class="col-12 col-md-4 mt-3 mt-md-0">
-                <input type="text" class="form-control" placeholder="Buscar películas...">
+            <div class="col-12 col-md-3 mb-2">
+                <input type="text" class="form-control filtro" placeholder="Buscar películas...">
             </div>
-
-
         </div>
+        
 
 
         <!-- Catálogo de Películas -->
         <div class="row mt-4" id="peliculas_container">
             
-            <!-- <div class="col-6 col-md-3">
-                <a href="#" class="text-decoration-none">
-
-                    <div class="card">
-                        <img src="images/alice-la-gemela-del-diablo-500x760.jpg" class="card-img-top" alt="Película 1">
-                        <div class="card-body">
-                            <h5 class="card-title">Alice la gemela del diablo</h5>
-                        </div>
-                    </div>
-                </a>
-
-            </div>
-
-            <div class="col-6 col-md-3">
-                <a href="#" class="text-decoration-none">
-
-                    <div class="card">
-                        <img src="images/deadpool-wolverine.jpg" class="" alt="Película 2">
-                        <div class="card-body">
-                            <h5 class="card-title">Deadpool & Wolverine</h5>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-6 col-md-3">
-                <a href="#" class="text-decoration-none">
-                    <div class="card">
-                        <img src="images/harry-potter-y-el-prisionero-de-azkaban.jpg" class="" alt="Película 3">
-                        <div class="card-body">
-                            <h5 class="card-title">Harry potter</h5>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-6 col-md-3">
-                <a href="#" class="text-decoration-none">
-
-                    <div class="card">
-                        <img src="images/transformers-uno.jpg" class="card-img-top" alt="Película 4">
-                        <div class="card-body">
-                            <h5 class="card-title">Transformers</h5>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-6 col-md-3">
-                <a href="#" class="text-decoration-none">
-
-                    <div class="card">
-                        <img src="images/venom-el-ultimo-baile.jpg" class="card-img-top" alt="Película 4">
-                        <div class="card-body">
-                            <h5 class="card-title">Venom</h5>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-6 col-md-3">
-                <a href="html/seven.html" class="text-decoration-none">
-
-                    <div class="card">
-                        <img src="https://play-lh.googleusercontent.com/qSRuq-_0Brd8GP9xWusN_hOuoR-zfIyLplf328eqXKwfzdmQLUXQwL1A_N8OJcQs8y6-W8H4Yj-Z2li7HdGo=w240-h480-rw" class="card-img-top" alt="Película 4">
-                        <div class="card-body">
-                            <h5 class="card-title">Película 4</h5>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-6 col-md-3">
-                <a href="html/narnia.html" class="text-decoration-none">
-
-                    <div class="card">
-                        <img src="https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5ZW9/image?locale=es-es&mode=crop&purposes=BoxArt&q=90&h=300&w=200&format=jpg" class="card-img-top" alt="Película 4">
-                        <div class="card-body">
-                            <h5 class="card-title">Película 4</h5>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-6 col-md-3">
-                <a href="html/sociedad-peotas-muertos.html" class="text-decoration-none">
-                    <div class="card">
-                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgh6rX90uT4io7bpy4MueHxv6J3yA7G-t1my7QSaJ6P483AXG7fCmNp68zpBW1uDB3JP-1zReAo57uN3XMC5e6TzYta_IiU__SrODKYHyFBGxZfpF-zNDmSl8CKKzLbyqLA5Y1gaOgSqv8/s320/dead_poets_sociaty.jpg.270x360_q85_upscale.jpg" class="card-img-top" alt="Película 4">
-                        <div class="card-body">
-                            <h5 class="card-title">Película 4</h5>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-6 col-md-3">
-                <a href="html/interestelar.html" class="text-decoration-none">
-                    <div class="card">
-                        <img src="https://es.web.img3.acsta.net/pictures/14/10/02/11/07/341344.jpg" class="card-img-top" alt="Película 4">
-                        <div class="card-body">
-                            <h5 class="card-title">Película 4</h5>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-6 col-md-3">
-                <div class="card">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Película 4">
-                    <div class="card-body">
-                        <h5 class="card-title">Película 4</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-3">
-                <div class="card">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Película 4">
-                    <div class="card-body">
-                        <h5 class="card-title">Película 4</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-3">
-                <div class="card">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Película 4">
-                    <div class="card-body">
-                        <h5 class="card-title">Película 4</h5>
-                    </div>
-                </div>
-            </div>
-            -->
+           
         </div> 
         
         <div class="d-flex justify-content-center mt-4">
@@ -313,6 +201,8 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+
     <script src="js/index.js"></script>
 </body>
 </html>
