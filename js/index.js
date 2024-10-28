@@ -35,7 +35,7 @@ function displayMovies(movies) {
     // Esto hace que por cada peli en el array de movies, lo agrega al cointainer con sus elementos correspondientes y sus clases de bootstrap, y con la informacion correspondiente traida de la API
     movies.forEach(movie => {
         const movieCard = `
-            <div class="col-6 col-md-3 mb-4">
+            <div class="col-6 col-md-3 mb-4" id="card_pelis">
                 <a href="../html/perfil_peli.html?id=${movie.id}" class="text-decoration-none">
                     <div class="card">
                         <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top" alt="${movie.title}">

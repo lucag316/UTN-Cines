@@ -108,6 +108,10 @@
     }
 }
 
+#card_pelis:hover{
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+    transition: transform 0.3s ease;
+}
 
 /* /////////////////////////////////// 
 
