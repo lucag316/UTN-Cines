@@ -343,7 +343,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const path = window.location.pathname;
     console.log(path)
     // Para index.html
-    if (path.includes("index.html")) {
+    if (path.includes("index.html") || path === "/" ) {
         try {
             console.log("Cargando películas en el catálogo...");
             cargarGeneros()
