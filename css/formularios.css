@@ -152,6 +152,7 @@ h2, h3, h4 {
     margin-top: 20px; /* Margen superior */
 }
 
+
 /* Media queries para responsividad */
 @media (max-width: 992px) {
     /* A 4 columnas para pantallas medianas y pequeñas */
@@ -172,5 +173,17 @@ h2, h3, h4 {
         margin-top: 20px; /* Margen superior */
         justify-content: center; /* Centra los botones */
         width: 100%; /* Asegura que ocupe el ancho completo */
+    }
+
+    .nombre-apellido,
+    .email-telefono {
+        flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
+    }
+
+    .nombre,
+    .apellido,
+    .email,
+    .telefono {
+        width: 100%; /* Asegura que cada campo ocupe todo el ancho */
     }
 }
