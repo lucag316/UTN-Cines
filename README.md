@@ -13,7 +13,8 @@ El objetivo principal de **UTN-CINES** es ofrecer una plataforma accesible y fá
 
 ---
 
-## Características:
+## Características y Funcionalidades:
+
 - **Inicio de Sesión:** Permite a los usuarios existentes acceder a la plataforma ingresando su correo y contraseña. Incluye opciones como "Recordarme" y un enlace de ayuda en caso de problemas.
 
 - **Registrarse:** Permite a nuevos usuarios crear una cuenta proporcionando su nombre completo, correo, y contraseña (con confirmación). También incluye un enlace a la página de Login si el usuario ya tiene cuenta.
@@ -38,12 +39,17 @@ El objetivo principal de **UTN-CINES** es ofrecer una plataforma accesible y fá
 
 - **Formulario de Consulta:**  Permite a los usuarios enviar consultas relacionadas con horarios de películas, disponibilidad de entradas, promociones y reembolsos. Incluye un formulario donde los usuarios pueden ingresar su nombre, apellido, email, teléfono, mensaje y elegir su preferencia de respuesta (email o teléfono). También deben aceptar los términos y condiciones antes de enviar el formulario.
 
+- **Sobre Nosotros:** Presenta información sobre la empresa, destacando su compromiso de ofrecer una experiencia cinematográfica excepcional y promociones exclusivas. Incluye secciones que describen la selección de películas, la experiencia del cine, y las diversas promociones y descuentos disponibles para los clientes. 
+
+- **Preguntas Frecuentes:** Presenta una lista de preguntas comunes que los usuarios pueden tener, junto con sus respuestas, como la ubicación del cine, tipos de películas, descuentos, y detalles sobre la compra y retiro de entradas.
+
+- **Perfil de Usuario:** En el cuerpo principal, se muestra la foto del usuario, su nombre, correo electrónico y dirección, así como una lista de compras que se puede completar dinámicamente.
+
+- **Admin:** Esta página es una interfaz de administración para gestionar películas en un sitio web. Incluye un encabezado con un menú de navegación que permite acceder a diferentes secciones como películas, promociones y el perfil de usuario. En el cuerpo de la página, se muestra un botón para crear nuevas películas y un contenedor donde se listarán las películas existentes, utilizando Bootstrap para el diseño responsivo.
+
 - **Modo Oscuro/Claro:** Cambia el modo de visualización con un solo clic.
 
 - **API de Películas:** Integramos "The Movie DB API" para traer la información de las películas de manera actualizada.
-
-
-- **Interfaz de Administración:** Los administradores pueden gestionar (CRUD) las películas y promociones.
 
 ---
 
