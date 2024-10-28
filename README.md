@@ -53,16 +53,19 @@ El objetivo principal de **UTN-CINES** es ofrecer una plataforma accesible y fá
 
 ---
 
-## Demo en Vivo y Repositorio
+## Links Importantes
 
 - **Deploy del Sitio:** [UTN-Cines en Vercel](https://utn-cines.vercel.app/)
 - **Repositorio en GitHub:** [UTN-Cines GitHub Repository](https://github.com/lucag316/UTN-Cines)
+- **Pdf Diseño en Canva modo escritorio:** [Diseño Modo Escritorio]()
+- **Pdf Diseño en Canva modo celular :** [Diseño Modo Celular]()
+- **Pdf Documentacion del proyecto :** [Documentación del Proyecto]()
 
 ---
 
 ## Diseño de Interfaz
 
-#### Estilo Visual:
+### Estilo Visual:
 El estilo visual de **UTN-CINES** se caracteriza por un uso elegante de tonalidades de grises y negros que evocan la sofisticación del cine clásico. Este esquema de colores proporciona un ambiente acogedor y moderno, ideal para una experiencia cinematográfica.
 
 #### Colores Predominantes:
@@ -75,24 +78,24 @@ El estilo visual de **UTN-CINES** se caracteriza por un uso elegante de tonalida
 
 - **Fondo de Butacas de Cine:** La interfaz presenta un fondo sutil de butacas de cine que crea un ambiente inmersivo. Este diseño no solo recuerda a los usuarios la experiencia de ver películas en el cine, sino que también complementa el esquema de colores, añadiendo un toque de nostalgia y conexión con la temática del sitio.
 
-### Tipografías
-
+### Tipografías: 
 Se utilizó la tipografía **Montserrat**, disponible a través de Google Fonts. Esta elección incluye los pesos 400 (regular) y 700 (negrita), garantizando una buena legibilidad y un aspecto moderno tanto en dispositivos móviles como en escritorio.
+
 ---
 
 
-## ⚙️ Desarrollo del Proyecto
+## Desarrollo del Proyecto
 
 1. **Mapa de Navegación:** Definimos la estructura del sitio y la disposición de sus funciones para que la navegación sea intuitiva.
-2. **Elección de Herramientas:** Utilizamos **Bootstrap** para el diseño estilizado y **Canva** para los prototipos iniciales.
-3. **API de Películas:** La integración de "The Movie DB API" requirió una manipulación exhaustiva de HTML y JavaScript.
-4. **Responsividad:** El sitio es completamente responsive y se adapta a dispositivos móviles, tablets y escritorio.
+2. **Elección de Herramientas:** Utilizamos HTML, CSS, JavaScript, **Bootstrap** para el diseño estilizado y **Canva** para los prototipos iniciales. Tambien Utilizamos una API externa.
+3. **API de Películas:** La integración de "The Movie DB API" manipulandolo con HTML y JavaScript.
+4. **Responsividad:** El sitio es completamente responsivo y se adapta a dispositivos móviles, tablets y escritorio. Implementamos media queries y un diseño fluido para asegurar que todos los elementos se ajusten adecuadamente a diferentes tamaños de pantalla.
 
 ---
 
-## 🔧 Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
-- **Frontend:** HTML5, CSS3, Bootstrap, JavaScript
+- **Frontend:** HTML5, CSS3, JavaScript, Bootstrap
 - **API Externa:** The Movie DB API
 - **Herramientas de Prototipado:** Canva
 - **Plataforma de Deploy:** Vercel
@@ -100,12 +103,6 @@ Se utilizó la tipografía **Montserrat**, disponible a través de Google Fonts.
 
 ---
 
-## 🚀 Próximos Pasos
-
-- **Desarrollo del Backend:** Nos gustaría implementar un backend robusto para mejorar las funcionalidades de la plataforma, incluyendo el almacenamiento y la gestión de datos de usuarios y películas.
-
----
-
-## 📬 Contacto
+## Contacto
 
 Para cualquier consulta o sugerencia, no dudes en contactarnos a: **utn-cines_contacto@gmail.com**
