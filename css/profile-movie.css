@@ -139,7 +139,7 @@ body {
 
 /* Efecto adicional para darle un toque moderno */
 h2 {
-    color: #2c3e50; /*Color del título general*/
+    color: #fff; /*Color del título general*/
     text-transform: uppercase; /* Todo en mayúsculas */
 }
 
