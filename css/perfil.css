@@ -1,6 +1,7 @@
-/* Estilos para el perfil de usuario */
-body {
-    font-family: Arial, sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif; /* Fuente principal */
 }
 
 h2 {

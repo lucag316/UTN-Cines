@@ -1,4 +1,9 @@
 /* Estilos principales */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif; /* Fuente principal */
+}
 
 /* Contenedor de Preguntas Frecuentes */
 .faq-container {

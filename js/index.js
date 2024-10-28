@@ -24,6 +24,11 @@ async function fetchMovies(page = 1) {
 }
 
 // Función para mostrar las películas en el HTML
+/**
+ *
+ *
+ * @param {*} movies
+ */
 function displayMovies(movies) {
 
     container.innerHTML = ''; // Limpiar el contenido anterior
@@ -86,22 +91,158 @@ function setupPagination(currentPage, totalPages) {
     });
 }
 
-const obtenerGeneros = async()=>{
+const selectGenero = document.getElementById("select_genero");
+
+const cargarGeneros = async()=>{
     const res = await fetch("../datos.json");
     const datos = await res.json();
     console.log(datos)
-    return datos
+    
+    datos.generos.forEach(genero => {
+        const option = document.createElement("option");
+        option.value = genero.id;
+        option.textContent = genero.name;
+        selectGenero.appendChild(option);
+    });
 }
 
+// Función para cargar películas por género
+async function cargarPeliculasPorGenero(generoId, page = 1) {
+    const response = await fetch(`${BASE_URL}/discover/movie?api_key=${API_KEY}&language=es-ES&with_genres=${generoId}&page=${page}`);
+    const data = await response.json();
+
+    // Aquí puedes renderizar las películas en la página
+    console.log(data.results);
+    displayMovies(data.results);
+}
+
+
+async function cargarPeliculas(generoId, orden, page = 1) {
+    let url = `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=es-ES&page=${page}`;
+
+    console.log(generoId)
+  
+    // Filtrar por género si se selecciona uno
+    if (generoId) {
+        url += `&with_genres=${generoId}`;
+    }
+
+    if (orden === "rating_alto") {
+        url += `&sort_by=vote_average.desc`;
+    } else if (orden === "rating_bajo") {
+        url += `&sort_by=vote_average.asc`;
+    }
+
+    const response = await fetch(url);
+    const data = await response.json();
+
+    displayMovies(data.results);
+}
+
+// Manejar los eventos de cambio en los filtros
+document.getElementById("select_genero").addEventListener("change", function () {
+    const generoId = this.value;
+    const orden = document.getElementById("select_orden").value;
+    cargarPeliculas(generoId, orden);
+});
+
+document.getElementById("select_orden").addEventListener("change", function () {
+    const orden = this.value;
+    const generoId = document.getElementById("select_genero").value;
+    cargarPeliculas(generoId, orden);
+});
 
 // Obtener las películas de la primera página al cargar la página
 document.addEventListener("DOMContentLoaded",async (event)=>{
     try {
+        cargarGeneros()
         fetchMovies();
     } catch (error) {
         console.log("Error al intentar conseguir las peliculas")
     }
 });
+
+
+// *!
+//  * Color mode toggler for Bootstrap's docs (https://getbootstrap.com/)
+//  * Copyright 2011-2024 The Bootstrap Authors
+//  * Licensed under the Creative Commons Attribution 3.0 Unported License.
+//  */
+
+(() => {
+  'use strict'
+
+  const getStoredTheme = () => localStorage.getItem('theme')
+  const setStoredTheme = theme => localStorage.setItem('theme', theme)
+
+  const getPreferredTheme = () => {
+    const storedTheme = getStoredTheme()
+    if (storedTheme) {
+      return storedTheme
+    }
+
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  }
+
+  const setTheme = theme => {
+    if (theme === 'auto') {
+      document.documentElement.setAttribute('data-bs-theme', (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'))
+    } else {
+      document.documentElement.setAttribute('data-bs-theme', theme)
+    }
+  }
+
+  setTheme(getPreferredTheme())
+
+  const showActiveTheme = (theme, focus = false) => {
+    const themeSwitcher = document.querySelector('#bd-theme')
+
+    if (!themeSwitcher) {
+      return
+    }
+
+    const themeSwitcherText = document.querySelector('#bd-theme-text')
+    const activeThemeIcon = document.querySelector('.theme-icon-active use')
+    const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
+    const svgOfActiveBtn = btnToActive.querySelector('svg use').getAttribute('href')
+
+    document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+      element.classList.remove('active')
+      element.setAttribute('aria-pressed', 'false')
+    })
+
+    btnToActive.classList.add('active')
+    btnToActive.setAttribute('aria-pressed', 'true')
+    activeThemeIcon.setAttribute('href', svgOfActiveBtn)
+    const themeSwitcherLabel = `${themeSwitcherText.textContent} (${btnToActive.dataset.bsThemeValue})`
+    themeSwitcher.setAttribute('aria-label', themeSwitcherLabel)
+
+    if (focus) {
+      themeSwitcher.focus()
+    }
+  }
+
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    const storedTheme = getStoredTheme()
+    if (storedTheme !== 'light' && storedTheme !== 'dark') {
+      setTheme(getPreferredTheme())
+    }
+  })
+
+  window.addEventListener('DOMContentLoaded', () => {
+    showActiveTheme(getPreferredTheme())
+
+    document.querySelectorAll('[data-bs-theme-value]')
+      .forEach(toggle => {
+        toggle.addEventListener('click', () => {
+          const theme = toggle.getAttribute('data-bs-theme-value')
+          setStoredTheme(theme)
+          setTheme(theme)
+          showActiveTheme(theme, true)
+        })
+      })
+  })
+})()
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
