@@ -62,15 +62,22 @@ El objetivo principal de **UTN-CINES** es ofrecer una plataforma accesible y fá
 
 ## Diseño de Interfaz
 
-**Estilo Visual:** El estilo visual de **UTN-CINES** se caracteriza por un uso elegante de tonalidades de grises y negros que evocan la sofisticación del cine clásico. Este esquema de colores proporciona un ambiente acogedor y moderno, ideal para una experiencia cinematográfica.
-    **Colores Predominantes:**
-    - Grises y Negros: Predominan en la interfaz para dar un aspecto elegante y profesional. Estos colores permiten que la información sea fácilmente legible y que los elementos se destaquen sin resultar abrumadores.
-    - Dorados: Se utilizan para acentuar detalles importantes, como el texto que aparece al hacer focus en campos de entrada o en botones destacados. Este toque dorado agrega un aire de lujo y exclusividad a la experiencia del usuario.
-    - Rojos: El rojo se incorpora estratégicamente en ciertos elementos, como botones de acción o promociones especiales, para atraer la atención y transmitir energía y urgencia.
-    - Fondo de Butacas de Cine: La interfaz presenta un fondo sutil de butacas de cine que crea un ambiente inmersivo. Este diseño no solo recuerda a los usuarios la experiencia de ver películas en el cine, sino que también complementa el esquema de colores, añadiendo un toque de nostalgia y conexión con la temática del sitio.
+#### Estilo Visual:
+El estilo visual de **UTN-CINES** se caracteriza por un uso elegante de tonalidades de grises y negros que evocan la sofisticación del cine clásico. Este esquema de colores proporciona un ambiente acogedor y moderno, ideal para una experiencia cinematográfica.
 
-**Tipografías:** Se utilizó la tipografía Montserrat, disponible a través de Google Fonts. Esta elección incluye los pesos 400 (regular) y 700 (negrita), garantizando una buena legibilidad y un aspecto moderno tanto en dispositivos móviles como en escritorio.
+#### Colores Predominantes:
 
+- **Grises y Negros:** Predominan en la interfaz para dar un aspecto elegante y profesional. Estos colores permiten que la información sea fácilmente legible y que los elementos se destaquen sin resultar abrumadores.
+
+- **Dorados:** Se utilizan para acentuar detalles importantes, como el texto que aparece al hacer *focus* en campos de entrada o en botones destacados. Este toque dorado agrega un aire de lujo y exclusividad a la experiencia del usuario.
+
+- **Rojos:** El rojo se incorpora estratégicamente en ciertos elementos, como botones de acción o promociones especiales, para atraer la atención y transmitir energía y urgencia.
+
+- **Fondo de Butacas de Cine:** La interfaz presenta un fondo sutil de butacas de cine que crea un ambiente inmersivo. Este diseño no solo recuerda a los usuarios la experiencia de ver películas en el cine, sino que también complementa el esquema de colores, añadiendo un toque de nostalgia y conexión con la temática del sitio.
+
+### Tipografías
+
+Se utilizó la tipografía **Montserrat**, disponible a través de Google Fonts. Esta elección incluye los pesos 400 (regular) y 700 (negrita), garantizando una buena legibilidad y un aspecto moderno tanto en dispositivos móviles como en escritorio.
 ---
 
 
