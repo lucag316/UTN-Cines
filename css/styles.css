@@ -5,6 +5,18 @@
     font-family: 'Montserrat', sans-serif; /* Fuente principal */
 }
 
+.navbar {
+  padding: 1rem;
+  background-color: black !important;
+  color: white;
+  font-weight: 600;
+}
+
+.nav_img{
+  max-width: 45px;
+  border-radius: 10px;
+}
+
 
 #carouselExampleControls{
     margin-top: 100px;
