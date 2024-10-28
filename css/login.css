@@ -1,12 +1,11 @@
 /* Importación de la fuente Roboto desde Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap");
 
-/* Reinicio de estilos para asegurar consistencia */
 * {
-    margin: 0; /* Elimina el margen por defecto */
-    padding: 0; /* Elimina el padding por defecto */
-    box-sizing: border-box; /* Incluye el padding y el borde en el tamaño total del elemento */
-    font-family: 'Roboto', sans-serif; /* Establece la fuente de la página */
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Roboto', sans-serif; 
 }
 
 /* Estilo del body */
@@ -24,28 +23,29 @@ body::before {
     width: 100%; /* Ancho completo */
     height: 100%; /* Alto completo */
     background: url("../images/login-cine.jpg"); /* Imagen de fondo */
-    background-position: center; /* Centra la imagen */
+    background-position: center; 
     background-size: cover; /* Cubre el área del fondo */
 }
 
 
 /* Contenedor del formulario */
 .form-wrapper {
-    position: absolute; /* Posición absoluta para centrar el formulario */
-    left: 50%; /* Alineado al centro horizontalmente */
-    top: 50%; /* Alineado al centro verticalmente */
-    border-radius: 4px; /* Bordes redondeados */
-    padding: 70px; /* Espaciado interno del contenedor */
-    width: 450px; /* Ancho del contenedor */
-    transform: translate(-50%, -50%); /* Centra el contenedor */
-    background: rgba(0, 0, 0, .75); /* Fondo semi-transparente negro */
+    position: absolute;
+    left: 50%; 
+    top: 55%; 
+    transform: translateX(-50%); /* Se evita superposición */
+    border-radius: 15px; 
+    padding: 50px; 
+    width: 450px; 
+    transform: translate(-50%, -50%); 
+    background: rgba(0, 0, 0, .75); 
 }
 
 /* Estilo del encabezado del formulario */
 .form-wrapper h2 {
-    color: #fff; /* Color del texto */
-    font-size: 2rem; /* Tamaño de fuente */
-    text-align: center; /* Centra el texto */
+    color: #fff; 
+    font-size: 2rem; 
+    text-align: center; 
 }
 
 /* Estilo del formulario */
@@ -54,14 +54,14 @@ body::before {
 }
 
 /* Control de cada campo del formulario */
-form .form-control {
+form .control {
     height: 50px; /* Altura del campo */
     position: relative; /* Posición relativa para el label */
-    margin-bottom: 16px; /* Espacio entre campos */
+    margin-bottom: 16px;
 }
 
 /* Estilo de los inputs del formulario */
-.form-control input {
+.control input {
     height: 100%; /* Altura completa */
     width: 100%; /* Ancho completo */
     background: #333; /* Fondo gris oscuro */
@@ -74,13 +74,13 @@ form .form-control {
 }
 
 /* Estilo al enfocar o validar el input */
-.form-control input:is(:focus, :valid) {
-    background: #444; /* Cambia el fondo al enfocar */
+.control input:is(:focus, :valid) {
+    background: #444444; /* Cambia el fondo al enfocar */
     padding: 16px 20px 0; /* Ajusta el padding al enfocar */
 }
 
 /* Estilo del label del campo */
-.form-control label {
+.control label {
     position: absolute; /* Posición absoluta dentro del campo */
     left: 20px; /* Alineado a la izquierda */
     top: 50%; /* Centrado verticalmente */
@@ -92,7 +92,7 @@ form .form-control {
 }
 
 /* Cambios en el label al enfocar el input */
-.form-control input:is(:focus, :valid)~label {
+.control input:is(:focus, :valid)~label {
     font-size: 0.75rem; /* Reduce el tamaño de la fuente */
     transform: translateY(-130%); /* Mueve el label hacia arriba */
 }
@@ -130,46 +130,48 @@ form button:hover {
 
 /* Color de texto para etiquetas y enlaces */
 .form-wrapper :where(label, p, small, a) {
-    color: #b3b3b3; /* Color gris claro */
+    color: #e0d8d8;
 }
 
 /* Estilo del contenedor de ayuda del formulario */
 form .form-help {
-    display: flex; /* Flexbox para disposición horizontal */
-    justify-content: space-between; /* Espaciado entre elementos */
+    display: flex;
+    justify-content: space-between; 
 }
 
 /* Estilo de la opción "Recordarme" */
 form .remember-me {
-    display: flex; /* Flexbox para disposición horizontal */
+    display: flex; 
+    align-items: center; 
+    margin-top: -17px;       
 }
 
 /* Estilo del checkbox */
 form .remember-me input {
-    margin-right: 5px; /* Espacio a la derecha del checkbox */
-    accent-color: #b3b3b3; /* Color del checkbox */
+    margin-right: 5px; 
+    accent-color: #7db0ee;
 }
 
 /* Estilo de etiquetas y enlaces dentro de la ayuda del formulario */
 form .form-help :where(label, a) {
-    font-size: 0.9rem; /* Tamaño de fuente más pequeño */
+    font-size: 1rem;
 }
 
 /* Color de enlace en el contenedor del formulario */
 .form-wrapper p a {
-    color: #fff; /* Color blanco */
+    color: #fff; 
 }
 
 /* Estilo para textos adicionales */
 .form-wrapper small {
-    display: block; /* Se muestra como bloque */
-    margin-top: 15px; /* Margen superior */
-    color: #b3b3b3; /* Color gris claro */
+    display: block; 
+    margin-top: 15px; 
+    color: #b3b3b3; 
 }
 
 /* Color de enlaces dentro de pequeños textos */
 .form-wrapper small a {
-    color: #0071eb; /* Color azul para enlaces */
+    color: #0071eb;
 }
 
 .count {
@@ -184,23 +186,32 @@ form .form-help :where(label, a) {
 
     .form-wrapper {
         width: 100%; /* Ancho completo del contenedor en pantallas pequeñas */
-        top: 43%; /* Ajusta la posición vertical */
+        top: 43%; 
     }
 
     .form-wrapper form {
-        margin: 25px 0 40px; /* Ajusta el margen del formulario */
+        margin: 25px 0 40px;
     }
 }
 
-/* Contenedor del logo */
+.navbar {
+    padding: 1rem;
+    z-index: 10; 
+    position: relative;
+}
+
+.nav_img{
+    max-width: 45px;
+    border-radius: 10px;
+}
+
+.img-logo {
+    max-width: 45px;
+    border-radius: 10px;
+    background-color: #fff;      
+}
+
 .logo-container {
-    margin-bottom: 30px; /* Espacio entre el logo y el campo para completar*/
     text-align: center;
+    height: 60px;
 }
-
-.logo-container img {
-    max-width: 100%; /* Logo responsivo */
-    height: auto; /* Mantiene la proporción */
-    max-height: 60px; /* Tamaño máximo para el logo */      
-}
-
