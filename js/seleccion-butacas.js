@@ -35,6 +35,6 @@ function volverASeleccionEntradas() {
 /**
  * Redirige a la página de confirmación de compra.
  */
-function continuarAPago() {
+function continuarAConfirmacionCompra() {
     window.location.href = 'confirmacion-compra.html';
 }

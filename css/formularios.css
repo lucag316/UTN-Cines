@@ -64,6 +64,7 @@ h2, h3, h4 {
 .select-general:focus {
     border-color: #FF8C00; /* Color naranja al enfocar */
     outline: none; /* Sin contorno al enfocar */
+    box-shadow: 0 0 5px rgba(255, 140, 0, 0.7); /* Sombra al enfocar */
 }
 
 /* Estilos de Botones */
@@ -72,19 +73,22 @@ h2, h3, h4 {
     color: #FFFFFF; /* Texto blanco */
     border: none; /* Sin bordes */
     border-radius: 5px; /* Bordes redondeados */
-    transition: background-color 0.3s; /* Transición suave */
+    transition: background-color 0.3s, transform 0.3s; /* Transición suave */
 }
 
 /* Efecto de hover en botones */
 .btn:hover {
     background-color: #FFD700; /* Color dorado al pasar el mouse */
+    transform: scale(1.05); /* Efecto de zoom al hacer hover */
 }
+
 
 /* Estilos del Resumen de Compra */
 .resumen-general {
     background-color: #1E1E1E; /* Fondo gris oscuro para el resumen */
     border-radius: 8px; /* Bordes redondeados */
     padding: 20px; /* Espaciado interno */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transiciones suaves */
 }
 
 /* Efecto al pasar el mouse sobre el resumen */
@@ -113,7 +117,7 @@ h2, h3, h4 {
     justify-content: center; /* Centrar horizontalmente */
     cursor: pointer; /* Cambiar cursor al pasar el mouse */
     border-radius: 5px; /* Bordes redondeados */
-    transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves */
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Transiciones suaves */
 }
 
 /* Estado seleccionado para las butacas */
