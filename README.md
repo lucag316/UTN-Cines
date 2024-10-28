@@ -9,7 +9,7 @@ Bienvenidos a **UTN-CINES**, un sitio web diseñado para simplificar la compra d
 ---
 
 ## Objetivo del Proyecto:
-El objetivo principal de **UTN-CINES** es ofrecer una plataforma accesible y fácil de usar para que las personas puedan comprar sus entradas de cine. A través de una experiencia intuitiva, buscamos facilitar el proceso de adquisición de boletos, brindando a nuestros usuarios una plataforma en la que puedan confiar.
+El objetivo principal de **UTN-CINES** es ofrecer una plataforma accesible y fácil de usar para que las personas puedan comprar sus entradas de cine. Buscamos facilitar el proceso de adquisición de boletos, garantizando a nuestros usuarios una experiencia confiable.
 
 ---
 
@@ -17,51 +17,41 @@ El objetivo principal de **UTN-CINES** es ofrecer una plataforma accesible y fá
 
 - **Inicio de Sesión:** Permite a los usuarios existentes acceder a la plataforma ingresando su correo y contraseña. Incluye opciones como "Recordarme" y un enlace de ayuda en caso de problemas.
 
-- **Registrarse:** Permite a nuevos usuarios crear una cuenta proporcionando su nombre completo, correo, y contraseña (con confirmación). También incluye un enlace a la página de Login si el usuario ya tiene cuenta.
+- **Registrarse:** Opción para nuevos usuarios de crear una cuenta proporcionando su nombre completo, correo y contraseña (con confirmación). Incluye un enlace a la página de Login.
 
 - **Catálogo de Películas:** 
-    1. Navegación: Barra de navegación superior con enlaces a las secciones de películas, promociones y opciones de usuario.
-    2. Carrusel de Imágenes: Muestra un carrusel de imágenes en la parte superior para destacar películas.
-    3. Filtros y Búsqueda: Opciones para filtrar películas por género, ordenar por calificación y una barra de búsqueda.
-    4. Paginación: Permite navegar por varias páginas de películas.
-    5. Pie de Página: Contiene secciones de contacto, más información, y enlaces a redes sociales.
-    6. Modo Oscuro/Claro: Botón para alternar entre modos de tema (oscuro o claro).
+    1. Navegación: Barra superior con enlaces a películas, promociones y opciones de usuario.
+    2. Carrusel de Imágenes: Destaca las películas más recientes o populares.
+    3. Filtros y Búsqueda: Filtra películas por género y ordena por calificación, con una barra de búsqueda.
+    4. Paginación: Navega entre diferentes páginas de películas.
+    5. Pie de Página: Información de contacto, redes sociales y más.
+    6. Modo Oscuro/Claro: Alterna entre temas con un solo clic.
 
-- **Perfil Película:** muestra detalles de una película específica, como su portada, género, duración, reparto, director, año de estreno, y resumen. También incluye un tráiler en video y un botón para comprar entradas.
+- **Perfil Película:** Detalles de cada película, incluyendo portada, género, duración, reparto, director, año de estreno y un resumen, junto con un tráiler y un botón para comprar entradas.
 
-- **Compra de Entradas:** Permite a los usuarios comprar entradas de cine seleccionando el lugar, fecha, formato, horario, cantidad de personas y promociones, mostrando un resumen de compra y botones para regresar o continuar.
+- **Compra de Entradas:** Permite seleccionar lugar, fecha, formato, horario, cantidad de personas y promociones, mostrando un resumen de compra.
 
-- **Eleccion de Butacas:** permite a los usuarios seleccionar asientos (butacas) en una sala de cine y visualizar un resumen de su compra, que incluye detalles como lugar, fecha, horario, cantidad de asientos seleccionados, promociones, y el total a pagar.
+- **Eleccion de Butacas:** Selección de asientos en una sala de cine, con un resumen de la compra que incluye detalles relevantes.
 
- - **Confirmacion de compra:** Permite a los usuarios ingresar información personal y de pago, visualizar un resumen de su compra, y ofrece botones para volver a la selección de butacas o confirmar la transacción.
+ - **Confirmacion de compra:** Ingreso de información personal y de pago, con un resumen de compra y opciones para volver a la selección de butacas o confirmar la transacción.
 
-- **Promociones:** Muestra ofertas especiales en un formato de carruseles, donde los usuarios pueden ver descuentos, promociones de 2x1 y otras ofertas especiales.
+- **Promociones:** Muestra ofertas especiales en un carrusel, con descuentos y promociones 2x1.
 
-- **Formulario de Consulta:**  Permite a los usuarios enviar consultas relacionadas con horarios de películas, disponibilidad de entradas, promociones y reembolsos. Incluye un formulario donde los usuarios pueden ingresar su nombre, apellido, email, teléfono, mensaje y elegir su preferencia de respuesta (email o teléfono). También deben aceptar los términos y condiciones antes de enviar el formulario.
+- **Formulario de Consulta:**  Permite a los usuarios enviar consultas sobre horarios, disponibilidad de entradas, promociones y reembolsos, con campos para nombre, apellido, email, teléfono, mensaje y preferencia de respuesta.
 
-- **Sobre Nosotros:** Presenta información sobre la empresa, destacando su compromiso de ofrecer una experiencia cinematográfica excepcional y promociones exclusivas. Incluye secciones que describen la selección de películas, la experiencia del cine, y las diversas promociones y descuentos disponibles para los clientes. 
+- **Sobre Nosotros:** Información sobre la empresa, destacando su compromiso con una experiencia cinematográfica excepcional y promociones exclusivas.
 
-- **Preguntas Frecuentes:** Presenta una lista de preguntas comunes que los usuarios pueden tener, junto con sus respuestas, como la ubicación del cine, tipos de películas, descuentos, y detalles sobre la compra y retiro de entradas.
+- **Preguntas Frecuentes:** Respuestas a preguntas comunes sobre ubicación del cine, tipos de películas, descuentos y detalles sobre compra y retiro de entradas.
 
-- **Perfil de Usuario:** En el cuerpo principal, se muestra la foto del usuario, su nombre, correo electrónico y dirección, así como una lista de compras que se puede completar dinámicamente.
+- **Perfil de Usuario:** Información personal del usuario, incluyendo foto, nombre, correo y dirección, junto con un listado de compras dinámico.
 
-- **Admin:** Esta página es una interfaz de administración para gestionar películas en un sitio web. Incluye un encabezado con un menú de navegación que permite acceder a diferentes secciones como películas, promociones y el perfil de usuario. En el cuerpo de la página, se muestra un botón para crear nuevas películas y un contenedor donde se listarán las películas existentes, utilizando Bootstrap para el diseño responsivo.
+- **Admin:** Interfaz de administración para gestionar películas, con un menú de navegación y un contenedor para listar y crear nuevas películas, utilizando Bootstrap para un diseño responsivo.
 
 - **Modo Oscuro/Claro:** Cambia el modo de visualización con un solo clic.
 
-- **API de Películas:** Integramos "The Movie DB API" para traer la información de las películas de manera actualizada.
+- **API de Películas:** Integración de "The Movie DB API" para obtener información actualizada sobre películas.
 
 ---
-
-
-
-
-
-
-
-
-
-
 
 
 
