@@ -39,6 +39,20 @@
 
 }
 
+#perfil_peliculas-load{
+    margin-top: 100px;
+
+}
+
+#titulo_sobre-nosotros{
+    margin-top: 100px;
+}
+
+#titulo_preguntas-frecuentes{
+    margin-top: 100px;
+
+}
+
 .card {
     /* background-color: #444; */
     border: none;
