@@ -22,7 +22,7 @@ body {
     border-radius: 15px; /* Bordes redondeados */
     padding: 20px; /* Espacio interior */
     animation: fadeIn 0.8s ease; /* Efecto de aparición suave */
-    color: #e0e0e0; /* Color de texto dentro del contenedor */
+    /* color: #e0e0e0; Color de texto dentro del contenedor */
 }
 
 /* Sección izquierda: donde se muestra la portada y los detalles */
@@ -139,7 +139,7 @@ body {
 
 /* Efecto adicional para darle un toque moderno */
 h2 {
-    color: #2c3e50; /*Color del título general*/
+    /* color: #2c3e50; Color del título general */
     text-transform: uppercase; /* Todo en mayúsculas */
 }
 

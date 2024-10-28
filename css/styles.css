@@ -84,9 +84,9 @@
     transition: all 0.3s;
 }
 
-.filtro::placeholder {
-    /* color: #ccc; */
-}
+/* .filtro::placeholder {
+     color: #ccc; 
+} */
 
 .filtro:focus {
     /* background-color: #444; */
