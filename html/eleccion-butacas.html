@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interestelar</title>
+    <title>Eleccion de Butacas</title>
 
-    <link rel="shortchut icon" href="../icons/favicon1.png" type="image/x-icon">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/general.css">
-    <link rel="stylesheet" href="../css/profile-movie.css">
-
+    <!-- Ícono y fuentes -->
+    <link rel="shortcut icon" href="../icons/favicon1.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
 
+    <!-- CSS y Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <!-- <link rel="stylesheet" href="../css/eleccion-butacas.css"> -->
+    <link rel="stylesheet" href="../css/formularios.css">
+
+
+</head>
+
+<body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container-fluid">
@@ -46,56 +51,66 @@
     </nav>
 
 
+    <div class="container my-5 d-flex">
+        <!-- Selección de butacas -->
+        <div id="seleccion-butacas" class="flex-grow-1">
+            <h2 class="text-center mb-4">Selecciona tus Butacas</h2>
 
-
-    <!-- Contenedor padre-->
-    <div class="container-movie">
-
-        <!-- Contenedor de la portada y sus detalles (lado izquierdo)-->
-        <div class="left-section">
-
-            <img class="portada" src="https://es.web.img3.acsta.net/pictures/14/10/02/11/07/341344.jpg" alt="Portada de Interestelar">
-            
-            <div class="details">
-                <div class="details-item">
-                    <h3>Género:</h3><p>Ciencia Ficción, Aventura, Drama</p>
-                </div>
-                <div class="details-item">
-                    <h3>Duración:</h3><p>169 minutos</p>
-                </div>
-                <div class="details-item">
-                    <h3>Reparto:</h3><p>Matthew McConaughey, Anne Hathaway, Jessica Chastain, Michael Caine</p>
-                </div>
-                <div class="details-item">
-                    <h3>Director:</h3><p>Christopher Nolan</p>
-                </div>
-                <div class="details-item">
-                    <h3>Año:</h3><p>2014</p>
+            <!-- Contenedor de butacas -->
+            <div class="row g-3 justify-content-center">
+                <div class="butacas-container">
+                    <!-- Crear botones de butacas -->
+                    <div class="butaca" onclick="seleccionarButaca(this)">1</div>
+                    <div class="butaca" onclick="seleccionarButaca(this)">2</div>
+                    <div class="butaca" onclick="seleccionarButaca(this)">3</div>
+                    <div class="butaca" onclick="seleccionarButaca(this)">4</div>
+                    <div class="butaca" onclick="seleccionarButaca(this)">5</div>
+                    <div class="butaca" onclick="seleccionarButaca(this)">6</div>
+                    <div class="butaca" onclick="seleccionarButaca(this)">7</div>
+                    <div class="butaca" onclick="seleccionarButaca(this)">8</div>
+                    <div class="butaca" onclick="seleccionarButaca(this)">9</div>
+                    <div class="butaca" onclick="seleccionarButaca(this)">10</div>
+                    <div class="butaca" onclick="seleccionarButaca(this)">11</div>
+                    <div class="butaca" onclick="seleccionarButaca(this)">12</div>
+                    <div class="butaca" onclick="seleccionarButaca(this)">13</div>
+                    <div class="butaca" onclick="seleccionarButaca(this)">14</div>
+                    <div class="butaca" onclick="seleccionarButaca(this)">15</div>
+                    <div class="butaca" onclick="seleccionarButaca(this)">16</div>
+                    <div class="butaca" onclick="seleccionarButaca(this)">17</div>
+                    <div class="butaca" onclick="seleccionarButaca(this)">18</div>
+                    <div class="butaca" onclick="seleccionarButaca(this)">19</div>
+                    <div class="butaca" onclick="seleccionarButaca(this)">20</div>
                 </div>
             </div>
         </div>
 
-        <!-- Contenedor del trailer, titulo y resumen (lado derecho)-->
-        <div class="right-section">
-
-            <div class="trailer">
-                <iframe width="700" height="350" src="https://www.youtube.com/embed/zSWdZVtXT7E" frameborder="0" allowfullscreen></iframe>
-            </div>
-
-            <h2>Interestelar</h2>
-
-            <div class="summary">
-                <p>
-                    En un futuro cercano, la Tierra está al borde de la extinción. Un grupo de astronautas se embarca en una misión a través de un agujero de gusano recién descubierto para encontrar un nuevo hogar para la humanidad. A lo largo de su viaje, enfrentan desafíos tanto científicos como personales, explorando los límites del espacio, el tiempo y la supervivencia.
-                </p>
-            </div>
-
-            <!-- Botón de comprar -->
-            <div class="container-buy-button">
-                <button class="btn-buy">Comprar</button>
+        <!-- Columna derecha para resumen de compra -->
+        <div class="col-md-6 contenedor-derecha">
+            <h3 class="text-center mb-4">Resumen de Compra</h3>
+            <div id="resumen" class="border p-3 rounded resumen-general">
+                <h4>Detalles</h4>
+                <p><strong>Lugar:</strong> <span id="resumen-lugar">N/A</span></p>
+                <p><strong>Fecha:</strong> <span id="resumen-fecha">N/A</span></p>
+                <p><strong>Formato:</strong> <span id="resumen-formato">N/A</span></p>
+                <p><strong>Horario:</strong> <span id="resumen-horario">N/A</span></p>
+                <p><strong>Cantidad:</strong> <span id="resumen-personas">0</span></p>
+                <p><strong>Promoción:</strong> <span id="resumen-promocion">N/A</span></p>
+                <p><strong>Butacas Seleccionadas:</strong> <span id="resumen-butacas">Ninguna</span></p>
+                <p><strong>Total:</strong> $<span id="resumen-total">0.00</span></p>
             </div>
         </div>
     </div>
+
+    <!-- Botones debajo en el centro -->
+    <div class="col-12 text-center mt-4 botones-centrados">
+        <button type="button" class="btn btn-secondary me-3" onclick="volverASeleccionEntradas()">Volver</button>
+        <button type="button" class="btn btn-primary" onclick="continuarAConfirmacionCompra()">Continuar</button>
+    </div>
+
+
+
+
+
 
     <footer class="footer">
         <div class="footer-container">
@@ -113,7 +128,7 @@
 
                     <li class="footer-item">
                         <a href="https://Gmail.com" class="footer-link" target="_blank" title="Contactanos por Gmail">
-                            <img src="../icons/logo-whatsapp.svg" class="footer-logo" id="footer-logo-gmail">
+                            <img src="../icons/logo-gmail.svg" class="footer-logo" id="footer-logo-gmail">
                         </a>
                     </li>
                 </ul>
@@ -125,10 +140,10 @@
 
                 <ul class="footer-items">
                     <li class="footer-item">
-                        <a class="footer-link-palabra" href="sobre-nosotros.html">Sobre nosotros</a>
+                        <a class="footer-link-palabra" href="html/sobre-nosotros.html">Sobre nosotros</a>
                     </li>
                     <li class="footer-item">
-                        <a class="footer-link-palabra" href="preguntas-frecuentes.html">Preguntas frecuentes</a>
+                        <a class="footer-link-palabra" href="html/preguntas-frecuentes.html">Preguntas frecuentes</a>
                     </li>
                 </ul>
             </div>
@@ -167,5 +182,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/seleccion-butacas.js"></script>
 </body>
 </html>

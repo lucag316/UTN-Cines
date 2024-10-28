@@ -7,7 +7,7 @@ body {
     font-family: 'Montserrat', sans-serif; /* Fuente Montserrat como principal */
     /*background: linear-gradient(135deg, #1a1a1a, #2b2b2b);*/ /* Gradiente oscuro */
     /*background: linear-gradient(135deg, #1e1e2f 0%, #2b3b55 100%); /* Ajusta a un tono oscuro más uniforme */
-    background: linear-gradient(135deg, #1e1e2f, #1c2833); /* Oscuro uniforme con ligeros matices */
+    /* background: linear-gradient(135deg, #1e1e2f, #1c2833); Oscuro uniforme con ligeros matices */
     padding: 0;
     margin: 0;
     color: #ecf0f1; 

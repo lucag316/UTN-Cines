@@ -1,10 +1,13 @@
 /* Estilos para el admin de películas */
-body {
-    font-family: Arial, sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif; /* Fuente principal */
 }
 
+
 header {
-    background-color: #343a40;
+    /* background-color: #343a40; */
 }
 
 .card {
@@ -20,7 +23,7 @@ header {
 
 .card-body {
     text-align: center;
-    color: white;
+    /* color: white; */
 }
 
 
