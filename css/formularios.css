@@ -2,6 +2,7 @@
 
 /* Estilo base del body */
 body {
+    margin-top: 90px;
     background-color: #121212; /* Color de fondo oscuro */
     color: #E0E0E0; /* Color de texto claro */
     font-family: 'Montserrat', sans-serif; /* Fuente Montserrat */
@@ -53,6 +54,11 @@ h2, h3, h4 {
     transition: border-color 0.3s, transform 0.3s; /* Transiciones suaves */
 }
 
+/* Color de los placeholders */
+.input-general::placeholder {
+    color: white; /* Color blanco para los placeholders */
+}
+
 /* Efecto de hover en Inputs y Selects */
 .input-general:hover, .select-general:hover {
     border-color: #FFD700; /* Color dorado al hacer hover */
@@ -65,6 +71,8 @@ h2, h3, h4 {
     border-color: #FF8C00; /* Color naranja al enfocar */
     outline: none; /* Sin contorno al enfocar */
     box-shadow: 0 0 5px rgba(255, 140, 0, 0.7); /* Sombra al enfocar */
+    background-color: #333; /* Mantener el fondo oscuro al enfocar */
+    color: white;
 }
 
 /* Estilos de Botones */
@@ -152,6 +160,22 @@ h2, h3, h4 {
     margin-top: 20px; /* Margen superior */
 }
 
+/* Estilo del encabezado */
+#header-consulta {
+    text-align: center; /* Centrar el texto horizontalmente */
+    padding: 20px 0; /* Espaciado superior e inferior */
+    background-color: #1E1E1E; /* Fondo del encabezado */
+    border-bottom: 2px solid #FF8C00; /* Borde inferior naranja */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Sombra sutil */
+}
+
+/* Estilo del título h1 */
+#header-consulta h1 {
+    font-size: 2.5rem; /* Tamaño de fuente grande */
+    font-weight: bold; /* Texto en negrita */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra de texto */
+    margin: 0; /* Sin márgenes */
+}
 
 /* Estilos para la Preferencia de Respuesta */
 .preferencia-respuesta-container {
@@ -193,6 +217,14 @@ h2, h3, h4 {
 /* Estilo para el checkbox */
 .terminos-container input[type="checkbox"] {
     margin-right: 10px; /* Espacio entre el checkbox y la etiqueta */
+}
+
+/* Cuando el checkbox está marcado */
+input[type="checkbox"],
+input[type="radio"] {
+    margin-right: 5px;
+    accent-color: #FFD700; /* Color del checkbox */
+    transition: all 0.3s ease;
 }
 
 /* Media queries para responsividad */

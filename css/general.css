@@ -118,6 +118,23 @@
     transition: all 0.3s ease-in-out; /* Transición suave para todos los cambios */
 }
 
+/* Estilo para el enlace de consulta */
+.footer-item-consulta {
+    text-align: center; /* Centrar el enlace dentro de su contenedor */
+    margin-top: 15px; /* Espacio superior para separar del contenido anterior */
+}
+
+/* Si deseas un estilo diferente al enlace de consulta, puedes agregarlo aquí */
+.footer-item-consulta a {
+    color: #e0e0e0; /* Asegurar que el color sea consistente */
+}
+
+/* Puedes agregar estilos hover si lo deseas */
+.footer-item-consulta a:hover {
+    text-decoration: underline; /* Subrayar al pasar el mouse */
+    transition: all 0.3s ease-in-out; /* Transición suave para el hover */
+}
+
 /* MEDIA QUERIES (RESPONSIVE DESIGN) */
 
 /* Ajustes para pantallas pequeñas (max-width: 768px) */
