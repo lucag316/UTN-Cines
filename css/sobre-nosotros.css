@@ -11,15 +11,22 @@
 }
 
 .introduccion, .peliculas, .experiencia, .descuentos, .promociones {
-    max-width: 1000px;
+    max-width: 900px;
     margin: 20px auto;
     padding: 20px;
     /*background-color: #433838; /* Fondo de las secciones en un gris más claro */
     background: linear-gradient(#817f7e, #0b0f11e2);
-    text-align: justify;
+    text-align: center;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(245, 213, 3, 0.905);
 }
+
+.introduccion:hover, .peliculas:hover, .experiencia:hover, .descuentos:hover, .promociones:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+
 h1 {
     color: #eae9e4; 
     text-shadow: 0 0 15px #f9e000
