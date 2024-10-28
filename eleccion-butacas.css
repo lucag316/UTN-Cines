@@ -1,0 +1,91 @@
+
+/* Contenedor de Butacas */
+.butacas-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin: 20px 0;
+}
+
+/* Estilo base para las butacas */
+.butaca {
+    width: 50px;
+    height: 50px;
+    background-color: #333;
+    color: #E0E0E0;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Estado seleccionado para las butacas */
+.butaca.selected {
+    background-color: #FF8C00;
+    color: #FFFFFF;
+    border-color: #FFD700;
+    box-shadow: 0 4px 15px rgba(255, 140, 0, 0.5);
+    transform: scale(1.05);
+}
+
+/* Estado de butaca deshabilitada */
+.butaca.disabled {
+    background-color: #555;
+    color: #888;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Hover en butacas */
+.butaca:hover:not(.selected):not(.disabled) {
+    background-color: #FFD700;
+    color: #333;
+    transform: scale(1.05);
+}
+
+.botones-centrados {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+
+/* Media queries para hacer responsivo */
+@media (max-width: 992px) {
+    /* A 4 columnas para pantallas medianas y pequeñas */
+    .butacas-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Ajustes para contenedor-resumen en pantallas medianas y pequeñas */
+@media (max-width: 768px) {
+    /* Cambiar la dirección a columna y centrar */
+    .d-flex {
+        flex-direction: column;
+        align-items: center; /* Centra todos los elementos */
+    }
+
+
+    /* Botones en el centro */
+    .botones-centrados {
+        margin-top: 20px;
+        justify-content: center;
+        width: 100%; /* Asegura que ocupe el ancho completo */
+    }
+}
+
+@media (max-width: 576px) {
+
+    /* Ajuste adicional para botones en pantallas pequeñas */
+    .col-12.text-center.mt-4 {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+}
