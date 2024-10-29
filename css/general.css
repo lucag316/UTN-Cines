@@ -4,14 +4,31 @@
 
 /* Reset general para eliminar margen y padding por defecto */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0; /* Eliminar margen */
+    padding: 0; /* Eliminar padding */
+    box-sizing: border-box; /* Incluir padding y borde en el ancho y alto total */
     font-family: 'Montserrat', sans-serif; /* Fuente Montserrat como principal */
 }
 
 
-/* FOOTER */
+
+/* ######################## NAV BAR ######################## */
+/* Estilos generales para la barra de navegación */
+.navbar {
+    padding: 1rem; /* Espaciado interno de 1 rem */
+    background-color: black !important; /* Fondo negro, el uso de !important asegura que este estilo tenga prioridad */
+    color: white; /* Color del texto blanco */
+    font-weight: 600; /* Peso de la fuente semi-negrita */
+}
+
+/* Estilos para las imágenes en la barra de navegación */
+.nav_img {
+    max-width: 45px; /* Ancho máximo de la imagen es 45 píxeles */
+    border-radius: 10px; /* Bordes redondeados con un radio de 10 píxeles */
+}
+
+
+/* ######################## FOOTER ######################## */
 
 /* Estilos generales del footer */
 .footer {
@@ -20,7 +37,6 @@
     padding: 40px 20px; /* Espaciado interno */
     margin-top: 100px; /* Separación superior del contenido */
     width: 100%; /* Ancho completo */
-  
 }
 
 /* Contenedor principal del footer */
@@ -47,13 +63,6 @@
     border-radius: 10px; /* Esquinas redondeadas */
 }
 
-/* Cambiar color de los subtítulos al pasar el mouse sobre el contenedor */
-.footer-container-contacto:hover h5,
-.footer-container-redes:hover h5,
-.footer-container-info:hover h5 {
-    color: #e74c3c; /* Color dorado en el subtítulo al pasar el mouse */
-}
-
 /* Estilos para los subtítulos (h5) de cada sección */
 .footer-container-contacto h5,
 .footer-container-redes h5,
@@ -61,7 +70,19 @@
     font-size: 18px; /* Tamaño de fuente */
     margin-bottom: 15px; /* Margen inferior para separar del contenido */
     color: #e0e0e0; /* Color del texto */
+    font-weight: bold; /* Negrita */
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Transiciones para el color y sombra del texto */
 }
+
+/* Cambiar color de los subtítulos al pasar el mouse sobre el contenedor */
+.footer-container-contacto:hover h5,
+.footer-container-redes:hover h5,
+.footer-container-info:hover h5 {
+    color: #ffd700; /* Color dorado */
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.7); /* Brillo alrededor del texto */
+}
+
+
 
 /* LISTA DE ITEMS DENTRO DEL FOOTER */
 
