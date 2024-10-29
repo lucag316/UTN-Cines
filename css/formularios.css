@@ -8,6 +8,8 @@ body {
     background-color: #121212; /* Color de fondo oscuro */
     color: #E0E0E0; /* Color de texto claro para buena legibilidad */
     font-family: 'Montserrat', sans-serif; /* Fuente utilizada para el texto */
+    background-image: url('../images/login-cine.jpg'); /* Imagen de fondo que se aplicará sobre el color de fondo */
+    background-size: cover; /* Ajusta la imagen de fondo para cubrir completamente el área del body*/
 }
 
 /* Encabezados */
@@ -20,7 +22,8 @@ h2, h3, h4 {
 
 /* Estilos del Contenedor Principal */
 .container {
-    background-color: #1E1E1E; /* Fondo gris oscuro para el contenedor */
+    /*background-color: #1E1E1E;*/ /* Fondo gris oscuro para el contenedor */
+    background-color: rgba(30, 30, 30, 0.93); /* Fondo gris oscuro con 93% de opacidad */
     border-radius: 8px; /* Bordes redondeados para un estilo más suave */
     padding: 20px; /* Espaciado interno para separar el contenido de los bordes */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Sombra sutil para destacar el contenedor */
@@ -99,7 +102,8 @@ h2, h3, h4 {
 
 /* Estilos del Resumen de Compra */
 .resumen-general {
-    background-color: #1E1E1E; /* Fondo gris oscuro para el resumen */
+    /*background-color: #1E1E1E;*/ /* Fondo gris oscuro para el resumen */
+    background-color: rgba(30, 30, 30, 0.93); /* Fondo gris oscuro con 93% de opacidad */
     border-radius: 8px; /* Bordes redondeados */
     padding: 20px; /* Espaciado interno */
     transition: transform 0.3s, box-shadow 0.3s; /* Transiciones suaves al interactuar */
