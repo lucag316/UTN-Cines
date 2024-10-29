@@ -30,6 +30,11 @@ h2, h3, h4 {
     opacity: 0; /* Comienza invisible para la animación */
     transform: translateY(20px); /* Mueve el contenedor hacia abajo para el efecto de entrada */
     animation: fadeIn 0.5s forwards; /* Aplica la animación de entrada al contenedor */
+
+    display: flex;
+    flex-direction: column; /* Cambiamos a columna para apilar los elementos */
+    align-items: center; /* Centra los elementos hijos horizontalmente */
+    width: 100%; /* O ajusta el tamaño según sea necesario */
 }
 
 /* Animación para el contenedor */
@@ -178,12 +183,20 @@ h2, h3, h4 {
     transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
 }
 
+.butacas-resumen {
+    display: flex; /* Usamos flexbox para que los divs estén en fila */
+    justify-content: center; /* Centra los divs hijos horizontalmente */
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    margin-bottom: 20px; /* Espacio debajo de la fila */
+    align-items: center;
+}
+
 /* Estilos para botones centrados */
 .botones-centrados {
-    width: 100%; /* Ocupa todo el ancho del contenedor */
-    display: flex; /* Usar flexbox para centrar los botones */
-    justify-content: center; /* Centrar horizontalmente los botones */
-    margin: 20px 0; /* Margen superior e inferior */
+    display: flex; /* Usamos flexbox para los botones */
+    justify-content: center; /* Centra los botones */
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    margin-top: 20px; /* Espaciado superior para separar de los divs superiores */
 }
 
 /* Estilo del encabezado */
@@ -271,11 +284,17 @@ input[type="radio"] {
         align-items: center; /* Centra todos los elementos dentro del contenedor */
     }
 
+    .butacas-resumen {
+        flex-direction: column; /* Cambia la dirección a columna */
+        align-items: center; /* Centra los divs en la columna */
+    }
+
+
     /* Botones centrados en pantallas pequeñas */
     .botones-centrados {
-        margin-top: 20px; /* Añade margen superior */
-        justify-content: center; /* Centra los botones en el contenedor */
-        width: 100%; /* Asegura que ocupe el ancho completo */
+        display: flex; /* Usamos flexbox para los botones */
+        justify-content: center; /* Centra los botones */
+        width: 100%; /* Asegura que ocupe todo el ancho */
     }
 
     /* Cambia la disposición de campos en pantallas pequeñas */
