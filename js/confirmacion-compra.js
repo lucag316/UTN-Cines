@@ -5,6 +5,3 @@ function volverAEleccionButacas() {
 }
 
 
-function ConfirmarCompra() {
-    window.location.href = "confirmacion-compra.html"; 
-}
