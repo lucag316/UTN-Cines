@@ -23,6 +23,9 @@ function seleccionarButaca(element) {
     document.getElementById("resumen-butacas").innerText = butacasSeleccionadas.length > 0 
         ? butacasSeleccionadas.join(", ") 
         : "Ninguna";
+    
+    // Guardar las butacas seleccionadas en localStorage
+    localStorage.setItem('butacas', JSON.stringify(butacasSeleccionadas));
 }
 
 
@@ -36,17 +39,18 @@ const resumenCantidad = document.getElementById("resumen-cantidad");
 const resumenPromocion = document.getElementById("resumen-promocion");
 const resumenTotal = document.getElementById("resumen-total");
 
-// Recupera los valores de localStorage y los asigna a los elementos del resumen
-resumenLugar.textContent = localStorage.getItem('lugar');
-resumenFecha.textContent = localStorage.getItem('fecha');
-resumenFormato.textContent = localStorage.getItem('formato');
-resumenHorario.textContent = localStorage.getItem('horario');
-resumenCantidad.textContent = localStorage.getItem('cantidad');
-resumenPromocion.textContent = localStorage.getItem('promocion');
-resumenTotal.textContent = localStorage.getItem('total');
 
 // Cargar el resumen de compra desde localStorage al iniciar la página
 function cargarResumenCompra() {
+    resumenPelicula.textContent = localStorage.getItem('tituloPelicula') || "----------"; // Asegúrate de cargar el nombre de la película
+    resumenLugar.textContent = localStorage.getItem('lugar') || "----------";
+    resumenFecha.textContent = localStorage.getItem('fecha') || "----------";
+    resumenFormato.textContent = localStorage.getItem('formato') || "----------";
+    resumenHorario.textContent = localStorage.getItem('horario') || "----------";
+    resumenCantidad.textContent = localStorage.getItem('cantidad') || "0";
+    resumenPromocion.textContent = localStorage.getItem('promocion') || "Sin Promoción";
+    resumenTotal.textContent = localStorage.getItem('total') || "0.00";
+    
     // Calcular y mostrar total
     /*let total = calcularTotal(cantidad, promocion);
     resumenTotal.textContent = total.toFixed(2);*/
