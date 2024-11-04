@@ -1,4 +1,70 @@
 
+
+// Asigna los elementos del DOM a variables para su uso posterior
+const lugarInput = document.getElementById("lugar");
+const fechaInput = document.getElementById("fecha");
+const formatoInput = document.getElementById("formato");
+const horarioInput = document.getElementById("horario");
+const personasInput = document.getElementById("personas");
+const promocionInput = document.getElementById("promocion");
+
+// Función para habilitar los campos progresivamente
+function habilitarCampos() {
+    // Revisa cada campo y habilita el siguiente si el anterior está completo
+
+    // Habilita el campo de fecha si ya se seleccionó una sede
+    if (lugarInput.value !== "Elige una sede") { // si dice la opcion predeterminada es porque no se selcciono nada
+        fechaInput.disabled = false;
+    } else {
+        fechaInput.disabled = true;
+        formatoInput.disabled = true;
+        horarioInput.disabled = true;
+        personasInput.disabled = true;
+        promocionInput.disabled = true;
+    }
+    
+    // Habilita el campo de formato si la fecha está seleccionada
+    if (fechaInput.value) {
+        formatoInput.disabled = false;
+    } else {
+        formatoInput.disabled = true;
+        horarioInput.disabled = true;
+        personasInput.disabled = true;
+        promocionInput.disabled = true;
+    }
+
+    // Habilita el campo de horario si el formato está seleccionado
+    if (formatoInput.value !== "Selecciona el formato") {
+        horarioInput.disabled = false;
+    } else {
+        horarioInput.disabled = true;
+        personasInput.disabled = true;
+        promocionInput.disabled = true;
+    }
+
+    // Habilita el campo de cantidad de personas si el horario está seleccionado
+    if (horarioInput.value !== "Selecciona el horario") {
+        personasInput.disabled = false;
+    } else {
+        personasInput.disabled = true;
+        promocionInput.disabled = true;
+    }
+
+    // Habilita el campo de promoción si la cantidad de personas está ingresada
+    if (personasInput.value) {
+        promocionInput.disabled = false;
+    } else {
+        promocionInput.disabled = true;
+    }
+}
+
+// Agrega el evento `change` a cada campo para activar el siguiente campo al cambiar
+lugarInput.addEventListener('change', habilitarCampos);
+fechaInput.addEventListener('change', habilitarCampos);
+formatoInput.addEventListener('change', habilitarCampos);
+horarioInput.addEventListener('change', habilitarCampos);
+personasInput.addEventListener('change', habilitarCampos);
+
 // Asigna los elementos del DOM a variables para su uso posterior
 const resumenPelicula = document.getElementById("resumen-pelicula");
 const resumenLugar = document.getElementById("resumen-lugar");
@@ -103,5 +169,9 @@ function continuarASeleccionButacas() {
     window.location.href = "eleccion-butacas.html"; // Redirigir a la página de selección de butacas
 }
 
+// Llama a habilitarCampos al cargar la página para establecer los estados iniciales
+document.addEventListener("DOMContentLoaded", habilitarCampos);
+
 // Asignar el evento click al botón continuar
 document.getElementById("btn-continuar").addEventListener("click", continuarASeleccionButacas);
+
