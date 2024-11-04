@@ -29,7 +29,7 @@ function calcularTotal(cantidad, promocion) {
 // Función para actualizar el resumen
 function actualizarResumen() {
     // Obtener valores de los campos del formulario
-    const peliculaSeleccionada = "Nombre de la Película"; // Cambia esto según la película seleccionada
+    const peliculaSeleccionada = localStorage.getItem("tituloPelicula") || "----------"; // cargo el nombre de la pelicula
     const lugarSeleccionado = document.getElementById("lugar").value;
     const fechaSeleccionada = document.getElementById("fecha").value;
     const formatoSeleccionado = document.getElementById("formato").value;
@@ -44,7 +44,7 @@ function actualizarResumen() {
     resumenFormato.textContent = formatoSeleccionado !== "Selecciona el formato" ? formatoSeleccionado : "----------";
     resumenHorario.textContent = horarioSeleccionado !== "Selecciona el horario" ? horarioSeleccionado : "----------";
     resumenCantidad.textContent = cantidadPersonas;
-
+    
     // Actualizar promoción en el resumen
     if (promocionSeleccionada === "ninguna") {
         resumenPromocion.textContent = "Sin Promoción";
@@ -60,20 +60,14 @@ function actualizarResumen() {
 }
 
 
-
-
 // Asignar eventos a los campos del formulario
-document.getElementById("lugar").addEventListener("change", actualizarResumen);
-document.getElementById("fecha").addEventListener("change", actualizarResumen);
-document.getElementById("formato").addEventListener("change", actualizarResumen);
-document.getElementById("horario").addEventListener("change", actualizarResumen);
-document.getElementById("personas").addEventListener("input", actualizarResumen);
-document.getElementById("promocion").addEventListener("change", actualizarResumen);
+const inputs = document.querySelectorAll('#lugar, #fecha, #formato, #horario, #personas, #promocion');
+inputs.forEach(input => {
+    input.addEventListener('change', actualizarResumen);
+});
 
 // Al cargar la página, llenar el resumen inicial
-document.addEventListener("DOMContentLoaded", function() {
-    actualizarResumen(); // Llama a la función al cargar la página para mostrar los datos iniciales
-});
+document.addEventListener("DOMContentLoaded", actualizarResumen);
 
 // Función para guardar los datos de compra en localStorage
 function guardarDatosLocalStorage() {
@@ -94,11 +88,9 @@ function guardarDatosLocalStorage() {
 }
 
 // Llama a la función de guardar en localStorage cada vez que se actualiza el resumen
-const inputs = document.querySelectorAll('.input-general, .select-general');
 inputs.forEach(input => {
     input.addEventListener('change', guardarDatosLocalStorage);
 });
-
 
 // Función para volver al perfil de la película
 function volverAPerfilPelicula() {
