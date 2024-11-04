@@ -25,51 +25,38 @@ function seleccionarButaca(element) {
         : "Ninguna";
 }
 
-// Al cargar la página, actualizar el resumen con datos de localStorage
-window.onload = function() {
-    const pelicula = localStorage.getItem("pelicula");
-    const lugar = localStorage.getItem("lugar");
-    const fecha = localStorage.getItem("fecha");
-    const formato = localStorage.getItem("formato");
-    const horario = localStorage.getItem("horario");
-    const cantidad = localStorage.getItem("cantidad");
-    const promocion = localStorage.getItem("promocion");
 
-    // Mostrar datos en el resumen
-    if (pelicula) {
-        resumenPelicula.textContent = pelicula;
-    }
-    if (lugar) {
-        resumenLugar.textContent = lugar !== "Elige una sede" ? lugar : "----------";
-    }
-    if (fecha) {
-        resumenFecha.textContent = fecha || "----------";
-    }
-    if (formato) {
-        resumenFormato.textContent = formato !== "Selecciona el formato" ? formato : "----------";
-    }
-    if (horario) {
-        resumenHorario.textContent = horario !== "Selecciona el horario" ? horario : "----------";
-    }
-    if (cantidad) {
-        resumenCantidad.textContent = cantidad || "0";
-    }
-    
-    // Actualizar promoción en el resumen
-    if (promocion) {
-        if (promocion === "ninguna") {
-            resumenPromocion.textContent = "Sin Promoción";
-        } else {
-            resumenPromocion.textContent = promocion;
-        }
-    }
-    
+// Selecciona los elementos donde quieres mostrar los datos
+const resumenPelicula = document.getElementById("resumen-pelicula");
+const resumenLugar = document.getElementById("resumen-lugar");
+const resumenFecha = document.getElementById("resumen-fecha");
+const resumenFormato = document.getElementById("resumen-formato");
+const resumenHorario = document.getElementById("resumen-horario");
+const resumenCantidad = document.getElementById("resumen-cantidad");
+const resumenPromocion = document.getElementById("resumen-promocion");
+const resumenTotal = document.getElementById("resumen-total");
+
+// Recupera los valores de localStorage y los asigna a los elementos del resumen
+resumenLugar.textContent = localStorage.getItem('lugar');
+resumenFecha.textContent = localStorage.getItem('fecha');
+resumenFormato.textContent = localStorage.getItem('formato');
+resumenHorario.textContent = localStorage.getItem('horario');
+resumenCantidad.textContent = localStorage.getItem('cantidad');
+resumenPromocion.textContent = localStorage.getItem('promocion');
+resumenTotal.textContent = localStorage.getItem('total');
+
+// Cargar el resumen de compra desde localStorage al iniciar la página
+function cargarResumenCompra() {
     // Calcular y mostrar total
-    let total = calcularTotal(cantidad, promocion);
-    resumenTotal.textContent = total.toFixed(2);
+    /*let total = calcularTotal(cantidad, promocion);
+    resumenTotal.textContent = total.toFixed(2);*/
+
+    // Console logs para verificar que los datos se recuperaron
+    console.log("Datos recuperados de localStorage:");
+    console.log("Lugar:", resumenLugar);
+    console.log("Fecha:", resumenFecha);
+
 }
-
-
 
 
 
@@ -86,3 +73,6 @@ function volverASeleccionEntradas() {
 function continuarAConfirmacionCompra() {
     window.location.href = 'confirmacion-compra.html';
 }
+
+// Cargar el resumen de compra al cargar la página
+document.addEventListener("DOMContentLoaded", cargarResumenCompra);

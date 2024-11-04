@@ -7,8 +7,23 @@ const resumenFormato = document.getElementById("resumen-formato");
 const resumenHorario = document.getElementById("resumen-horario");
 const resumenCantidad = document.getElementById("resumen-cantidad");
 const resumenPromocion = document.getElementById("resumen-promocion");
-const resumenButacas = document.getElementById("resumen-butacas");
 const resumenTotal = document.getElementById("resumen-total");
+
+
+
+/*
+// Función para calcular el total según la cantidad y promoción
+function calcularTotal(cantidad, promocion) {
+    const precioEntrada = 100; // Corrige el nombre de la variable aquí
+    let total = cantidad * precioEntrada;
+
+    // Aplicar promoción 2x1
+    if (promocion === "promo1") {
+        total = Math.ceil(cantidad / 2) * precioEntrada; // Aplica 2x1
+    }
+
+    return total;
+}*/
 
 
 // Función para actualizar el resumen
@@ -19,7 +34,7 @@ function actualizarResumen() {
     const fechaSeleccionada = document.getElementById("fecha").value;
     const formatoSeleccionado = document.getElementById("formato").value;
     const horarioSeleccionado = document.getElementById("horario").value;
-    const cantidadPersonas = document.getElementById("personas").value;
+    const cantidadPersonas = parseInt(document.getElementById("personas").value) || 0;
     const promocionSeleccionada = document.getElementById("promocion").value;
 
     // Actualizar el resumen
@@ -28,7 +43,7 @@ function actualizarResumen() {
     resumenFecha.textContent = fechaSeleccionada || "----------";
     resumenFormato.textContent = formatoSeleccionado !== "Selecciona el formato" ? formatoSeleccionado : "----------";
     resumenHorario.textContent = horarioSeleccionado !== "Selecciona el horario" ? horarioSeleccionado : "----------";
-    resumenCantidad.textContent = cantidadPersonas || "0";
+    resumenCantidad.textContent = cantidadPersonas;
 
     // Actualizar promoción en el resumen
     if (promocionSeleccionada === "ninguna") {
@@ -38,24 +53,12 @@ function actualizarResumen() {
     } else {
         resumenPromocion.textContent = promocionSeleccionada;
     }
-
+    /*
     // Calcular total
     let total = calcularTotal(cantidadPersonas, promocionSeleccionada);
-    resumenTotal.textContent = total.toFixed(2);
+    resumenTotal.textContent = total.toFixed(2);*/
 }
 
-// Función para calcular el total según la cantidad y promoción
-function calcularTotal(cantidad, promocion) {
-    const precioEntradas = "100"; 
-    let total = cantidad * precioEntradas;
-
-    // Aplicar promoción 2x1
-    if (promocion === "promo1") {
-        total = Math.ceil(cantidad / 2) * precioEntrada; // Aplica 2x1
-    }
-
-    return total;
-}
 
 
 
@@ -67,6 +70,35 @@ document.getElementById("horario").addEventListener("change", actualizarResumen)
 document.getElementById("personas").addEventListener("input", actualizarResumen);
 document.getElementById("promocion").addEventListener("change", actualizarResumen);
 
+// Al cargar la página, llenar el resumen inicial
+document.addEventListener("DOMContentLoaded", function() {
+    actualizarResumen(); // Llama a la función al cargar la página para mostrar los datos iniciales
+});
+
+// Función para guardar los datos de compra en localStorage
+function guardarDatosLocalStorage() {
+    // Guardar en localStorage
+    /*localStorage.setItem("pelicula", peliculaSeleccionada); // Cambiado a usar la variable correcta*/
+    localStorage.setItem("lugar", document.getElementById("lugar").value);
+    localStorage.setItem("fecha", document.getElementById("fecha").value);
+    localStorage.setItem("formato", document.getElementById("formato").value);
+    localStorage.setItem("horario", document.getElementById("horario").value);
+    localStorage.setItem("cantidad", document.getElementById("personas").value);
+    localStorage.setItem("promocion", document.getElementById("promocion").value);
+
+    // Console logs para verificar que los datos se guardaron
+    console.log("Datos guardados en localStorage:");
+    console.log("Lugar:", document.getElementById("lugar").value);
+    console.log("Fecha:", document.getElementById("fecha").value);
+
+}
+
+// Llama a la función de guardar en localStorage cada vez que se actualiza el resumen
+const inputs = document.querySelectorAll('.input-general, .select-general');
+inputs.forEach(input => {
+    input.addEventListener('change', guardarDatosLocalStorage);
+});
+
 
 // Función para volver al perfil de la película
 function volverAPerfilPelicula() {
@@ -75,15 +107,9 @@ function volverAPerfilPelicula() {
 
 // Función para continuar a la elección de asientos
 function continuarASeleccionButacas() {
-    // Guardar la información en localStorage
-    localStorage.setItem("pelicula", "Nombre de la Película"); // Cambia esto según la película seleccionada
-    localStorage.setItem("lugar", document.getElementById("lugar").value);
-    localStorage.setItem("fecha", document.getElementById("fecha").value);
-    localStorage.setItem("formato", document.getElementById("formato").value);
-    localStorage.setItem("horario", document.getElementById("horario").value);
-    localStorage.setItem("cantidad", document.getElementById("personas").value);
-    localStorage.setItem("promocion", document.getElementById("promocion").value);
-
-    // Redirigir a la página de selección de butacas
-    window.location.href = "eleccion-butacas.html"; 
+    guardarDatosLocalStorage(); // Guardar datos al continuar
+    window.location.href = "eleccion-butacas.html"; // Redirigir a la página de selección de butacas
 }
+
+// Asignar el evento click al botón continuar
+document.getElementById("btn-continuar").addEventListener("click", continuarASeleccionButacas);
