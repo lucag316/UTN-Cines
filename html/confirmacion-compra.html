@@ -85,11 +85,11 @@
                 <div class="row mb-3">
                     <div class="col-md-6 item-formulario">
                         <label for="nombre-titular" class="form-label">Nombre del Titular:</label>
-                        <input type="text" id="nombre-titular" name="nombre-titular" class="form-control input-general" placeholder="Nombre completo" required>
+                        <input type="text" id="nombre-titular" name="nombre-titular" class="form-control input-general" placeholder="Nombre completo" pattern="[A-Za-z\s]+" required> <!-- patter (solo letras) -->
                     </div>
                     <div class="col-md-6 item-formulario">
                         <label for="dni-titular" class="form-label">DNI del Titular:</label>
-                        <input type="text" id="dni-titular" name="dni-titular" class="form-control input-general" required>
+                        <input type="text" id="dni-titular" name="dni-titular" class="form-control input-general" pattern="\d+" minlength="7" maxlength="8" required> <!-- pattern (solo numeros) -->
                     </div>
                 </div>
 
@@ -97,11 +97,11 @@
                 <div class="row mb-3">
                     <div class="col-md-6 item-formulario">
                         <label for="numero-tarjeta" class="form-label">Número de Tarjeta:</label>
-                        <input type="text" id="numero-tarjeta" name="numero-tarjeta" class="form-control input-general" placeholder="0000 0000 0000 0000" required>
+                        <input type="text" id="numero-tarjeta" name="numero-tarjeta" class="form-control input-general" placeholder="0000 0000 0000 0000" pattern="\d{16}" required> <!-- pattern (solo 16 numeros) -->
                     </div>
                     <div class="col-md-6 item-formulario">
                         <label for="codigo-seguridad" class="form-label">Código de Seguridad:</label>
-                        <input type="password" id="codigo-seguridad" name="codigo-seguridad" class="form-control input-general" required>
+                        <input type="password" id="codigo-seguridad" name="codigo-seguridad" class="form-control input-general" pattern="\d{3,4}" required> <!-- pattern (3 o 4 digitos) -->
                     </div>
                 </div>
 
@@ -109,11 +109,11 @@
                 <div class="row mb-3">
                     <div class="col-md-6 item-formulario">
                         <label for="mes-vencimiento" class="form-label">Mes de Vencimiento:</label>
-                        <input type="text" id="mes-vencimiento" name="mes-vencimiento" class="form-control input-general" placeholder="MM" required>
+                        <input type="text" id="mes-vencimiento" name="mes-vencimiento" class="form-control input-general" placeholder="MM" pattern="(0[1-9]|1[0-2])" required> <!-- pattern (2 digitos) -->
                     </div>
                     <div class="col-md-6 item-formulario">
                         <label for="anio-vencimiento" class="form-label">Año de Vencimiento:</label>
-                        <input type="text" id="anio-vencimiento" name="anio-vencimiento" class="form-control input-general" placeholder="YYYY" required>
+                        <input type="text" id="anio-vencimiento" name="anio-vencimiento" class="form-control input-general" placeholder="YYYY" pattern="\d{4}" required> <!-- pattern (4 digitos) -->
                     </div>
                 </div>
 
@@ -139,14 +139,14 @@
                 <h3 class="text-center mb-4">Resumen de Compra</h3>
                 <div id="resumen" class="border p-3 rounded resumen-general">
                     <h4>Detalles</h4>
-                    <p><strong>Película:</strong> <span id="resumen-pelicula">N/A</span></p>
-                    <p><strong>Lugar:</strong> <span id="resumen-lugar">N/A</span></p>
-                    <p><strong>Fecha:</strong> <span id="resumen-fecha">N/A</span></p>
-                    <p><strong>Formato:</strong> <span id="resumen-formato">N/A</span></p>
-                    <p><strong>Horario:</strong> <span id="resumen-horario">N/A</span></p>
-                    <p><strong>Cantidad:</strong> <span id="resumen-personas">0</span></p>
-                    <p><strong>Promoción:</strong> <span id="resumen-promocion">N/A</span></p>
-                    <p><strong>Butacas:</strong> <span id="resumen-butacas">Ninguna</span></p>
+                    <p><strong>Película:</strong> <span id="resumen-pelicula">----------</span></p>
+                    <p><strong>Lugar:</strong> <span id="resumen-lugar">----------</span></p>
+                    <p><strong>Fecha:</strong> <span id="resumen-fecha">----------</span></p>
+                    <p><strong>Formato:</strong> <span id="resumen-formato">----------</span></p>
+                    <p><strong>Horario:</strong> <span id="resumen-horario">----------</span></p>
+                    <p><strong>Cantidad:</strong> <span id="resumen-cantidad">0</span></p>
+                    <p><strong>Promoción:</strong> <span id="resumen-promocion">----------</span></p>
+                    <p><strong>Butacas:</strong> <span id="resumen-butacas">----------</span></p>
 
                     <!-- Cuadro destacado para el Total -->
                     <div class="resumen-total-container mt-3 p-3 text-center">
