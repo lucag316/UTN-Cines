@@ -17,6 +17,13 @@ const resumenCantidad = document.getElementById("resumen-cantidad");
 const resumenPromocion = document.getElementById("resumen-promocion");
 const resumenTotal = document.getElementById("resumen-total");
 
+// Precios de las entradas según el formato
+const precios = {
+    "2D": 1000,
+    "3D": 2000,
+    "4D": 3000,
+    "XD": 2500
+};
 
 // Función para habilitar los campos del formulario progresivamente
 function habilitarCampos() {
@@ -50,6 +57,11 @@ function actualizarResumen() {
     const cantidadPersonas = parseInt(document.getElementById("personas").value) || 0;
     const promocionSeleccionada = document.getElementById("promocion").value;
 
+    const precio = precios[formatoSeleccionado] || 0; // Obtener el precio o 0 si no hay formato seleccionado
+
+    // Calcular el total
+    const total = precio * cantidadPersonas;
+
     // Actualizar el resumen
     resumenPelicula.textContent = peliculaSeleccionada;
     resumenLugar.textContent = lugarSeleccionado !== "Elige una sede" ? lugarSeleccionado : "----------";
@@ -57,6 +69,7 @@ function actualizarResumen() {
     resumenFormato.textContent = formatoSeleccionado !== "Selecciona el formato" ? formatoSeleccionado : "----------";
     resumenHorario.textContent = horarioSeleccionado !== "Selecciona el horario" ? horarioSeleccionado : "----------";
     resumenCantidad.textContent = cantidadPersonas;
+    resumenTotal.textContent = total.toFixed(2);
     
     // Actualizar promoción en el resumen
     if (promocionSeleccionada === "ninguna") {
@@ -66,10 +79,6 @@ function actualizarResumen() {
     } else {
         resumenPromocion.textContent = promocionSeleccionada;
     }
-    /*
-    // Calcular total
-    let total = calcularTotal(cantidadPersonas, promocionSeleccionada);
-    resumenTotal.textContent = total.toFixed(2);*/
 }
 
 // Función para guardar los datos de compra en localStorage
@@ -80,12 +89,34 @@ function guardarDatosLocalStorage() {
     localStorage.setItem("horario", horarioInput.value);
     localStorage.setItem("cantidad", personasInput.value);
     localStorage.setItem("promocion", promocionInput.value);
+    localStorage.setItem("total", resumenTotal.textContent); // Guarda el total
 
     // Console logs para verificar que los datos se guardaron
     console.log("Datos guardados en localStorage:");
-    console.log("Lugar:", document.getElementById("lugar").value);
-    console.log("Fecha:", document.getElementById("fecha").value);
+    console.log("Total:", resumenTotal.textContent);
+}
 
+// Función para establecer la fecha mínima
+function establecerFechaMinima() {
+    // Obtener la fecha actual
+    const fechaActual = new Date();
+
+    // Calcular la fecha de mañana
+    const fechaDeMañana = new Date(fechaActual);
+    fechaDeMañana.setDate(fechaDeMañana.getDate() + 1);
+
+    // Formatear la fecha en el formato YYYY-MM-DD
+    const opciones = {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+    };
+
+    const fechaFormateada = fechaDeMañana.toLocaleDateString('en-CA', opciones);
+
+    // Establecer la fecha mínima en el campo de fecha
+    const fechaInput = document.getElementById('fecha'); // Asegúrate de que el ID coincide
+    fechaInput.setAttribute('min', fechaFormateada);
 }
 
 // Función para volver al perfil de la película
@@ -110,8 +141,9 @@ inputs.forEach(input => {
     });
 });
 
-// Al cargar la página, establecer estados iniciales y llenar el resumen
+// Al cargar la página, establecer estados iniciales, llenar el resumen, establecer fecha minima
 document.addEventListener("DOMContentLoaded", () => {
+    establecerFechaMinima();
     habilitarCampos(); // Establecer los estados iniciales
     actualizarResumen(); // Llenar el resumen inicial
     btnContinuar.disabled = true; // Deshabilitar el botón inicialmente
@@ -122,20 +154,6 @@ document.addEventListener("DOMContentLoaded", () => {
 btnContinuar.addEventListener("click", continuarASeleccionButacas);
 
 
-
-/*
-// Función para calcular el total según la cantidad y promoción
-function calcularTotal(cantidad, promocion) {
-    const precioEntrada = 100; // Corrige el nombre de la variable aquí
-    let total = cantidad * precioEntrada;
-
-    // Aplicar promoción 2x1
-    if (promocion === "promo1") {
-        total = Math.ceil(cantidad / 2) * precioEntrada; // Aplica 2x1
-    }
-
-    return total;
-}*/
 
 
 /*
