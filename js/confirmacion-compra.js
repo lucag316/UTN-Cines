@@ -10,6 +10,8 @@ const resumenPromocion = document.getElementById("resumen-promocion");
 const resumenButacas = document.getElementById("resumen-butacas");
 const resumenTotal = document.getElementById("resumen-total");
 
+const btnConfirmar = document.getElementById("btn-confirmar");
+
 // Cargar el resumen de compra desde localStorage al iniciar la página
 function cargarResumenCompra() {
     resumenPelicula.textContent = localStorage.getItem('tituloPelicula') || "----------"; // Nombre de la película
@@ -23,11 +25,45 @@ function cargarResumenCompra() {
     resumenTotal.textContent = localStorage.getItem('total') || 0; // Total
 }
 
+// Función para verificar si todos los campos están llenos
+function verificarCampos() {
+    const email = document.getElementById("email").value.trim();
+    const nombreTitular = document.getElementById("nombre-titular").value.trim();
+    const dniTitular = document.getElementById("dni-titular").value.trim();
+    const numeroTarjeta = document.getElementById("numero-tarjeta").value.trim();
+    const codigoSeguridad = document.getElementById("codigo-seguridad").value.trim();
+    const mesVencimiento = document.getElementById("mes-vencimiento").value.trim();
+    const anioVencimiento = document.getElementById("anio-vencimiento").value.trim();
+    const medioPago = document.getElementById("medio-pago").value;
+    const terminos = document.getElementById("confirmacion-terminos").checked;
+
+    // Habilita o deshabilita el botón según el estado de los campos
+    if (email && nombreTitular && dniTitular && numeroTarjeta && codigoSeguridad && 
+        mesVencimiento && anioVencimiento && medioPago && terminos) {
+        btnConfirmar.disabled = false; // Habilita el botón
+    } else {
+        btnConfirmar.disabled = true; // Deshabilita el botón
+    }
+}
+
 // Función para volver a la eleccion de butacas
 function volverAEleccionButacas() {
     window.location.href = "eleccion-butacas.html"; 
 }
 
-// Cargar el resumen de compra al cargar la página
-document.addEventListener("DOMContentLoaded", cargarResumenCompra);
+// Agregar event listeners a los campos del formulario
+document.getElementById("email").addEventListener("input", verificarCampos);
+document.getElementById("nombre-titular").addEventListener("input", verificarCampos);
+document.getElementById("dni-titular").addEventListener("input", verificarCampos);
+document.getElementById("numero-tarjeta").addEventListener("input", verificarCampos);
+document.getElementById("codigo-seguridad").addEventListener("input", verificarCampos);
+document.getElementById("mes-vencimiento").addEventListener("input", verificarCampos);
+document.getElementById("anio-vencimiento").addEventListener("input", verificarCampos);
+document.getElementById("medio-pago").addEventListener("change", verificarCampos);
+document.getElementById("confirmacion-terminos").addEventListener("change", verificarCampos);
 
+// Inicializa el estado del botón al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
+    btnConfirmar.disabled = true; // Deshabilita el botón al inicio
+    cargarResumenCompra(); // Cargar el resumen de compra
+});

@@ -115,7 +115,8 @@ h2, h3, h4 {
 }
 
 /* Estilo para el botón deshabilitado */
-#btn-continuar:disabled {
+#btn-continuar:disabled,
+#btn-confirmar:disabled {
     background-color: rgba(128, 128, 128, 0.5); /* Gris transparente */
     cursor: not-allowed !important; /* Forzar el cursor */
     color: #fff;

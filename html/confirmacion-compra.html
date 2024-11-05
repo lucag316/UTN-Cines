@@ -122,7 +122,9 @@
                     <label for="medio-pago" class="form-label">Medio de Pago:</label>
                     <select id="medio-pago" name="medio-pago" class="form-select select-general">
                         <option selected disabled>Selecciona el medio de pago</option>
-                        <option value="tarjeta">Tarjeta de Crédito</option>
+                        <option value="tarjetaCredito">Tarjeta de Crédito</option>
+                        <option value="tarjetaDebito">Tarjeta de Debito</option>
+                        <option value="MercadoPago">Mercado Pago</option>
                         <option value="paypal">PayPal</option>
                     </select>
                 </div>
@@ -158,7 +160,7 @@
             <!-- Botones de acción -->
             <div class="col-12 text-center mt-4">
                 <button type="button" class="btn btn-secondary me-3" onclick="volverAEleccionButacas()">Volver</button>
-                <button type="submit" class="btn btn-primary" onclick="ConfirmarCompra()">Confirmar</button>
+                <button id="btn-confirmar" type="submit" class="btn btn-primary" onclick="ConfirmarCompra()">Confirmar</button>
             </div>
         </form>
     </div>
