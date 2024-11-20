@@ -1,0 +1,155 @@
+
+
+
+
+#main-inicio {
+    margin: 10px auto;
+    max-width: 1250px;
+}
+
+
+#main-inicio h2 {
+    color: #808080;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #ffd700;
+    font-size: 2.5rem;
+}    
+
+
+/*################################### SECCION DE FILTROS ######################################################*/
+
+.contenedor-filtros {
+    gap: 10px;
+    background-color: #f9f9f9; 
+    padding: 20px;
+    border-radius: 15px;
+
+}
+
+.contenedor-filtro {
+
+}
+
+.contenedor-filtro-label {
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 5px;
+}
+
+.contenedor-filtro-label:hover{
+    color: #ffd700; 
+}
+
+.selector-filtro {
+    border-radius: 10px; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+    padding: 10px;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.selector-filtro:hover,
+.selector-filtro:focus {
+    border: 1px solid #ffd700;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transform: scale(1.02);
+    outline: none;
+}
+
+
+/*################################### SECCION DE GRILLA ######################################################*/
+
+/* Estilos generales para el contenedor de recetas */
+.contenedor-peliculas {
+    margin-top: 50px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.card-link {
+    text-decoration: none; 
+}
+
+/* Estilos para las tarjetas (cards) */
+.card {
+    border-radius: 10px; 
+    background-color: #ffffff; 
+    border: 1px solid #ddd; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s; /* Efecto al pasar el mouse */
+    max-width: 100%; 
+    height: 100%; /* para que todas las tarjetas tengan la misma altura*/
+    cursor: pointer;
+}
+
+/* Efectos al pasar el mouse sobre la tarjeta */
+.card:hover {
+    transform: scale(1.05); /* Aumenta el tamaño al pasar el mouse */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    border: 1px solid #ffd700;
+}
+
+/* Estilos para el titulo de la tarjeta */
+.card-title {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    text-align: center; /* Centra el título */
+}
+
+/* Estilos para las etiquetas de dificultad, tipo y tiempo */
+.card-title,
+.genero-label,
+.clasificacion-label,
+.duracion-label {
+    font-weight: bold; 
+    color: #333; 
+    transition: color 0.3s ease;
+}
+
+/* Cambios de color al pasar el mouse sobre las etiquetas */
+.card:hover .card-title,
+.card:hover .genero-label,
+.card:hover .clasificacion-label,
+.card:hover .duracion-label {
+    color: #ffd700; 
+    transition: color 0.3s ease;
+}
+
+/* Estilos para listas sin estilo */
+.list-unstyled {
+    padding: 0; /* Sin padding */
+    margin: 0; /* Sin márgenes */
+}
+
+/* Estilos para la imagen de la tarjeta */
+.card-img-top {
+    height: 200px; /*le di una altura fija porque sino son mas altas o mas bajas*/
+    width: 100%; 
+    object-fit: cover; /* Asegura que la imagen se ajuste bien sin distorsionarse  y creo que recorta si es necesario*/
+}
+
+.icon-container {
+    border-radius: 50%; /* Para hacer el círculo */
+    background-color: #919191; /* Color de fondo gris */
+    padding: 5px; /* Espaciado alrededor del ícono */
+}
+
+.icon-lupa {
+    width: 20px; /* Ajusta el tamaño del icono */
+    height: 20px; /* Ajusta el tamaño del icono */
+    filter: brightness(0) invert(1); /* Cambia el color del ícono a blanco */
+    transition: transform 0.3s; /* Efecto al pasar el mouse */
+}
+
+.icon-container:hover .icon-lupa {
+    transform: scale(1.1); /* Escalar el ícono al pasar el mouse */
+}
+
+/* Estilos responsivos para pantallas pequeñas */
+@media (max-width: 768px) { 
+    .card {
+        margin: 0 auto; 
+        width: 85%; 
+    }
+}

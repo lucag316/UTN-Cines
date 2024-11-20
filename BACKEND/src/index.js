@@ -8,7 +8,7 @@ const cors = require("cors");
 // CONFIGURACION INICIAL
 const app = express();
 
-app.set("port", 6000);
+app.set("port", 8080);
 
 app.listen(app.get("port"))
 console.log("Escuchando comunicaciones al puerto " + app.get("port"));
