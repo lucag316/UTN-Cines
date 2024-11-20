@@ -1,4 +1,3 @@
-/*
 const mysql = require("promise-mysql");
 const dotenv = require("dotenv");
 
@@ -15,4 +14,4 @@ const getConnection = async () => await connection;
 
 module.exports = {
     getConnection
-}*/
+}
