@@ -36,7 +36,7 @@ app.get("/api_utn_peliculas", async (req, res) => {
                 p.duracion,
                 p.sinopsis,
                 p.año,
-                c.estrellas AS clasificacion,
+                c.nombre AS clasificacion, -- Cambiado a c.nombre
                 g.nombre AS genero,
                 CONCAT(d.nombre, ' ', d.apellido) AS director,
                 GROUP_CONCAT(DISTINCT CONCAT(a.nombre, ' ', a.apellido) ORDER BY a.id SEPARATOR ', ') AS reparto
@@ -47,7 +47,7 @@ app.get("/api_utn_peliculas", async (req, res) => {
             LEFT JOIN Peliculas_Actores pa ON p.id = pa.id_pelicula
             LEFT JOIN Actores a ON pa.id_actor = a.id
             GROUP BY 
-                p.id, c.estrellas, g.nombre, d.nombre, d.apellido;
+                p.id, c.nombre, g.nombre, d.nombre, d.apellido; -- Cambiado a c.nombre
         `;
 
         const resultado = await connection.query(query);
