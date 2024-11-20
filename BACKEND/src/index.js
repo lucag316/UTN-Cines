@@ -23,22 +23,47 @@ app.use(morgan("dev"));
 
 
 // RUTAS
-app.get("/bd_peliculas", async (req, res) => {
-    const connection = await database.getConnection();
-    const resultado = await connection.query(`
-        SELECT 
-        
-    `);
+app.get("/api_utn_peliculas", async (req, res) => {
+    try {
+        const connection = await database.getConnection();
 
-    // Convierte las cadenas separadas por comas en arrays
-    const recetas = resultado.map(receta => {
-        return {
-            ...receta,
-            ingredientes: receta.ingredientes ? receta.ingredientes.split(', ') : [],
-            elaboracion: receta.elaboracion ? receta.elaboracion.split(', ') : []
-        };
-    });
+        const query = `
+            SELECT 
+                p.id,
+                p.titulo,
+                p.portada,
+                p.trailer,
+                p.duracion,
+                p.sinopsis,
+                p.año,
+                c.estrellas AS clasificacion,
+                g.nombre AS genero,
+                CONCAT(d.nombre, ' ', d.apellido) AS director,
+                GROUP_CONCAT(DISTINCT CONCAT(a.nombre, ' ', a.apellido) ORDER BY a.id SEPARATOR ', ') AS reparto
+            FROM Peliculas p
+            LEFT JOIN Clasificaciones c ON p.id_clasificacion = c.id
+            LEFT JOIN Generos g ON p.id_genero = g.id
+            LEFT JOIN Directores d ON p.id_director = d.id
+            LEFT JOIN Peliculas_Actores pa ON p.id = pa.id_pelicula
+            LEFT JOIN Actores a ON pa.id_actor = a.id
+            GROUP BY 
+                p.id, c.estrellas, g.nombre, d.nombre, d.apellido;
+        `;
 
-    console.log(recetas);
-    res.json(recetas);
+        const resultado = await connection.query(query);
+
+        // Convertimos los datos del reparto en un array
+        const peliculas = resultado.map(pelicula => {
+            return {
+                ...pelicula,
+                reparto: pelicula.reparto ? pelicula.reparto.split(", ") : []
+            };
+        });
+
+        res.json(peliculas);
+        console.log(peliculas);
+    } catch (error) {
+        console.error("Error al obtener las películas:", error);
+        res.status(500).send("Error al obtener las películas");
+    }
 });
