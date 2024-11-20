@@ -26,7 +26,7 @@ function mostrarPeliculas(peliculas) {
                         <h5 class="card-title">${pelicula.titulo}</h5>
                     </div>
                     <div class="card-footer text-muted">
-                        <p class="mb-0"><span class="tiempo-label">Tiempo:</span> ${pelicula.duracion} min</p>
+                        <p class="mb-0"><span class="duracion-label">Duracion:</span> ${pelicula.duracion} min</p>
                     </div>
                 </div>
             </div>
