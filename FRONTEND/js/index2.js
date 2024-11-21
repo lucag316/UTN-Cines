@@ -26,7 +26,7 @@ function mostrarPeliculas(peliculas) {
                         <h5 class="card-title">${pelicula.titulo}</h5>
                     </div>
                     <div class="card-footer text-muted">
-                        <p class="mb-0"><span class="tiempo-label">Tiempo:</span> ${pelicula.duracion} min</p>
+                        <p class="mb-0"><span class="duracion-label">Duracion:</span> ${pelicula.duracion} min</p>
                     </div>
                 </div>
             </div>
@@ -54,7 +54,7 @@ function guardarPelicula(event, pelicula) {
     localStorage.setItem('peliculaSeleccionada', JSON.stringify(pelicula));
 
     // Redirigimos a la página de la pelicula
-    window.location.href = "../html/perfil_peli.html";  // Cambia a la URL de la página de pelicula
+    window.location.href = "../html/perfil_peli2.html";  // Cambia a la URL de la página de pelicula
 }
 
 // Función para filtrar peliculas según la búsqueda
