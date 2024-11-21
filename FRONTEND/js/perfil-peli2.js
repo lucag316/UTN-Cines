@@ -24,11 +24,11 @@ function mostrarPelicula () {
     <div class="container-movie">
             <!-- Contenedor de la portada y sus detalles (lado izquierdo)-->
             <div class="left-section">
-                <img id="img_perfil_peli" class="portada" src="https://image.tmdb.org/t/p/w500${pelicula.poster_path}" alt="portada_img">
+                <img id="img_perfil_peli" class="portada" src="${pelicula.portada}" alt="portada_img">
                 
                 <div class="details">
                     <div class="details-item">
-                        <h3>Género:</h3><p id="genero_text">${pelicula.genero}</p>
+                        <h3>Género:</h3><p id="genero_text">${pelicula.generos.join(', ')}</p>
                     </div>
                     <div class="details-item">
                         <h3>Duración:</h3><p id="duracion_text">${pelicula.duracion} min</p>
@@ -48,13 +48,13 @@ function mostrarPelicula () {
             <!-- Contenedor del trailer, título y resumen (lado derecho)-->
             <div class="right-section">
                 <div class="trailer">
-                    <iframe id="iframe_perfil_peli" width="700" height="350" src="https://www.youtube.com/embed/${pelicula.trailer_key}" frameborder="0" allowfullscreen></iframe>
+                    <iframe id="iframe_perfil_peli" width="700" height="350" src="https://www.youtube.com/embed/${getTrailerKey(pelicula.trailer)}" frameborder="0" allowfullscreen></iframe>
                 </div>
 
                 <h2 id="titulo_text">${pelicula.titulo}</h2>
 
                 <div class="summary">
-                    <p id="resumen_text">${pelicula.resumen}</p>
+                    <p id="resumen_text">${pelicula.sinopsis}</p>
                 </div>
 
                 <!-- Botón de comprar -->
@@ -66,6 +66,15 @@ function mostrarPelicula () {
     `;
 
     
+}
+
+/**
+ * Función para obtener el trailer key (si el trailer es una URL de YouTube).
+ */
+function getTrailerKey(url) {
+    // Extraemos la clave del trailer (el ID del video de YouTube)
+    const match = url.match(/(?:youtube\.com\/(?:[^/]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+    return match ? match[1] : '';
 }
 
 // Llama a la función mostrarReceta cuando la página se cargue
