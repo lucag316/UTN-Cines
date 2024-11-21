@@ -54,7 +54,7 @@ function guardarPelicula(event, pelicula) {
     localStorage.setItem('peliculaSeleccionada', JSON.stringify(pelicula));
 
     // Redirigimos a la página de la pelicula
-    window.location.href = "../html/perfil_peli.html";  // Cambia a la URL de la página de pelicula
+    window.location.href = "../html/perfil_peli2.html";  // Cambia a la URL de la página de pelicula
 }
 
 // Función para filtrar peliculas según la búsqueda
