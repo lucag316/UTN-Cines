@@ -69,10 +69,11 @@ function filtrarPeliculasBusqueda() {
 
 // Función para filtrar peliculas según los filtros seleccionados
 function filtrarPeliculas() {
-    let generoSeleccionado = filtroGenero.value;
-    let clasificacionSeleccionada = filtroClasificacion.value;
-    let duracionSeleccionada = filtroDuracion.value;
+    let generoSeleccionado = filtroGenero.value;  // Obtener el valor del filtro de género
+    let clasificacionSeleccionada = filtroClasificacion.value;  // Obtener el valor del filtro de clasificación
+    let duracionSeleccionada = filtroDuracion.value;  // Obtener el valor del filtro de duración
     
+    // Filtrar las peliculas según los valores de los filtros
     let peliculasFiltradas = todasLasPeliculas.filter(pelicula => {
         let generoCoincide = generoSeleccionado === "todos" || pelicula.genero.toLowerCase() === generoSeleccionado;
         let clasificacionCoincide = clasificacionSeleccionada === "todos" || pelicula.clasificacion.toLowerCase() === clasificacionSeleccionada;
@@ -122,3 +123,73 @@ barraBusquedaInput.addEventListener("keyup", filtrarPeliculasBusqueda);
 
 // Llamamos a la función init cuando el DOM esté completamente cargado
 document.addEventListener("DOMContentLoaded", init);
+
+
+
+
+
+
+
+
+
+// Obtener el botón de toggle del tema y el icono activo
+let themeToggleButton = document.getElementById('bd-theme');
+let themeIcons = document.querySelectorAll('.theme-icon');
+let themeCheckIcons = document.querySelectorAll('.check-icon');
+
+// Función para cambiar el tema
+function cambiarTema(event) {
+    // Obtener el valor del tema seleccionado
+    let valorTema = event.target.getAttribute('data-bs-theme-value');
+    
+    // Establecer el tema en el body
+    document.body.setAttribute('data-bs-theme', valorTema);
+
+    // Cambiar el icono activo según el tema seleccionado
+    themeIcons.forEach(icon => icon.classList.remove('theme-icon-active'));
+    themeCheckIcons.forEach(icon => icon.classList.add('d-none'));
+
+    switch (valorTema) {
+        case 'light':
+            // Establecer el icono de sol (tema claro) como activo
+            document.querySelector('use[href="#sun-fill"]').parentNode.classList.add('theme-icon-active');
+            document.querySelector('use[href="#sun-fill"]').parentNode.nextElementSibling.classList.remove('d-none');
+            break;
+        case 'dark':
+            // Establecer el icono de luna (tema oscuro) como activo
+            document.querySelector('use[href="#moon-stars-fill"]').parentNode.classList.add('theme-icon-active');
+            document.querySelector('use[href="#moon-stars-fill"]').parentNode.nextElementSibling.classList.remove('d-none');
+            break;
+        case 'auto':
+            // Establecer el icono de medio círculo (modo auto) como activo
+            document.querySelector('use[href="#circle-half"]').parentNode.classList.add('theme-icon-active');
+            document.querySelector('use[href="#circle-half"]').parentNode.nextElementSibling.classList.remove('d-none');
+            break;
+    }
+
+    // Guardar el tema en localStorage para persistencia
+    localStorage.setItem('theme', valorTema);
+}
+
+// Función para cargar el tema desde localStorage
+function cargarTema() {
+    let temaGuardado = localStorage.getItem('theme');
+    if (temaGuardado) {
+        // Si hay un tema guardado, aplicarlo
+        document.body.setAttribute('data-bs-theme', temaGuardado);
+        
+        // Marcar el icono correspondiente
+        let activeIcon = document.querySelector(`use[href="#${temaGuardado === 'light' ? 'sun-fill' : temaGuardado === 'dark' ? 'moon-stars-fill' : 'circle-half'}"]`);
+        activeIcon.parentNode.classList.add('theme-icon-active');
+        activeIcon.parentNode.nextElementSibling.classList.remove('d-none');
+    }
+}
+
+// Cargar el tema al inicio
+cargarTema();
+
+// Agregar los event listeners a los botones de cambio de tema
+let botonesTema = document.querySelectorAll('.dropdown-item');
+botonesTema.forEach(boton => {
+    boton.addEventListener('click', cambiarTema);
+});

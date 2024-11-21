@@ -190,3 +190,14 @@
 
     }
 }
+
+
+
+
+
+/* ======================================= Tema oscuro =======================================*/
+/* Modo Oscuro */
+body.modo-oscuro {
+    background-color: #121212;
+    color: white;
+}
