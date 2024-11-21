@@ -40,6 +40,15 @@ function mostrarPelicula () {
                         <h3>Director:</h3><p id="director_text">${pelicula.director}</p>
                     </div>
                     <div class="details-item">
+                        <h3>País:</h3><p id="pais_text">${pelicula.pais}</p>
+                    </div>
+                    <div class="details-item">
+                        <h3>Clasificación:</h3><p id="clasificacion_text">${pelicula.clasificacion}</p>
+                    </div>
+                    <div class="details-item">
+                        <h3>Rating:</h3><p id="rating_text">${pelicula.rating}</p>
+                    </div>
+                    <div class="details-item">
                         <h3>Año:</h3><p id="año_text">${pelicula.año}</p>
                     </div>
                 </div>
