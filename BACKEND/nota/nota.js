@@ -200,7 +200,29 @@ INSERT INTO `Pelicula` (
 
 INSERT INTO `Genero` (`nombre`) VALUES 
 ('Drama'),
-('Comedy');
+('Comedia'),
+('Accion'),
+('Aventura'),
+('Suspenso'),
+('Terror'),
+('Romantico'),
+('Fantasia'),
+('Ciencia Ficcion'),
+('Misterio'),
+('Crimen'),
+('Documental'),
+('Animacion'),
+('Familiar'),
+('Musical'),
+('Biografia'),
+('Historia'),
+('Guerra'),
+('Western'),
+('Deportes'),
+('Musica'),
+('Superheroes'),
+('Psicologico')
+;
 
 -- Replace `1` with the actual `id_pelicula` if different
 INSERT INTO `Pelicula_Genero` (`id_pelicula`, `id_genero`) VALUES 
@@ -225,3 +247,56 @@ INSERT INTO `Pelicula_Reparto` (`id_pelicula`, `id_persona`, `id_rol`, `personaj
 (1, 4, 2, 'Angus');      -- Dominic Sessa as another supporting character
 
 */
+
+/* ASI INSERTE HARRY POTTER
+
+use db_utn_cines;
+
+-- Insertando la película Harry Potter
+INSERT INTO Pelicula (
+    titulo, 
+    duracion, 
+    clasificacion, 
+    descripcion, 
+    anio, 
+    pais, 
+    img_url, 
+    trailer_url, 
+    rating
+) VALUES (
+    'Harry Potter y la Piedra Filosofal', 
+    152, -- duración en minutos
+    '+13', 
+    '"Harry Potter y la Piedra Filosofal" es el primer filme de la saga de Harry Potter, basado en la novela de J.K. Rowling. La historia sigue a un joven Harry Potter, quien descubre que es un mago y asiste a la escuela Hogwarts para aprender magia. Allí, hace nuevos amigos y enfrenta su primer desafío al intentar descubrir el misterio detrás de la Piedra Filosofal. Una película de fantasía llena de magia, aventuras y amistad."',
+    '2001-11-29', -- fecha de estreno
+    'Reino Unido', 
+    'https://media.themoviedb.org/t/p/w500/7xXJ15VEf7G9GdAuV1dO769yC73.jpg', 
+    'https://www.youtube.com/embed/ZgrCZVjPg9g?si=f6mwH_nqYZgvGBeX', 
+    3.8
+);
+
+-- Relacionando con los géneros: Fantasía, Aventura
+INSERT INTO Pelicula_Genero (id_pelicula, id_genero) VALUES 
+(2, 8), -- Fantasía
+(2, 4); -- Aventura
+
+-- Insertando reparto
+INSERT INTO `Reparto` (`nombre`, `apellido`) VALUES 
+('Chris', 'Columbus'),  -- Director
+('Daniel', 'Radcliffe'),    -- Harry Potter
+('Rupert', 'Grint'),    -- Ron Weasley
+('Emma', 'Watson'),    -- Hermione Granger
+('Richard', 'Harris'),    -- Dumbledore
+('Maggie', 'Smith');    -- Minerva McGonagall
+
+-- Relacionando la película con los actores y el rol correspondiente
+INSERT INTO `Pelicula_Reparto` (`id_pelicula`, `id_persona`, `id_rol`, `personaje`) VALUES 
+(2, 9, 1, NULL),       -- Chris Columbus como Director
+(2, 10, 2, 'Harry Potter'), -- Daniel Radcliffe como Harry Potter
+(2, 11, 2, 'Ron Weasley'), -- Rupert Grint como Ron Weasley
+(2, 12, 2, 'Hermione Granger'), -- Emma Watson como Hermione Granger
+(2, 13, 2, 'Albus Dumbledore'), -- Richard Harris como Dumbledore
+(2, 14, 2, 'Minerva McGonagall');  -- Maggie Smith como Minerva McGonagall
+
+
+*/ 
