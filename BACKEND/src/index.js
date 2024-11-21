@@ -23,39 +23,72 @@ app.use(morgan("dev"));
 
 
 // RUTAS
-app.get("/api_utn_peliculas", async (req, res) => {
+app.get("/db_utn_cines", async (req, res) => {
     try {
         const connection = await database.getConnection();
 
         const query = `
             SELECT 
-                p.id,
-                p.titulo,
-                p.portada,
-                p.trailer,
-                p.duracion,
-                p.sinopsis,
-                p.año,
-                c.nombre AS clasificacion, -- Cambiado a c.nombre
-                g.nombre AS genero,
-                CONCAT(d.nombre, ' ', d.apellido) AS director,
-                GROUP_CONCAT(DISTINCT CONCAT(a.nombre, ' ', a.apellido) ORDER BY a.id SEPARATOR ', ') AS reparto
-            FROM Peliculas p
-            LEFT JOIN Clasificaciones c ON p.id_clasificacion = c.id
-            LEFT JOIN Generos g ON p.id_genero = g.id
-            LEFT JOIN Directores d ON p.id_director = d.id
-            LEFT JOIN Peliculas_Actores pa ON p.id = pa.id_pelicula
-            LEFT JOIN Actores a ON pa.id_actor = a.id
-            GROUP BY 
-                p.id, c.nombre, g.nombre, d.nombre, d.apellido; -- Cambiado a c.nombre
-        `;
+    p.id_pelicula AS id,
+    p.titulo,
+    p.img_url AS portada,
+    p.trailer_url AS trailer,
+    p.duracion,
+    p.descripcion AS sinopsis,
+    YEAR(p.anio) AS año,
+    p.pais,
+    p.rating,
+    p.fecha_creacion,
+    p.fecha_modificacion,
+    p.clasificacion,
+    (
+        SELECT 
+            GROUP_CONCAT(DISTINCT g.nombre ORDER BY g.nombre SEPARATOR ', ')
+        FROM 
+            Pelicula_Genero pg
+        LEFT JOIN 
+            Genero g ON pg.id_genero = g.id_genero
+        WHERE 
+            pg.id_pelicula = p.id_pelicula
+    ) AS generos,
+    (
+        SELECT 
+            CONCAT(d.nombre, ' ', d.apellido)
+        FROM 
+            Pelicula_Reparto pr
+        LEFT JOIN 
+            Reparto d ON pr.id_persona = d.id_persona
+        LEFT JOIN 
+            Rol r ON pr.id_rol = r.id_rol
+        WHERE 
+            pr.id_pelicula = p.id_pelicula AND r.nombre = 'Director'
+        LIMIT 1
+    ) AS director,
+    (
+        SELECT 
+            GROUP_CONCAT(DISTINCT CONCAT(a.nombre, ' ', a.apellido) ORDER BY a.id_persona SEPARATOR ', ')
+        FROM 
+            Pelicula_Reparto pr
+        LEFT JOIN 
+            Reparto a ON pr.id_persona = a.id_persona
+        LEFT JOIN 
+            Rol r ON pr.id_rol = r.id_rol
+        WHERE 
+            pr.id_pelicula = p.id_pelicula AND r.nombre != 'Director'
+    ) AS reparto
+FROM 
+    Pelicula p
+GROUP BY 
+    p.id_pelicula;
+            `;
 
         const resultado = await connection.query(query);
 
-        // Convertimos los datos del reparto en un array
+        // Convert the cast data into an array
         const peliculas = resultado.map(pelicula => {
             return {
                 ...pelicula,
+                generos: pelicula.generos ? pelicula.generos.split(", ") : [],
                 reparto: pelicula.reparto ? pelicula.reparto.split(", ") : []
             };
         });
