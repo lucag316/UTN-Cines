@@ -12,35 +12,30 @@ let filtroDuracion = document.getElementById("filtro-duracion");
 
 // Función para mostrar las peliculas en la grilla
 function mostrarPeliculas(peliculas) {
-    // Inicializo una variable para almacenar el HTML de las tarjetas
-    let tarjetas = "";
+    let tarjetas = peliculas.map((pelicula, index) => {
+        const themeClass = body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
 
-    // Itero sobre cada pelicula en el array de peliculas
-    peliculas.forEach(pelicula => {
-        // Para cada pelicula, generamos una tarjeta HTML
-        tarjetas += `
+        return `
             <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                <div class="card">
+                <div class="card ${themeClass}" data-index="${index}">
                     <img src="${pelicula.portada}" class="card-img-top" alt="${pelicula.titulo}">
                     <div class="card-body">
-                        <h5 class="card-title">${pelicula.titulo}</h5>
+                        <h5 class="card-title ${themeClass}">${pelicula.titulo}</h5>
                     </div>
                     <div class="card-footer text-muted">
-                        <p class="mb-0"><span class="duracion-label">Duracion:</span> ${pelicula.duracion} min</p>
+                        <p class="mb-0"><span class="duracion-label ${themeClass}">Duración:</span> ${pelicula.duracion} min</p>
                     </div>
                 </div>
             </div>
         `;
-    });
+    }).join('');
 
-    // Insertamos las tarjetas generadas en el contenedor de peliculas en el HTML
     contenedorPeliculas.innerHTML = tarjetas;
 
     // Agregar el evento a cada tarjeta
-    const cards = contenedorPeliculas.getElementsByClassName('card');
-    Array.from(cards).forEach((card, index) => {
+    contenedorPeliculas.querySelectorAll('.card').forEach(card => {
         card.addEventListener('click', (event) => {
-            guardarPelicula(event, peliculas[index]);
+            guardarPelicula(event, peliculas[card.getAttribute('data-index')]);
         });
     });
 }
@@ -52,6 +47,10 @@ function guardarPelicula(event, pelicula) {
 
     // Guardamos la pelicula como una cadena JSON en localStorage
     localStorage.setItem('peliculaSeleccionada', JSON.stringify(pelicula));
+
+    // Guardar el tema actual
+    const temaActual = localStorage.getItem('selectedTheme') || 'auto';
+    localStorage.setItem('temaActual', temaActual);
 
     // Redirigimos a la página de la pelicula
     window.location.href = "./html/perfil_peli2.html";  // Cambia a la URL de la página de pelicula
@@ -127,69 +126,41 @@ document.addEventListener("DOMContentLoaded", init);
 
 
 
+// ==== Paginación ====
 
+// Función para crear la paginación
+function setupPagination(currentPage, totalPages) {
+    const paginationContainer = document.getElementById('pagination');
+    paginationContainer.innerHTML = '';
 
+    const prevButton = `
+        <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+            <a class="page-link" href="#" data-page="${currentPage === 1 ? 0 : currentPage - 1}">Anterior</a>
+        </li>
+    `;
+    paginationContainer.innerHTML += prevButton;
 
+    const numberButton = `
+        <li class="page-item">
+            <a class="page-link" href="#" data-page="${currentPage}">${currentPage}</a>
+        </li>
+    `;
+    paginationContainer.innerHTML += numberButton;
 
+    const nextButton = `
+        <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+            <a class="page-link" href="#" data-page="${currentPage + 1}">Siguiente</a>
+        </li>
+    `;
+    paginationContainer.innerHTML += nextButton;
 
-// Obtener el botón de toggle del tema y el icono activo
-let themeToggleButton = document.getElementById('bd-theme');
-let themeIcons = document.querySelectorAll('.theme-icon');
-let themeCheckIcons = document.querySelectorAll('.check-icon');
-
-// Función para cambiar el tema
-function cambiarTema(event) {
-    // Obtener el valor del tema seleccionado
-    let valorTema = event.target.getAttribute('data-bs-theme-value');
-    
-    // Establecer el tema en el body
-    document.body.setAttribute('data-bs-theme', valorTema);
-
-    // Cambiar el icono activo según el tema seleccionado
-    themeIcons.forEach(icon => icon.classList.remove('theme-icon-active'));
-    themeCheckIcons.forEach(icon => icon.classList.add('d-none'));
-
-    switch (valorTema) {
-        case 'light':
-            // Establecer el icono de sol (tema claro) como activo
-            document.querySelector('use[href="#sun-fill"]').parentNode.classList.add('theme-icon-active');
-            document.querySelector('use[href="#sun-fill"]').parentNode.nextElementSibling.classList.remove('d-none');
-            break;
-        case 'dark':
-            // Establecer el icono de luna (tema oscuro) como activo
-            document.querySelector('use[href="#moon-stars-fill"]').parentNode.classList.add('theme-icon-active');
-            document.querySelector('use[href="#moon-stars-fill"]').parentNode.nextElementSibling.classList.remove('d-none');
-            break;
-        case 'auto':
-            // Establecer el icono de medio círculo (modo auto) como activo
-            document.querySelector('use[href="#circle-half"]').parentNode.classList.add('theme-icon-active');
-            document.querySelector('use[href="#circle-half"]').parentNode.nextElementSibling.classList.remove('d-none');
-            break;
-    }
-
-    // Guardar el tema en localStorage para persistencia
-    localStorage.setItem('theme', valorTema);
+    paginationContainer.querySelectorAll('.page-link').forEach(button => {
+        button.addEventListener('click', (event) => {
+            event.preventDefault();
+            const page = parseInt(event.target.getAttribute('data-page'));
+            if (!isNaN(page)) {
+                fetchMovies(page);
+            }
+        });
+    });
 }
-
-// Función para cargar el tema desde localStorage
-function cargarTema() {
-    let temaGuardado = localStorage.getItem('theme');
-    if (temaGuardado) {
-        // Si hay un tema guardado, aplicarlo
-        document.body.setAttribute('data-bs-theme', temaGuardado);
-        
-        // Marcar el icono correspondiente
-        let activeIcon = document.querySelector(`use[href="#${temaGuardado === 'light' ? 'sun-fill' : temaGuardado === 'dark' ? 'moon-stars-fill' : 'circle-half'}"]`);
-        activeIcon.parentNode.classList.add('theme-icon-active');
-        activeIcon.parentNode.nextElementSibling.classList.remove('d-none');
-    }
-}
-
-// Cargar el tema al inicio
-cargarTema();
-
-// Agregar los event listeners a los botones de cambio de tema
-let botonesTema = document.querySelectorAll('.dropdown-item');
-botonesTema.forEach(boton => {
-    boton.addEventListener('click', cambiarTema);
-});
