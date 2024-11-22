@@ -1,4 +1,16 @@
- /**
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Obtener el tema guardado en localStorage
+    const temaGuardado = localStorage.getItem('temaActual') || 'auto';
+
+    // Aplicar el tema
+    changeTheme(temaGuardado);  // La misma función que usas en la página principal
+});
+
+
+
+
+/**
  * Función para mostrar la pelicula seleccionada en la página.
  * Obtiene la pelicula desde localStorage y actualiza el contenido del HTML.
  */
