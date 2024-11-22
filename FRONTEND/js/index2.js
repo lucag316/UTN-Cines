@@ -134,6 +134,7 @@ document.addEventListener("DOMContentLoaded", init);
 // Obtén referencias a los elementos del DOM
 const themeButtons = document.querySelectorAll('[data-bs-theme-value]');
 const body = document.body;
+const filtros = document.querySelector('.contenedor-filtros');  // Filtros
 
 // Función para cambiar el tema
 function changeTheme(theme) {
@@ -147,6 +148,7 @@ function changeTheme(theme) {
     localStorage.setItem('selectedTheme', theme);
     updateCardTheme();
     updateThemeIcon(theme);
+    updateFiltersTheme();  // Actualizamos el tema de los filtros
 }
 
 // Detectar cambios en las preferencias del sistema para el modo automático
@@ -162,6 +164,7 @@ function setAutoTheme() {
     body.classList.toggle('dark-mode', prefersDarkScheme);
     body.classList.toggle('light-mode', !prefersDarkScheme);
     updateCardTheme();
+    updateFiltersTheme();  // Actualizamos el tema de los filtros
 }
 
 // Función para actualizar las clases de las tarjetas cuando cambia el tema
@@ -187,6 +190,28 @@ function updateCardTheme() {
             duracionLabel.classList.remove('light-mode', 'dark-mode');
             duracionLabel.classList.add(themeClass);
         }
+    });
+}
+
+// Función para actualizar las clases de los filtros cuando cambia el tema
+function updateFiltersTheme() {
+    const themeClass = body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
+    
+    filtros.classList.remove('light-mode', 'dark-mode');
+    filtros.classList.add(themeClass);
+
+    // Cambiar las clases de los elementos dentro de los filtros
+    const filterLabels = document.querySelectorAll('.contenedor-filtro-label');
+    const filterSelectors = document.querySelectorAll('.selector-filtro');
+
+    filterLabels.forEach(label => {
+        label.classList.remove('light-mode', 'dark-mode');
+        label.classList.add(themeClass);
+    });
+
+    filterSelectors.forEach(selector => {
+        selector.classList.remove('light-mode', 'dark-mode');
+        selector.classList.add(themeClass);
     });
 }
 
