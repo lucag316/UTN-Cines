@@ -20,10 +20,10 @@ function mostrarPeliculas(peliculas) {
                 <div class="card ${themeClass}" data-index="${index}">
                     <img src="${pelicula.portada}" class="card-img-top" alt="${pelicula.titulo}">
                     <div class="card-body">
-                        <h5 class="card-title">${pelicula.titulo}</h5>
+                        <h5 class="card-title ${themeClass}">${pelicula.titulo}</h5>
                     </div>
                     <div class="card-footer text-muted">
-                        <p class="mb-0"><span class="duracion-label">Duración:</span> ${pelicula.duracion} min</p>
+                        <p class="mb-0"><span class="duracion-label ${themeClass}">Duración:</span> ${pelicula.duracion} min</p>
                     </div>
                 </div>
             </div>
@@ -168,9 +168,25 @@ function setAutoTheme() {
 function updateCardTheme() {
     const cards = document.querySelectorAll('.card');
     const themeClass = body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
+    
     cards.forEach(card => {
-        card.classList.remove('light-mode', 'dark-mode');
-        card.classList.add(themeClass);
+        card.classList.remove('light-mode', 'dark-mode'); // Elimina clases anteriores
+        card.classList.add(themeClass); // Añade la clase correspondiente al nuevo tema
+
+        // Actualizar el color de texto y otros elementos dentro de la tarjeta
+        const cardTitle = card.querySelector('.card-title');
+        const duracionLabel = card.querySelector('.duracion-label');
+
+        // Asegurarse de que las clases de los elementos también cambien
+        if (cardTitle) {
+            cardTitle.classList.remove('light-mode', 'dark-mode');
+            cardTitle.classList.add(themeClass);
+        }
+
+        if (duracionLabel) {
+            duracionLabel.classList.remove('light-mode', 'dark-mode');
+            duracionLabel.classList.add(themeClass);
+        }
     });
 }
 
@@ -203,10 +219,34 @@ document.addEventListener('DOMContentLoaded', initTheme);
 
 
 // Inicializar tema al cargar la página
+/*
 document.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('selectedTheme') || 'auto';
     changeTheme(savedTheme);
-});
+});*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // ==== Paginación ====
 
