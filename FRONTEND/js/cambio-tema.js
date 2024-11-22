@@ -20,6 +20,7 @@ function changeTheme(theme) {
     updateThemeIcon(theme);
     updateFiltersTheme();  // Actualizamos el tema de los filtros
     updateSearchBarTheme();  // Actualizamos el tema de la barra de búsqueda
+    updateMovieProfileTheme(); // Actualizamos el tema en el perfil de la película
 }
 
 // Detectar cambios en las preferencias del sistema para el modo automático
@@ -37,6 +38,7 @@ function setAutoTheme() {
     updateCardTheme();
     updateFiltersTheme();  // Actualizamos el tema de los filtros
     updateSearchBarTheme();  // Actualizamos el tema de la barra de búsqueda
+    updateMovieProfileTheme(); // Actualizamos el tema en el perfil de la película
 }
 
 // Función para actualizar las clases de las tarjetas cuando cambia el tema
@@ -108,6 +110,45 @@ function updateSearchBarTheme() {
     inputSearch.classList.add(themeClass);
 }
 
+function updateMovieProfileTheme() {
+    const themeClass = body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
+
+    // Cambiar el fondo de la página, incluyendo body y html según el tema
+    document.documentElement.classList.remove('light-mode', 'dark-mode');
+    document.documentElement.classList.add(themeClass);
+
+    body.classList.remove('light-mode', 'dark-mode');
+    body.classList.add(themeClass);
+
+    // Cambiar fondo del contenedor de la película
+    const movieContainer = document.querySelector('.container-movie');
+    if (movieContainer) {
+        movieContainer.classList.remove('light-mode', 'dark-mode');
+        movieContainer.classList.add(themeClass);
+    }
+
+    // Cambiar colores de texto según el tema
+    const titleText = document.querySelector('#titulo_text');
+    const summaryText = document.querySelector('#resumen_text');
+
+    if (titleText) {
+        titleText.classList.remove('light-mode', 'dark-mode');
+        titleText.classList.add(themeClass);
+    }
+
+    if (summaryText) {
+        summaryText.classList.remove('light-mode', 'dark-mode');
+        summaryText.classList.add(themeClass);
+    }
+
+    // Para otros elementos del perfil de la película
+    const detailsItems = document.querySelectorAll('.details-item');
+    detailsItems.forEach(item => {
+        item.classList.remove('light-mode', 'dark-mode');
+        item.classList.add(themeClass);
+    });
+}
+
 // Función para actualizar el icono activo en el menú
 function updateThemeIcon(selectedTheme) {
     themeButtons.forEach(button => {
@@ -122,6 +163,7 @@ function updateThemeIcon(selectedTheme) {
 function initTheme() {
     const savedTheme = localStorage.getItem('selectedTheme') || 'auto';
     changeTheme(savedTheme);
+    mostrarPelicula(); // Asegúrate de mostrar la película después de aplicar el tema
 }
 
 // Agregar eventos a los botones del tema
