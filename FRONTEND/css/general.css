@@ -8,6 +8,7 @@
     padding: 0; /* Eliminar padding */
     box-sizing: border-box; /* Incluir padding y borde en el ancho y alto total */
     font-family: 'Montserrat', sans-serif; /* Fuente Montserrat como principal */
+    transition: background-color 0.3s, color 0.3s;
 }
 
 

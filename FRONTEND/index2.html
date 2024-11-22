@@ -149,7 +149,14 @@
         </section>
 
         <!-- Sección de la grilla de recetas -->
-        <section id="contenedor-peliculas" class="contenedor-peliculas row justify-content-center"></section>
+        <section id="contenedor-peliculas" class="contenedor-peliculas row mt-4 justify-content-center"></section> <!--mt-4 fijarse si dejarlo-->
+    
+        
+        <div class="d-flex justify-content-center mt-4">
+            <nav>
+                <ul class="pagination" id="pagination"></ul>
+            </nav>
+        </div>
     </main>
 
 
@@ -253,7 +260,7 @@
 
     <!-- Inicio del botón de toggle para el modo oscuro -->
     <div data-bs-theme="dark" class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-        <!-- Botón para alternar el tema -->
+        <!-- Botón que despliega las opciones de tema -->
         <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
                 id="bd-theme"
                 type="button"
@@ -262,7 +269,7 @@
                 aria-label="Toggle theme (auto)">
                 <!-- Icono que representa el modo actual -->
             <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
-                <use href="#moon-stars-fill"></use> <!-- Modo oscuro predeterminado -->
+                <use href="#circle-half"></use> <!-- Modo oscuro predeterminado -->
             </svg>
             <!-- Texto oculto para accesibilidad -->
             <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
@@ -277,7 +284,7 @@
                         <use href="#sun-fill"></use>
                     </svg>
                     Light
-                    <svg class="bi ms-auto d-none check-icon" width="1em" height="1em">
+                    <svg class="bi ms-auto d-none check-icon" width="1em" height="1em"> <!-- agregue a cada icono esta clase check-icon-->
                         <use href="#check2"></use>
                     </svg>
                 </button>
@@ -285,7 +292,7 @@
 
             <!-- Opción de tema oscuro -->
             <li>
-                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="dark" aria-pressed="true">
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
                     <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
                         <use href="#moon-stars-fill"></use>
                     </svg>
@@ -298,7 +305,7 @@
 
             <!-- Opción para auto (modo que se ajusta al sistema) -->
             <li>
-                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto" aria-pressed="false">
+                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
                     <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
                         <use href="#circle-half"></use>
                     </svg>

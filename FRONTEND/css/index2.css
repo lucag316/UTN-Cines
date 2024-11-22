@@ -1,12 +1,4 @@
 
-* {
-    margin: 0;
-    padding: 0;
-    font-family: 'Montserrat', sans-serif; /* Fuente principal */
-}
-
-
-
 #carouselExampleControls{
     margin-top: 100px;
 }
@@ -38,20 +30,6 @@
 
 }
 
-#main-inicio {
-    margin: 10px auto;
-    max-width: 1250px;
-}
-
-
-#main-inicio h2 {
-    color: #808080;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid #ffd700;
-    font-size: 2.5rem;
-}    
-
 
 /*################################### SECCION DE FILTROS ######################################################*/
 
@@ -60,10 +38,6 @@
     background-color: #f9f9f9; 
     padding: 20px;
     border-radius: 15px;
-
-}
-
-.contenedor-filtro {
 
 }
 
@@ -141,7 +115,7 @@
 .clasificacion-label,
 .duracion-label {
     font-weight: bold; 
-    color: #333; 
+    /*color: #333;*/    /* lo comento, sino se me pizza con los temas */
     transition: color 0.3s ease;
 }
 
@@ -186,18 +160,204 @@
 
 /* Estilos responsivos para pantallas pequeñas */
 @media (max-width: 576px) { 
-    .card {
 
-    }
 }
 
 
 
 
 
+
+
+/* /////////////////////////////////// 
+
+Estilos para los botones del dark mode
+//////////////////////////////////////////
+*/
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+
+  .b-example-divider {
+    width: 100%;
+    height: 3rem;
+    background-color: rgba(0, 0, 0, .1);
+    border: solid rgba(0, 0, 0, .15);
+    border-width: 1px 0;
+    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+  }
+
+  .b-example-vr {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 100vh;
+  }
+
+  .bi {
+    vertical-align: -.125em;
+    fill: currentColor;
+  }
+
+  .nav-scroller {
+    position: relative;
+    z-index: 2;
+    height: 2.75rem;
+    overflow-y: hidden;
+  }
+
+  .nav-scroller .nav {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    margin-top: -1px;
+    overflow-x: auto;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .btn-bd-primary {
+    --bd-violet-bg: #712cf9;
+    --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+    --bs-btn-font-weight: 600;
+    --bs-btn-color: var(--bs-white);
+    --bs-btn-bg: var(--bd-violet-bg);
+    --bs-btn-border-color: var(--bd-violet-bg);
+    --bs-btn-hover-color: var(--bs-white);
+    --bs-btn-hover-bg: #34205d;
+    --bs-btn-hover-border-color: #6528e0;
+    --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+    --bs-btn-active-color: var(--bs-btn-hover-color);
+    --bs-btn-active-bg: #5a23c8;
+    --bs-btn-active-border-color: #5a23c8;
+  }
+  .bd-mode-toggle {
+    z-index: 1500;
+  }
+
+
 /* ======================================= Tema oscuro =======================================*/
-/* Modo Oscuro */
-body.modo-oscuro {
-    background-color: #121212;
-    color: white;
+body.dark-mode {
+    background-color: #121212; /* Fondo oscuro */
+    color: #e0e0e0; /* Texto claro */
+}
+
+main.dark-mode {
+    background-color: #1e1e1e; /* Fondo más oscuro para contenido principal */
+    color: #e0e0e0;
+}
+
+.card.dark-mode {
+    background-color: #333333; /* Gris oscuro para tarjetas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Sombra oscura */
+    border: 1px solid #444;
+    color: #e0e0e0;
+}
+
+.card-title.dark-mode,
+.duracion-label.dark-mode,
+.genero-label.dark-mode,
+.clasificacion-label.dark-mode {
+    color: #e0e0e0; /* Títulos y etiquetas de la tarjeta en blanco */
+}
+
+
+.contenedor-filtros.dark-mode {
+    background-color: #2a2a2a; /* Fondo más oscuro para filtros */
+    border-color: #444;
+}
+
+.selector-filtro.dark-mode {
+    background-color: #2a2a2a; /* Fondo gris oscuro */
+    color: #e0e0e0; /* Texto claro */
+    border: 1px solid #444;
+}
+
+.selector-filtro.dark-mode:hover,
+.selector-filtro.dark-mode:focus {
+    border: 1px solid #ffd700; /* Amarillo en hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+.search-bar.dark-mode {
+    background-color: #2a2a2a; /* Fondo oscuro */
+    color: #e0e0e0;
+    border: 1px solid #444;
+}
+
+.icon-container.dark-mode {
+    background-color: #555555; /* Gris oscuro */
+}
+
+.contenedor-filtro-label.dark-mode {
+    color: #e0e0e0;
+}
+
+
+/* ======================================= Tema claro =======================================*/
+body.light-mode {
+    background-color: white;
+    color: black;
+}
+
+main.light-mode {
+    background-color: #f8f9fa; /* Fondo claro para contenido principal */
+    color: black;
+}
+
+.card.light-mode {
+    background-color: #ffffff; /* Blanco */
+    color: black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra clara */
+    border: 1px solid #ddd;
+}
+
+.card-title.light-mode,
+.duracion-label.light-mode,
+.genero-label.light-mode,
+.clasificacion-label.light-mode {
+    color: black; /* Títulos y etiquetas de la tarjeta en negro */
+}
+
+.contenedor-filtros.light-mode {
+    background-color: #f9f9f9; /* Fondo claro para filtros */
+    border-color: #ddd;
+}
+
+.selector-filtro.light-mode {
+    background-color: white;
+    color: black;
+    border: 1px solid #ddd;
+}
+
+.selector-filtro.light-mode:hover,
+.selector-filtro.light-mode:focus {
+    border: 1px solid #ffd700; /* Amarillo en hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar.light-mode {
+    background-color: #f8f9fa; /* Fondo claro */
+    color: black;
+    border: 1px solid #ddd;
+}
+
+.icon-container.light-mode {
+    background-color: #919191; /* Gris claro */
+}
+
+.contenedor-filtro-label.light-mode {
+    color: #333333;
 }

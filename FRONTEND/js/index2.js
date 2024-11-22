@@ -12,35 +12,30 @@ let filtroDuracion = document.getElementById("filtro-duracion");
 
 // Función para mostrar las peliculas en la grilla
 function mostrarPeliculas(peliculas) {
-    // Inicializo una variable para almacenar el HTML de las tarjetas
-    let tarjetas = "";
+    let tarjetas = peliculas.map((pelicula, index) => {
+        const themeClass = body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
 
-    // Itero sobre cada pelicula en el array de peliculas
-    peliculas.forEach(pelicula => {
-        // Para cada pelicula, generamos una tarjeta HTML
-        tarjetas += `
+        return `
             <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                <div class="card">
+                <div class="card ${themeClass}" data-index="${index}">
                     <img src="${pelicula.portada}" class="card-img-top" alt="${pelicula.titulo}">
                     <div class="card-body">
                         <h5 class="card-title">${pelicula.titulo}</h5>
                     </div>
                     <div class="card-footer text-muted">
-                        <p class="mb-0"><span class="duracion-label">Duracion:</span> ${pelicula.duracion} min</p>
+                        <p class="mb-0"><span class="duracion-label">Duración:</span> ${pelicula.duracion} min</p>
                     </div>
                 </div>
             </div>
         `;
-    });
+    }).join('');
 
-    // Insertamos las tarjetas generadas en el contenedor de peliculas en el HTML
     contenedorPeliculas.innerHTML = tarjetas;
 
     // Agregar el evento a cada tarjeta
-    const cards = contenedorPeliculas.getElementsByClassName('card');
-    Array.from(cards).forEach((card, index) => {
+    contenedorPeliculas.querySelectorAll('.card').forEach(card => {
         card.addEventListener('click', (event) => {
-            guardarPelicula(event, peliculas[index]);
+            guardarPelicula(event, peliculas[card.getAttribute('data-index')]);
         });
     });
 }
@@ -132,64 +127,122 @@ document.addEventListener("DOMContentLoaded", init);
 
 
 
-// Obtener el botón de toggle del tema y el icono activo
-let themeToggleButton = document.getElementById('bd-theme');
-let themeIcons = document.querySelectorAll('.theme-icon');
-let themeCheckIcons = document.querySelectorAll('.check-icon');
+
+
+// #################### TEMA DINAMICO #######################
+
+// Obtén referencias a los elementos del DOM
+const themeButtons = document.querySelectorAll('[data-bs-theme-value]');
+const body = document.body;
 
 // Función para cambiar el tema
-function cambiarTema(event) {
-    // Obtener el valor del tema seleccionado
-    let valorTema = event.target.getAttribute('data-bs-theme-value');
-    
-    // Establecer el tema en el body
-    document.body.setAttribute('data-bs-theme', valorTema);
+function changeTheme(theme) {
+    body.classList.toggle('dark-mode', theme === 'dark');
+    body.classList.toggle('light-mode', theme === 'light');
 
-    // Cambiar el icono activo según el tema seleccionado
-    themeIcons.forEach(icon => icon.classList.remove('theme-icon-active'));
-    themeCheckIcons.forEach(icon => icon.classList.add('d-none'));
-
-    switch (valorTema) {
-        case 'light':
-            // Establecer el icono de sol (tema claro) como activo
-            document.querySelector('use[href="#sun-fill"]').parentNode.classList.add('theme-icon-active');
-            document.querySelector('use[href="#sun-fill"]').parentNode.nextElementSibling.classList.remove('d-none');
-            break;
-        case 'dark':
-            // Establecer el icono de luna (tema oscuro) como activo
-            document.querySelector('use[href="#moon-stars-fill"]').parentNode.classList.add('theme-icon-active');
-            document.querySelector('use[href="#moon-stars-fill"]').parentNode.nextElementSibling.classList.remove('d-none');
-            break;
-        case 'auto':
-            // Establecer el icono de medio círculo (modo auto) como activo
-            document.querySelector('use[href="#circle-half"]').parentNode.classList.add('theme-icon-active');
-            document.querySelector('use[href="#circle-half"]').parentNode.nextElementSibling.classList.remove('d-none');
-            break;
+    if (theme === 'auto') {
+        setAutoTheme();
     }
 
-    // Guardar el tema en localStorage para persistencia
-    localStorage.setItem('theme', valorTema);
+    localStorage.setItem('selectedTheme', theme);
+    updateCardTheme();
+    updateThemeIcon(theme);
 }
 
-// Función para cargar el tema desde localStorage
-function cargarTema() {
-    let temaGuardado = localStorage.getItem('theme');
-    if (temaGuardado) {
-        // Si hay un tema guardado, aplicarlo
-        document.body.setAttribute('data-bs-theme', temaGuardado);
-        
-        // Marcar el icono correspondiente
-        let activeIcon = document.querySelector(`use[href="#${temaGuardado === 'light' ? 'sun-fill' : temaGuardado === 'dark' ? 'moon-stars-fill' : 'circle-half'}"]`);
-        activeIcon.parentNode.classList.add('theme-icon-active');
-        activeIcon.parentNode.nextElementSibling.classList.remove('d-none');
+// Detectar cambios en las preferencias del sistema para el modo automático
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    if (localStorage.getItem('selectedTheme') === 'auto') {
+        setAutoTheme();
     }
-}
-
-// Cargar el tema al inicio
-cargarTema();
-
-// Agregar los event listeners a los botones de cambio de tema
-let botonesTema = document.querySelectorAll('.dropdown-item');
-botonesTema.forEach(boton => {
-    boton.addEventListener('click', cambiarTema);
 });
+
+// Función para manejar el modo automático
+function setAutoTheme() {
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    body.classList.toggle('dark-mode', prefersDarkScheme);
+    body.classList.toggle('light-mode', !prefersDarkScheme);
+    updateCardTheme();
+}
+
+// Función para actualizar las clases de las tarjetas cuando cambia el tema
+function updateCardTheme() {
+    const cards = document.querySelectorAll('.card');
+    const themeClass = body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
+    cards.forEach(card => {
+        card.classList.remove('light-mode', 'dark-mode');
+        card.classList.add(themeClass);
+    });
+}
+
+// Función para actualizar el icono activo en el menú
+function updateThemeIcon(selectedTheme) {
+    themeButtons.forEach(button => {
+        const isActive = button.getAttribute('data-bs-theme-value') === selectedTheme;
+        button.setAttribute('aria-pressed', isActive);
+        const checkIcon = button.querySelector('.check-icon');
+        checkIcon.classList.toggle('d-none', !isActive);
+    });
+}
+
+// Inicialización del tema al cargar la página
+function initTheme() {
+    const savedTheme = localStorage.getItem('selectedTheme') || 'auto';
+    changeTheme(savedTheme);
+}
+
+// Agregar eventos a los botones del tema
+themeButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        changeTheme(button.getAttribute('data-bs-theme-value'));
+    });
+});
+
+// Inicializa el tema cuando el DOM esté completamente cargado
+document.addEventListener('DOMContentLoaded', initTheme);
+
+
+
+// Inicializar tema al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('selectedTheme') || 'auto';
+    changeTheme(savedTheme);
+});
+
+// ==== Paginación ====
+
+// Función para crear la paginación
+function setupPagination(currentPage, totalPages) {
+    const paginationContainer = document.getElementById('pagination');
+    paginationContainer.innerHTML = '';
+
+    const prevButton = `
+        <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+            <a class="page-link" href="#" data-page="${currentPage === 1 ? 0 : currentPage - 1}">Anterior</a>
+        </li>
+    `;
+    paginationContainer.innerHTML += prevButton;
+
+    const numberButton = `
+        <li class="page-item">
+            <a class="page-link" href="#" data-page="${currentPage}">${currentPage}</a>
+        </li>
+    `;
+    paginationContainer.innerHTML += numberButton;
+
+    const nextButton = `
+        <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+            <a class="page-link" href="#" data-page="${currentPage + 1}">Siguiente</a>
+        </li>
+    `;
+    paginationContainer.innerHTML += nextButton;
+
+    paginationContainer.querySelectorAll('.page-link').forEach(button => {
+        button.addEventListener('click', (event) => {
+            event.preventDefault();
+            const page = parseInt(event.target.getAttribute('data-page'));
+            if (!isNaN(page)) {
+                fetchMovies(page);
+            }
+        });
+    });
+}
