@@ -141,6 +141,30 @@
     object-fit: cover; /* Asegura que la imagen se ajuste bien sin distorsionarse  y creo que recorta si es necesario*/
 }
 
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-bar input {
+    border-radius: 20px;
+    padding: 10px 15px;
+    width: 250px;
+    transition: all 0.3s ease;
+}
+
+.search-bar button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#barra-busqueda-boton {
+    border: 1px solid grey;
+}
+
 .icon-container {
     border-radius: 50%; /* Para hacer el círculo */
     background-color: #919191; /* Color de fondo gris */
@@ -291,7 +315,7 @@ main.dark-mode {
 .search-bar.dark-mode {
     background-color: #2a2a2a; /* Fondo oscuro */
     color: #e0e0e0;
-    border: 1px solid #444;
+    /*border: 1px solid #444;*/
 }
 
 .search-bar.dark-mode input {
@@ -308,6 +332,9 @@ main.dark-mode {
     background-color: #666666; /* Gris más oscuro al pasar el mouse */
 }
 
+.search-bar.dark-mode input::placeholder {
+    color: #ffffff; /* Blanco para mejorar contraste en el modo oscuro */
+}
 
 
 /* ======================================= Tema claro =======================================*/
@@ -353,11 +380,25 @@ main.light-mode {
 .search-bar.light-mode {
     background-color: #f8f9fa; /* Fondo claro */
     color: black;
+    /*border: 1px solid #ddd;*/
+}
+
+.search-bar.light-mode input {
+    background-color: #fff;
+    color: black;
     border: 1px solid #ddd;
 }
 
-.icon-container.light-mode {
+.search-bar.light-mode button .icon-container {
     background-color: #919191; /* Gris claro */
+}
+
+.search-bar.light-mode button .icon-container:hover {
+    background-color: #b0b0b0; /* Gris más claro al pasar el mouse */
+}
+
+.search-bar.light-mode input::placeholder {
+    color: #6c757d; /* Gris más suave para el modo claro */
 }
 
 

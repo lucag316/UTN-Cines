@@ -135,6 +135,7 @@ document.addEventListener("DOMContentLoaded", init);
 const themeButtons = document.querySelectorAll('[data-bs-theme-value]');
 const body = document.body;
 const filtros = document.querySelector('.contenedor-filtros');  // Filtros
+// FIJARME SI ACA VA LA BARRA DE BUSQUEDA TAMBIEN
 
 // Función para cambiar el tema
 function changeTheme(theme) {
@@ -149,6 +150,7 @@ function changeTheme(theme) {
     updateCardTheme();
     updateThemeIcon(theme);
     updateFiltersTheme();  // Actualizamos el tema de los filtros
+    updateSearchBarTheme();  // Actualizamos el tema de la barra de búsqueda
 }
 
 // Detectar cambios en las preferencias del sistema para el modo automático
@@ -165,6 +167,7 @@ function setAutoTheme() {
     body.classList.toggle('light-mode', !prefersDarkScheme);
     updateCardTheme();
     updateFiltersTheme();  // Actualizamos el tema de los filtros
+    updateSearchBarTheme();  // Actualizamos el tema de la barra de búsqueda
 }
 
 // Función para actualizar las clases de las tarjetas cuando cambia el tema
@@ -213,6 +216,27 @@ function updateFiltersTheme() {
         selector.classList.remove('light-mode', 'dark-mode');
         selector.classList.add(themeClass);
     });
+}
+
+// Función para actualizar las clases de la barra de búsqueda cuando cambia el tema
+function updateSearchBarTheme() {
+    const themeClass = document.body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
+    
+    // Obtenemos la barra de búsqueda
+    const barraBusqueda = document.getElementById('barra-busqueda');
+    barraBusqueda.classList.remove('light-mode', 'dark-mode');
+    barraBusqueda.classList.add(themeClass);
+
+    // Obtenemos el icono de la lupa y cambiamos su clase según el tema
+    const iconContainer = barraBusqueda.querySelector('.icon-container');
+    const inputSearch = barraBusqueda.querySelector('input');
+    
+    // Cambiamos las clases de los elementos dentro de la barra de búsqueda
+    iconContainer.classList.remove('light-mode', 'dark-mode');
+    iconContainer.classList.add(themeClass);
+    
+    inputSearch.classList.remove('light-mode', 'dark-mode');
+    inputSearch.classList.add(themeClass);
 }
 
 // Función para actualizar el icono activo en el menú
