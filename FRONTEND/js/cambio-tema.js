@@ -53,6 +53,7 @@ function updateCardTheme() {
         // Actualizar el color de texto y otros elementos dentro de la tarjeta
         const cardTitle = card.querySelector('.card-title');
         const duracionLabel = card.querySelector('.duracion-label');
+        const duracionMinutos = card.querySelector('.duracion-minutos');
 
         // Asegurarse de que las clases de los elementos también cambien
         if (cardTitle) {
@@ -63,6 +64,10 @@ function updateCardTheme() {
         if (duracionLabel) {
             duracionLabel.classList.remove('light-mode', 'dark-mode');
             duracionLabel.classList.add(themeClass);
+        }
+        if (duracionMinutos) {
+            duracionMinutos.classList.remove('light-mode', 'dark-mode');
+            duracionMinutos.classList.add(themeClass);
         }
     });
 }

@@ -265,6 +265,10 @@ main.dark-mode {
     color: #e0e0e0; /* Títulos y etiquetas de la tarjeta en blanco */
 }
 
+.duracion-minutos.dark-mode {
+    color: #e0e0e0; /* Blanco o un color claro adecuado */
+}
+
 .dark-mode .contenedor-filtros  {
     background-color: #2a2a2a; /* Fondo más oscuro para filtros */
     border-color: #444;
@@ -325,6 +329,7 @@ main.light-mode {
 
 .card-title.light-mode,
 .duracion-label.light-mode,
+.duracion-minutos.light-mode,
 .genero-label.light-mode,
 .clasificacion-label.light-mode {
     color: black; /* Títulos y etiquetas de la tarjeta en negro */

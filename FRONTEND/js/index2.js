@@ -9,6 +9,7 @@ let todasLasPeliculas = []; // almacenamos todas las peliculas aca
 let filtroGenero = document.getElementById("filtro-genero");
 let filtroClasificacion = document.getElementById("filtro-clasificacion");
 let filtroDuracion = document.getElementById("filtro-duracion");
+let filtroAno = document.getElementById("filtro-ano");
 
 // Función para mostrar las peliculas en la grilla
 function mostrarPeliculas(peliculas) {
@@ -23,7 +24,10 @@ function mostrarPeliculas(peliculas) {
                         <h5 class="card-title ${themeClass}">${pelicula.titulo}</h5>
                     </div>
                     <div class="card-footer text-muted">
-                        <p class="mb-0"><span class="duracion-label ${themeClass}">Duración:</span> ${pelicula.duracion} min</p>
+                        <p class="mb-0">
+                            <span class="duracion-label ${themeClass}">Duración:</span>
+                            <span class="duracion-minutos ${themeClass}">${pelicula.duracion} min</span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -71,13 +75,21 @@ function filtrarPeliculas() {
     let generoSeleccionado = filtroGenero.value;  // Obtener el valor del filtro de género
     let clasificacionSeleccionada = filtroClasificacion.value;  // Obtener el valor del filtro de clasificación
     let duracionSeleccionada = filtroDuracion.value;  // Obtener el valor del filtro de duración
+    let anoSeleccionado = filtroAno.value;  // Obtener el valor del filtro de año
     
     // Filtrar las peliculas según los valores de los filtros
     let peliculasFiltradas = todasLasPeliculas.filter(pelicula => {
-        let generoCoincide = generoSeleccionado === "todos" || pelicula.genero.toLowerCase() === generoSeleccionado;
-        let clasificacionCoincide = clasificacionSeleccionada === "todos" || pelicula.clasificacion.toLowerCase() === clasificacionSeleccionada;
+        // Filtrar por género: si el género seleccionado es 'todos', no filtrar por género
+        let generoCoincide = generoSeleccionado === "todos" || pelicula.generos.some(genero => genero.toLowerCase() === generoSeleccionado.toLowerCase());
 
-        return generoCoincide && clasificacionCoincide;
+        // Filtrar por clasificación: si la clasificación seleccionada es 'todos', no filtrar por clasificación
+        let clasificacionCoincide = clasificacionSeleccionada === "todos" || pelicula.clasificacion.toLowerCase() === clasificacionSeleccionada.toLowerCase();
+
+        let anoCoincide = anoSeleccionado === "todos" || 
+                        pelicula.año.toString() === anoSeleccionado ||
+                        (anoSeleccionado === "mas-nueva" || anoSeleccionado === "mas-vieja");
+
+        return generoCoincide && clasificacionCoincide && anoCoincide;
 
     });
 
@@ -87,16 +99,28 @@ function filtrarPeliculas() {
         ordenarPorDuracion(peliculasFiltradas, duracionSeleccionada);
     }
 
+    // Ordenar las películas por Año
+    ordenarPorAno(peliculasFiltradas, anoSeleccionado);
+
     // Mostrar las recetas filtradas y ordenadas (si corresponde)
     mostrarPeliculas(peliculasFiltradas);
 }
 
 // Función para ordenar las recetas por tiempo
 function ordenarPorDuracion(peliculas, duracionSeleccionada) {
-    if (duracionSeleccionada === "mayor-tiempo") {
-        peliculas.sort((a, b) => b.duracion - a.duracion); // Ordenar de mayor a menor tiempo
-    } else if (duracionSeleccionada === "menor-tiempo") {
-        peliculas.sort((a, b) => a.duracion - b.duracion); // Ordenar de menor a mayor tiempo
+    if (duracionSeleccionada === "mayor-duracion") {
+        peliculas.sort((a, b) => b.duracion - a.duracion); // Ordenar de mayor a menor duración
+    } else if (duracionSeleccionada === "menor-duracion") {
+        peliculas.sort((a, b) => a.duracion - b.duracion); // Ordenar de menor a mayor duración
+    }
+}
+
+// Función para ordenar por Año (según la opción seleccionada)
+function ordenarPorAno(peliculas, anoSeleccionado) {
+    if (anoSeleccionado === "mas-nueva") {
+        peliculas.sort((a, b) => b.año - a.año);  // Ordenar de más nueva a más vieja
+    } else if (anoSeleccionado === "mas-vieja") {
+        peliculas.sort((a, b) => a.año - b.año);  // Ordenar de más vieja a más nueva
     }
 }
 
@@ -116,6 +140,7 @@ function init() {
 filtroGenero.addEventListener("change", filtrarPeliculas);
 filtroClasificacion.addEventListener("change", filtrarPeliculas);
 filtroDuracion.addEventListener("change", filtrarPeliculas);
+filtroAno.addEventListener("change", filtrarPeliculas);
 
 // Agregamos el evento keyup a la barra de búsqueda
 barraBusquedaInput.addEventListener("keyup", filtrarPeliculasBusqueda);
