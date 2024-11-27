@@ -7,9 +7,10 @@ let todasLasPeliculas = []; // almacenamos todas las peliculas aca
 
 // Obtener referencias a los selectores de filtro
 let filtroGenero = document.getElementById("filtro-genero");
-let filtroClasificacion = document.getElementById("filtro-clasificacion");
 let filtroDuracion = document.getElementById("filtro-duracion");
 let filtroAno = document.getElementById("filtro-ano");
+let filtroRating = document.getElementById("filtro-rating");
+let filtroPais = document.getElementById("filtro-pais");
 
 // Función para mostrar las peliculas en la grilla
 function mostrarPeliculas(peliculas) {
@@ -73,23 +74,27 @@ function filtrarPeliculasBusqueda() {
 // Función para filtrar peliculas según los filtros seleccionados
 function filtrarPeliculas() {
     let generoSeleccionado = filtroGenero.value;  // Obtener el valor del filtro de género
-    let clasificacionSeleccionada = filtroClasificacion.value;  // Obtener el valor del filtro de clasificación
     let duracionSeleccionada = filtroDuracion.value;  // Obtener el valor del filtro de duración
     let anoSeleccionado = filtroAno.value;  // Obtener el valor del filtro de año
+    let ratingSeleccionado = filtroRating.value; // Obtener el valor del filtro de rating
+    let paisSeleccionado = filtroPais.value; // Obtener el valor del filtro de país
     
     // Filtrar las peliculas según los valores de los filtros
     let peliculasFiltradas = todasLasPeliculas.filter(pelicula => {
         // Filtrar por género: si el género seleccionado es 'todos', no filtrar por género
         let generoCoincide = generoSeleccionado === "todos" || pelicula.generos.some(genero => genero.toLowerCase() === generoSeleccionado.toLowerCase());
 
-        // Filtrar por clasificación: si la clasificación seleccionada es 'todos', no filtrar por clasificación
-        let clasificacionCoincide = clasificacionSeleccionada === "todos" || pelicula.clasificacion.toLowerCase() === clasificacionSeleccionada.toLowerCase();
-
         let anoCoincide = anoSeleccionado === "todos" || 
                         pelicula.año.toString() === anoSeleccionado ||
                         (anoSeleccionado === "mas-nueva" || anoSeleccionado === "mas-vieja");
 
-        return generoCoincide && clasificacionCoincide && anoCoincide;
+        // Filtrar por rating
+        let ratingCoincide = ratingSeleccionado === "todos" || (ratingSeleccionado === "mayor-rating" && pelicula.rating) || (ratingSeleccionado === "menor-rating" && pelicula.rating);
+
+        // Filtrar por país
+        let paisCoincide = paisSeleccionado === "todos" || pelicula.pais.toLowerCase() === paisSeleccionado.toLowerCase();
+        //console.log('Pais seleccionado:', paisSeleccionado, 'Pais de la pelicula:', pelicula.pais); // Verifica ambos valores
+        return generoCoincide  && anoCoincide && ratingCoincide && paisCoincide;
 
     });
 
@@ -101,6 +106,9 @@ function filtrarPeliculas() {
 
     // Ordenar las películas por Año
     ordenarPorAno(peliculasFiltradas, anoSeleccionado);
+
+    // Ordenar las películas por Rating
+    ordenarPorRating(peliculasFiltradas, ratingSeleccionado);
 
     // Mostrar las recetas filtradas y ordenadas (si corresponde)
     mostrarPeliculas(peliculasFiltradas);
@@ -124,6 +132,15 @@ function ordenarPorAno(peliculas, anoSeleccionado) {
     }
 }
 
+// Función para ordenar las películas por Rating
+function ordenarPorRating(peliculas, ratingSeleccionado) {
+    if (ratingSeleccionado === "mayor-rating") {
+        peliculas.sort((a, b) => b.rating - a.rating); // Ordenar de mayor a menor rating
+    } else if (ratingSeleccionado === "menor-rating") {
+        peliculas.sort((a, b) => a.rating - b.rating); // Ordenar de menor a mayor rating
+    }
+}
+
 
 // Función inicial para cargar y mostrar las recetas desde un archivo JSON
 function init() {
@@ -138,9 +155,10 @@ function init() {
 
 // Agregar eventos de cambio a cada filtro
 filtroGenero.addEventListener("change", filtrarPeliculas);
-filtroClasificacion.addEventListener("change", filtrarPeliculas);
 filtroDuracion.addEventListener("change", filtrarPeliculas);
 filtroAno.addEventListener("change", filtrarPeliculas);
+filtroRating.addEventListener('change', filtrarPeliculas);
+filtroPais.addEventListener('change', filtrarPeliculas);
 
 // Agregamos el evento keyup a la barra de búsqueda
 barraBusquedaInput.addEventListener("keyup", filtrarPeliculasBusqueda);

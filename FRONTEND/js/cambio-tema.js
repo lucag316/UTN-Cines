@@ -36,9 +36,11 @@ function setAutoTheme() {
     body.classList.toggle('dark-mode', prefersDarkScheme);
     body.classList.toggle('light-mode', !prefersDarkScheme);
     updateCardTheme();
-    updateFiltersTheme();  // Actualizamos el tema de los filtros
-    updateSearchBarTheme();  // Actualizamos el tema de la barra de búsqueda
-    updateMovieProfileTheme(); // Actualizamos el tema en el perfil de la película
+    if(filtros){
+        updateFiltersTheme();  // Actualizamos el tema de los filtros
+        updateSearchBarTheme();  // Actualizamos el tema de la barra de búsqueda
+        updateMovieProfileTheme(); // Actualizamos el tema en el perfil de la película
+    }
 }
 
 // Función para actualizar las clases de las tarjetas cuando cambia el tema
@@ -75,23 +77,25 @@ function updateCardTheme() {
 // Función para actualizar las clases de los filtros cuando cambia el tema
 function updateFiltersTheme() {
     const themeClass = body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
-    
-    filtros.classList.remove('light-mode', 'dark-mode');
-    filtros.classList.add(themeClass);
 
-    // Cambiar las clases de los elementos dentro de los filtros
-    const filterLabels = document.querySelectorAll('.contenedor-filtro-label');
-    const filterSelectors = document.querySelectorAll('.selector-filtro');
+    if (filtros) {
+        filtros.classList.remove('light-mode', 'dark-mode');
+        filtros.classList.add(themeClass);
 
-    filterLabels.forEach(label => {
-        label.classList.remove('light-mode', 'dark-mode');
-        label.classList.add(themeClass);
-    });
+        // Cambiar las clases de los elementos dentro de los filtros
+        const filterLabels = document.querySelectorAll('.contenedor-filtro-label');
+        const filterSelectors = document.querySelectorAll('.selector-filtro');
 
-    filterSelectors.forEach(selector => {
-        selector.classList.remove('light-mode', 'dark-mode');
-        selector.classList.add(themeClass);
-    });
+        filterLabels.forEach(label => {
+            label.classList.remove('light-mode', 'dark-mode');
+            label.classList.add(themeClass);
+        });
+
+        filterSelectors.forEach(selector => {
+            selector.classList.remove('light-mode', 'dark-mode');
+            selector.classList.add(themeClass);
+        });
+    }
 }
 
 // Función para actualizar las clases de la barra de búsqueda cuando cambia el tema
@@ -168,7 +172,13 @@ function updateThemeIcon(selectedTheme) {
 function initTheme() {
     const savedTheme = localStorage.getItem('selectedTheme') || 'auto';
     changeTheme(savedTheme);
-    mostrarPelicula(); // Asegúrate de mostrar la película después de aplicar el tema
+    
+    // Asegúrate de que mostrarPelicula esté definido
+    if (typeof mostrarPelicula === 'function') {
+        mostrarPelicula();
+    } else {
+        console.error('mostrarPelicula no está definido.');
+    }
 }
 
 // Agregar eventos a los botones del tema

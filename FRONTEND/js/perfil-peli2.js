@@ -7,14 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
     changeTheme(temaGuardado);  // La misma función que usas en la página principal
 });
 
-
-
-
 /**
  * Función para mostrar la pelicula seleccionada en la página.
  * Obtiene la pelicula desde localStorage y actualiza el contenido del HTML.
  */
-function mostrarPelicula () {
+window.mostrarPelicula = function mostrarPelicula () {
     // Obtener la pelicula guardada en localStorage
     const peliculaJSON = localStorage.getItem('peliculaSeleccionada');
 

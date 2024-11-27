@@ -208,19 +208,34 @@
                 </select>
             </div>
 
-            <!-- Filtro de Clasificación -->
+            <!-- Filtro de Rating -->
             <div class="contenedor-filtro col-md-3 mb-2 d-flex flex-column align-items-center">
-                <label for="filtro-clasificacion" class="contenedor-filtro-label text-center">Clasificacion</label>
-                <select class="selector-filtro" id="filtro-clasificacion">
+                <label for="filtro-rating" class="contenedor-filtro-label text-center">Rating</label>
+                <select class="selector-filtro" id="filtro-rating">
                     <option value="todos">Todos</option>
-                    <option value="+13">+13</option>
-                    <option value="+16">+16</option>
-                    <option value="+18">+18</option>
-
+                    <option value="mayor-rating">Mayor Rating</option>
+                    <option value="menor-rating">Menor Rating</option>
                 </select>
             </div>
 
-            
+            <!-- Filtro de País -->
+            <div class="contenedor-filtro col-md-3 mb-2 d-flex flex-column align-items-center">
+                <label for="filtro-pais" class="contenedor-filtro-label text-center">País</label>
+                <select class="selector-filtro" id="filtro-pais">
+                    <option value="todos">Todos</option>
+                    <option value="argentina">Argentina</option>
+                    <option value="mexico">México</option>
+                    <option value="estados-unidos">Estados Unidos</option>
+                    <option value="Reino Unido">Reino Unido</option>
+                    <option value="francia">Francia</option>
+                    <option value="españa">España</option>
+                    <option value="italia">Italia</option>
+                    <option value="alemania">Alemania</option>
+                    <option value="canada">Canadá</option>
+                    <option value="japon">Japón</option>
+                    <option value="Nueva Zelanda">Nueva Zelanda</option>
+                </select>
+            </div>
 
             <!-- Barra de búsqueda a la derecha -->
             <form id="barra-busqueda" class="d-flex search-bar me-3" role="search">
@@ -410,9 +425,9 @@
 
 
 
-    <script src="js/cambio-tema.js"></script>
-    <script src="js/index2.js"></script>
+    <script src="js/index2.js" defer></script>
     <script src="js/peliculasService.js"></script>
+    <script src="js/cambio-tema.js" defer></script>
 </body>
 </html>
 
