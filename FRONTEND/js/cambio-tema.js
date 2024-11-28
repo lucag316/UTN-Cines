@@ -118,10 +118,14 @@ function updateFiltersTheme() {
 
 // Función para actualizar el tema de la barra de búsqueda cuando cambia el tema
 function updateSearchBarTheme() {
+    // Verificamos si el elemento existe en el DOM antes de intentar modificarlo
+    const barraBusqueda = document.getElementById('barra-busqueda');
+     if (!barraBusqueda) return; // Si no existe, terminamos la función sin hacer nada
+
     const themeClass = document.body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
     
     // Obtenemos el elemento de la barra de búsqueda
-    const barraBusqueda = document.getElementById('barra-busqueda');
+
     barraBusqueda.classList.remove('light-mode', 'dark-mode');
     barraBusqueda.classList.add(themeClass);
 
@@ -140,6 +144,11 @@ function updateSearchBarTheme() {
 
 // Función para actualizar el tema del perfil de la película (si estamos en esa página)
 function updateMovieProfileTheme() {
+
+    // Verificamos si estamos en la página de perfil de la película y si el contenedor de la película existe
+    const movieContainer = document.querySelector('.container-movie');
+    if (!movieContainer) return; // Si no existe, terminamos la función sin hacer nada
+
     const themeClass = body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
 
     // Cambiamos el fondo de la página, incluyendo el elemento HTML y body
@@ -150,7 +159,7 @@ function updateMovieProfileTheme() {
     body.classList.add(themeClass);
 
     // Cambiamos el fondo del contenedor de la película
-    const movieContainer = document.querySelector('.container-movie');
+
     if (movieContainer) {
         movieContainer.classList.remove('light-mode', 'dark-mode');
         movieContainer.classList.add(themeClass);
@@ -198,7 +207,7 @@ function initTheme() {
     changeTheme(savedTheme);
 
     // Verificamos si estamos en la página de perfil de película
-    if (window.location.pathname.includes("perfil")) {
+    if (window.location.pathname.includes("perfil_peli2")) {
         // Solo ejecutamos las funciones relacionadas al perfil si estamos en esa página
         if (typeof mostrarPelicula === 'function') {
             mostrarPelicula();
