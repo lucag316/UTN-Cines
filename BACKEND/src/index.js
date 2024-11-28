@@ -8,10 +8,10 @@ const cors = require("cors");
 // CONFIGURACION INICIAL
 const app = express();
 
-app.set("port", 8080);
+app.set("port", 8080); // poner PORT en mayuscula
 
 app.listen(app.get("port"))
-console.log("Escuchando comunicaciones al puerto " + app.get("port"));
+console.log("Escuchando comunicaciones al puerto " + app.get("port")); // usar bactics en vez de comillas
 
 
 // MIDDLEWARES
