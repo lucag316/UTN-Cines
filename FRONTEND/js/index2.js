@@ -7,8 +7,10 @@ let todasLasPeliculas = []; // almacenamos todas las peliculas aca
 
 // Obtener referencias a los selectores de filtro
 let filtroGenero = document.getElementById("filtro-genero");
-let filtroClasificacion = document.getElementById("filtro-clasificacion");
 let filtroDuracion = document.getElementById("filtro-duracion");
+let filtroAno = document.getElementById("filtro-ano");
+let filtroRating = document.getElementById("filtro-rating");
+let filtroPais = document.getElementById("filtro-pais");
 
 // Función para mostrar las peliculas en la grilla
 function mostrarPeliculas(peliculas) {
@@ -23,7 +25,10 @@ function mostrarPeliculas(peliculas) {
                         <h5 class="card-title ${themeClass}">${pelicula.titulo}</h5>
                     </div>
                     <div class="card-footer text-muted">
-                        <p class="mb-0"><span class="duracion-label ${themeClass}">Duración:</span> ${pelicula.duracion} min</p>
+                        <p class="mb-0">
+                            <span class="duracion-label ${themeClass}">Duración:</span>
+                            <span class="duracion-minutos ${themeClass}">${pelicula.duracion} min</span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -69,15 +74,27 @@ function filtrarPeliculasBusqueda() {
 // Función para filtrar peliculas según los filtros seleccionados
 function filtrarPeliculas() {
     let generoSeleccionado = filtroGenero.value;  // Obtener el valor del filtro de género
-    let clasificacionSeleccionada = filtroClasificacion.value;  // Obtener el valor del filtro de clasificación
     let duracionSeleccionada = filtroDuracion.value;  // Obtener el valor del filtro de duración
+    let anoSeleccionado = filtroAno.value;  // Obtener el valor del filtro de año
+    let ratingSeleccionado = filtroRating.value; // Obtener el valor del filtro de rating
+    let paisSeleccionado = filtroPais.value; // Obtener el valor del filtro de país
     
     // Filtrar las peliculas según los valores de los filtros
     let peliculasFiltradas = todasLasPeliculas.filter(pelicula => {
-        let generoCoincide = generoSeleccionado === "todos" || pelicula.genero.toLowerCase() === generoSeleccionado;
-        let clasificacionCoincide = clasificacionSeleccionada === "todos" || pelicula.clasificacion.toLowerCase() === clasificacionSeleccionada;
+        // Filtrar por género: si el género seleccionado es 'todos', no filtrar por género
+        let generoCoincide = generoSeleccionado === "todos" || pelicula.generos.some(genero => genero.toLowerCase() === generoSeleccionado.toLowerCase());
 
-        return generoCoincide && clasificacionCoincide;
+        let anoCoincide = anoSeleccionado === "todos" || 
+                        pelicula.año.toString() === anoSeleccionado ||
+                        (anoSeleccionado === "mas-nueva" || anoSeleccionado === "mas-vieja");
+
+        // Filtrar por rating
+        let ratingCoincide = ratingSeleccionado === "todos" || (ratingSeleccionado === "mayor-rating" && pelicula.rating) || (ratingSeleccionado === "menor-rating" && pelicula.rating);
+
+        // Filtrar por país
+        let paisCoincide = paisSeleccionado === "todos" || pelicula.pais.toLowerCase() === paisSeleccionado.toLowerCase();
+        //console.log('Pais seleccionado:', paisSeleccionado, 'Pais de la pelicula:', pelicula.pais); // Verifica ambos valores
+        return generoCoincide  && anoCoincide && ratingCoincide && paisCoincide;
 
     });
 
@@ -87,16 +104,40 @@ function filtrarPeliculas() {
         ordenarPorDuracion(peliculasFiltradas, duracionSeleccionada);
     }
 
+    // Ordenar las películas por Año
+    ordenarPorAno(peliculasFiltradas, anoSeleccionado);
+
+    // Ordenar las películas por Rating
+    ordenarPorRating(peliculasFiltradas, ratingSeleccionado);
+
     // Mostrar las recetas filtradas y ordenadas (si corresponde)
     mostrarPeliculas(peliculasFiltradas);
 }
 
 // Función para ordenar las recetas por tiempo
 function ordenarPorDuracion(peliculas, duracionSeleccionada) {
-    if (duracionSeleccionada === "mayor-tiempo") {
-        peliculas.sort((a, b) => b.duracion - a.duracion); // Ordenar de mayor a menor tiempo
-    } else if (duracionSeleccionada === "menor-tiempo") {
-        peliculas.sort((a, b) => a.duracion - b.duracion); // Ordenar de menor a mayor tiempo
+    if (duracionSeleccionada === "mayor-duracion") {
+        peliculas.sort((a, b) => b.duracion - a.duracion); // Ordenar de mayor a menor duración
+    } else if (duracionSeleccionada === "menor-duracion") {
+        peliculas.sort((a, b) => a.duracion - b.duracion); // Ordenar de menor a mayor duración
+    }
+}
+
+// Función para ordenar por Año (según la opción seleccionada)
+function ordenarPorAno(peliculas, anoSeleccionado) {
+    if (anoSeleccionado === "mas-nueva") {
+        peliculas.sort((a, b) => b.año - a.año);  // Ordenar de más nueva a más vieja
+    } else if (anoSeleccionado === "mas-vieja") {
+        peliculas.sort((a, b) => a.año - b.año);  // Ordenar de más vieja a más nueva
+    }
+}
+
+// Función para ordenar las películas por Rating
+function ordenarPorRating(peliculas, ratingSeleccionado) {
+    if (ratingSeleccionado === "mayor-rating") {
+        peliculas.sort((a, b) => b.rating - a.rating); // Ordenar de mayor a menor rating
+    } else if (ratingSeleccionado === "menor-rating") {
+        peliculas.sort((a, b) => a.rating - b.rating); // Ordenar de menor a mayor rating
     }
 }
 
@@ -114,8 +155,10 @@ function init() {
 
 // Agregar eventos de cambio a cada filtro
 filtroGenero.addEventListener("change", filtrarPeliculas);
-filtroClasificacion.addEventListener("change", filtrarPeliculas);
 filtroDuracion.addEventListener("change", filtrarPeliculas);
+filtroAno.addEventListener("change", filtrarPeliculas);
+filtroRating.addEventListener('change', filtrarPeliculas);
+filtroPais.addEventListener('change', filtrarPeliculas);
 
 // Agregamos el evento keyup a la barra de búsqueda
 barraBusquedaInput.addEventListener("keyup", filtrarPeliculasBusqueda);
