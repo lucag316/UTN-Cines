@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Metadata y configuración básica -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promociones</title>
+
+    <!-- Favicon del sitio -->
+    <link rel="shortcut icon" href="../icons/favicon1.png" type="image/x-icon">
+
+    <!-- Bootstrap CSS para estilos base y componentes responsivos -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Estilos personalizados del sitio -->
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/promociones.css">
+
+    <!-- Tipografía -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Barra de Navegación -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <!-- Logo de la marca con enlace a la página principal -->
+            <a class="navbar-brand" href="../index.html">
+                <img src="..//images/marca.png" class="nav_img" alt="Logo de la marca">
+            </a>
+
+            <!-- Botón para el menú desplegable en dispositivos móviles -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Enlaces del menú de navegación -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Películas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="promociones.html">Promociones</a>
+                    </li>
+                    <!-- Elemento de navegación que contiene un menú desplegable -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Usuario
+                        </a>
+                        <!-- Menú desplegable -->
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="perfil_usuario.html">Perfil</a></li>
+                            <li><a class="dropdown-item" href="login.html">Login</a></li>
+                            <li><a class="dropdown-item" href="admin.html">Admin</a></li>
+                            <!-- Opción comentada para registro (actualmente deshabilitada)
+                            <li><a class="dropdown-item" href="html/register.html">Registrarme</a></li> -->
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Título principal de la página -->
+    <header id="header_promos">
+        <h1>Promociones</h1>
+    </header>
+
+    <!-- El contenedor de los carruseles-->
+    <div class="carousel-container">
+
+        <!-- Filtro para carrusel 1 -->
+        <h3>Promociones de Descuento</h3>
+        <!-- carrusel 1 -->
+        <div class="carousel" id="carousel-1">
+
+            <!-- flecha izquierda -->
+            <div class="arrow left" onclick="moveCarousel('carousel-1', 'left')">
+                &#9664;
+            </div>
+
+            <div class="carousel-track">
+                <div class="carousel-item"><p><span> Martes de Cine:</span> Entradas a mitad de precio todos los martes.</p></div>
+                <div class="carousel-item"><p><span>Promoción de Grupo:</span> Compra 4 entradas y recibe la 5ª gratis. Ideal para salir con amigos.</p></div>
+                <div class="carousel-item"><p><span>Descuento del 20% en Entradas de Estreno:</span> Solo este fin de semana, disfruta de un 20% de descuento en entradas para las nuevas películas.</p></div>
+                <div class="carousel-item"><p><span>Descuento por Anticipado:</span> Compra tu entrada en línea con 3 días de anticipación y obtén un 10% de descuento.</p></div>
+                <div class="carousel-item"><p><span>Noche de Clásicos:</span> 2x1 en entradas para las películas clásicas los jueves.</p></div>
+                <div class="carousel-item"><p><span>Descuento Estudiantil:</span> Muestra tu credencial y obtén un 25% de descuento en cualquier entrada.</p></div>
+                <div class="carousel-item"><p><span>Descuento para Jubilados:</span> 50% de descuento en entradas para personas mayores de 65 años.</p></div>
+                <div class="carousel-item"><p><span>Descuento en Películas Animadas:</span> 10% de descuento en películas animadas para niños los fines de semana.</p></div>
+                <div class="carousel-item"><p><span>Promo de Cumpleaños:</span> Si vienes el día de tu cumpleaños, obtienes una entrada a mitad de precio.</p></div>
+                <div class="carousel-item"><p><span>Descuento por Hora Feliz:</span> Entre las 4 y 6 p.m., 10% de descuento en todas las entradas.</p></div>
+            </div>
+
+            <!-- flecha derecha -->
+            <div class="arrow right" onclick="moveCarousel('carousel-1', 'right')">
+                &#9654;
+            </div>
+        </div>
+
+        <!-- Filtro para carrusel 2 -->
+        <h3>Promociones de 2x1</h3>
+        <!-- carrusel 2 -->
+        <div class="carousel" id="carousel-2">
+
+            <!-- flecha izquierda -->
+            <div class="arrow left" onclick="moveCarousel('carousel-2', 'left')">
+                &#9664;
+            </div>
+
+            <div class="carousel-track">
+                <div class="carousel-item"><p><span>Lunes de Doble Diversión:</span> Compra una entrada y recibe otra gratis para cualquier función los lunes.</p></div>
+                <div class="carousel-item"><p><span>2x1 en Parejas:</span> Ven con tu pareja los miércoles y disfruta de 2 entradas por el precio de 1.</p></div>
+                <div class="carousel-item"><p><span>Noche de Amistades:</span> 2x1 en entradas para grupos de amigos (mínimo 2 personas) los viernes.</p></div>
+                <div class="carousel-item"><p><span>2x1 en Películas de Terror:</span> Los jueves en películas de terror, compra una entrada y la segunda es gratis.</p></div>
+                <div class="carousel-item"><p><span>Martes de 2x1:</span> En cualquier función de películas de estreno, obtén 2 entradas por el precio de 1 los martes.</p></div>
+                <div class="carousel-item"><p><span>2x1 en Animación Familiar:</span> Los fines de semana, 2 entradas al precio de 1 para películas de animación.</p></div>
+                <div class="carousel-item"><p><span>2x1 en Funciones de Medianoche:</span> Viernes y sábados, obtén 2 entradas por el precio de 1 para las funciones de medianoche.</p></div>
+                <div class="carousel-item"><p><span>2x1 en Entradas VIP:</span> Lunes a jueves, 2 entradas VIP al precio de 1.</p></div>
+                <div class="carousel-item"><p><span>Día de la Amistad:</span> Trae a tu amigo el día de la amistad y reciban 2x1 en cualquier película.</p></div>
+                <div class="carousel-item"><p><span>2x1 en Documentales:</span> Miércoles, compra una entrada para un documental y la segunda es gratis.</p></div>
+            </div>
+
+            <!-- flecha derecha -->
+            <div class="arrow right" onclick="moveCarousel('carousel-2', 'right')">
+                &#9654;
+            </div>
+        </div>
+
+        <!-- Filtro para carrusel 3 -->
+        <h3>Promociones Especiales</h3>
+        <!-- carrusel 3 -->
+        <div class="carousel" id="carousel-3">
+            <!-- flecha izquierda -->
+            <div class="arrow left" onclick="moveCarousel('carousel-3', 'left')">
+                &#9664;
+            </div>
+
+            <div class="carousel-track">
+                <div class="carousel-item"><p><span>Maratón de Películas:</span> Compra entradas para tres películas en el mismo día y obtén palomitas gratis.</p></div>
+                <div class="carousel-item"><p><span>Día del Cine:</span> Un día al mes, todas las entradas a mitad de precio para cualquier película.</p></div>
+                <div class="carousel-item"><p><span>Combo Cine y Cena:</span> Compra una entrada y recibe un 20% de descuento en los restaurantes afiliados.</p></div>
+                <div class="carousel-item"><p><span>Noche Retro:</span> Disfruta de películas clásicas con entradas a mitad de precio y un combo especial de palomitas.</p></div>
+                <div class="carousel-item"><p><span>Maratón de Superhéroes:</span> Un día especial con todas las películas de superhéroes a un precio reducido.</p></div>
+                <div class="carousel-item"><p><span>Día Temático:</span> Todos los domingos, películas de un género específico con combos de alimentos con descuento.</p></div>
+                <div class="carousel-item"><p><span>Promo de Estreno:</span> Compra tu entrada para el estreno de la semana y obtén una bebida gratis.</p></div>
+                <div class="carousel-item"><p><span>Combo Familiar:</span> Compra 4 entradas familiares y recibe un combo grande de palomitas y refrescos gratis.</p></div>
+                <div class="carousel-item"><p><span>Noche de Estrenos:</span> Los jueves por la noche, asiste al estreno y obtén un cupón de descuento para tu próxima visita.</p></div>
+                <div class="carousel-item"><p><span>Semana de Premios:</span> Durante la semana de los Oscar, entradas a precios reducidos y participa en sorteos para ganar premios exclusivos.</p></div>
+            </div>
+
+            <!-- flecha derecha -->
+            <div class="arrow right" onclick="moveCarousel('carousel-3', 'right')">
+                &#9654;
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+    <footer class="footer">
+        <div class="footer-container">
+
+            <!-- Contactanos por (izquierda) -->
+            <div class="footer-container-contacto">
+                <h5>Contactanos por</h5>
+
+                <ul class="footer-items">
+                    <li class="footer-item">
+                        <a href="https://WhatsApp.com" class="footer-link" target="_blank" title="Contactanos por WhatsApp">
+                            <img src="../icons/logo-whatsapp.svg" class="footer-logo" id="footer-logo-whatsapp">
+                        </a>
+                    </li>
+
+                    <li class="footer-item">
+                        <a href="https://Gmail.com" class="footer-link" target="_blank" title="Contactanos por Gmail">
+                            <img src="../icons/logo-gmail.svg" class="footer-logo" id="footer-logo-gmail">
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Enlace de consulta en el centro -->
+                <div class="footer-item-consulta">
+                    <a href="form-consulta.html" class="footer-link-palabra">Consulta</a>
+                </div>
+            </div>
+
+            <!-- Mas Info (centro) -->
+            <div class="footer-container-info">
+                <h5>Mas Info</h5>
+
+                <ul class="footer-items">
+                    <li class="footer-item">
+                        <a class="footer-link-palabra" href="sobre-nosotros.html">Sobre nosotros</a>
+                    </li>
+                    <li class="footer-item">
+                        <a class="footer-link-palabra" href="preguntas-frecuentes.html">Preguntas frecuentes</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Seguinos en redes (derecha) -->
+            <div class="footer-container-redes">
+                <h5>Seguinos en redes</h5>
+
+                <ul class="footer-items">
+                    <li class="footer-item">
+                        <a href="https://Instagram.com" class="footer-link" target="_blank" title="Seguinos en Instagram">
+                            <img src="../icons/logo-instagram.svg" class="footer-logo" id="footer-logo-instagram">
+                        </a>
+                    </li>
+    
+                    <li class="footer-item">
+                        <a href="https://Facebook.com" class="footer-link" target="_blank" title="Seguinos en Facebook">
+                            <img src="../icons/logo-facebook.svg" class="footer-logo" id="footer-logo-facebook">
+                        </a>
+                    </li>
+    
+                    <li class="footer-item">
+                        <a href="https://x.com" class="footer-link" target="_blank" title="Seguinos en X">
+                            <img src="../icons/logo-x.svg" class="footer-logo" id="footer-logo-x">
+                        </a>
+                    </li>
+    
+                    <li class="footer-item">
+                        <a href="https://www.tiktok.com" class="footer-link" target="_blank" title="Seguinos en Tik Tok">
+                            <img src="../icons/logo-tiktok.svg" class="footer-logo" id="footer-logo-tiktok">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="check2" viewBox="0 0 16 16">
+          <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+        </symbol>
+        <symbol id="circle-half" viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+        </symbol>
+        <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+          <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+          <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+        </symbol>
+        <symbol id="sun-fill" viewBox="0 0 16 16">
+          <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </symbol>
+      </svg>
+
+
+ <!-- Inicio Toggle modo dark -->
+ <div data-bs-theme="dark" class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+    <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
+            id="bd-theme"
+            type="button"
+            aria-expanded="false"
+            data-bs-toggle="dropdown"
+            aria-label="Toggle theme (auto)">
+      <svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use href="#circle-half"></use></svg>
+      <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+      <li>
+        <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+          <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#sun-fill"></use></svg>
+          Light
+          <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+          <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
+          Dark
+          <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+          <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#circle-half"></use></svg>
+          Auto
+          <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+        </button>
+      </li>
+    </ul>
+  </div>
+  <!-- Fin Toggle modo dark -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- cargo el archivo js -->
+    <script src="../js/promociones.js"></script>
+
+</body>
+</html>

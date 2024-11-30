@@ -1,0 +1,1873 @@
+{
+    "generos":[
+        {
+            "id": 28,
+            "name": "Acción"
+        },
+        {
+            "id": 12,
+            "name": "Aventura"
+        },
+        {
+            "id": 16,
+            "name": "Animación"
+        },
+        {
+            "id": 35,
+            "name": "Comedia"
+        },
+        {
+            "id": 80,
+            "name": "Crimen"
+        },
+        {
+            "id": 99,
+            "name": "Documental"
+        },
+        {
+            "id": 18,
+            "name": "Drama"
+        },
+        {
+            "id": 10751,
+            "name": "Familia"
+        },
+        {
+            "id": 14,
+            "name": "Fantasía"
+        },
+        {
+            "id": 36,
+            "name": "Historia"
+        },
+        {
+            "id": 27,
+            "name": "Terror"
+        },
+        {
+            "id": 10402,
+            "name": "Música"
+        },
+        {
+            "id": 9648,
+            "name": "Misterio"
+        },
+        {
+            "id": 10749,
+            "name": "Romance"
+        },
+        {
+            "id": 878,
+            "name": "Ciencia ficción"
+        }
+    ],
+    "peliculas":[
+        {
+            "id": 1241982,
+            "titulo": "Vaiana 2",
+            "duracion": 100,
+            "clasificacion": "",
+            "descripcion": "Tras recibir una inesperada llamada de sus antepasados, Vaiana debe viajar a los lejanos mares de Oceanía y adentrarse en peligrosas aguas perdidas para vivir una aventura sin precedentes.",
+            "anio": "2024",
+            "pais": "Canada",
+            "img_url": "https://image.tmdb.org/t/p/w500/f4voSsbPTvaQwicwd1dyxICow6c.jpg",
+            "trailer_url": "",
+            "rating": 7.207,
+            "precio": 0,
+            "eliminado": false,
+            "reparto": [
+                {
+                    "id": 1564846,
+                    "nombre": "Auli'i Cravalho",
+                    "rol": "actor"
+                },
+                {
+                    "id": 18918,
+                    "nombre": "Dwayne Johnson",
+                    "rol": "actor"
+                },
+                {
+                    "id": 4775908,
+                    "nombre": "Hualālai Chung",
+                    "rol": "actor"
+                },
+                {
+                    "id": 1868823,
+                    "nombre": "Rose Matafeo",
+                    "rol": "actor"
+                },
+                {
+                    "id": 55937,
+                    "nombre": "David Fane",
+                    "rol": "actor"
+                },
+                {
+                    "name": "David G. Derrick Jr.",
+                    "id": 4524084,
+                    "rol": "Director"
+                }
+            ],
+            "generos": [
+                {
+                    "id": 16,
+                    "nombre": "Animación"
+                },
+                {
+                    "id": 12,
+                    "nombre": "Aventura"
+                },
+                {
+                    "id": 10751,
+                    "nombre": "Familia"
+                },
+                {
+                    "id": 35,
+                    "nombre": "Comedia"
+                }
+            ],
+            "fecha_estreno": "2024-11-27"
+        },
+        {
+            "id": 912649,
+            "titulo": "Venom: El último baile",
+            "duracion": 109,
+            "clasificacion": "",
+            "descripcion": "Eddie y Venom están a la fuga. Perseguidos por sus sendos mundos y cada vez más cercados, el dúo se ve abocado a tomar una decisión devastadora que hará que caiga el telón sobre el último baile de Venom y Eddie.",
+            "anio": "2024",
+            "pais": "United States of America",
+            "img_url": "https://image.tmdb.org/t/p/w500/b0obWWCLRVRqRzlSK1LSGtADkLM.jpg",
+            "trailer_url": "",
+            "rating": 6.4,
+            "precio": 0,
+            "eliminado": false,
+            "reparto": [
+                {
+                    "id": 2524,
+                    "nombre": "Tom Hardy",
+                    "rol": "actor"
+                },
+                {
+                    "id": 5294,
+                    "nombre": "Chiwetel Ejiofor",
+                    "rol": "actor"
+                },
+                {
+                    "id": 36594,
+                    "nombre": "Juno Temple",
+                    "rol": "actor"
+                },
+                {
+                    "id": 1861573,
+                    "nombre": "Clark Backo",
+                    "rol": "actor"
+                },
+                {
+                    "id": 7026,
+                    "nombre": "Rhys Ifans",
+                    "rol": "actor"
+                },
+                {
+                    "name": "Kelly Marcel",
+                    "id": 940376,
+                    "rol": "Director"
+                }
+            ],
+            "generos": [
+                {
+                    "id": 878,
+                    "nombre": "Ciencia ficción"
+                },
+                {
+                    "id": 28,
+                    "nombre": "Acción"
+                },
+                {
+                    "id": 12,
+                    "nombre": "Aventura"
+                }
+            ],
+            "fecha_estreno": "2024-10-22"
+        },
+        {
+            "id": 1100782,
+            "titulo": "Smile 2",
+            "duracion": 127,
+            "clasificacion": "",
+            "descripcion": "La estrella del pop mundial Skye Riley está a punto de embarcarse en una nueva gira mundial cuando empieza a experimentar una serie de sucesos cada vez más aterradores e inexplicables. Angustiada por la espiral de horrores y la abrumadora presión de la fama, Skye tendrá que enfrentarse a su oscuro pasado para recuperar el control de su vida antes de que sea demasiado tarde. Secuela del exitoso film de terror 'Smile' (2022).",
+            "anio": "2024",
+            "pais": "United States of America",
+            "img_url": "https://image.tmdb.org/t/p/w500/afgd17HTeygOlwZ5aORVvxn4xgf.jpg",
+            "trailer_url": "",
+            "rating": 6.642,
+            "precio": 0,
+            "eliminado": false,
+            "reparto": [
+                {
+                    "id": 240724,
+                    "nombre": "Naomi Scott",
+                    "rol": "actor"
+                },
+                {
+                    "id": 14892,
+                    "nombre": "Rosemarie DeWitt",
+                    "rol": "actor"
+                },
+                {
+                    "id": 1371509,
+                    "nombre": "Lukas Gage",
+                    "rol": "actor"
+                },
+                {
+                    "id": 3535991,
+                    "nombre": "Miles Gutierrez-Riley",
+                    "rol": "actor"
+                },
+                {
+                    "id": 31514,
+                    "nombre": "Peter Jacobson",
+                    "rol": "actor"
+                },
+                {
+                    "name": "Parker Finn",
+                    "id": 2218465,
+                    "rol": "Director"
+                }
+            ],
+            "generos": [
+                {
+                    "id": 27,
+                    "nombre": "Terror"
+                },
+                {
+                    "id": 9648,
+                    "nombre": "Misterio"
+                }
+            ],
+            "fecha_estreno": "2024-10-16"
+        },
+        {
+            "id": 1184918,
+            "titulo": "Robot salvaje",
+            "duracion": 102,
+            "clasificacion": "",
+            "descripcion": "El épico viaje de un robot -la unidad 7134 de Roz,'Roz' para abreviar- que naufraga en una isla deshabitada y debe aprender a adaptarse al duro entorno, entablando gradualmente relaciones con los animales de la isla y convirtiéndose en padre adoptivo de un pequeño ganso huérfano.",
+            "anio": "2024",
+            "pais": "United States of America",
+            "img_url": "https://image.tmdb.org/t/p/w500/a0a7RC01aTa7pOnskgJb3mCD2Ba.jpg",
+            "trailer_url": "",
+            "rating": 8.398,
+            "precio": 0,
+            "eliminado": false,
+            "reparto": [
+                {
+                    "id": 1267329,
+                    "nombre": "Lupita Nyong'o",
+                    "rol": "actor"
+                },
+                {
+                    "id": 1253360,
+                    "nombre": "Pedro Pascal",
+                    "rol": "actor"
+                },
+                {
+                    "id": 1538851,
+                    "nombre": "Kit Connor",
+                    "rol": "actor"
+                },
+                {
+                    "id": 2440,
+                    "nombre": "Bill Nighy",
+                    "rol": "actor"
+                },
+                {
+                    "id": 1381186,
+                    "nombre": "Stephanie Hsu",
+                    "rol": "actor"
+                },
+                {
+                    "name": "Chris Sanders",
+                    "id": 66193,
+                    "rol": "Director"
+                }
+            ],
+            "generos": [
+                {
+                    "id": 16,
+                    "nombre": "Animación"
+                },
+                {
+                    "id": 878,
+                    "nombre": "Ciencia ficción"
+                },
+                {
+                    "id": 10751,
+                    "nombre": "Familia"
+                }
+            ],
+            "fecha_estreno": "2024-09-12"
+        },
+        {
+            "id": 402431,
+            "titulo": "Wicked",
+            "duracion": 161,
+            "clasificacion": "",
+            "descripcion": "Ambientada en la Tierra de Oz, mucho antes de la llegada de Dorothy Gale desde Kansas, la trama abarca los acontecimientos del primer acto del musical de Broadway. Elphaba es una joven incomprendida por su inusual color verde que aún no ha descubierto su verdadero poder. Glinda es una popular joven marcada por sus privilegios y su ambición que aún no ha descubierto su verdadera pasión. Las dos se conocen como estudiantes de la Universidad Shiz, en la fantástica Tierra de Oz, y forjan una insólita pero profunda amistad.",
+            "anio": "2024",
+            "pais": "United States of America",
+            "img_url": "https://image.tmdb.org/t/p/w500/xDGbZ0JJ3mYaGKy4Nzd9Kph6M9L.jpg",
+            "trailer_url": "",
+            "rating": 7.619,
+            "precio": 0,
+            "eliminado": false,
+            "reparto": [
+                {
+                    "id": 1765068,
+                    "nombre": "Cynthia Erivo",
+                    "rol": "actor"
+                },
+                {
+                    "id": 226001,
+                    "nombre": "Ariana Grande",
+                    "rol": "actor"
+                },
+                {
+                    "id": 80860,
+                    "nombre": "Jonathan Bailey",
+                    "rol": "actor"
+                },
+                {
+                    "id": 1620,
+                    "nombre": "Michelle Yeoh",
+                    "rol": "actor"
+                },
+                {
+                    "id": 4785,
+                    "nombre": "Jeff Goldblum",
+                    "rol": "actor"
+                },
+                {
+                    "name": "Jon M. Chu",
+                    "id": 54507,
+                    "rol": "Director"
+                }
+            ],
+            "generos": [
+                {
+                    "id": 18,
+                    "nombre": "Drama"
+                },
+                {
+                    "id": 14,
+                    "nombre": "Fantasía"
+                },
+                {
+                    "id": 10749,
+                    "nombre": "Romance"
+                }
+            ],
+            "fecha_estreno": "2024-11-20"
+        },
+        {
+            "id": 558449,
+            "titulo": "Gladiator II",
+            "duracion": 148,
+            "clasificacion": "",
+            "descripcion": "Años después de presenciar la muerte del admirado héroe Máximo a manos de su tío, Lucio se ve forzado a entrar en el Coliseo tras ser testigo de la conquista de su hogar por parte de los tiránicos emperadores que dirigen Roma con puño de hierro. Con un corazón desbordante de furia y el futuro del imperio en juego, Lucio debe rememorar su pasado en busca de la fuerza y el honor que devuelvan al pueblo la gloria perdida de Roma.",
+            "anio": "2024",
+            "pais": "United States of America",
+            "img_url": "https://image.tmdb.org/t/p/w500/vK1sK1B3WglfgVWPn6Xj4nNsw1q.jpg",
+            "trailer_url": "",
+            "rating": 6.7,
+            "precio": 0,
+            "eliminado": false,
+            "reparto": [
+                {
+                    "id": 2326151,
+                    "nombre": "Paul Mescal",
+                    "rol": "actor"
+                },
+                {
+                    "id": 5292,
+                    "nombre": "Denzel Washington",
+                    "rol": "actor"
+                },
+                {
+                    "id": 1253360,
+                    "nombre": "Pedro Pascal",
+                    "rol": "actor"
+                },
+                {
+                    "id": 935,
+                    "nombre": "Connie Nielsen",
+                    "rol": "actor"
+                },
+                {
+                    "id": 1597365,
+                    "nombre": "Joseph Quinn",
+                    "rol": "actor"
+                },
+                {
+                    "name": "Ridley Scott",
+                    "id": 578,
+                    "rol": "Director"
+                }
+            ],
+            "generos": [
+                {
+                    "id": 28,
+                    "nombre": "Acción"
+                },
+                {
+                    "id": 12,
+                    "nombre": "Aventura"
+                }
+            ],
+            "fecha_estreno": "2024-11-13"
+        },
+        {
+            "id": 592983,
+            "titulo": "Hechizados",
+            "duracion": 110,
+            "clasificacion": "",
+            "descripcion": "Cuando un poderoso hechizo transforma a sus padres en unos monstruos gigantes, una joven princesa debe adentrarse en la naturaleza para romper la maldición antes de que sea tarde.",
+            "anio": "2024",
+            "pais": "Spain",
+            "img_url": "https://image.tmdb.org/t/p/w500/g4oArI4RmOnSDZzQbdbAm3yLNkC.jpg",
+            "trailer_url": "",
+            "rating": 6.6,
+            "precio": 0,
+            "eliminado": false,
+            "reparto": [
+                {
+                    "id": 2217977,
+                    "nombre": "Rachel Zegler",
+                    "rol": "actor"
+                },
+                {
+                    "id": 1846370,
+                    "nombre": "Miguel Bernardeau",
+                    "rol": "actor"
+                },
+                {
+                    "id": 2961622,
+                    "nombre": "Giovanna Bush",
+                    "rol": "actor"
+                },
+                {
+                    "id": 3709664,
+                    "nombre": "Dennis Stowe",
+                    "rol": "actor"
+                },
+                {
+                    "id": 15899,
+                    "nombre": "Jenifer Lewis",
+                    "rol": "actor"
+                },
+                {
+                    "name": "Vicky Jenson",
+                    "id": 12058,
+                    "rol": "Director"
+                }
+            ],
+            "generos": [
+                {
+                    "id": 16,
+                    "nombre": "Animación"
+                },
+                {
+                    "id": 14,
+                    "nombre": "Fantasía"
+                },
+                {
+                    "id": 10751,
+                    "nombre": "Familia"
+                },
+                {
+                    "id": 12,
+                    "nombre": "Aventura"
+                },
+                {
+                    "id": 35,
+                    "nombre": "Comedia"
+                }
+            ],
+            "fecha_estreno": "2024-11-22"
+        },
+        {
+            "id": 1118031,
+            "titulo": "Apocalipsis Z: el principio del fin",
+            "duracion": 119,
+            "clasificacion": "",
+            "descripcion": "Cuando una especie de rabia que transforma a la gente en criaturas agresivas se extiende por el planeta, Manel se aísla en casa con su gato, recurriendo a su ingenio para sobrevivir; pero pronto deberán salir a buscar comida, por tierra y por mar, sorteando muchos peligros.",
+            "anio": "2024",
+            "pais": "Spain",
+            "img_url": "https://image.tmdb.org/t/p/w500/jaBToJ1DZcwn5wOsQeLOXFVlBLn.jpg",
+            "trailer_url": "",
+            "rating": 6.782,
+            "precio": 0,
+            "eliminado": false,
+            "reparto": [
+                {
+                    "id": 2422766,
+                    "nombre": "Francisco Ortiz",
+                    "rol": "actor"
+                },
+                {
+                    "id": 72128,
+                    "nombre": "José María Yázpik",
+                    "rol": "actor"
+                },
+                {
+                    "id": 1457340,
+                    "nombre": "Berta Vázquez",
+                    "rol": "actor"
+                },
+                {
+                    "id": 2264694,
+                    "nombre": "Iria del Río",
+                    "rol": "actor"
+                },
+                {
+                    "id": 1460406,
+                    "nombre": "Marta Poveda",
+                    "rol": "actor"
+                },
+                {
+                    "name": "Carles Torrens",
+                    "id": 1017209,
+                    "rol": "Director"
+                }
+            ],
+            "generos": [
+                {
+                    "id": 18,
+                    "nombre": "Drama"
+                },
+                {
+                    "id": 28,
+                    "nombre": "Acción"
+                },
+                {
+                    "id": 27,
+                    "nombre": "Terror"
+                }
+            ],
+            "fecha_estreno": "2024-10-04"
+        },
+        {
+            "id": 1034541,
+            "titulo": "Terrifier 3",
+            "duracion": 125,
+            "clasificacion": "",
+            "descripcion": "El payaso Art desata el caos entre los desprevenidos habitantes del condado de Miles mientras duermen plácidamente en Nochebuena. Tras sobrevivir a la masacre de Halloween perpetrada por el peor asesino en serie desde Jack el Destripador, Sienna y su hermano se esfuerzan por reconstruir sus vidas destrozadas. A medida que se acercan las fiestas de Navidad, intentan abrazar el espíritu navideño y dejar atrás los horrores del pasado. Pero justo cuando creen que están a salvo, el payaso Art regresa, decidido a convertir su alegría navideña en una nueva pesadilla. La temporada festiva se desmorona rápidamente mientras el payaso Art desata su retorcido terror marca de la casa, demostrando que ninguna festividad es segura.",
+            "anio": "2024",
+            "pais": "United States of America",
+            "img_url": "https://image.tmdb.org/t/p/w500/iaGfB2itLC8exBvfLUoadS0Q6tP.jpg",
+            "trailer_url": "",
+            "rating": 6.9,
+            "precio": 0,
+            "eliminado": false,
+            "reparto": [
+                {
+                    "id": 1882502,
+                    "nombre": "Lauren LaVera",
+                    "rol": "actor"
+                },
+                {
+                    "id": 1880016,
+                    "nombre": "David Howard Thornton",
+                    "rol": "actor"
+                },
+                {
+                    "id": 1676771,
+                    "nombre": "Samantha Scaffidi",
+                    "rol": "actor"
+                },
+                {
+                    "id": 2787720,
+                    "nombre": "Elliott Fullam",
+                    "rol": "actor"
+                },
+                {
+                    "id": 37405,
+                    "nombre": "Margaret Anne Florence",
+                    "rol": "actor"
+                },
+                {
+                    "name": "Damien Leone",
+                    "id": 933176,
+                    "rol": "Director"
+                }
+            ],
+            "generos": [
+                {
+                    "id": 27,
+                    "nombre": "Terror"
+                },
+                {
+                    "id": 53,
+                    "nombre": "Suspense"
+                }
+            ],
+            "fecha_estreno": "2024-10-09"
+        },
+        {
+            "id": 791042,
+            "titulo": "Levels",
+            "duracion": 92,
+            "clasificacion": "",
+            "descripcion": "",
+            "anio": "2024",
+            "pais": "Canada",
+            "img_url": "https://image.tmdb.org/t/p/w500/y1xm0jMIlx9Oo2a3jWNyLGm43sJ.jpg",
+            "trailer_url": "",
+            "rating": 5.7,
+            "precio": 0,
+            "eliminado": false,
+            "reparto": [
+                {
+                    "id": 1197122,
+                    "nombre": "Cara Gee",
+                    "rol": "actor"
+                },
+                {
+                    "id": 212772,
+                    "nombre": "Peter Mooney",
+                    "rol": "actor"
+                },
+                {
+                    "id": 56262,
+                    "nombre": "Aaron Abrams",
+                    "rol": "actor"
+                },
+                {
+                    "id": 5892,
+                    "nombre": "David Hewlett",
+                    "rol": "actor"
+                },
+                {
+                    "id": 26087,
+                    "nombre": "Amanda Tapping",
+                    "rol": "actor"
+                },
+                {
+                    "name": "Adam Stern",
+                    "id": 1460763,
+                    "rol": "Director"
+                }
+            ],
+            "generos": [
+                {
+                    "id": 28,
+                    "nombre": "Acción"
+                },
+                {
+                    "id": 878,
+                    "nombre": "Ciencia ficción"
+                },
+                {
+                    "id": 53,
+                    "nombre": "Suspense"
+                }
+            ],
+            "fecha_estreno": "2024-11-01"
+        },
+        {
+            "id": 533535,
+            "titulo": "Deadpool y Lobezno",
+            "duracion": 127,
+            "clasificacion": "",
+            "descripcion": "Un apático Wade Wilson se afana en la vida civil tras dejar atrás sus días como Deadpool, un mercenario moralmente flexible. Pero cuando su mundo natal se enfrenta a una amenaza existencial, Wade debe volver a vestirse a regañadientes con un Lobezno aún más reacio a ayudar.",
+            "anio": "2024",
+            "pais": "United States of America",
+            "img_url": "https://image.tmdb.org/t/p/w500/9TFSqghEHrlBMRR63yTx80Orxva.jpg",
+            "trailer_url": "",
+            "rating": 7.687,
+            "precio": 0,
+            "eliminado": false,
+            "reparto": [
+                {
+                    "id": 10859,
+                    "nombre": "Ryan Reynolds",
+                    "rol": "actor"
+                },
+                {
+                    "id": 6968,
+                    "nombre": "Hugh Jackman",
+                    "rol": "actor"
+                },
+                {
+                    "id": 2324569,
+                    "nombre": "Emma Corrin",
+                    "rol": "actor"
+                },
+                {
+                    "id": 15576,
+                    "nombre": "Matthew Macfadyen",
+                    "rol": "actor"
+                },
+                {
+                    "id": 1464650,
+                    "nombre": "Dafne Keen",
+                    "rol": "actor"
+                },
+                {
+                    "name": "Shawn Levy",
+                    "id": 17825,
+                    "rol": "Director"
+                }
+            ],
+            "generos": [
+                {
+                    "id": 28,
+                    "nombre": "Acción"
+                },
+                {
+                    "id": 35,
+                    "nombre": "Comedia"
+                },
+                {
+                    "id": 878,
+                    "nombre": "Ciencia ficción"
+                }
+            ],
+            "fecha_estreno": "2024-07-24"
+        },
+        {
+            "id": 995803,
+            "titulo": "Arena Wars",
+            "duracion": 96,
+            "clasificacion": "",
+            "descripcion": "",
+            "anio": "2024",
+            "pais": "United States of America",
+            "img_url": "https://image.tmdb.org/t/p/w500/3fZL08QUOAA05H13xrZMkkQbJHP.jpg",
+            "trailer_url": "",
+            "rating": 5.2,
+            "precio": 0,
+            "eliminado": false,
+            "reparto": [
+                {
+                    "id": 147,
+                    "nombre": "Michael Madsen",
+                    "rol": "actor"
+                },
+                {
+                    "id": 21315,
+                    "nombre": "Eric Roberts",
+                    "rol": "actor"
+                },
+                {
+                    "id": 65831,
+                    "nombre": "Robert LaSardo",
+                    "rol": "actor"
+                },
+                {
+                    "id": 1387577,
+                    "nombre": "John Wells",
+                    "rol": "actor"
+                },
+                {
+                    "id": 1752944,
+                    "nombre": "Kevin Hager",
+                    "rol": "actor"
+                },
+                {
+                    "name": "Brandon Slagle",
+                    "id": 99096,
+                    "rol": "Director"
+                }
+            ],
+            "generos": [
+                {
+                    "id": 28,
+                    "nombre": "Acción"
+                },
+                {
+                    "id": 878,
+                    "nombre": "Ciencia ficción"
+                },
+                {
+                    "id": 53,
+                    "nombre": "Suspense"
+                },
+                {
+                    "id": 35,
+                    "nombre": "Comedia"
+                },
+                {
+                    "id": 27,
+                    "nombre": "Terror"
+                }
+            ],
+            "fecha_estreno": "2024-06-25"
+        },
+        {
+            "id": 945961,
+            "titulo": "Alien: Romulus",
+            "duracion": 119,
+            "clasificacion": "",
+            "descripcion": "Mientras rebuscan en las profundidades de una estación espacial abandonada, un grupo de jóvenes colonizadores del espacio se encuentra cara a cara con la forma de vida más aterradora del universo. Nueva película de la saga Alien.",
+            "anio": "2024",
+            "pais": "United States of America",
+            "img_url": "https://image.tmdb.org/t/p/w500/8PYqGSd8MOm5ce8io4qNSAiSExW.jpg",
+            "trailer_url": "",
+            "rating": 7.3,
+            "precio": 0,
+            "eliminado": false,
+            "reparto": [
+                {
+                    "id": 1683343,
+                    "nombre": "Cailee Spaeny",
+                    "rol": "actor"
+                },
+                {
+                    "id": 2761308,
+                    "nombre": "David Jonsson",
+                    "rol": "actor"
+                },
+                {
+                    "id": 2164506,
+                    "nombre": "Archie Renaux",
+                    "rol": "actor"
+                },
+                {
+                    "id": 1428070,
+                    "nombre": "Isabela Merced",
+                    "rol": "actor"
+                },
+                {
+                    "id": 2304140,
+                    "nombre": "Spike Fearn",
+                    "rol": "actor"
+                },
+                {
+                    "name": "Fede Álvarez",
+                    "id": 932248,
+                    "rol": "Director"
+                }
+            ],
+            "generos": [
+                {
+                    "id": 27,
+                    "nombre": "Terror"
+                },
+                {
+                    "id": 878,
+                    "nombre": "Ciencia ficción"
+                }
+            ],
+            "fecha_estreno": "2024-08-13"
+        },
+        {
+            "id": 933260,
+            "titulo": "La sustancia",
+            "duracion": 141,
+            "clasificacion": "",
+            "descripcion": "\"Tú, pero mejor en todos los sentidos\". Esa es la promesa de la sustancia, un producto revolucionario basado en la división celular, que crea un alter ego más joven, más bello, más perfecto.",
+            "anio": "2024",
+            "pais": "France",
+            "img_url": "https://image.tmdb.org/t/p/w500/cQD1qEnPOKUPHAui0okOLZSgitu.jpg",
+            "trailer_url": "",
+            "rating": 7.275,
+            "precio": 0,
+            "eliminado": false,
+            "reparto": [
+                {
+                    "id": 3416,
+                    "nombre": "Demi Moore",
+                    "rol": "actor"
+                },
+                {
+                    "id": 1392137,
+                    "nombre": "Margaret Qualley",
+                    "rol": "actor"
+                },
+                {
+                    "id": 6065,
+                    "nombre": "Dennis Quaid",
+                    "rol": "actor"
+                },
+                {
+                    "id": 2313436,
+                    "nombre": "Edward Hamilton-Clark",
+                    "rol": "actor"
+                },
+                {
+                    "id": 1508131,
+                    "nombre": "Gore Abrams",
+                    "rol": "actor"
+                },
+                {
+                    "name": "Coralie Fargeat",
+                    "id": 1607016,
+                    "rol": "Director"
+                }
+            ],
+            "generos": [
+                {
+                    "id": 18,
+                    "nombre": "Drama"
+                },
+                {
+                    "id": 27,
+                    "nombre": "Terror"
+                },
+                {
+                    "id": 878,
+                    "nombre": "Ciencia ficción"
+                }
+            ],
+            "fecha_estreno": "2024-09-07"
+        },
+        {
+            "id": 179387,
+            "titulo": "Heavenly Touch",
+            "duracion": 89,
+            "clasificacion": "",
+            "descripcion": "",
+            "anio": "2009",
+            "pais": "Philippines",
+            "img_url": "https://image.tmdb.org/t/p/w500/ory8WuAqznTE7lfopTSymHpop2t.jpg",
+            "trailer_url": "",
+            "rating": 6.5,
+            "precio": 0,
+            "eliminado": false,
+            "reparto": [
+                {
+                    "id": 1182545,
+                    "nombre": "Paolo Serrano",
+                    "rol": "actor"
+                },
+                {
+                    "id": 1182546,
+                    "nombre": "Joash Balejado",
+                    "rol": "actor"
+                },
+                {
+                    "id": 1182547,
+                    "nombre": "Marco Morales",
+                    "rol": "actor"
+                },
+                {
+                    "id": 1052894,
+                    "nombre": "Gwen Garci",
+                    "rol": "actor"
+                },
+                {
+                    "id": 559357,
+                    "nombre": "Paolo Rivero",
+                    "rol": "actor"
+                },
+                {
+                    "name": "Joel Lamangan",
+                    "id": 225421,
+                    "rol": "Director"
+                }
+            ],
+            "generos": [
+                {
+                    "id": 18,
+                    "nombre": "Drama"
+                },
+                {
+                    "id": 10749,
+                    "nombre": "Romance"
+                }
+            ],
+            "fecha_estreno": "2009-05-12"
+        },
+        {
+            "id": 698687,
+            "titulo": "Transformers One",
+            "duracion": 104,
+            "clasificacion": "",
+            "descripcion": "La historia jamás contada del origen de Optimus Prime y Megatron y de cómo pasaron de ser hermanos de armas que cambiaron el destino de Cybertron para siempre, a convertirse en enemigos acérrimos.",
+            "anio": "2024",
+            "pais": "United States of America",
+            "img_url": "https://image.tmdb.org/t/p/w500/1jzVCZxBmgvpGILuEU8icfX77Io.jpg",
+            "trailer_url": "",
+            "rating": 8.1,
+            "precio": 0,
+            "eliminado": false,
+            "reparto": [
+                {
+                    "id": 74568,
+                    "nombre": "Chris Hemsworth",
+                    "rol": "actor"
+                },
+                {
+                    "id": 226366,
+                    "nombre": "Brian Tyree Henry",
+                    "rol": "actor"
+                },
+                {
+                    "id": 1245,
+                    "nombre": "Scarlett Johansson",
+                    "rol": "actor"
+                },
+                {
+                    "id": 298410,
+                    "nombre": "Keegan-Michael Key",
+                    "rol": "actor"
+                },
+                {
+                    "id": 65717,
+                    "nombre": "Jon Hamm",
+                    "rol": "actor"
+                },
+                {
+                    "name": "Josh Cooley",
+                    "id": 84496,
+                    "rol": "Director"
+                }
+            ],
+            "generos": [
+                {
+                    "id": 16,
+                    "nombre": "Animación"
+                },
+                {
+                    "id": 878,
+                    "nombre": "Ciencia ficción"
+                },
+                {
+                    "id": 12,
+                    "nombre": "Aventura"
+                },
+                {
+                    "id": 10751,
+                    "nombre": "Familia"
+                }
+            ],
+            "fecha_estreno": "2024-09-11"
+        },
+        {
+            "id": 1233327,
+            "titulo": "మట్కా",
+            "duracion": 159,
+            "clasificacion": "",
+            "descripcion": "",
+            "anio": "2024",
+            "pais": "India",
+            "img_url": "https://image.tmdb.org/t/p/w500/jrHIKDq9xvKJhYBDvYwmAfs8qvr.jpg",
+            "trailer_url": "",
+            "rating": 5.714,
+            "precio": 0,
+            "eliminado": false,
+            "reparto": [
+                {
+                    "id": 1407562,
+                    "nombre": "Varun Tej",
+                    "rol": "actor"
+                },
+                {
+                    "id": 2504878,
+                    "nombre": "Meenakshi Chaudhary",
+                    "rol": "actor"
+                },
+                {
+                    "id": 1488785,
+                    "nombre": "Nora Fatehi",
+                    "rol": "actor"
+                },
+                {
+                    "id": 1135117,
+                    "nombre": "Naveen Chandra",
+                    "rol": "actor"
+                },
+                {
+                    "id": 1289211,
+                    "nombre": "Ajay Ghosh",
+                    "rol": "actor"
+                },
+                {
+                    "name": "Karuna Kumar",
+                    "id": 2558326,
+                    "rol": "Director"
+                }
+            ],
+            "generos": [
+                {
+                    "id": 28,
+                    "nombre": "Acción"
+                },
+                {
+                    "id": 80,
+                    "nombre": "Crimen"
+                }
+            ],
+            "fecha_estreno": "2024-11-14"
+        },
+        {
+            "id": 845781,
+            "titulo": "Red One",
+            "duracion": 124,
+            "clasificacion": "",
+            "descripcion": "Tras el secuestro de Papá Noel (nombre en clave: RED ONE), el Jefe de Seguridad del Polo Norte (Dwayne Johnson) debe formar equipo con el cazarrecompensas más infame del mundo (Chris Evans) en una misión trotamundos llena de acción para salvar la Navidad.",
+            "anio": "2024",
+            "pais": "United States of America",
+            "img_url": "https://image.tmdb.org/t/p/w500/dpskAcm71w5v8zQ8RmPmJiP31Om.jpg",
+            "trailer_url": "",
+            "rating": 6.613,
+            "precio": 0,
+            "eliminado": false,
+            "reparto": [
+                {
+                    "id": 18918,
+                    "nombre": "Dwayne Johnson",
+                    "rol": "actor"
+                },
+                {
+                    "id": 16828,
+                    "nombre": "Chris Evans",
+                    "rol": "actor"
+                },
+                {
+                    "id": 18999,
+                    "nombre": "J.K. Simmons",
+                    "rol": "actor"
+                },
+                {
+                    "id": 140,
+                    "nombre": "Lucy Liu",
+                    "rol": "actor"
+                },
+                {
+                    "id": 934289,
+                    "nombre": "Kiernan Shipka",
+                    "rol": "actor"
+                },
+                {
+                    "name": "Jake Kasdan",
+                    "id": 51851,
+                    "rol": "Director"
+                }
+            ],
+            "generos": [
+                {
+                    "id": 28,
+                    "nombre": "Acción"
+                },
+                {
+                    "id": 35,
+                    "nombre": "Comedia"
+                },
+                {
+                    "id": 14,
+                    "nombre": "Fantasía"
+                }
+            ],
+            "fecha_estreno": "2024-10-31"
+        },
+        {
+            "id": 974453,
+            "titulo": "Absolution",
+            "duracion": 112,
+            "clasificacion": "",
+            "descripcion": "Un curtido y peligroso gangster (Liam Neeson) descubre que está empezando a perder la memoria. Decidido a enmendar las cosas con su hija y rectificar los errores del pasado, antes de que sea demasiado tarde intentará hacer lo que sea para redimirse. Pero las garras del mundo criminal no lo soltarán tan fácilmente y se verá obligado a enfrentarse a la organización para la que lleva más de 20 años trabajando.",
+            "anio": "2024",
+            "pais": "United States of America",
+            "img_url": "https://image.tmdb.org/t/p/w500/cNtAslrDhk1i3IOZ16vF7df6lMy.jpg",
+            "trailer_url": "",
+            "rating": 6.1,
+            "precio": 0,
+            "eliminado": false,
+            "reparto": [
+                {
+                    "id": 3896,
+                    "nombre": "Liam Neeson",
+                    "rol": "actor"
+                },
+                {
+                    "id": 2372,
+                    "nombre": "Ron Perlman",
+                    "rol": "actor"
+                },
+                {
+                    "id": 36549,
+                    "nombre": "Yolonda Ross",
+                    "rol": "actor"
+                },
+                {
+                    "id": 85756,
+                    "nombre": "Frankie Shaw",
+                    "rol": "actor"
+                },
+                {
+                    "id": 1710334,
+                    "nombre": "Daniel Diemer",
+                    "rol": "actor"
+                },
+                {
+                    "name": "Hans Petter Moland",
+                    "id": 95972,
+                    "rol": "Director"
+                }
+            ],
+            "generos": [
+                {
+                    "id": 28,
+                    "nombre": "Acción"
+                },
+                {
+                    "id": 18,
+                    "nombre": "Drama"
+                },
+                {
+                    "id": 80,
+                    "nombre": "Crimen"
+                },
+                {
+                    "id": 53,
+                    "nombre": "Suspense"
+                }
+            ],
+            "fecha_estreno": "2024-10-31"
+        },
+        {
+            "id": 1124641,
+            "titulo": "Red clasificada",
+            "duracion": 105,
+            "clasificacion": "",
+            "descripcion": "Shaw es un asesino que trabaja para la Agencia de Seguridad Nacional de Estados Unidos y que recibe sus misiones a través de anuncios clasificados. Un día recibe la visita de Kacey, una joven agente que trabaja para el Servicio de Inteligencia Secreta, quien le informa de que el departamento para el que ha estado trabajando se cerró hace tiempo. Shaw se da cuenta entonces de que le han tendido una trampa y que ha estado realizando asesinatos en nombre de alguien que desconoce. Mientras investigan quién está detrás de estas misiones, Shaw y Kacey son perseguidos por un grupo de asesinos armados.",
+            "anio": "2024",
+            "pais": "United Kingdom",
+            "img_url": "https://image.tmdb.org/t/p/w500/bnBNgSvZxyDxuyiSXxxsQoV2k0W.jpg",
+            "trailer_url": "",
+            "rating": 5.8,
+            "precio": 0,
+            "eliminado": false,
+            "reparto": [
+                {
+                    "id": 6383,
+                    "nombre": "Aaron Eckhart",
+                    "rol": "actor"
+                },
+                {
+                    "id": 3129,
+                    "nombre": "Tim Roth",
+                    "rol": "actor"
+                },
+                {
+                    "id": 17140,
+                    "nombre": "Abigail Breslin",
+                    "rol": "actor"
+                },
+                {
+                    "id": 1075104,
+                    "nombre": "Matt Hookings",
+                    "rol": "actor"
+                },
+                {
+                    "id": 4916739,
+                    "nombre": "Lucky Ali",
+                    "rol": "actor"
+                },
+                {
+                    "name": "Roel Reiné",
+                    "id": 97555,
+                    "rol": "Director"
+                }
+            ],
+            "generos": [
+                {
+                    "id": 28,
+                    "nombre": "Acción"
+                },
+                {
+                    "id": 53,
+                    "nombre": "Suspense"
+                }
+            ],
+            "fecha_estreno": "2024-09-19"
+        }
+    ],
+    "reparto":[
+        {
+            "name": "Kelly Marcel",
+            "id": 940376,
+            "rol": "Director"
+        },
+        {
+            "id": 2524,
+            "nombre": "Tom Hardy",
+            "rol": "actor"
+        },
+        {
+            "id": 5294,
+            "nombre": "Chiwetel Ejiofor",
+            "rol": "actor"
+        },
+        {
+            "id": 36594,
+            "nombre": "Juno Temple",
+            "rol": "actor"
+        },
+        {
+            "id": 1861573,
+            "nombre": "Clark Backo",
+            "rol": "actor"
+        },
+        {
+            "id": 7026,
+            "nombre": "Rhys Ifans",
+            "rol": "actor"
+        },
+        {
+            "name": "Parker Finn",
+            "id": 2218465,
+            "rol": "Director"
+        },
+        {
+            "id": 240724,
+            "nombre": "Naomi Scott",
+            "rol": "actor"
+        },
+        {
+            "id": 14892,
+            "nombre": "Rosemarie DeWitt",
+            "rol": "actor"
+        },
+        {
+            "id": 1371509,
+            "nombre": "Lukas Gage",
+            "rol": "actor"
+        },
+        {
+            "id": 3535991,
+            "nombre": "Miles Gutierrez-Riley",
+            "rol": "actor"
+        },
+        {
+            "id": 31514,
+            "nombre": "Peter Jacobson",
+            "rol": "actor"
+        },
+        {
+            "name": "Chris Sanders",
+            "id": 66193,
+            "rol": "Director"
+        },
+        {
+            "id": 1267329,
+            "nombre": "Lupita Nyong'o",
+            "rol": "actor"
+        },
+        {
+            "id": 1253360,
+            "nombre": "Pedro Pascal",
+            "rol": "actor"
+        },
+        {
+            "id": 1538851,
+            "nombre": "Kit Connor",
+            "rol": "actor"
+        },
+        {
+            "id": 2440,
+            "nombre": "Bill Nighy",
+            "rol": "actor"
+        },
+        {
+            "id": 1381186,
+            "nombre": "Stephanie Hsu",
+            "rol": "actor"
+        },
+        {
+            "name": "Ridley Scott",
+            "id": 578,
+            "rol": "Director"
+        },
+        {
+            "id": 2326151,
+            "nombre": "Paul Mescal",
+            "rol": "actor"
+        },
+        {
+            "id": 5292,
+            "nombre": "Denzel Washington",
+            "rol": "actor"
+        },
+        {
+            "id": 935,
+            "nombre": "Connie Nielsen",
+            "rol": "actor"
+        },
+        {
+            "id": 1597365,
+            "nombre": "Joseph Quinn",
+            "rol": "actor"
+        },
+        {
+            "name": "Damien Leone",
+            "id": 933176,
+            "rol": "Director"
+        },
+        {
+            "id": 1882502,
+            "nombre": "Lauren LaVera",
+            "rol": "actor"
+        },
+        {
+            "id": 1880016,
+            "nombre": "David Howard Thornton",
+            "rol": "actor"
+        },
+        {
+            "id": 1676771,
+            "nombre": "Samantha Scaffidi",
+            "rol": "actor"
+        },
+        {
+            "id": 2787720,
+            "nombre": "Elliott Fullam",
+            "rol": "actor"
+        },
+        {
+            "id": 37405,
+            "nombre": "Margaret Anne Florence",
+            "rol": "actor"
+        },
+        {
+            "name": "Carles Torrens",
+            "id": 1017209,
+            "rol": "Director"
+        },
+        {
+            "id": 2422766,
+            "nombre": "Francisco Ortiz",
+            "rol": "actor"
+        },
+        {
+            "id": 72128,
+            "nombre": "José María Yázpik",
+            "rol": "actor"
+        },
+        {
+            "id": 1457340,
+            "nombre": "Berta Vázquez",
+            "rol": "actor"
+        },
+        {
+            "id": 2264694,
+            "nombre": "Iria del Río",
+            "rol": "actor"
+        },
+        {
+            "id": 1460406,
+            "nombre": "Marta Poveda",
+            "rol": "actor"
+        },
+        {
+            "name": "Jon M. Chu",
+            "id": 54507,
+            "rol": "Director"
+        },
+        {
+            "id": 1765068,
+            "nombre": "Cynthia Erivo",
+            "rol": "actor"
+        },
+        {
+            "id": 226001,
+            "nombre": "Ariana Grande",
+            "rol": "actor"
+        },
+        {
+            "id": 80860,
+            "nombre": "Jonathan Bailey",
+            "rol": "actor"
+        },
+        {
+            "id": 1620,
+            "nombre": "Michelle Yeoh",
+            "rol": "actor"
+        },
+        {
+            "id": 4785,
+            "nombre": "Jeff Goldblum",
+            "rol": "actor"
+        },
+        {
+            "name": "Adam Stern",
+            "id": 1460763,
+            "rol": "Director"
+        },
+        {
+            "id": 1197122,
+            "nombre": "Cara Gee",
+            "rol": "actor"
+        },
+        {
+            "id": 212772,
+            "nombre": "Peter Mooney",
+            "rol": "actor"
+        },
+        {
+            "id": 56262,
+            "nombre": "Aaron Abrams",
+            "rol": "actor"
+        },
+        {
+            "id": 5892,
+            "nombre": "David Hewlett",
+            "rol": "actor"
+        },
+        {
+            "id": 26087,
+            "nombre": "Amanda Tapping",
+            "rol": "actor"
+        },
+        {
+            "name": "Shawn Levy",
+            "id": 17825,
+            "rol": "Director"
+        },
+        {
+            "id": 10859,
+            "nombre": "Ryan Reynolds",
+            "rol": "actor"
+        },
+        {
+            "id": 6968,
+            "nombre": "Hugh Jackman",
+            "rol": "actor"
+        },
+        {
+            "id": 2324569,
+            "nombre": "Emma Corrin",
+            "rol": "actor"
+        },
+        {
+            "id": 15576,
+            "nombre": "Matthew Macfadyen",
+            "rol": "actor"
+        },
+        {
+            "id": 1464650,
+            "nombre": "Dafne Keen",
+            "rol": "actor"
+        },
+        {
+            "name": "Coralie Fargeat",
+            "id": 1607016,
+            "rol": "Director"
+        },
+        {
+            "id": 3416,
+            "nombre": "Demi Moore",
+            "rol": "actor"
+        },
+        {
+            "id": 1392137,
+            "nombre": "Margaret Qualley",
+            "rol": "actor"
+        },
+        {
+            "id": 6065,
+            "nombre": "Dennis Quaid",
+            "rol": "actor"
+        },
+        {
+            "id": 2313436,
+            "nombre": "Edward Hamilton-Clark",
+            "rol": "actor"
+        },
+        {
+            "id": 1508131,
+            "nombre": "Gore Abrams",
+            "rol": "actor"
+        },
+        {
+            "name": "Joel Lamangan",
+            "id": 225421,
+            "rol": "Director"
+        },
+        {
+            "id": 1182545,
+            "nombre": "Paolo Serrano",
+            "rol": "actor"
+        },
+        {
+            "id": 1182546,
+            "nombre": "Joash Balejado",
+            "rol": "actor"
+        },
+        {
+            "id": 1182547,
+            "nombre": "Marco Morales",
+            "rol": "actor"
+        },
+        {
+            "id": 1052894,
+            "nombre": "Gwen Garci",
+            "rol": "actor"
+        },
+        {
+            "id": 559357,
+            "nombre": "Paolo Rivero",
+            "rol": "actor"
+        },
+        {
+            "name": "David G. Derrick Jr.",
+            "id": 4524084,
+            "rol": "Director"
+        },
+        {
+            "id": 1564846,
+            "nombre": "Auli'i Cravalho",
+            "rol": "actor"
+        },
+        {
+            "id": 18918,
+            "nombre": "Dwayne Johnson",
+            "rol": "actor"
+        },
+        {
+            "id": 4775908,
+            "nombre": "Hualālai Chung",
+            "rol": "actor"
+        },
+        {
+            "id": 1868823,
+            "nombre": "Rose Matafeo",
+            "rol": "actor"
+        },
+        {
+            "id": 55937,
+            "nombre": "David Fane",
+            "rol": "actor"
+        },
+        {
+            "name": "Josh Cooley",
+            "id": 84496,
+            "rol": "Director"
+        },
+        {
+            "id": 74568,
+            "nombre": "Chris Hemsworth",
+            "rol": "actor"
+        },
+        {
+            "id": 226366,
+            "nombre": "Brian Tyree Henry",
+            "rol": "actor"
+        },
+        {
+            "id": 1245,
+            "nombre": "Scarlett Johansson",
+            "rol": "actor"
+        },
+        {
+            "id": 298410,
+            "nombre": "Keegan-Michael Key",
+            "rol": "actor"
+        },
+        {
+            "id": 65717,
+            "nombre": "Jon Hamm",
+            "rol": "actor"
+        },
+        {
+            "name": "Fede Álvarez",
+            "id": 932248,
+            "rol": "Director"
+        },
+        {
+            "id": 1683343,
+            "nombre": "Cailee Spaeny",
+            "rol": "actor"
+        },
+        {
+            "id": 2761308,
+            "nombre": "David Jonsson",
+            "rol": "actor"
+        },
+        {
+            "id": 2164506,
+            "nombre": "Archie Renaux",
+            "rol": "actor"
+        },
+        {
+            "id": 1428070,
+            "nombre": "Isabela Merced",
+            "rol": "actor"
+        },
+        {
+            "id": 2304140,
+            "nombre": "Spike Fearn",
+            "rol": "actor"
+        },
+        {
+            "name": "Roel Reiné",
+            "id": 97555,
+            "rol": "Director"
+        },
+        {
+            "id": 6383,
+            "nombre": "Aaron Eckhart",
+            "rol": "actor"
+        },
+        {
+            "id": 3129,
+            "nombre": "Tim Roth",
+            "rol": "actor"
+        },
+        {
+            "id": 17140,
+            "nombre": "Abigail Breslin",
+            "rol": "actor"
+        },
+        {
+            "id": 1075104,
+            "nombre": "Matt Hookings",
+            "rol": "actor"
+        },
+        {
+            "id": 4916739,
+            "nombre": "Lucky Ali",
+            "rol": "actor"
+        },
+        {
+            "name": "Michael Keaton",
+            "id": 2232,
+            "rol": "Director"
+        },
+        {
+            "id": 1158,
+            "nombre": "Al Pacino",
+            "rol": "actor"
+        },
+        {
+            "id": 4726,
+            "nombre": "Marcia Gay Harden",
+            "rol": "actor"
+        },
+        {
+            "id": 11006,
+            "nombre": "James Marsden",
+            "rol": "actor"
+        },
+        {
+            "id": 26998,
+            "nombre": "Suzy Nakamura",
+            "rol": "actor"
+        },
+        {
+            "name": "Jake Kasdan",
+            "id": 51851,
+            "rol": "Director"
+        },
+        {
+            "id": 16828,
+            "nombre": "Chris Evans",
+            "rol": "actor"
+        },
+        {
+            "id": 18999,
+            "nombre": "J.K. Simmons",
+            "rol": "actor"
+        },
+        {
+            "id": 140,
+            "nombre": "Lucy Liu",
+            "rol": "actor"
+        },
+        {
+            "id": 934289,
+            "nombre": "Kiernan Shipka",
+            "rol": "actor"
+        },
+        {
+            "name": "Chris Renaud",
+            "id": 124748,
+            "rol": "Director"
+        },
+        {
+            "id": 4495,
+            "nombre": "Steve Carell",
+            "rol": "actor"
+        },
+        {
+            "id": 41091,
+            "nombre": "Kristen Wiig",
+            "rol": "actor"
+        },
+        {
+            "id": 23659,
+            "nombre": "Will Ferrell",
+            "rol": "actor"
+        },
+        {
+            "id": 63522,
+            "nombre": "Sofía Vergara",
+            "rol": "actor"
+        },
+        {
+            "id": 17743,
+            "nombre": "Miranda Cosgrove",
+            "rol": "actor"
+        },
+        {
+            "name": "Kelsey Mann",
+            "id": 182001,
+            "rol": "Director"
+        },
+        {
+            "id": 56322,
+            "nombre": "Amy Poehler",
+            "rol": "actor"
+        },
+        {
+            "id": 1903874,
+            "nombre": "Maya Hawke",
+            "rol": "actor"
+        },
+        {
+            "id": 3020876,
+            "nombre": "Kensington Tallman",
+            "rol": "actor"
+        },
+        {
+            "id": 51998,
+            "nombre": "Liza Lapira",
+            "rol": "actor"
+        },
+        {
+            "id": 25147,
+            "nombre": "Tony Hale",
+            "rol": "actor"
+        },
+        {
+            "name": "Benjamin Brewer",
+            "id": 3879718,
+            "rol": "Director"
+        },
+        {
+            "id": 2963,
+            "nombre": "Nicolas Cage",
+            "rol": "actor"
+        },
+        {
+            "id": 1274508,
+            "nombre": "Jaeden Martell",
+            "rol": "actor"
+        },
+        {
+            "id": 1810651,
+            "nombre": "Maxwell Jenkins",
+            "rol": "actor"
+        },
+        {
+            "id": 2270402,
+            "nombre": "Sadie Soverall",
+            "rol": "actor"
+        },
+        {
+            "id": 1321622,
+            "nombre": "Samantha Coughlan",
+            "rol": "actor"
+        }
+    ]
+}

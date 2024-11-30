@@ -57,8 +57,8 @@ El objetivo principal de **UTN-CINES** es ofrecer una plataforma accesible y fá
 
 - **Deploy del Sitio:** [UTN-Cines en Vercel](https://utn-cines.vercel.app/)
 - **Repositorio en GitHub:** [UTN-Cines GitHub Repository](https://github.com/lucag316/UTN-Cines)
-- **Pdf Diseño en Canva modo escritorio:** [Diseño Modo Escritorio](./Diseño%20escritorio%20cines.pdf)
-- **Pdf Diseño en Canva modo celular :** [Diseño Modo Celular](./Diseño%20mobile%20cine.pdf)
+- **Pdf Diseño en Canva modo escritorio:** [Diseño Modo Escritorio](./Diseño-escritorio-cines.pdf)
+- **Pdf Diseño en Canva modo celular :** [Diseño Modo Celular](./Diseño-mobile-cine.pdf)
 - **Pdf Documentacion del proyecto :** [Documentación del Proyecto](./documentación-UTN-Cines.pdf)
 
 ---
