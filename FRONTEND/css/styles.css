@@ -99,6 +99,27 @@
     transition: transform 0.3s ease;
 }
 
+.card {
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  font-size: 0.9rem;
+}
+
+
 /* /////////////////////////////////// 
 
 Estilos para los botones del dark mode

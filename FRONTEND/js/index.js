@@ -6,7 +6,7 @@ let currentPage = 1;
 const API_KEY = "f59f2a7d0dcf9beeeca9c90394385a92";
 const BASE_URL ="https://api.themoviedb.org/3";
 const API_URL = "https://api.themoviedb.org/3/movie/popular?api_key=f59f2a7d0dcf9beeeca9c90394385a92&language=es-ES&page=";
-
+let data;
 
 // Elementos que se usan para la interaccion con el DOM
 const container = document.getElementById('peliculas_container');
@@ -18,7 +18,7 @@ const select_orden = document.getElementById("select_orden");
 async function fetchMovies(page = 1) {
     try {
         const response = await fetch(`${API_URL}${page}`); // Pedimos informacion a la api con la posicion de rama
-        const data = await response.json();
+        data = await response.json();
         displayMovies(data.results);// Esto es para mostrarlas en la pagina
         // console.log(`Actual page: ${data.page}\nTotal pages:${data.total_pages}`)
         setupPagination(data.page, data.total_pages);// Esto es para mostrar la paginacion 
@@ -32,18 +32,45 @@ function displayMovies(movies) {
 
     container.innerHTML = ''; // Limpiar el contenido anterior
 
+    let cart = JSON.parse(localStorage.getItem("cart")) !== null && JSON.parse(localStorage.getItem("cart")).length > 0 ? JSON.parse(localStorage.getItem("cart")) : [];
+
+    
+
     // Esto hace que por cada peli en el array de movies, lo agrega al cointainer con sus elementos correspondientes y sus clases de bootstrap, y con la informacion correspondiente traida de la API
-    movies.forEach(movie => {
+    movies.forEach((movie,index) => {
+        let movieInCart;
+
+        if(cart){
+            movieInCart = cart.find(m => m.id == movie.id)
+            if(movieInCart){
+                movieInCart.index = cart.findIndex(m => m.id == movie.id)
+            }
+        }
+
         const movieCard = `
             <div class="col-6 col-md-3 mb-4" id="card_pelis">
-                <a href="./html/perfil_peli.html?id=${movie.id}" class="text-decoration-none">
-                    <div class="card">
-                        <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top" alt="${movie.title}">
-                        <div class="card-body">
-                            <h5 class="card-title">${movie.title}</h5>
+                <div class="card h-100 shadow-sm">
+                    <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top" alt="${movie.title}">
+                    ${
+                        movieInCart ? `
+                         <div class="card-body d-flex flex-column justify-content-between">
+                            <h5 class="card-title text-center text-truncate">${movie.title}</h5>
+                            <div class="d-flex justify-content-between align-items-center mt-2">
+                                <button class="btn btn-sm btn-secondary" onclick="decreaseQuantity('${movieInCart.index}',event)">-</button>
+                                <span id="quantity_${movieInCart.id}" class="mx-2">${movieInCart.quantity}</span>
+                                <button class="btn btn-sm btn-secondary" onclick="increaseQuantity('${movieInCart.index}',event)">+</button>
+                            </div>
                         </div>
-                    </div>
-                </a>
+                        `
+                    :
+                    `
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <h5 class="card-title text-center text-truncate">${movie.title}</h5>
+                            <button class="btn btn-primary w-100 mt-2" onclick="addToCart('${movie.id}', '${movie.title}')">Agregar al carrito</button>
+                        </div>
+                    `
+                    }
+                </div>
             </div>
         `;
         container.innerHTML += movieCard;
@@ -320,17 +347,128 @@ select_orden !== null ?   select_orden.addEventListener("change", function () {
         return urlParams.get('id');
     }
 
-// document.addEventListener("DOMContentLoaded",(event)=>{
-//     try {
-//         const id_peli = getMovieIdFromUrl();
 
-//         getMovieDetails(id_peli);
-//     } catch (error) {
-//         console.log("Error al intentar conseguir la pelicula")
-//     }
-// }) 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////        Carrito           //////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Carrito de compras
+
+let cart = JSON.parse(localStorage.getItem("cart")) !== null && JSON.parse(localStorage.getItem("cart")).length > 0 ? JSON.parse(localStorage.getItem("cart")) : [];
+const cartDropdown = document.getElementById("cartItems");
+const cartCount = document.getElementById("cartCount");
+
+function addToCart(movieId, movieTitle) {
+    // Busca si la película ya está en el carrito
+    const movieInCart = cart.find(movie => movie.id === movieId);
+
+    if (movieInCart) {
+        // Incrementa la cantidad si ya existe
+        movieInCart.quantity++;
+    } else {
+        // Añade la película al carrito con cantidad 1
+        cart.push({ id: movieId, title: movieTitle, quantity: 1 });
+    }
+    
+    updateCart();
+    displayMovies(data.results)
+}
+
+// Función para actualizar el carrito
+function updateCart() {
+    cartCount.textContent = cart.reduce((total, movie) => total + movie.quantity, 0); // Suma todas las cantidades
+    
+
+    // Limpia el contenido previo del carrito
+    cartDropdown.innerHTML = "";
+
+    if (cart.length === 0) {
+        const emptyMessage = document.createElement("li");
+        emptyMessage.className = "dropdown-item text-center text-muted";
+        emptyMessage.textContent = "El carrito está vacío";
+        cartDropdown.appendChild(emptyMessage);
+        localStorage.setItem("cart", JSON.stringify([]))
+        return;
+    }
+
+    // Añade las películas al carrito
+    cart.forEach((movie, index) => {
+        const cartItem = document.createElement("li");
+        cartItem.className = "dropdown-item d-flex justify-content-between align-items-center";
+
+        cartItem.innerHTML = `
+            <span>${movie.title} (x${movie.quantity})</span>
+            <div>
+                <button class="btn btn-sm btn-secondary me-2" onclick="decreaseQuantity(${index},event)">-</button>
+                <button class="btn btn-sm btn-primary me-2" onclick="increaseQuantity(${index},event)">+</button>
+                <button class="btn btn-sm btn-danger" onclick="removeFromCart(${index},event)">X</button>
+            </div>
+        `;
+
+        cartDropdown.appendChild(cartItem);
+    });
+
+    // Añade un botón para finalizar la compra
+    const checkoutButton = document.createElement("li");
+    checkoutButton.className = "dropdown-item text-center";
+    checkoutButton.innerHTML = `<button class="btn btn-success w-100" onclick="finalizePurchase()">Finalizar compra</button>`;
+    cartDropdown.appendChild(checkoutButton);
+    console.log(cart.length === 0)
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+}
+
+// Función para incrementar la cantidad
+function increaseQuantity(index,event) {
+    console.log(cart)
+    event.stopPropagation(); // Prevent dropdown from closing
+    cart[index].quantity++;
+    updateCart();
+    displayMovies(data.results)
+
+}
+
+// Función para disminuir la cantidad
+function decreaseQuantity(index,event) {
+    event.stopPropagation(); // Prevent dropdown from closing
+    if (cart[index].quantity > 1) {
+        cart[index].quantity--;
+    } else {
+        // Si la cantidad llega a 0, elimina el ítem del carrito
+        cart.splice(index, 1);
+    }
+
+    updateCart();
+    displayMovies(data.results)
+
+}
+
+// Función para eliminar una película del carrito
+function removeFromCart(index,event) {
+    event.stopPropagation(); // Prevent dropdown from closing
+    cart.splice(index, 1);
+    updateCart();
+    displayMovies(data.results)
+
+}
 
 
+function finalizePurchase() {
+    // Store the cart in localStorage or sessionStorage
+    localStorage.setItem("cart", JSON.stringify(cart));
+    // Redirect to the payment page
+    const path = window.location.pathname;
+    window.location.href = "../FRONTEND/html/pago.html";
+}
+
+updateCart()
+///////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Este evento es para que se pueda controlar que funciones se ejecutan segun en que parte de la web estas si estas en index html no se va a ejecutar las funciones de perfil_peli
 // asi nos evitamos errores
