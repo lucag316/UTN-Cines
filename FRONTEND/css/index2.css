@@ -1,0 +1,379 @@
+
+/*################################### SECCION DE FILTROS ######################################################*/
+
+.contenedor-filtros {
+    gap: 10px;
+    /*background-color: #f9f9f9;*/
+    padding: 20px;  
+    border-radius: 15px;
+
+}
+
+.contenedor-filtro-label {
+    font-weight: bold;
+    /*color: #333333;*/  /*esta en los cambio de temas claro oscuro*/
+    margin-bottom: 5px;
+}
+
+.contenedor-filtro-label:hover{
+    color: #ffd700; 
+}
+
+.selector-filtro {
+    border-radius: 10px; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+    padding: 10px;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.selector-filtro:hover,
+.selector-filtro:focus {
+    border: 1px solid #ffd700;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transform: scale(1.02);
+    outline: none;
+}
+
+
+/*################################### SECCION DE GRILLA ######################################################*/
+
+/* Estilos generales para el contenedor de recetas */
+.contenedor-peliculas {
+    margin-top: 50px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.card-link {
+    text-decoration: none; 
+}
+
+/* Estilos para las tarjetas (cards) */
+.card {
+    margin: 10px;
+    border-radius: 10px; 
+    background-color: #ffffff; 
+    border: 1px solid #ddd; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s; /* Efecto al pasar el mouse */
+    max-width: 100%; 
+    height: 100%; /* para que todas las tarjetas tengan la misma altura*/
+    cursor: pointer;
+}
+
+/* Efectos al pasar el mouse sobre la tarjeta */
+.card:hover {
+    transform: scale(1.05); /* Aumenta el tamaño al pasar el mouse */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    border: 1px solid #ffd700;
+}
+
+/* Estilos para el titulo de la tarjeta */
+.card-title {
+    font-size: 1.25rem;
+    margin: 0;
+    padding: 0;
+    text-align: center; /* Centra el título */
+}
+
+/* Estilos para las etiquetas de dificultad, tipo y tiempo */
+.card-title,
+.genero-label,
+.clasificacion-label,
+.duracion-label {
+    font-weight: bold; 
+    /*color: #333;*/    /* lo comento, sino se me pizza con los temas */
+    transition: color 0.3s ease;
+}
+
+/* Cambios de color al pasar el mouse sobre las etiquetas */
+.card:hover .card-title,
+.card:hover .genero-label,
+.card:hover .clasificacion-label,
+.card:hover .duracion-label {
+    color: #ffd700; 
+    transition: color 0.3s ease;
+}
+
+/* Estilos para listas sin estilo */
+.list-unstyled {
+    padding: 0; /* Sin padding */
+    margin: 0; /* Sin márgenes */
+}
+
+/* Estilos para la imagen de la tarjeta */
+.card-img-top {
+    height: 250px;
+    max-height: 250px;
+    object-fit: cover; /* Asegura que la imagen se ajuste bien sin distorsionarse  y creo que recorta si es necesario*/
+}
+
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-bar input {
+    border-radius: 20px;
+    padding: 10px 15px;
+    width: 250px;
+    transition: all 0.3s ease;
+}
+
+.search-bar button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#barra-busqueda-boton {
+    border: 1px solid grey;
+}
+
+.icon-container {
+    border-radius: 50%; /* Para hacer el círculo */
+    background-color: #919191; /* Color de fondo gris */
+    padding: 5px; /* Espaciado alrededor del ícono */
+}
+
+.icon-lupa {
+    width: 20px; /* Ajusta el tamaño del icono */
+    height: 20px; /* Ajusta el tamaño del icono */
+    filter: brightness(0) invert(1); /* Cambia el color del ícono a blanco */
+    transition: transform 0.3s; /* Efecto al pasar el mouse */
+}
+
+.icon-container:hover .icon-lupa {
+    transform: scale(1.1); /* Escalar el ícono al pasar el mouse */
+}
+
+/* Estilos responsivos para pantallas pequeñas */
+@media (max-width: 576px) { 
+
+}
+
+
+
+
+
+
+
+/* /////////////////////////////////// 
+
+Estilos para los botones del dark mode
+//////////////////////////////////////////
+*/
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+
+  .b-example-divider {
+    width: 100%;
+    height: 3rem;
+    background-color: rgba(0, 0, 0, .1);
+    border: solid rgba(0, 0, 0, .15);
+    border-width: 1px 0;
+    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+  }
+
+  .b-example-vr {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 100vh;
+  }
+
+  .bi {
+    vertical-align: -.125em;
+    fill: currentColor;
+  }
+
+  .nav-scroller {
+    position: relative;
+    z-index: 2;
+    height: 2.75rem;
+    overflow-y: hidden;
+  }
+
+  .nav-scroller .nav {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    margin-top: -1px;
+    overflow-x: auto;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .btn-bd-primary {
+    --bd-violet-bg: #712cf9;
+    --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+    --bs-btn-font-weight: 600;
+    --bs-btn-color: var(--bs-white);
+    --bs-btn-bg: var(--bd-violet-bg);
+    --bs-btn-border-color: var(--bd-violet-bg);
+    --bs-btn-hover-color: var(--bs-white);
+    --bs-btn-hover-bg: #34205d;
+    --bs-btn-hover-border-color: #6528e0;
+    --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+    --bs-btn-active-color: var(--bs-btn-hover-color);
+    --bs-btn-active-bg: #5a23c8;
+    --bs-btn-active-border-color: #5a23c8;
+  }
+  .bd-mode-toggle {
+    z-index: 1500;
+  }
+
+
+/* ======================================= Tema oscuro =======================================*/
+body.dark-mode {
+    background-color: #121212; /* Fondo oscuro */
+    color: #e0e0e0; /* Texto claro */
+}
+
+main.dark-mode {
+    background-color: #1e1e1e; /* Fondo más oscuro para contenido principal */
+    color: #e0e0e0;
+}
+
+.card.dark-mode {
+    background-color: #333333; /* Gris oscuro para tarjetas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Sombra oscura */
+    border: 1px solid #444;
+    color: #e0e0e0;
+}
+
+.card-title.dark-mode,
+.duracion-label.dark-mode,
+.genero-label.dark-mode,
+.clasificacion-label.dark-mode {
+    color: #e0e0e0; /* Títulos y etiquetas de la tarjeta en blanco */
+}
+
+.duracion-minutos.dark-mode {
+    color: #e0e0e0; /* Blanco o un color claro adecuado */
+}
+
+.dark-mode .contenedor-filtros  {
+    background-color: #2a2a2a; /* Fondo más oscuro para filtros */
+    border-color: #444;
+}
+
+.dark-mode .contenedor-filtro-label {
+    color: #ffffff;
+}
+
+.dark-mode .selector-filtro  {
+    background-color: #2a2a2a; /* Fondo gris oscuro */
+    color: #e0e0e0; /* Texto claro */
+    border: 1px solid #444;
+}
+
+.search-bar.dark-mode {
+    background-color: #2a2a2a; /* Fondo oscuro */
+    color: #e0e0e0;
+    /*border: 1px solid #444;*/
+}
+
+.search-bar.dark-mode input {
+    background-color: #444;
+    color: #e0e0e0;
+    border: 1px solid #555;
+}
+
+.search-bar.dark-mode button .icon-container {
+    background-color: #555555; /* Gris oscuro */
+}
+
+.search-bar.dark-mode button .icon-container:hover {
+    background-color: #666666; /* Gris más oscuro al pasar el mouse */
+}
+
+.search-bar.dark-mode input::placeholder {
+    color: #ffffff; /* Blanco para mejorar contraste en el modo oscuro */
+}
+
+
+/* ======================================= Tema claro =======================================*/
+body.light-mode {
+    background-color: white;
+    color: black;
+}
+
+main.light-mode {
+    background-color: #f8f9fa; /* Fondo claro para contenido principal */
+    color: black;
+}
+
+.card.light-mode {
+    background-color: #ffffff; /* Blanco */
+    color: black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra clara */
+    border: 1px solid #ddd;
+}
+
+.card-title.light-mode,
+.duracion-label.light-mode,
+.duracion-minutos.light-mode,
+.genero-label.light-mode,
+.clasificacion-label.light-mode {
+    color: black; /* Títulos y etiquetas de la tarjeta en negro */
+}
+
+.light-mode .contenedor-filtros{
+    background-color: #f9f9f9; /* Fondo claro para filtros */
+    border-color: #ddd;
+}
+
+.light-mode .contenedor-filtro-label {
+    color: #333333;
+}
+
+.light-mode .selector-filtro {
+    background-color: #ffff;
+    color:  #333;
+    border: 1px solid #ccc;
+}
+
+.search-bar.light-mode {
+    background-color: #f8f9fa; /* Fondo claro */
+    color: black;
+    /*border: 1px solid #ddd;*/
+}
+
+.search-bar.light-mode input {
+    background-color: #fff;
+    color: black;
+    border: 1px solid #ddd;
+}
+
+.search-bar.light-mode button .icon-container {
+    background-color: #919191; /* Gris claro */
+}
+
+.search-bar.light-mode button .icon-container:hover {
+    background-color: #b0b0b0; /* Gris más claro al pasar el mouse */
+}
+
+.search-bar.light-mode input::placeholder {
+    color: #6c757d; /* Gris más suave para el modo claro */
+}
+
+
+
+

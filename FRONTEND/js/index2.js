@@ -1,0 +1,239 @@
+
+// Obtener el contenedor donde se mostrarán las películas
+let contenedorPeliculas = document.getElementById("contenedor-peliculas");
+
+// Obtener la barra de búsqueda y una lista para almacenar todas las películas
+let barraBusquedaInput = document.getElementById("barra-busqueda-input");
+let todasLasPeliculas = []; // Aquí almacenaremos todas las películas cargadas
+
+// Obtener referencias a los filtros de género, duración, año, rating y país
+let filtroGenero = document.getElementById("filtro-genero");
+let filtroDuracion = document.getElementById("filtro-duracion");
+let filtroAno = document.getElementById("filtro-ano");
+let filtroRating = document.getElementById("filtro-rating");
+let filtroPais = document.getElementById("filtro-pais");
+
+// Función para mostrar las películas en la grilla de la interfaz
+function mostrarPeliculas(peliculas) {
+    // Crear el HTML para cada tarjeta de película usando los datos proporcionados
+    let tarjetas = peliculas.map((pelicula, index) => {
+        // Verificar si el tema oscuro está activado
+        const themeClass = body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
+
+        return `
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="card ${themeClass}" data-index="${index}">
+                    <img src="${pelicula.portada}" class="card-img-top" alt="${pelicula.titulo}">
+                    <div class="card-body">
+                        <h5 class="card-title ${themeClass}">${pelicula.titulo}</h5>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <p class="mb-0">
+                            <span class="duracion-label ${themeClass}">Duración:</span>
+                            <span class="duracion-minutos ${themeClass}">${pelicula.duracion} min</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join(''); // Convertir el array de tarjetas en un solo string
+
+    // Insertamos el HTML generado en el contenedor de películas
+    contenedorPeliculas.innerHTML = tarjetas;
+
+    // Agregar un evento de clic a cada tarjeta de película
+    contenedorPeliculas.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('click', (event) => {
+            guardarPelicula(event, peliculas[card.getAttribute('data-index')]);
+        });
+    });
+}
+
+// Función para guardar la película seleccionada en localStorage y redirigir a la página de detalles
+function guardarPelicula(event, pelicula) {
+    // Evitar que el evento de clic realice su acción predeterminada
+    event.preventDefault();
+
+    // Guardamos la película en localStorage como una cadena JSON
+    localStorage.setItem('peliculaSeleccionada', JSON.stringify(pelicula));
+
+    // Guardamos el tema actual en localStorage (puede ser 'auto', 'light' o 'dark')
+    const temaActual = localStorage.getItem('selectedTheme') || 'auto';
+    localStorage.setItem('temaActual', temaActual);
+
+    // Redirigimos a la página de detalles de la película
+    window.location.href = "./html/perfil_peli2.html";  // Cambiar a la URL de la página de película
+}
+
+// Función para filtrar las películas basadas en la búsqueda en la barra de búsqueda
+function filtrarPeliculasBusqueda() {
+    // Obtener el valor de la barra de búsqueda y convertirlo a minúsculas
+    let valorBusqueda = barraBusquedaInput.value.toLowerCase();
+
+    // Filtrar las películas que coincidan con el valor de búsqueda en el título
+    let peliculasFiltradas = todasLasPeliculas.filter(pelicula => {
+        return pelicula.titulo.toLowerCase().includes(valorBusqueda); // Filtrar por el título de la película
+    });
+    mostrarPeliculas(peliculasFiltradas); // Mostrar las películas filtradas
+}
+
+// Función para filtrar las películas según los filtros seleccionados (género, duración, etc.)
+function filtrarPeliculas() {
+    // Obtener los valores seleccionados de los filtros
+    let generoSeleccionado = filtroGenero.value;
+    let duracionSeleccionada = filtroDuracion.value;
+    let anoSeleccionado = filtroAno.value;
+    let ratingSeleccionado = filtroRating.value;
+    let paisSeleccionado = filtroPais.value;
+    
+    // Filtrar las películas de acuerdo a los valores de los filtros
+    let peliculasFiltradas = todasLasPeliculas.filter(pelicula => {
+        // Filtrar por género
+        let generoCoincide = generoSeleccionado === "todos" || pelicula.generos.some(genero => genero.toLowerCase() === generoSeleccionado.toLowerCase());
+
+        // Filtrar por año: Compara el año de la película con el filtro seleccionado
+        let anoCoincide = anoSeleccionado === "todos" || 
+                        pelicula.año.toString() === anoSeleccionado ||
+                        (anoSeleccionado === "mas-nueva" || anoSeleccionado === "mas-vieja");
+
+        // Filtrar por rating (calificación)
+        let ratingCoincide = ratingSeleccionado === "todos" || (ratingSeleccionado === "mayor-rating" && pelicula.rating) || (ratingSeleccionado === "menor-rating" && pelicula.rating);
+
+        // Filtrar por país
+        let paisCoincide = paisSeleccionado === "todos" || pelicula.pais.toLowerCase() === paisSeleccionado.toLowerCase();
+
+        return generoCoincide  && anoCoincide && ratingCoincide && paisCoincide;  // Solo devolver las películas que coincidan con todos los filtros
+    });
+
+    // Si el filtro de duración no es "todos", ordenar las películas por duración
+    if (duracionSeleccionada !== "todos") {
+        ordenarPorDuracion(peliculasFiltradas, duracionSeleccionada);
+    }
+
+    // Ordenar las películas por Año
+    ordenarPorAno(peliculasFiltradas, anoSeleccionado);
+
+    // Ordenar las películas por Rating (calificación)
+    ordenarPorRating(peliculasFiltradas, ratingSeleccionado);
+
+    // Mostrar las películas que cumplen con los filtros y el orden seleccionado
+    mostrarPeliculas(peliculasFiltradas);
+}
+
+// Función para ordenar las películas por duración
+function ordenarPorDuracion(peliculas, duracionSeleccionada) {
+    // Ordenar las películas de acuerdo a la duración seleccionada
+    if (duracionSeleccionada === "mayor-duracion") {
+        peliculas.sort((a, b) => b.duracion - a.duracion);  // Ordenar de mayor a menor duración
+    } else if (duracionSeleccionada === "menor-duracion") {
+        peliculas.sort((a, b) => a.duracion - b.duracion);  // Ordenar de menor a mayor duración
+    }
+}
+
+// Función para ordenar las películas por año
+function ordenarPorAno(peliculas, anoSeleccionado) {
+    if (anoSeleccionado === "mas-nueva") {
+        peliculas.sort((a, b) => b.año - a.año);  // Ordenar de más nueva a más vieja
+    } else if (anoSeleccionado === "mas-vieja") {
+        peliculas.sort((a, b) => a.año - b.año);  // Ordenar de más vieja a más nueva
+    }
+}
+
+
+// Función para ordenar las películas por rating (calificación)
+function ordenarPorRating(peliculas, ratingSeleccionado) {
+    if (ratingSeleccionado === "mayor-rating") {
+        peliculas.sort((a, b) => b.rating - a.rating);  // Ordenar de mayor a menor rating
+    } else if (ratingSeleccionado === "menor-rating") {
+        peliculas.sort((a, b) => a.rating - b.rating);  // Ordenar de menor a mayor rating
+    }
+}
+
+
+// Función inicial para cargar y mostrar las películas desde un archivo JSON
+function init() {
+    getPeliculas().then(peliculas => {
+        console.log(peliculas); // Verifica si las películas se cargan correctamente
+        todasLasPeliculas = peliculas;  // Almacenar las películas obtenidas
+        mostrarPeliculas(todasLasPeliculas); // Llamar a mostrarPeliculas para visualizarlas
+    }).catch(error => {
+        console.error("Error al cargar las peliculas:", error);  // Mostrar error en caso de que no se carguen correctamente
+    });
+}
+
+// Agregar eventos de cambio a los filtros para aplicar el filtrado cuando el usuario selecciona una opción
+filtroGenero.addEventListener("change", filtrarPeliculas);
+filtroDuracion.addEventListener("change", filtrarPeliculas);
+filtroAno.addEventListener("change", filtrarPeliculas);
+filtroRating.addEventListener('change', filtrarPeliculas);
+filtroPais.addEventListener('change', filtrarPeliculas);
+
+// Agregar evento para realizar el filtrado mientras se escribe en la barra de búsqueda
+barraBusquedaInput.addEventListener("keyup", filtrarPeliculasBusqueda);
+
+// Llamar a la función init cuando el DOM esté completamente cargado para cargar las películas
+document.addEventListener("DOMContentLoaded", init);
+
+
+
+// ==== Paginación ====
+
+// Función para crear y mostrar los botones de paginación
+function setupPagination(currentPage, totalPages) {
+    const paginationContainer = document.getElementById('pagination');
+    paginationContainer.innerHTML = '';  // Limpiar los botones de paginación anteriores
+
+    // Mostrar los botones de paginación solo si hay más de una página
+    if (totalPages > 1) {
+        let startPage = Math.max(currentPage - 2, 1); // Página inicial a mostrar
+        let endPage = Math.min(currentPage + 2, totalPages); // Página final a mostrar
+
+        // Crear el botón "Anterior"
+        if (currentPage > 1) {
+            const prevButton = document.createElement('button');
+            prevButton.classList.add('page-button');
+            prevButton.textContent = 'Anterior';
+            prevButton.onclick = () => loadPage(currentPage - 1);
+            paginationContainer.appendChild(prevButton);
+        }
+
+        // Crear los botones de las páginas
+        for (let i = startPage; i <= endPage; i++) {
+            const pageButton = document.createElement('button');
+            pageButton.classList.add('page-button');
+            pageButton.textContent = i;
+            pageButton.onclick = () => loadPage(i);
+            if (i === currentPage) {
+                pageButton.classList.add('active');
+            }
+            paginationContainer.appendChild(pageButton);
+        }
+
+        // Crear el botón "Siguiente"
+        if (currentPage < totalPages) {
+            const nextButton = document.createElement('button');
+            nextButton.classList.add('page-button');
+            nextButton.textContent = 'Siguiente';
+            nextButton.onclick = () => loadPage(currentPage + 1);
+            paginationContainer.appendChild(nextButton);
+        }
+    }
+}
+
+// Función para cargar una página específica de películas
+function loadPage(pageNumber) {
+    const moviesPerPage = 10; // Número de películas por página
+    const offset = (pageNumber - 1) * moviesPerPage; // Calcular el offset para la consulta
+
+    // Obtener las películas actuales a mostrar
+    const currentMovies = todasLasPeliculas.slice(offset, offset + moviesPerPage);
+
+    // Mostrar las películas de la página seleccionada
+    mostrarPeliculas(currentMovies);
+
+    // Calcular el número total de páginas
+    const totalPages = Math.ceil(todasLasPeliculas.length / moviesPerPage);
+
+    // Configurar la paginación
+    setupPagination(pageNumber, totalPages);
+}

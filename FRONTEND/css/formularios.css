@@ -1,0 +1,331 @@
+/* ESTE CSS ES PARA TODOS LOS ARCHIVOS HTML QUE TENGAN FORMULARIOS*/
+
+/* Estilos Generales */
+
+/* Estilo base del body */
+body {
+    margin-top: 110px; /* Margen superior para evitar que el contenido se solape con el encabezado */
+    background-color: #121212; /* Color de fondo oscuro */
+    color: #E0E0E0; /* Color de texto claro para buena legibilidad */
+    font-family: 'Montserrat', sans-serif; /* Fuente utilizada para el texto */
+    background-image: url('../images/login-cine.jpg'); /* Imagen de fondo que se aplicará sobre el color de fondo */
+    background-size: cover; /* Ajusta la imagen de fondo para cubrir completamente el área del body*/
+}
+
+/* Encabezados */
+h2, h3, h4 {
+    color: #E0E0E0; /* Color de los encabezados */
+    font-weight: bold; /* Hacer el texto más grueso */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Sombra de texto para dar profundidad */
+    transition: color 0.3s, text-shadow 0.3s; /* Transiciones suaves al cambiar el color o la sombra */
+}
+
+/* Estilos del Contenedor Principal */
+.container {
+    /*background-color: #1E1E1E;*/ /* Fondo gris oscuro para el contenedor */
+    background-color: rgba(30, 30, 30, 0.93); /* Fondo gris oscuro con 93% de opacidad */
+    border-radius: 8px; /* Bordes redondeados para un estilo más suave */
+    padding: 20px; /* Espaciado interno para separar el contenido de los bordes */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Sombra sutil para destacar el contenedor */
+    opacity: 0; /* Comienza invisible para la animación */
+    transform: translateY(20px); /* Mueve el contenedor hacia abajo para el efecto de entrada */
+    animation: fadeIn 0.5s forwards; /* Aplica la animación de entrada al contenedor */
+
+    display: flex;
+    flex-direction: column; /* Cambiamos a columna para apilar los elementos */
+    align-items: center; /* Centra los elementos hijos horizontalmente */
+    width: 100%; /* O ajusta el tamaño según sea necesario */
+}
+
+/* Animación para el contenedor */
+@keyframes fadeIn {
+    to {
+        opacity: 1; /* Termina visible */
+        transform: translateY(0); /* Regresa a su posición original */
+    }
+}
+
+/* Estilos de etiquetas de formulario */
+.form-label {
+    font-weight: bold; /* Hacer el texto más grueso para destacar las etiquetas */
+    transition: color 0.3s; /* Transición suave al cambiar el color */
+}
+
+/* Cambia el color de la etiqueta al pasar el mouse */
+.item-formulario:hover .form-label {
+    color: #FFD700; /* Cambiar a color dorado al pasar el mouse */
+    text-shadow: 1px 1px 3px rgba(255, 215, 0, 0.7); /* Añadir sombra al texto */
+}
+
+/* Estilos de Inputs y Selects */
+.input-general, 
+.select-general {
+    background-color: #2C2C2C; /* Fondo oscuro para los inputs y selects */
+    color: #E0E0E0; /* Texto blanco para buena visibilidad */
+    border: 1px solid #555; /* Borde gris oscuro */
+    transition: background-color 0.3s, border-color 0.3s, transform 0.3s; /* Transiciones suaves al cambiar estilos */
+}
+
+/* Color de los placeholders en los inputs */
+.input-general::placeholder {
+    color: white; /* Color blanco para los placeholders */
+}
+
+/* Efecto de hover en Inputs y Selects */
+.input-general:hover, 
+.select-general:hover {
+    background-color: #3D3D3D; /* Cambiar fondo a un tono más claro al hacer hover */
+    border-color: #FFD700; /* Borde dorado al hacer hover */
+    transform: scale(1.05); /* Efecto de zoom al hacer hover */
+}
+
+/* Estilo al enfocar los Inputs y Selects */
+.input-general:focus, 
+.select-general:focus {
+    border-color: #FF8C00; /* Color naranja al enfocar */
+    outline: none; /* Sin contorno por defecto al enfocar */
+    box-shadow: 0 0 5px rgba(255, 140, 0, 0.7); /* Sombra al enfocar para resaltar el input */
+    background-color: #3D3D3D; /* Mantener el fondo oscuro al enfocar */
+    color: white; /* Mantener el texto blanco al enfocar */
+}
+
+/* Estilos para campos deshabilitados */
+.input-general:disabled, 
+.select-general:disabled {
+    background-color: rgba(44, 44, 44, 0.5); /* Mantiene el fondo oscuro con un 50% de opacidad */
+    color: rgba(224, 224, 224, 0.7); /* Texto claro con algo de opacidad */
+    cursor: not-allowed; /* Cambia el cursor para indicar que está deshabilitado */
+    border-color: rgba(85, 85, 85, 0.7); /* Bordes en gris oscuro con opacidad */
+}
+
+/* Estilos de Botones */
+.btn {
+    background-color: #FF8C00; /* Color de fondo naranja */
+    color: #FFFFFF; /* Texto en blanco */
+    border: none; /* Sin bordes */
+    border-radius: 5px; /* Bordes redondeados para un diseño más atractivo */
+    transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves al cambiar estilos */
+    font-weight: bold; /* Hacer el texto más grueso */
+}
+
+/* Efecto de hover en botones */
+.btn:hover {
+    background-color: #FFD700; /* Cambiar a color dorado al pasar el mouse */
+    transform: scale(1.05); /* Efecto de zoom al hacer hover */
+}
+
+/* Estilo para el botón deshabilitado */
+#btn-continuar:disabled,
+#btn-confirmar:disabled {
+    background-color: rgba(128, 128, 128, 0.5); /* Gris transparente */
+    cursor: not-allowed !important; /* Forzar el cursor */
+    color: #fff;
+    border-color: rgba(128, 128, 128, 0.5);
+}
+/* Estilos del Resumen de Compra */
+.resumen-general {
+    /*background-color: #1E1E1E;*/ /* Fondo gris oscuro para el resumen */
+    background-color: rgba(30, 30, 30, 0.93); /* Fondo gris oscuro con 93% de opacidad */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 20px; /* Espaciado interno */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transiciones suaves al interactuar */
+}
+
+/* Estilo para el cuadro de Total en el resumen de compra */
+.resumen-total-container {
+    background-color: #3D3D3D; /* Fondo más claro para el total */
+    border: 2px solid #888; /* Borde gris */
+    border-radius: 8px; /* Bordes redondeados */
+    color: #fff; /* Texto blanco */
+    font-size: 1.25em; /* Aumentar el tamaño de fuente */
+    font-weight: bold; /* Hacer el texto más grueso */
+}
+
+/* Estilo del texto del total */
+.resumen-total-text {
+    margin: 0; /* Sin márgenes */
+    padding: 5px; /* Espaciado interno */
+}
+
+/* Efecto al pasar el mouse sobre el resumen */
+#resumen:hover {
+    transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
+    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.2); /* Sombra al hacer hover para destacar el resumen */
+}
+
+/* Contenedor de Butacas */
+.butacas-container {
+    display: grid; /* Usar grid para el diseño de butacas */
+    grid-template-columns: repeat(5, 1fr); /* 5 columnas para organizar las butacas */
+    gap: 1rem; /* Espacio entre las butacas */
+    margin: 20px 0; /* Margen superior e inferior */
+}
+
+/* Estilo base para las butacas */
+.butaca {
+    width: 50px; /* Ancho de las butacas */
+    height: 50px; /* Alto de las butacas */
+    background-color: #333; /* Fondo oscuro para las butacas */
+    color: #E0E0E0; /* Texto claro */
+    border: 1px solid #ddd; /* Borde claro */
+    display: flex; /* Usar flexbox para centrar el texto dentro de la butaca */
+    align-items: center; /* Centrar verticalmente el texto */
+    justify-content: center; /* Centrar horizontalmente el texto */
+    cursor: pointer; /* Cambiar cursor al pasar el mouse */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Transiciones suaves al interactuar */
+}
+
+/* Estado seleccionado para las butacas */
+.butaca.selected {
+    background-color: #FF8C00; /* Color naranja para butacas seleccionadas */
+    color: #FFFFFF; /* Texto blanco */
+    border-color: #FFD700; /* Borde dorado para butacas seleccionadas */
+    box-shadow: 0 4px 15px rgba(255, 140, 0, 0.5); /* Sombra para las butacas seleccionadas */
+    transform: scale(1.05); /* Efecto de zoom para las butacas seleccionadas */
+}
+
+/* Estado de butaca deshabilitada */
+.butaca.disabled {
+    background-color: #555; /* Fondo gris oscuro para butacas deshabilitadas */
+    color: #888; /* Texto gris claro para indicar que está deshabilitada */
+    cursor: not-allowed; /* Cursor de no permitido */
+    opacity: 0.6; /* Opacidad reducida para las butacas deshabilitadas */
+}
+
+/* Efecto de hover en butacas */
+.butaca:hover:not(.selected):not(.disabled) {
+    background-color: #FFD700; /* Color dorado al pasar el mouse sobre butacas disponibles */
+    color: #333; /* Texto oscuro */
+    transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
+}
+
+.butacas-resumen {
+    display: flex; /* Usamos flexbox para que los divs estén en fila */
+    justify-content: center; /* Centra los divs hijos horizontalmente */
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    margin-bottom: 20px; /* Espacio debajo de la fila */
+    align-items: center;
+}
+
+/* Estilos para botones centrados */
+.botones-centrados {
+    display: flex; /* Usamos flexbox para los botones */
+    justify-content: center; /* Centra los botones */
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    margin-top: 20px; /* Espaciado superior para separar de los divs superiores */
+}
+
+/* Estilo del encabezado */
+#header-consulta {
+    text-align: center; /* Centra el texto horizontalmente dentro del encabezado */
+    padding: 20px 0; /* Espaciado superior e inferior para dar aire al encabezado */
+    background-color: #1E1E1E; /* Establece un fondo oscuro para el encabezado */
+    border-bottom: 2px solid #FF8C00; /* Añade un borde inferior naranja para resaltar el encabezado */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Crea una sombra sutil para dar profundidad al encabezado */
+}
+
+/* Estilo del título h1 */
+#header-consulta h1 {
+    font-size: 2.5rem; /* Define un tamaño de fuente grande para el título */
+    font-weight: bold; /* Aplica negrita al texto del título */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Añade sombra al texto para mejorar la legibilidad */
+    margin: 0; /* Elimina los márgenes por defecto del título */
+}
+
+/* Estilos para la Preferencia de Respuesta */
+.preferencia-respuesta-container {
+    background-color: #2E2E2E; /* Establece un fondo ligeramente más claro que el del encabezado */
+    border-radius: 8px; /* Redondea los bordes del contenedor para un aspecto más suave */
+    padding: 15px; /* Añade espaciado interno para separar el contenido de los bordes del contenedor */
+    margin-top: 20px; /* Añade margen superior para separar de otros elementos */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Crea una sombra sutil para dar profundidad al contenedor */
+}
+
+/* Estilo para las etiquetas en el contenedor de Preferencia de Respuesta */
+.preferencia-respuesta-container label {
+    display: block; /* Hace que las etiquetas ocupen todo el ancho disponible */
+    margin-bottom: 10px; /* Añade espaciado inferior entre las etiquetas para evitar aglomeraciones */
+}
+
+/* Estilo para los botones de radio dentro del contenedor de Preferencia de Respuesta */
+.preferencia-respuesta-container input[type="radio"] {
+    margin-right: 50px; /* Espacio a la derecha del botón de radio para separar de la etiqueta */
+    transform: translateX(50px); /* Desplaza ligeramente el botón de radio hacia la derecha */
+}
+
+/* Estilos para la sección de Términos y Condiciones */
+.terminos-container {
+    display: flex; /* Utiliza flexbox para alinear los elementos dentro del contenedor */
+    justify-content: center; /* Centra horizontalmente los elementos en el contenedor */
+    align-items: center; /* Alinea verticalmente los elementos en el centro */
+    margin-top: 40px; /* Añade margen superior para separar de otros elementos */
+    background-color: #2E2E2E; /* Establece un fondo ligeramente más claro que el del encabezado */
+    border-radius: 8px; /* Redondea los bordes del contenedor */
+    padding: 15px; /* Añade espaciado interno para separar el contenido de los bordes del contenedor */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Crea una sombra sutil para dar profundidad al contenedor */
+}
+
+/* Estilo para las etiquetas en el contenedor de Términos y Condiciones */
+.terminos-container label {
+    color: #E0E0E0; /* Establece un color de texto claro para mejorar la legibilidad sobre el fondo oscuro */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse sobre la etiqueta para indicar interactividad */
+}
+
+/* Estilo para el checkbox dentro del contenedor de Términos y Condiciones */
+.terminos-container input[type="checkbox"] {
+    margin-right: 10px; /* Espacio a la derecha del checkbox para separar de la etiqueta */
+}
+
+/* Estilos para los checkboxes y botones de radio cuando están marcados */
+input[type="checkbox"],
+input[type="radio"] {
+    margin-right: 5px; /* Espacio a la derecha para separar del texto */
+    accent-color: #FFD700; /* Establece el color del checkbox y botón de radio cuando están seleccionados */
+    transition: all 0.3s ease; /* Añade una transición suave para cambios en la apariencia */
+}
+
+
+/* Media queries para responsividad */
+@media (max-width: 992px) {
+    /* A 4 columnas para pantallas medianas y pequeñas */
+    .butacas-container {
+        grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+    }
+}
+
+@media (max-width: 768px) {
+    /* Cambiar la dirección a columna y centrar en pantallas pequeñas */
+    .d-flex {
+        flex-direction: column; /* Cambia la disposición a columna para mejor visualización en pantallas pequeñas */
+        align-items: center; /* Centra todos los elementos dentro del contenedor */
+    }
+
+    .butacas-resumen {
+        flex-direction: column; /* Cambia la dirección a columna */
+        align-items: center; /* Centra los divs en la columna */
+    }
+
+
+    /* Botones centrados en pantallas pequeñas */
+    .botones-centrados {
+        display: flex; /* Usamos flexbox para los botones */
+        justify-content: center; /* Centra los botones */
+        width: 100%; /* Asegura que ocupe todo el ancho */
+    }
+
+    /* Cambia la disposición de campos en pantallas pequeñas */
+    .nombre-apellido,
+    .email-telefono {
+        flex-direction: column; /* Cambia a columna en pantallas pequeñas para mejor visualización */
+    }
+
+    /* Asegura que cada campo ocupe todo el ancho disponible */
+    .nombre,
+    .apellido,
+    .email,
+    .telefono {
+        width: 100%; /* Hace que cada campo ocupe el ancho completo */
+    }
+}
+

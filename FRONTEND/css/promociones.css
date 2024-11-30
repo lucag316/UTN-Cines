@@ -1,0 +1,244 @@
+/* -------------------------------------- */
+/* General Styles                        */
+/* -------------------------------------- */
+
+/* Estilo base del body */
+body {
+    font-family: 'Montserrat', sans-serif; /* Fuente Montserrat como principal */
+    /*background: linear-gradient(135deg, #1a1a1a, #2b2b2b);*/ /* Gradiente oscuro */
+    /*background: linear-gradient(135deg, #1e1e2f 0%, #2b3b55 100%); /* Ajusta a un tono oscuro más uniforme */
+    /* background: linear-gradient(135deg, #1e1e2f, #1c2833); Oscuro uniforme con ligeros matices */
+    padding: 0;
+    margin: 0;
+    color: #ecf0f1; 
+    
+}
+
+/* Título principal (h1) */
+h1 {
+    font-size: 4em; /* Tamaño grande del título */
+    margin: 40px 0 20px; /* Espacios superior e inferior */
+    text-align: center; /* Alinear al centro */
+    background: linear-gradient(135deg, 
+        #990000, /* Color inicial */
+        #cc0000, 
+        #ff0000, 
+        #ff4d00, 
+        #ff9999, 
+        #ff4d00, 
+        #ff0000, 
+        #cc0000, 
+        #990000); /* Degradado de tonos rojos */
+    background-size: 300% 100%; /* Aumentar el tamaño del fondo para el movimiento */
+    font-weight: 700; /* Negrita */
+    text-transform: uppercase; /* Mayúsculas */
+    letter-spacing: 2px; /* Espaciado entre letras */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Sombra al texto */
+    animation: fadeInUp 0.6s forwards, gradientMove 10s linear infinite; /* Animaciones */
+}
+
+/* Animación para el fadeInUp */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animación del gradiente que se mueve */
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%; /* Comienza desde la izquierda */
+    }
+    100% {
+        background-position: 300% 50%; /* Se mueve más allá de la derecha */
+    }
+}
+
+/* Subtítulos (h3) */
+h3 {
+    font-size: 2.2em; /* Tamaño del subtítulo */
+    font-weight: 600; /* Semi negrita */
+    margin: 30px 0 0; /* Espacio superior */
+    text-align: center; /* Centrado */
+    padding-bottom: 10px; /* Espacio inferior para borde */
+    border-bottom: 2px solid #7a0e0e; /* Borde inferior rojo */
+    text-transform: uppercase; /* Mayúsculas */
+    letter-spacing: 1px; /* Espaciado entre letras */
+    transition: color 0.3s ease, border-bottom-color 0.3s ease; /* Transiciones suaves */
+}
+
+/* Efecto hover en subtítulos */
+h3:hover {
+    color: #c0392b; /* Cambia el color del texto en hover */
+    border-bottom-color: #c0392b; /* Cambia el borde en hover */
+}
+
+h1, h3 {
+    color: #ffffff; /* Texto blanco */
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.6), 0 0 12px rgba(255, 0, 0, 0.4); /* Efecto de brillo */
+}
+
+h1:hover, h3:hover {
+    text-shadow: 0 0 18px rgba(255, 69, 0, 0.7); /* Más brillo al hacer hover */
+}
+
+/* -------------------------------------- */
+/* Carousel Styles                        */
+/* -------------------------------------- */
+
+/* Contenedor general del carrusel */
+.carousel-container {
+    width: 90%; /* Ancho del contenedor */
+    margin: 40px auto 0; /* Margen superior y centrado */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 60px; /* Espacio entre carruseles */
+    /*background-color: #2e2e2e; /* Fondo gris claro */
+    padding: 30px; /* Relleno interno */
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); /* Sombra suave */
+
+    /*background-image: url('https://img.freepik.com/fotos-premium/bobinas-pelicula-negras-doradas_1150025-106984.jpg?w=360'); /* Cambia 'tu-imagen.jpg' por el nombre de tu imagen */
+    background: linear-gradient(rgba(30, 30, 47, 0.6), rgba(30, 30, 47, 06)), /* Fondo semi-transparente */
+                url('https://img.freepik.com/fotos-premium/teatro-antiguo-vacio-asientos-terciopelo-rojo-luces-iluminadas-entorno-atmosferico-oscuro_43969-51718.jpg?w=360'); /* Cambia 'tu-imagen.jpg' por el nombre de tu imagen */
+    background-size: cover; /* Asegura que la imagen cubra todo el fondo */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+
+}
+
+/* Carrusel principal */
+.carousel {
+    width: 100%; /* Ocupa el ancho completo del contenedor */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative; /* Posicionamiento relativo para manejar flechas */
+    overflow: hidden; /* Oculta el contenido fuera del área visible */
+    padding: 20px; /* Relleno interno */
+    /*background-color: #3a3a3a; /* Fondo del carrusel */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+/* Pista del carrusel (donde se mueven los items) */
+.carousel-track {
+    display: flex; /* Flexbox para alinear los items horizontalmente */
+    align-items: center; /* Centrado vertical */
+    transition: transform 0.3s ease-in-out; /* Transición suave en el movimiento */
+    margin-left: 20px; /* Espacio a la izquierda */
+}
+
+
+
+
+/* Items individuales del carrusel */
+.carousel-item {
+    width: 320px; /* Establecer un ancho fijo para los ítems */
+    height: 200px; /* Altura fija */
+    padding: 15px; /* Relleno interno */
+    text-align: center; /* Texto centrado */
+    font-size: 18px; /* Tamaño del texto */
+    color: #ecf0f1;
+    border-radius: 10px; /* Bordes redondeados */
+    margin: 0 15px; /* Espacio entre los items */
+    display: flex; /* Flexbox para centrar contenido */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    flex-shrink: 0; /* Evitar que se reduzca el tamaño */
+    background: linear-gradient(135deg, #4b0000, #7a0e0e); /* Degradado de rojo oscuro */
+}
+
+/* Estilo específico para el texto dentro de los items */
+.carousel-item span {
+    font-weight: bold; /* Negrita */
+    font-size: 1.2em; /* Tamaño más grande del texto */
+    color: #ffd700; /* Texto dorado */
+    margin-bottom: 5px; /* Espacio inferior */
+    display: block; /* Muestra como bloque separado */
+    letter-spacing: 1px; /* Espaciado entre letras */
+    text-shadow: 2px 2px 4px rgba(255, 215, 0, 0.8); /* Sombra dorada para brillo */
+}
+
+/* Efecto hover en items del carrusel */
+.carousel-item:hover {
+    cursor: pointer; /* Cambia el cursor */
+    transform: scale(1.05); /* Agrandar al hacer hover */
+    background: linear-gradient(135deg, #9c2424, #6a0e0e); /* Degradado más oscuro y contrastante en hover */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3); /* Sombra más profunda */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+
+
+/* Flechas de navegación del carrusel */
+.arrow {
+    position: absolute; /* Posicionamiento absoluto */
+    top: 50%; /* Centrado vertical */
+    transform: translateY(-50%); /* Ajuste fino de la posición */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+    color: white;
+    font-size: 30px;
+    cursor: pointer; /* Cambia el cursor */
+    padding: 15px; /* Espacio interno */
+    border-radius: 50%; /* Forma circular */
+    z-index: 2; /* Asegura que estén sobre los items */
+}
+
+/* Flecha izquierda */
+.arrow.left {
+    left: 10px; /* Posicionamiento a la izquierda */
+}
+
+/* Flecha derecha */
+.arrow.right {
+    right: 10px; /* Posicionamiento a la derecha */
+}
+
+/* -------------------------------------- */
+/* Responsive Design                      */
+/* -------------------------------------- */
+
+/* Ajustes para pantallas medianas (tablets) */
+@media (max-width: 1024px) {
+    h1 {
+        font-size: 3em; /* Reducir tamaño del título principal */
+    }
+
+    h3 {
+        font-size: 1.8em; /* Reducir tamaño de subtítulos */
+    }
+
+    .carousel-item {
+        width: 320px; /* Establecer un ancho fijo para los ítems */
+        height: 200px; /* Altura fija */
+    }
+}
+
+/* Ajustes para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5em; /* Reducir aún más el título */
+    }
+
+    h3 {
+        font-size: 1.5em; /* Reducir tamaño de subtítulos */
+    }
+
+    .carousel-container {
+        gap: 30px; /* Reducir espacio entre carruseles */
+    }
+
+    .carousel-item {
+        width: 250px; /* Establecer un ancho fijo para los ítems */
+        height: 220px; /* Altura fija */
+    }
+
+    .arrow {
+        font-size: 24px; /* Reducir tamaño de flechas */
+        padding: 10px;
+    }
+}

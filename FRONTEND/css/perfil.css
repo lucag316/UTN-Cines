@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif; /* Fuente principal */
+}
+
+h2 {
+    font-weight: bold;
+}
+
+#user-photo {
+    max-width: 150px;
+}
+
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.purchase-info {
+    flex: 1;
+}
+
+.purchase-date {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* Estilos para pantallas más pequeñas */
+@media (max-width: 768px) {
+    #user-photo {
+        width: 120px;
+    }
+}
