@@ -2,7 +2,7 @@
 
 .nosotros-preguntas {
     font-family: 'Arial', sans-serif;
-    background-image: url(/images/login.jpg); /* Fondo gris oscuro */
+    background-image: url(../images/login.jpg); /* Fondo gris oscuro */
     background-size: cover;
     background-attachment: fixed;
     color: rgb(255, 255, 255);

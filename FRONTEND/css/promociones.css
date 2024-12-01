@@ -131,19 +131,16 @@ h1:hover, h3:hover {
     margin-left: 20px; /* Espacio a la izquierda */
 }
 
-
-
-
 /* Items individuales del carrusel */
 .carousel-item {
-    width: 320px; /* Establecer un ancho fijo para los ítems */
-    height: 200px; /* Altura fija */
+    width: 350px; /* Establecer un ancho fijo para los ítems */
+    height: 250px; /* Altura fija */
     padding: 15px; /* Relleno interno */
     text-align: center; /* Texto centrado */
-    font-size: 18px; /* Tamaño del texto */
+    font-size: 20px; /* Tamaño del texto */
     color: #ecf0f1;
     border-radius: 10px; /* Bordes redondeados */
-    margin: 0 15px; /* Espacio entre los items */
+    margin: 0 20px; /* Espacio entre los items */
     display: flex; /* Flexbox para centrar contenido */
     justify-content: center; /* Centra horizontalmente */
     align-items: center; /* Centra verticalmente */
@@ -155,7 +152,7 @@ h1:hover, h3:hover {
 /* Estilo específico para el texto dentro de los items */
 .carousel-item span {
     font-weight: bold; /* Negrita */
-    font-size: 1.2em; /* Tamaño más grande del texto */
+    font-size: 1.3em; /* Tamaño más grande del texto */
     color: #ffd700; /* Texto dorado */
     margin-bottom: 5px; /* Espacio inferior */
     display: block; /* Muestra como bloque separado */
