@@ -3,7 +3,7 @@ CREATE TABLE Pelicula (
   id_pelicula INT PRIMARY KEY AUTO_INCREMENT,
   titulo VARCHAR(200) NOT NULL,
   duracion INT NOT NULL,
-  clasificacion VARCHAR(20),
+  clasificacion VARCHAR(20) DEFAULT "PG-13",
   descripcion TEXT,
   anio YEAR NOT NULL,
   pais VARCHAR(50),
@@ -40,7 +40,7 @@ CREATE TABLE Reparto (
 CREATE TABLE Pelicula_Reparto (
   id_pelicula INT,
   id_persona INT,
-  rol ENUM('Actor', 'Director', 'Actriz') NOT NULL,
+  rol ENUM('Actor', 'Director') NOT NULL DEFAULT "Actor",
   personaje VARCHAR(100),
   PRIMARY KEY (id_pelicula, id_persona),
   FOREIGN KEY (id_pelicula) REFERENCES Pelicula (id_pelicula),
@@ -69,7 +69,7 @@ CREATE TABLE ticket_de_compra (
   id_usuario INT,
   nombre_pelicula VARCHAR(100) NOT NULL,
   fecha DATETIME NOT NULL,
-  formato_pelicula ENUM('2D', '3D', 'IMAX') NOT NULL,
+  formato_pelicula ENUM('2D', '3D', 'IMAX') NOT NULL DEFAULT "3D",
   horario TIME NOT NULL,
   cantidad INT NOT NULL,
   id_promocion INT,
@@ -87,7 +87,7 @@ CREATE TABLE Consulta (
   email VARCHAR(100) NOT NULL,
   telefono VARCHAR(15),
   mensaje TEXT NOT NULL,
-  preferencia_respuesta ENUM('Email', 'Teléfono') NOT NULL
+  preferencia_respuesta ENUM('Email', 'Teléfono') NOT NULL DEFAULT "Email"
 );
 
 -- Creación de la tabla Carrito

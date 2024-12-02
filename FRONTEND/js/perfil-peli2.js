@@ -45,6 +45,8 @@ window.mostrarPelicula = function mostrarPelicula () {
         }
     }
 
+    console.log(pelicula)
+
     // Actualizamos el contenido HTML del contenedor con los detalles de la película
     mainPelicula.innerHTML = `
     <div class="container-movie">
@@ -55,8 +57,8 @@ window.mostrarPelicula = function mostrarPelicula () {
                 <!-- Mostramos los detalles de la película como género, duración, reparto, etc. -->
                 <div class="details-item"><h3>Género:</h3><p id="genero_text">${pelicula.generos.map(g=>g.nombre).join(', ')}</p></div>
                 <div class="details-item"><h3>Duración:</h3><p id="duracion_text">${pelicula.duracion} min</p></div>
-                <div class="details-item"><h3>Reparto:</h3><p id="reparto_text">${pelicula.reparto.map(r=>r.nombre).join(', ')}</p></div>
-                <div class="details-item"><h3>Director:</h3><p id="director_text">${pelicula.director.nombre}</p></div>
+                <div class="details-item"><h3>Reparto:</h3><p id="reparto_text">${pelicula.reparto?.map(r=>r.nombre).join(', ') || ""}</p></div>
+                <div class="details-item"><h3>Director:</h3><p id="director_text">${pelicula.director?.nombre || ""}</p></div>
                 <div class="details-item"><h3>País:</h3><p id="pais_text">${pelicula.pais}</p></div>
                 <div class="details-item"><h3>Clasificación:</h3><p id="clasificacion_text">${pelicula.clasificacion}</p></div>
                 <div class="details-item"><h3>Rating:</h3><p id="rating_text">${pelicula.rating}</p></div>

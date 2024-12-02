@@ -59,7 +59,7 @@ const seedDatabase = async () => {
       // Relacionar reparto con la película y el rol
       for (const miembro of pelicula.reparto) {
         // Verificar que el rol sea válido (uno de 'Actor', 'Director' o 'Actriz')
-        const validRoles = ['actor', 'Director', 'Actriz'];
+        const validRoles = ['Actor', 'Director'];
         if (validRoles.includes(miembro.rol)) {
           const queryReparto = `
             INSERT IGNORE INTO Pelicula_Reparto (id_pelicula, id_persona, rol, personaje)
@@ -69,7 +69,6 @@ const seedDatabase = async () => {
             pelicula.id,
             miembro.id,
             miembro.rol, // Asignar el rol directamente
-            miembro.personaje || '', // Asignar personaje si está disponible
           ]);
         }
       }

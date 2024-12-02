@@ -267,7 +267,7 @@ function addToCart(movieId, movieTitle) {
     }
     
     updateCart();
-    mostrarPelicula()
+
 }
 
 // Función para actualizar el carrito
@@ -293,7 +293,7 @@ function updateCart() {
         cartItem.className = "dropdown-item d-flex justify-content-between align-items-center";
 
         cartItem.innerHTML = `
-            <span>${movie.titulo} (x${movie.quantity})</span>
+            <span>${movie.title} (x${movie.quantity})</span>
             <div>
                 <button class="btn btn-sm btn-secondary me-2" onclick="decreaseQuantity(${index},event)">-</button>
                 <button class="btn btn-sm btn-primary me-2" onclick="increaseQuantity(${index},event)">+</button>
@@ -318,7 +318,6 @@ function increaseQuantity(index,event) {
     event.stopPropagation(); // Prevent dropdown from closing
     cart2[index].quantity++;
     updateCart();
-    mostrarPelicula()
 
 }
 
@@ -333,7 +332,7 @@ function decreaseQuantity(index,event) {
     }
 
     updateCart();
-    mostrarPelicula()
+
 
 }
 
@@ -342,7 +341,7 @@ function removeFromCart(index,event) {
     event.stopPropagation(); // Prevent dropdown from closing
     cart2.splice(index, 1);
     updateCart();
-    mostrarPelicula()
+
 
 }
 
