@@ -244,12 +244,10 @@ function loadPage(pageNumber) {
 
 
 ////////////////////////////////////////////CARRITO////////////////////////////////////////////////////////////////////
-(() => {
-    let cart = JSON.parse(localStorage.getItem("cart")) !== null && JSON.parse(localStorage.getItem("cart")).length > 0 ? JSON.parse(localStorage.getItem("cart")) : [];
 
-    // Operaciones con el carrito...
-    localStorage.setItem("cart", JSON.stringify(cart));
-})();
+let cart = JSON.parse(localStorage.getItem("cart")) !== null && JSON.parse(localStorage.getItem("cart")).length > 0 ? JSON.parse(localStorage.getItem("cart")) : [];
+
+
 const cartDropdown = document.getElementById("cartItems");
 const cartCount = document.getElementById("cartCount");
 
