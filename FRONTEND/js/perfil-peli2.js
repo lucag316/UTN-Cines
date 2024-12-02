@@ -1,4 +1,8 @@
 
+
+let cart = JSON.parse(localStorage.getItem("cart")) !== null && JSON.parse(localStorage.getItem("cart")).length > 0 ? JSON.parse(localStorage.getItem("cart")) : [];
+
+
 // Esperamos a que el contenido del DOM se haya cargado completamente
 document.addEventListener('DOMContentLoaded', () => {
     // Recuperamos el tema guardado en localStorage (si no existe, usamos 'auto' por defecto)
@@ -31,6 +35,15 @@ window.mostrarPelicula = function mostrarPelicula () {
     // Obtenemos el contenedor donde se mostrará el detalle de la película en la página
     const mainPelicula = document.querySelector('.main-pelicula');
 
+    let peliculaInCart;
+
+    if(cart){
+        peliculaInCart = cart.find(m => m.id == pelicula.id)
+        if(peliculaInCart){
+            peliculaInCart.index = cart.findIndex(m => m.id == pelicula.id)
+        }
+    }
+
     // Actualizamos el contenido HTML del contenedor con los detalles de la película
     mainPelicula.innerHTML = `
     <div class="container-movie">
@@ -39,10 +52,10 @@ window.mostrarPelicula = function mostrarPelicula () {
             <img id="img_perfil_peli" class="portada" src="${pelicula.portada}" alt="portada_img">
             <div class="details">
                 <!-- Mostramos los detalles de la película como género, duración, reparto, etc. -->
-                <div class="details-item"><h3>Género:</h3><p id="genero_text">${pelicula.generos.join(', ')}</p></div>
+                <div class="details-item"><h3>Género:</h3><p id="genero_text">${pelicula.generos.map(g=>g.nombre).join(', ')}</p></div>
                 <div class="details-item"><h3>Duración:</h3><p id="duracion_text">${pelicula.duracion} min</p></div>
-                <div class="details-item"><h3>Reparto:</h3><p id="reparto_text">${pelicula.reparto.join(', ')}</p></div>
-                <div class="details-item"><h3>Director:</h3><p id="director_text">${pelicula.director}</p></div>
+                <div class="details-item"><h3>Reparto:</h3><p id="reparto_text">${pelicula.reparto.map(r=>r.nombre).join(', ')}</p></div>
+                <div class="details-item"><h3>Director:</h3><p id="director_text">${pelicula.director.nombre}</p></div>
                 <div class="details-item"><h3>País:</h3><p id="pais_text">${pelicula.pais}</p></div>
                 <div class="details-item"><h3>Clasificación:</h3><p id="clasificacion_text">${pelicula.clasificacion}</p></div>
                 <div class="details-item"><h3>Rating:</h3><p id="rating_text">${pelicula.rating}</p></div>
@@ -61,9 +74,23 @@ window.mostrarPelicula = function mostrarPelicula () {
                 <p id="resumen_text">${pelicula.sinopsis}</p>
             </div>
             <!-- Botón para comprar entradas -->
-            <div class="container-buy-button">
-                <button class="btn-buy" onclick="irACompraEntradas()">Comprar</button>
-            </div>
+            ${
+                peliculaInCart ? `
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div class="d-flex justify-content-between align-items-center mt-2">
+                        <button class="btn btn-sm btn-secondary" onclick="decreaseQuantity('${peliculaInCart.index}',event)">-</button>
+                        <span id="quantity_${peliculaInCart.id}" class="mx-2">${peliculaInCart.quantity}</span>
+                        <button class="btn btn-sm btn-secondary" onclick="increaseQuantity('${peliculaInCart.index}',event)">+</button>
+                    </div>
+                </div>
+                `
+            :
+            `
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <button class="btn btn-primary w-100 mt-2" onclick="addToCart('${pelicula.id}', '${pelicula.title}')">Agregar al carrito</button>
+                </div>
+            `
+            }
         </div>
     </div>
     `;
@@ -82,3 +109,4 @@ function getTrailerKey(url) {
 
 // Llamamos a la función mostrarPelicula cuando el contenido de la página se haya cargado
 document.addEventListener("DOMContentLoaded", mostrarPelicula);
+

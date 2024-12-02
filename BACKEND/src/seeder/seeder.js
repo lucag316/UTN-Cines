@@ -22,7 +22,7 @@ const seedDatabase = async () => {
     // Insertar personas en el reparto
     for (const persona of data.reparto) {
       const nombreCompleto = persona.nombre || persona.name; // Para manejar las diferencias de nombres
-      const apellido = persona.nombre.split(" ")[1]; // El JSON no incluye apellido, por lo que se deja vacío
+      const apellido = persona.nombre; // El JSON no incluye apellido, por lo que se deja vacío
       const query = `INSERT IGNORE INTO Reparto (id_persona, nombre, apellido) VALUES (?, ?, ?)`;
       await connection.query(query, [persona.id, nombreCompleto, apellido]);
     }
@@ -126,7 +126,7 @@ const createTables = async () => {
   
 };
 
-// createTables();
+//createTables();
 
 
 
