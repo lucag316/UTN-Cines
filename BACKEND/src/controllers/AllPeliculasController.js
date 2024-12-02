@@ -94,6 +94,7 @@ GROUP BY
             reparto: pelicula.reparto ? JSON.parse(pelicula.reparto) : []
         }));
 
+        console.log(peliculas)
         res.send(peliculas);
         // console.log(peliculas);
     } catch (error) {
