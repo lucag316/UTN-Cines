@@ -15,9 +15,12 @@ app.use(bodyParser.json())
 
 // MIDDLEWARES
 app.use(cors({
-    origin: ["http://localhost:52330", "http://127.0.0.1:5500"], // Asegúrate de usar exactamente el origen desde donde haces la solicitud
-    methods: ["GET", "POST", "PUT", "DELETE"], // Define métodos permitidos si es necesario
-    credentials: true // Si necesitas enviar cookies u otras credenciales
+    origin: [
+        "http://localhost:52330", // Sin la barra al final
+        "http://127.0.0.1:5500", // Sin la barra al final
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
 }));
 
 
