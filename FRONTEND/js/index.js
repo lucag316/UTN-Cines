@@ -53,7 +53,7 @@ function displayMovies(movies) {
                     <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top" alt="${movie.title}">
                     ${
                         movieInCart ? `
-                         <div class="card-body d-flex flex-column justify-content-between">
+                        <div class="card-body d-flex flex-column justify-content-between">
                             <h5 class="card-title text-center text-truncate">${movie.title}</h5>
                             <div class="d-flex justify-content-between align-items-center mt-2">
                                 <button class="btn btn-sm btn-secondary" onclick="decreaseQuantity('${movieInCart.index}',event)">-</button>

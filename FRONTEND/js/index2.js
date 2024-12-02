@@ -20,15 +20,19 @@ function mostrarPeliculas(peliculas) {
         // Verificar si el tema oscuro está activado
         const themeClass = body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
 
+       
+
         return `
             <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                 <div class="card ${themeClass}" data-index="${index}">
                     <img src="${pelicula.portada}" class="card-img-top" alt="${pelicula.titulo}">
                     <div class="card-body">
-                        <h5 class="card-title ${themeClass}">${pelicula.titulo}</h5>
+                    <h5 class="card-title ${themeClass}">${pelicula.titulo}</h5>
                     </div>
+                    
+                    
                     <div class="card-footer text-muted">
-                        <p class="mb-0">
+                    <p class="mb-0">
                             <span class="duracion-label ${themeClass}">Duración:</span>
                             <span class="duracion-minutos ${themeClass}">${pelicula.duracion} min</span>
                         </p>
@@ -237,3 +241,115 @@ function loadPage(pageNumber) {
     // Configurar la paginación
     setupPagination(pageNumber, totalPages);
 }
+
+
+////////////////////////////////////////////CARRITO////////////////////////////////////////////////////////////////////
+
+let cart = JSON.parse(localStorage.getItem("cart")) !== null && JSON.parse(localStorage.getItem("cart")).length > 0 ? JSON.parse(localStorage.getItem("cart")) : [];
+const cartDropdown = document.getElementById("cartItems");
+const cartCount = document.getElementById("cartCount");
+
+function addToCart(movieId, movieTitle) {
+    // Busca si la película ya está en el carrito
+    const movieInCart = cart.find(movie => movie.id === movieId);
+
+    if (movieInCart) {
+        // Incrementa la cantidad si ya existe
+        movieInCart.quantity++;
+    } else {
+        // Añade la película al carrito con cantidad 1
+        cart.push({ id: movieId, title: movieTitle, quantity: 1 });
+    }
+    
+    updateCart();
+    mostrarPelicula()
+}
+
+// Función para actualizar el carrito
+function updateCart() {
+    cartCount.textContent = cart.reduce((total, movie) => total + movie.quantity, 0); // Suma todas las cantidades
+    
+
+    // Limpia el contenido previo del carrito
+    cartDropdown.innerHTML = "";
+
+    if (cart.length === 0) {
+        const emptyMessage = document.createElement("li");
+        emptyMessage.className = "dropdown-item text-center text-muted";
+        emptyMessage.textContent = "El carrito está vacío";
+        cartDropdown.appendChild(emptyMessage);
+        localStorage.setItem("cart", JSON.stringify([]))
+        return;
+    }
+
+    // Añade las películas al carrito
+    cart.forEach((movie, index) => {
+        const cartItem = document.createElement("li");
+        cartItem.className = "dropdown-item d-flex justify-content-between align-items-center";
+
+        cartItem.innerHTML = `
+            <span>${movie.titulo} (x${movie.quantity})</span>
+            <div>
+                <button class="btn btn-sm btn-secondary me-2" onclick="decreaseQuantity(${index},event)">-</button>
+                <button class="btn btn-sm btn-primary me-2" onclick="increaseQuantity(${index},event)">+</button>
+                <button class="btn btn-sm btn-danger" onclick="removeFromCart(${index},event)">X</button>
+            </div>
+        `;
+
+        cartDropdown.appendChild(cartItem);
+    });
+
+    // Añade un botón para finalizar la compra
+    const checkoutButton = document.createElement("li");
+    checkoutButton.className = "dropdown-item text-center";
+    checkoutButton.innerHTML = `<button class="btn btn-success w-100" onclick="finalizePurchase()">Finalizar compra</button>`;
+    cartDropdown.appendChild(checkoutButton);
+    console.log(cart.length === 0)
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+}
+
+// Función para incrementar la cantidad
+function increaseQuantity(index,event) {
+    console.log(cart)
+    event.stopPropagation(); // Prevent dropdown from closing
+    cart[index].quantity++;
+    updateCart();
+    mostrarPelicula()
+
+}
+
+// Función para disminuir la cantidad
+function decreaseQuantity(index,event) {
+    event.stopPropagation(); // Prevent dropdown from closing
+    if (cart[index].quantity > 1) {
+        cart[index].quantity--;
+    } else {
+        // Si la cantidad llega a 0, elimina el ítem del carrito
+        cart.splice(index, 1);
+    }
+
+    updateCart();
+    mostrarPelicula()
+
+}
+
+// Función para eliminar una película del carrito
+function removeFromCart(index,event) {
+    event.stopPropagation(); // Prevent dropdown from closing
+    cart.splice(index, 1);
+    updateCart();
+    mostrarPelicula()
+
+}
+
+
+function finalizePurchase() {
+    // Store the cart in localStorage or sessionStorage
+    localStorage.setItem("cart", JSON.stringify(cart));
+    // Redirect to the payment page
+    const path = window.location.pathname;
+    window.location.href = "../html/pago.html";
+}
+
+updateCart()

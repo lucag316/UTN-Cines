@@ -42,6 +42,15 @@
                         <a class="nav-link" href="promociones.html">Promociones</a>
                     </li>
                     <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="cartDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Carrito
+                            <span class="badge bg-primary" id="cartCount">0</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="cartDropdown" id="cartItems">
+                            <li class="dropdown-item text-center text-muted">El carrito está vacío</li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Usuario
                         </a>
@@ -225,6 +234,7 @@
 
     
     <script src="../js/perfil-peli2.js" defer></script> <!-- fijarme si sacar el defer -->
+    <script src="../js/index2.js" defer></script>
     <script src="../js/cambio-tema.js" defer></script>
 </body>
 </html>
