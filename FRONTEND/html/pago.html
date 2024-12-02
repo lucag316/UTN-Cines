@@ -1,54 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <!-- Metadata y configuración básica -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
+
+    <!-- Tipografía -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Favicon del sitio -->
+    <link rel="shortchut icon" href="../icons/favicon1.png" type="image/x-icon">
+
+    <!-- Bootstrap CSS para estilos base y componentes responsivos -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Estilos personalizados del sitio -->
+    <!-- Agregarlo despues aca -->
 </head>
+
 <body>
+    <!-- Contenedor principal de la página con un margen superior e inferior -->
     <div class="container my-5">
+        <!-- Título de la sección de compra -->
         <h1 class="mb-4">Confirm Your Purchase</h1>
+
+        <!-- Contenedor donde se mostrarán los elementos del carrito -->
         <div id="cartItems"></div>
+
+        <!-- Botón para proceder al pago -->
         <button class="btn btn-primary mt-4" onclick="pay()">Pay</button>
     </div>
 
     <script>
-        // Retrieve cart data from localStorage
-        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        // Recuperar los datos del carrito desde localStorage
+        const cart = JSON.parse(localStorage.getItem("cart")) || []; // Si no hay carrito, se usa un arreglo vacío por defecto
 
-        // Display cart items
+        // Obtener el contenedor donde se mostrarán los elementos del carrito
         const cartItemsContainer = document.getElementById("cartItems");
 
+        // Comprobar si el carrito está vacío
         if (cart.length === 0) {
+            // Si el carrito está vacío, mostrar un mensaje
             cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
         } else {
+            // Si hay artículos en el carrito, recorrerlos y mostrarlos
             cart.forEach(movie => {
+                // Crear un contenedor para cada artículo en el carrito
                 const item = document.createElement("div");
-                item.className = "d-flex justify-content-between border-bottom py-2";
+                item.className = "d-flex justify-content-between border-bottom py-2"; // Estilo con Bootstrap para el diseño
+
+                // Insertar el título de la película, la cantidad y el precio total por artículo en el carrito
                 item.innerHTML = `
                     <span>${movie.title} (x${movie.quantity})</span>
-                    <span>$${(movie.quantity * 10).toFixed(2)}</span> <!-- Replace 10 with movie price -->
+                    <span>$${(movie.quantity * 10).toFixed(2)}</span> <!-- El precio de cada película se asume como $10 -->
                 `;
+                
+                // Añadir el artículo al contenedor de los elementos del carrito
                 cartItemsContainer.appendChild(item);
             });
 
-            // Display total price
-            const total = cart.reduce((sum, movie) => sum + movie.quantity * 10, 0); // Replace 10 with movie price
+            // Calcular el precio total del carrito sumando el precio de todos los artículos
+            const total = cart.reduce((sum, movie) => sum + movie.quantity * 10, 0); // Se asume que el precio por película es $10
+
+            // Crear un contenedor para mostrar el total
             const totalDiv = document.createElement("div");
-            totalDiv.className = "d-flex justify-content-between border-top pt-2";
+            totalDiv.className = "d-flex justify-content-between border-top pt-2"; // Estilo con Bootstrap
+
+            // Insertar el total calculado en el contenedor
             totalDiv.innerHTML = `
                 <strong>Total:</strong>
-                <strong>$${total.toFixed(2)}</strong>
+                <strong>$${total.toFixed(2)}</strong> <!-- Mostrar el total con 2 decimales -->
             `;
+            
+            // Añadir el contenedor del total al final de los artículos del carrito
             cartItemsContainer.appendChild(totalDiv);
         }
 
+        // Función que se ejecuta cuando el usuario hace clic en el botón "Pay"
         function pay() {
-            // Clear the cart after payment
+            // Limpiar el carrito de localStorage después de realizar el pago
             localStorage.removeItem("cart");
+
+            // Mostrar un mensaje de agradecimiento por la compra
             alert("Thank you for your purchase!");
-            window.location.href = "../index.html"; // Redirect back to the homepage
+
+            // Redirigir al usuario a la página principal
+            window.location.href = "../index.html"; // Cambia esta ruta si la página principal está en otro lugar
         }
     </script>
 </body>
