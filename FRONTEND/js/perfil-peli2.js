@@ -1,12 +1,14 @@
 
-
-let cart = JSON.parse(localStorage.getItem("cart")) !== null && JSON.parse(localStorage.getItem("cart")).length > 0 ? JSON.parse(localStorage.getItem("cart")) : [];
-
+(() => {
+    let cart;
+})();
 
 // Esperamos a que el contenido del DOM se haya cargado completamente
 document.addEventListener('DOMContentLoaded', () => {
     // Recuperamos el tema guardado en localStorage (si no existe, usamos 'auto' por defecto)
     const temaGuardado = localStorage.getItem('temaActual') || 'auto';
+    cart = JSON.parse(localStorage.getItem("cart")) !== null && JSON.parse(localStorage.getItem("cart")).length > 0 ? JSON.parse(localStorage.getItem("cart")) : [];
+
 
     // Aplicamos el tema guardado usando la función 'changeTheme'
     // Esta función debe estar definida en otro lugar para cambiar el tema de la página
