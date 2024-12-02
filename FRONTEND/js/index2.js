@@ -181,7 +181,6 @@ document.addEventListener("DOMContentLoaded", init);
 
 
 // ==== Paginación ====
-
 // Función para crear y mostrar los botones de paginación
 function setupPagination(currentPage, totalPages) {
     const paginationContainer = document.getElementById('pagination');
@@ -245,20 +244,26 @@ function loadPage(pageNumber) {
 
 ////////////////////////////////////////////CARRITO////////////////////////////////////////////////////////////////////
 
-let cart = JSON.parse(localStorage.getItem("cart")) !== null && JSON.parse(localStorage.getItem("cart")).length > 0 ? JSON.parse(localStorage.getItem("cart")) : [];
-const cartDropdown = document.getElementById("cartItems");
-const cartCount = document.getElementById("cartCount");
+
+let cartData2 = JSON.parse(localStorage.getItem("cart"));
+let cart2 = cartData2 && cartData2.length > 0 ? cartData2 : [];
+
+
+
+const cartDropdown2 = document.getElementById("cartItems");
+const cartCount2 = document.getElementById("cartCount");
 
 function addToCart(movieId, movieTitle) {
+
     // Busca si la película ya está en el carrito
-    const movieInCart = cart.find(movie => movie.id === movieId);
+    const movieInCart = cart2.find(movie => movie.id === movieId);
 
     if (movieInCart) {
         // Incrementa la cantidad si ya existe
         movieInCart.quantity++;
     } else {
         // Añade la película al carrito con cantidad 1
-        cart.push({ id: movieId, title: movieTitle, quantity: 1 });
+        cart2.push({ id: movieId, title: movieTitle, quantity: 1 });
     }
     
     updateCart();
@@ -267,23 +272,23 @@ function addToCart(movieId, movieTitle) {
 
 // Función para actualizar el carrito
 function updateCart() {
-    cartCount.textContent = cart.reduce((total, movie) => total + movie.quantity, 0); // Suma todas las cantidades
+    cartCount2.textContent = cart2.reduce((total, movie) => total + movie.quantity, 0); // Suma todas las cantidades
     
 
     // Limpia el contenido previo del carrito
-    cartDropdown.innerHTML = "";
+    cartDropdown2.innerHTML = "";
 
-    if (cart.length === 0) {
+    if (cart2.length === 0) {
         const emptyMessage = document.createElement("li");
         emptyMessage.className = "dropdown-item text-center text-muted";
         emptyMessage.textContent = "El carrito está vacío";
-        cartDropdown.appendChild(emptyMessage);
+        cartDropdown2.appendChild(emptyMessage);
         localStorage.setItem("cart", JSON.stringify([]))
         return;
     }
 
     // Añade las películas al carrito
-    cart.forEach((movie, index) => {
+    cart2.forEach((movie, index) => {
         const cartItem = document.createElement("li");
         cartItem.className = "dropdown-item d-flex justify-content-between align-items-center";
 
@@ -296,24 +301,22 @@ function updateCart() {
             </div>
         `;
 
-        cartDropdown.appendChild(cartItem);
+        cartDropdown2.appendChild(cartItem);
     });
 
     // Añade un botón para finalizar la compra
     const checkoutButton = document.createElement("li");
     checkoutButton.className = "dropdown-item text-center";
     checkoutButton.innerHTML = `<button class="btn btn-success w-100" onclick="finalizePurchase()">Finalizar compra</button>`;
-    cartDropdown.appendChild(checkoutButton);
-    console.log(cart.length === 0)
-    localStorage.setItem("cart", JSON.stringify(cart));
-
+    cartDropdown2.appendChild(checkoutButton);
+    localStorage.setItem("cart", JSON.stringify(cart2));
 }
 
 // Función para incrementar la cantidad
 function increaseQuantity(index,event) {
-    console.log(cart)
+    console.log(cart2)
     event.stopPropagation(); // Prevent dropdown from closing
-    cart[index].quantity++;
+    cart2[index].quantity++;
     updateCart();
     mostrarPelicula()
 
@@ -322,11 +325,11 @@ function increaseQuantity(index,event) {
 // Función para disminuir la cantidad
 function decreaseQuantity(index,event) {
     event.stopPropagation(); // Prevent dropdown from closing
-    if (cart[index].quantity > 1) {
-        cart[index].quantity--;
+    if (cart2[index].quantity > 1) {
+        cart2[index].quantity--;
     } else {
         // Si la cantidad llega a 0, elimina el ítem del carrito
-        cart.splice(index, 1);
+        cart2.splice(index, 1);
     }
 
     updateCart();
@@ -337,7 +340,7 @@ function decreaseQuantity(index,event) {
 // Función para eliminar una película del carrito
 function removeFromCart(index,event) {
     event.stopPropagation(); // Prevent dropdown from closing
-    cart.splice(index, 1);
+    cart2.splice(index, 1);
     updateCart();
     mostrarPelicula()
 
@@ -346,7 +349,7 @@ function removeFromCart(index,event) {
 
 function finalizePurchase() {
     // Store the cart in localStorage or sessionStorage
-    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("cart", JSON.stringify(cart2));
     // Redirect to the payment page
     const path = window.location.pathname;
     window.location.href = "../html/pago.html";
