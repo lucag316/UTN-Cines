@@ -1,5 +1,6 @@
 
 const API_BASE_URL = "http://localhost:5000"; // Cambia esto a la URL base de tu API
+const columna_btn = document.getElementById('columna_btns');
 
 let movies = [];
 
@@ -8,7 +9,8 @@ async function fetchMovies() {
     try {
         console.log("hola")
         movies = await getPeliculas()
-        console.log("hola")
+        console.log("chau")
+        console.log(movies)
         displayMovies(movies);
     } catch (error) {
         console.error("Error al obtener las películas:", error);
@@ -17,11 +19,14 @@ async function fetchMovies() {
 
 async function getPeliculas() {
     if (movies.length === 0){
+        console.log("resJson2")
         const res = await fetch("http://localhost:5000/AllPelis");
         const resJson = await res.json();
+        console.log("resJson")
+        console.log(resJson)
         return resJson;
     }
-    
+    return movies
 }
 
 // Función para mostrar las películas en la tabla
@@ -29,18 +34,28 @@ function displayMovies(movies) {
     const tableBody = document.getElementById('movies-table-body');
     tableBody.innerHTML = ''; // Limpiar el contenido anterior
 
+    console.log("for each");
+    console.log(movies)
     movies.forEach(movie => {
-        console.log(movie)
+
         const genres = movie.generos.map(genero => genero.nombre).join(", "); // Lista de géneros
         const row = `
             <tr>
                 <td>${movie.id}</td>
                 <td>${movie.titulo}</td>
                 <td>${genres || 'N/A'}</td>
-                <td>${movie.eliminado || 'N/A'}</td>
+                <td>${movie.eliminado ? "True" : "False"}</td>
                 <td>
                     <button class="btn btn-warning btn-sm" onclick="editMovie(${movie.id})">Actualizar</button>
-                    <button class="btn btn-danger btn-sm" onclick="deleteMovie(${movie.id})">Eliminar</button>
+                    ${
+                        movie.eliminado ? `
+                         <button class="btn btn-primary btn-sm" onclick="reviveMovie(${movie.id})">Revivir</button>
+                        `
+                        :
+                        `
+                        <button class="btn btn-danger btn-sm" onclick="deleteMovie(${movie.id})">Eliminar</button>
+                        `
+                    }
                 </td>
             </tr>
         `;
@@ -61,6 +76,10 @@ let selectedReparto = [];// Array para almacenar el reparto seleccionado
 
 // Función para mostrar el pop-up para crear una película
 function showCreateMovieForm() {
+
+    
+   
+
     const modalContainer = document.createElement('div');
     modalContainer.innerHTML = `
         <div class="modal fade" id="createMovieModal" tabindex="-1" aria-labelledby="createMovieModalLabel" aria-hidden="true">
@@ -140,6 +159,25 @@ function showCreateMovieForm() {
     `;
 
     document.body.appendChild(modalContainer);
+    document.getElementById('createMovieModalLabel').textContent = 'Crear Película';
+
+    // Prellena los campos del formulario
+    document.getElementById('titulo').value = '';
+    document.getElementById('duracion').value = '';
+    document.getElementById('clasificacion').value = '';
+    document.getElementById('descripcion').value = '';
+    document.getElementById('anio').value = '';
+    document.getElementById('pais').value = '';
+    document.getElementById('img_url').value = '';
+    document.getElementById('trailer_url').value = '';
+    document.getElementById('rating').value =  '';
+    document.getElementById('precio').value = '';
+
+    const generosList = document.getElementById('selectedGenerosList');
+    generosList.innerHTML = ""
+
+    const repartoList = document.getElementById('selectedRepartoList');
+    repartoList.innerHTML = ""
     populateGeneros(); // Cargar los géneros en el formulario
     populateReparto()
     const createMovieModal = new bootstrap.Modal(document.getElementById('createMovieModal'));
@@ -268,7 +306,6 @@ function addReparto(e) {
     e.preventDefault()
     const select = document.getElementById('repartoContainer');
     const selectedOption = select.options[select.selectedIndex];
-    console.log(selectedOption)
     const repartoId = selectedOption.value;
     const repartoNombre = selectedOption.textContent.split(",")[0];
     const repartoRol = selectedOption.textContent.split(",")[1];
@@ -325,7 +362,7 @@ async function submitCreateMovie() {
 
 
     try {
-        const response = await fetch(`${API_BASE_URL}/peliculas`, {
+        const response = await fetch(`${API_BASE_URL}/pelicula`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -358,9 +395,82 @@ async function createPromotion() {
 }
 
 // Funciones placeholder para editar y eliminar películas
-function editMovie(movieId) {
-    alert(`Editar película con ID: ${movieId}`);
+async function editMovie(id) {
+    try {
+        // Obtén los datos de la película por ID
+        const response = await fetch(`${API_BASE_URL}/pelicula/${id}`);
+        const movie = await response.json();
+        console.log(movie)
+        // Abre el formulario
+        showCreateMovieForm();
+
+        // Cambia el título del modal
+        document.getElementById('createMovieModalLabel').textContent = 'Editar Película';
+
+        // Prellena los campos del formulario
+        document.getElementById('titulo').value = movie.titulo || '';
+        document.getElementById('duracion').value = movie.duracion || '';
+        document.getElementById('clasificacion').value = movie.clasificacion || '';
+        document.getElementById('descripcion').value = movie.descripcion || '';
+        document.getElementById('anio').value = movie.año || '';
+        document.getElementById('pais').value = movie.pais || '';
+        document.getElementById('img_url').value = movie.img_url || '';
+        document.getElementById('trailer_url').value = movie.trailer || '';
+        document.getElementById('rating').value = movie.rating || '';
+        document.getElementById('precio').value = movie.precio || '';
+
+
+        movie.generos.forEach((g)=>{
+            selectedGeneros.push({ id: g.id, nombre: g.nombre })
+        })
+        updateSelectedGenerosList()
+
+        movie.reparto.forEach((r)=>{
+            selectedReparto.push({ id: r.id, nombre: r.nombre, rol: r.rol })
+        })
+        updateSelectedRepartoList()
+
+        // Cambia la función del botón "Crear" por una de actualización
+        const submitButton = document.querySelector('.modal-footer .btn-primary');
+        submitButton.textContent = 'Actualizar';
+        submitButton.onclick = () => submitEditMovie(id);
+
+    } catch (error) {
+        console.error('Error al cargar los datos de la película:', error);
+    }
 }
+
+async function submitEditMovie(id) {
+    try {
+        const form = document.getElementById('createMovieForm');
+        const formData = new FormData(form);
+
+        // Convierte el formulario a JSON
+        const updatedMovie = Object.fromEntries(formData);
+
+        // Envía la solicitud al backend
+        const response = await fetch(`${API_BASE_URL}/pelicula/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updatedMovie),
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al actualizar la película');
+        }
+
+        // Cierra el modal y actualiza la lista de películas
+        const modal = bootstrap.Modal.getInstance(document.getElementById('createMovieModal'));
+        modal.hide();
+        loadMovies(); // Función que actualiza la lista de películas
+
+    } catch (error) {
+        console.error('Error al actualizar la película:', error);
+    }
+}
+
 
 async function deleteMovie(movieId) {
     if (confirm("¿Estás seguro de que deseas eliminar esta película?")) {
@@ -371,12 +481,33 @@ async function deleteMovie(movieId) {
             });
             if (response.ok) {
                 alert("Película eliminada exitosamente.");
+                movies = []
                 fetchMovies(); // Actualizar la lista
             } else {
                 alert("Error al eliminar la película.");
             }
         } catch (error) {
             console.error("Error al eliminar la película:", error);
+        }
+    }
+}
+
+async function reviveMovie(movieId) {
+    if (confirm("¿Estás seguro de que deseas revivir esta película?")) {
+        try {
+            console.log(movieId)
+            const response = await fetch(`${API_BASE_URL}/pelicula/${movieId}`, {
+                method: "PUT"
+            });
+            if (response.ok) {
+                alert("Película actualizada exitosamente.");
+                movies = []
+                fetchMovies(); // Actualizar la lista
+            } else {
+                alert("Error al actualizar la película.");
+            }
+        } catch (error) {
+            console.error("Error al actualizar la película:", error);
         }
     }
 }
@@ -390,3 +521,5 @@ document.getElementById('listPromotionsButton').addEventListener('click', listPr
 document.getElementById('createMovieButton').addEventListener('click', showCreateMovieForm);
 document.getElementById('createPromotionButton').addEventListener('click', createPromotion);
 document.getElementById('addGeneroButton').addEventListener('click', addGenero);
+
+

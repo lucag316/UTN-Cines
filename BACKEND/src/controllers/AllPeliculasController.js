@@ -91,12 +91,14 @@ const getAllPeliController = async (req, res) => {
             reparto: pelicula.reparto ? JSON.parse(pelicula.reparto) : []
         }));
 
-        res.send(peliculas);
+        res.status(200).json(peliculas);
 
     } catch (error) {
         console.error("Error al obtener las películas:", error);
         res.status(500).send("Error al obtener las películas");
     }
+    
+
 }
 
 
