@@ -1,12 +1,14 @@
 
-const API_BASE_URL = "https://api.example.com"; // Cambia esto a la URL base de tu API
+const API_BASE_URL = "http://localhost:5000"; // Cambia esto a la URL base de tu API
 
 let movies = [];
 
 // Función para obtener las películas junto con sus géneros
 async function fetchMovies() {
     try {
+        console.log("hola")
         movies = await getPeliculas()
+        console.log("hola")
         displayMovies(movies);
     } catch (error) {
         console.error("Error al obtener las películas:", error);
@@ -28,12 +30,14 @@ function displayMovies(movies) {
     tableBody.innerHTML = ''; // Limpiar el contenido anterior
 
     movies.forEach(movie => {
+        console.log(movie)
         const genres = movie.generos.map(genero => genero.nombre).join(", "); // Lista de géneros
         const row = `
             <tr>
                 <td>${movie.id}</td>
                 <td>${movie.titulo}</td>
                 <td>${genres || 'N/A'}</td>
+                <td>${movie.eliminado || 'N/A'}</td>
                 <td>
                     <button class="btn btn-warning btn-sm" onclick="editMovie(${movie.id})">Actualizar</button>
                     <button class="btn btn-danger btn-sm" onclick="deleteMovie(${movie.id})">Eliminar</button>
@@ -316,6 +320,9 @@ async function submitCreateMovie() {
     // Recolectar géneros y otros datos del formulario
     const movieData = Object.fromEntries(formData.entries());
     movieData.generos = selectedGeneros; // Agregar el array de géneros seleccionados
+    movieData.reparto = selectedReparto;
+    console.log(movieData)
+
 
     try {
         const response = await fetch(`${API_BASE_URL}/peliculas`, {
@@ -358,7 +365,8 @@ function editMovie(movieId) {
 async function deleteMovie(movieId) {
     if (confirm("¿Estás seguro de que deseas eliminar esta película?")) {
         try {
-            const response = await fetch(`${API_BASE_URL}/peliculas/${movieId}`, {
+            console.log(movieId)
+            const response = await fetch(`${API_BASE_URL}/pelicula/${movieId}`, {
                 method: "DELETE"
             });
             if (response.ok) {

@@ -351,7 +351,7 @@ function finalizePurchase() {
     localStorage.setItem("cart", JSON.stringify(cart2));
     // Redirect to the payment page
     const path = window.location.pathname;
-    window.location.href = "../html/pago.html";
+    window.location.href = "./html/pago.html";
 }
 
 updateCart()

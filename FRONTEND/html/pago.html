@@ -10,9 +10,11 @@
     <div class="container my-5">
         <h1 class="mb-4">Confirm Your Purchase</h1>
         <div id="cartItems"></div>
-        <button class="btn btn-primary mt-4" onclick="pay()">Pay</button>
+        <button class="btn btn-primary mt-4 me-2" onclick="pay()">Pay</button>
+        <button class="btn btn-secondary mt-4" id="downloadPdf">Download PDF</button>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
     <script>
         // Retrieve cart data from localStorage
         const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -50,6 +52,20 @@
             alert("Thank you for your purchase!");
             window.location.href = "../index.html"; // Redirect back to the homepage
         }
+
+        // Function to generate PDF
+        document.getElementById("downloadPdf").addEventListener("click", () => {
+            const element = document.querySelector(".container");
+            const options = {
+                margin: 1,
+                filename: 'checkout.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+            html2pdf().set(options).from(element).save();
+        });
     </script>
 </body>
 </html>

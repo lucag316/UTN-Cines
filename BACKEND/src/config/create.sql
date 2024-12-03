@@ -32,6 +32,7 @@ CREATE TABLE Pelicula_Genero (
 -- Creación de la tabla Reparto
 CREATE TABLE Reparto (
   id_persona INT PRIMARY KEY AUTO_INCREMENT,
+  nombre_completo VARCHAR(100),
   nombre VARCHAR(100) NOT NULL,
   apellido VARCHAR(100) NOT NULL
 );
