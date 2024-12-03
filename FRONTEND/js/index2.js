@@ -20,11 +20,10 @@ function mostrarPeliculas(peliculas) {
         // Verificar si el tema oscuro está activado
         const themeClass = body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
 
-       
 
         return `
             <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                <div class="card ${themeClass}" data-index="${index}">
+                <div class="card ${themeClass}" data-index="${index}" data-id="${pelicula.id}">
                     <img src="${pelicula.portada}" class="card-img-top" alt="${pelicula.titulo}">
                     <div class="card-body">
                     <h5 class="card-title ${themeClass}">${pelicula.titulo}</h5>
@@ -48,7 +47,12 @@ function mostrarPeliculas(peliculas) {
     // Agregar un evento de clic a cada tarjeta de película
     contenedorPeliculas.querySelectorAll('.card').forEach(card => {
         card.addEventListener('click', (event) => {
-            guardarPelicula(event, peliculas[card.getAttribute('data-index')]);
+            //guardarPelicula(event, peliculas[card.getAttribute('data-index')]);
+            const idPelicula = card.getAttribute('data-id'); // Obtenemos el ID de la película
+            if (idPelicula) {
+                // Redirigimos a la página de detalles con el ID en la URL
+                window.location.href = `./html/perfil_peli2.html?id=${idPelicula}`;
+            }
         });
     });
 }

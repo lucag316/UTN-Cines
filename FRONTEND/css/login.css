@@ -2,7 +2,12 @@
 /* Estilo del body */
 body {
     background: #000; /* Color de fondo negro */
+    margin-top: 0;
+    min-height: 100vh;
+    position: relative;
 }
+
+
 
 /* Capa de fondo con imagen */
 body::before {
@@ -12,15 +17,17 @@ body::before {
     top: 0; /* Alineado arriba */
     opacity: 0.5; /* Opacidad de la imagen de fondo */
     width: 100%; /* Ancho completo */
-    height: 100%; /* Alto completo */
+    height: 140%; /* Alto completo */
     background: url("../images/login-cine.jpg"); /* Imagen de fondo */
     background-position: center; 
     background-size: cover; /* Cubre el área del fondo */
+    
 }
 
 
 /* Contenedor del formulario */
 .form-wrapper {
+    margin-top: 120px;
     position: absolute;
     left: 50%; 
     top: 55%; 
@@ -183,17 +190,6 @@ form .form-help :where(label, a) {
     .form-wrapper form {
         margin: 25px 0 40px;
     }
-}
-
-.navbar {
-    padding: 1rem;
-    z-index: 10; 
-    position: relative;
-}
-
-.nav_img{
-    max-width: 45px;
-    border-radius: 10px;
 }
 
 .img-logo {

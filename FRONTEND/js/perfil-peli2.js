@@ -1,5 +1,5 @@
 
-
+/*
 // Esperamos a que el contenido del DOM se haya cargado completamente
 document.addEventListener('DOMContentLoaded', () => {
     // Recuperamos el tema guardado en localStorage (si no existe, usamos 'auto' por defecto)
@@ -11,12 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Esta función debe estar definida en otro lugar para cambiar el tema de la página
     changeTheme(temaGuardado); 
 });
-
+*/
 /**
  * Función para mostrar la película seleccionada en la página.
  * Obtiene los detalles de la película desde localStorage y actualiza el contenido de la página.
  */
-window.mostrarPelicula = function mostrarPelicula () {
+/*window.mostrarPelicula = function mostrarPelicula () {
     // Obtenemos la película guardada en localStorage bajo la clave 'peliculaSeleccionada'
     const peliculaJSON = localStorage.getItem('peliculaSeleccionada');
 
@@ -97,8 +97,96 @@ window.mostrarPelicula = function mostrarPelicula () {
         </div>
     </div>
     `;
-}
+}*/
 
+
+// Función para mostrar la película seleccionada en la página
+window.mostrarPelicula = async function mostrarPelicula() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const idPelicula = urlParams.get('id');
+    console.log('ID de la película:', idPelicula); // Verifica que se está obteniendo el ID correctamente
+
+    if (!idPelicula) {
+        console.error("No se proporcionó un ID de película en la URL");
+        return;
+    }
+
+    let pelicula;
+
+    // Intentamos obtener la lista de películas desde localStorage
+    const todasLasPeliculas = JSON.parse(localStorage.getItem('todasLasPeliculas'));
+
+    if (todasLasPeliculas) {
+        // Si las películas están en localStorage, las buscamos ahí
+        pelicula = todasLasPeliculas.find(p => p.id === idPelicula);
+    }
+
+    if (!pelicula) {
+        // Si no se encontró la película en localStorage, la buscamos desde el servidor
+        try {
+            pelicula = await getPeliculaPorId(idPelicula);
+        } catch (error) {
+            console.error("Error al obtener los detalles de la película:", error);
+            return;
+        }
+    }
+
+    if (!pelicula) {
+        console.error("No se encontró la película con el ID proporcionado");
+        return;
+    }
+
+    console.log('Película encontrada:', pelicula); // Verifica si la película se encontró correctamente
+
+    // Actualizamos el contenido de la página con los detalles de la película
+    const mainPelicula = document.querySelector('.main-pelicula');
+    mainPelicula.innerHTML = `
+        <div class="container-movie">
+            <div class="left-section">
+                <!-- Mostramos la imagen de la portada de la película -->
+                <img id="img_perfil_peli" class="portada" src="${pelicula.portada}" alt="portada_img">
+                <div class="details">
+                    <!-- Mostramos los detalles de la película como género, duración, reparto, etc. -->
+                    <div class="details-item"><h3>Género:</h3><p id="genero_text">${pelicula.generos.map(g=>g.nombre).join(', ')}</p></div>
+                    <div class="details-item"><h3>Duración:</h3><p id="duracion_text">${pelicula.duracion} min</p></div>
+                    <div class="details-item"><h3>Reparto:</h3><p id="reparto_text">${pelicula.reparto?.map(r=>r.nombre).join(', ') || ""}</p></div>
+                    <div class="details-item"><h3>Director:</h3><p id="director_text">${pelicula.director?.nombre || ""}</p></div>
+                    <div class="details-item"><h3>País:</h3><p id="pais_text">${pelicula.pais}</p></div>
+                    <div class="details-item"><h3>Clasificación:</h3><p id="clasificacion_text">${pelicula.clasificacion}</p></div>
+                    <div class="details-item"><h3>Rating:</h3><p id="rating_text">${pelicula.rating}</p></div>
+                    <div class="details-item"><h3>Año:</h3><p id="año_text">${pelicula.año}</p></div>
+                </div>
+            </div>
+            <div class="right-section">
+                <!-- Mostramos el video del trailer de la película en un iframe -->
+                <div class="trailer">
+                    <iframe id="iframe_perfil_peli" width="700" height="350" src="https://www.youtube.com/embed/${getTrailerKey(pelicula.trailer)}" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <!-- Título de la película -->
+                <h2 id="titulo_text">${pelicula.titulo}</h2>
+                <!-- Resumen o sinopsis de la película -->
+                <div class="summary">
+                    <p id="resumen_text">${pelicula.sinopsis}</p>
+                </div>
+                <!-- Botón para comprar entradas -->
+                ${
+                    peliculaInCart ? `
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                            <button class="btn btn-sm btn-secondary" onclick="decreaseQuantity('${peliculaInCart.index}',event)">-</button>
+                            <span id="quantity_${peliculaInCart.id}" class="mx-2">${peliculaInCart.quantity}</span>
+                            <button class="btn btn-sm btn-secondary" onclick="increaseQuantity('${peliculaInCart.index}',event)">+</button>
+                        </div>
+                    </div>
+                    ` : `
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <button class="btn btn-primary w-100 mt-2" onclick="addToCart('${pelicula.id}', '${pelicula.titulo}')">Agregar al carrito</button>
+                    </div>
+                `}
+            </div>
+        </div>
+    `;
+};
 /**
  * Función para obtener la clave del trailer (si el trailer es un enlace de YouTube).
  * Extrae el ID del video de YouTube a partir de la URL.
@@ -110,8 +198,19 @@ function getTrailerKey(url) {
     return match ? match[1] : '';
 }
 
+async function getPeliculaPorId(id) {
+    const response = await fetch(`http://localhost:5000/Pelicula/${id}`); // Endpoint para obtener los datos
+    if (!response.ok) {
+        throw new Error("Error al obtener la película");
+    }
+    return response.json();
+}
+
 // Llamamos a la función mostrarPelicula cuando el contenido de la página se haya cargado
 document.addEventListener("DOMContentLoaded", mostrarPelicula);
+
+
+///////////////////////////////////////////////
 
 let cartData = JSON.parse(localStorage.getItem("cart"));
 let cart = cartData && cartData.length > 0 ? cartData : [];
