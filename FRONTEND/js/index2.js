@@ -20,15 +20,18 @@ function mostrarPeliculas(peliculas) {
         // Verificar si el tema oscuro está activado
         const themeClass = body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
 
+
         return `
             <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                <div class="card ${themeClass}" data-index="${index}">
+                <div class="card ${themeClass}" data-index="${index}" data-id="${pelicula.id}">
                     <img src="${pelicula.portada}" class="card-img-top" alt="${pelicula.titulo}">
                     <div class="card-body">
-                        <h5 class="card-title ${themeClass}">${pelicula.titulo}</h5>
+                    <h5 class="card-title ${themeClass}">${pelicula.titulo}</h5>
                     </div>
+                    
+                    
                     <div class="card-footer text-muted">
-                        <p class="mb-0">
+                    <p class="mb-0">
                             <span class="duracion-label ${themeClass}">Duración:</span>
                             <span class="duracion-minutos ${themeClass}">${pelicula.duracion} min</span>
                         </p>
@@ -44,7 +47,12 @@ function mostrarPeliculas(peliculas) {
     // Agregar un evento de clic a cada tarjeta de película
     contenedorPeliculas.querySelectorAll('.card').forEach(card => {
         card.addEventListener('click', (event) => {
-            guardarPelicula(event, peliculas[card.getAttribute('data-index')]);
+            //guardarPelicula(event, peliculas[card.getAttribute('data-index')]);
+            const idPelicula = card.getAttribute('data-id'); // Obtenemos el ID de la película
+            if (idPelicula) {
+                // Redirigimos a la página de detalles con el ID en la URL
+                window.location.href = `./html/perfil_peli2.html?id=${idPelicula}`;
+            }
         });
     });
 }
@@ -177,7 +185,6 @@ document.addEventListener("DOMContentLoaded", init);
 
 
 // ==== Paginación ====
-
 // Función para crear y mostrar los botones de paginación
 function setupPagination(currentPage, totalPages) {
     const paginationContainer = document.getElementById('pagination');
@@ -237,3 +244,118 @@ function loadPage(pageNumber) {
     // Configurar la paginación
     setupPagination(pageNumber, totalPages);
 }
+
+
+////////////////////////////////////////////CARRITO////////////////////////////////////////////////////////////////////
+
+
+let cartData2 = JSON.parse(localStorage.getItem("cart"));
+let cart2 = cartData2 && cartData2.length > 0 ? cartData2 : [];
+
+
+
+const cartDropdown2 = document.getElementById("cartItems");
+const cartCount2 = document.getElementById("cartCount");
+
+function addToCart(movieId, movieTitle) {
+
+    // Busca si la película ya está en el carrito
+    const movieInCart = cart2.find(movie => movie.id === movieId);
+
+    if (movieInCart) {
+        // Incrementa la cantidad si ya existe
+        movieInCart.quantity++;
+    } else {
+        // Añade la película al carrito con cantidad 1
+        cart2.push({ id: movieId, title: movieTitle, quantity: 1 });
+    }
+    
+    updateCart();
+
+}
+
+// Función para actualizar el carrito
+function updateCart() {
+    cartCount2.textContent = cart2.reduce((total, movie) => total + movie.quantity, 0); // Suma todas las cantidades
+    
+
+    // Limpia el contenido previo del carrito
+    cartDropdown2.innerHTML = "";
+
+    if (cart2.length === 0) {
+        const emptyMessage = document.createElement("li");
+        emptyMessage.className = "dropdown-item text-center text-muted";
+        emptyMessage.textContent = "El carrito está vacío";
+        cartDropdown2.appendChild(emptyMessage);
+        localStorage.setItem("cart", JSON.stringify([]))
+        return;
+    }
+
+    // Añade las películas al carrito
+    cart2.forEach((movie, index) => {
+        const cartItem = document.createElement("li");
+        cartItem.className = "dropdown-item d-flex justify-content-between align-items-center";
+
+        cartItem.innerHTML = `
+            <span>${movie.title} (x${movie.quantity})</span>
+            <div>
+                <button class="btn btn-sm btn-secondary me-2" onclick="decreaseQuantity(${index},event)">-</button>
+                <button class="btn btn-sm btn-primary me-2" onclick="increaseQuantity(${index},event)">+</button>
+                <button class="btn btn-sm btn-danger" onclick="removeFromCart(${index},event)">X</button>
+            </div>
+        `;
+
+        cartDropdown2.appendChild(cartItem);
+    });
+
+    // Añade un botón para finalizar la compra
+    const checkoutButton = document.createElement("li");
+    checkoutButton.className = "dropdown-item text-center";
+    checkoutButton.innerHTML = `<button class="btn btn-success w-100" onclick="finalizePurchase()">Finalizar compra</button>`;
+    cartDropdown2.appendChild(checkoutButton);
+    localStorage.setItem("cart", JSON.stringify(cart2));
+}
+
+// Función para incrementar la cantidad
+function increaseQuantity(index,event) {
+    console.log(cart2)
+    event.stopPropagation(); // Prevent dropdown from closing
+    cart2[index].quantity++;
+    updateCart();
+
+}
+
+// Función para disminuir la cantidad
+function decreaseQuantity(index,event) {
+    event.stopPropagation(); // Prevent dropdown from closing
+    if (cart2[index].quantity > 1) {
+        cart2[index].quantity--;
+    } else {
+        // Si la cantidad llega a 0, elimina el ítem del carrito
+        cart2.splice(index, 1);
+    }
+
+    updateCart();
+
+
+}
+
+// Función para eliminar una película del carrito
+function removeFromCart(index,event) {
+    event.stopPropagation(); // Prevent dropdown from closing
+    cart2.splice(index, 1);
+    updateCart();
+
+
+}
+
+
+function finalizePurchase() {
+    // Store the cart in localStorage or sessionStorage
+    localStorage.setItem("cart", JSON.stringify(cart2));
+    // Redirect to the payment page
+    const path = window.location.pathname;
+    window.location.href = "./html/pago.html";
+}
+
+updateCart()

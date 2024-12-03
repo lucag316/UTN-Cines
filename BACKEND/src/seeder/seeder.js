@@ -1,10 +1,5 @@
- 
-const generoEndPointAPI = "https://api.themoviedb.org/3/genre/tv/list?api_key=f59f2a7d0dcf9beeeca9c90394385a92&language=es-ES"
-const pelisEndPointAPI = "https://api.themoviedb.org/3/movie/popular?api_key=f59f2a7d0dcf9beeeca9c90394385a92&language=es-ES&page=1"
 
 
-const fs = require('fs');
-const path = require('path');
 // seedDatabase.js
 const database = require('../database');
 const data = require('./datos.json'); // Archivo JSON con los datos
@@ -22,8 +17,9 @@ const seedDatabase = async () => {
     // Insertar personas en el reparto
     for (const persona of data.reparto) {
       const nombreCompleto = persona.nombre || persona.name; // Para manejar las diferencias de nombres
-      const apellido = persona.nombre; // El JSON no incluye apellido, por lo que se deja vacío
-      const query = `INSERT IGNORE INTO Reparto (id_persona, nombre, apellido) VALUES (?, ?, ?)`;
+      const nombre = persona.nombre.split(" ")[0] || persona.name.split(" ")[0]
+      const apellido = persona.nombre.split(" ")[1] || persona.name.split(" ")[1]; // El JSON no incluye apellido, por lo que se deja vacío
+      const query = `INSERT IGNORE INTO Reparto (id_persona,nombre_completo, nombre, apellido) VALUES (?, ?, ?)`;
       await connection.query(query, [persona.id, nombreCompleto, apellido]);
     }
 
@@ -59,7 +55,7 @@ const seedDatabase = async () => {
       // Relacionar reparto con la película y el rol
       for (const miembro of pelicula.reparto) {
         // Verificar que el rol sea válido (uno de 'Actor', 'Director' o 'Actriz')
-        const validRoles = ['actor', 'Director', 'Actriz'];
+        const validRoles = ['Actor', 'Director'];
         if (validRoles.includes(miembro.rol)) {
           const queryReparto = `
             INSERT IGNORE INTO Pelicula_Reparto (id_pelicula, id_persona, rol, personaje)
@@ -69,7 +65,6 @@ const seedDatabase = async () => {
             pelicula.id,
             miembro.id,
             miembro.rol, // Asignar el rol directamente
-            miembro.personaje || '', // Asignar personaje si está disponible
           ]);
         }
       }
@@ -131,4 +126,4 @@ const createTables = async () => {
 
 
 
-seedDatabase();
+// seedDatabase();

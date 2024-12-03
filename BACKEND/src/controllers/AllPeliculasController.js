@@ -3,89 +3,86 @@ const database = require('../database');
 
 
 const getAllPeliController = async (req, res) => {
+    let connection;
     try {
-        const connection = await database.getConnection();
+        
+        
+        connection = await database.getConnection();
 
         const query = `
                 SELECT 
-    p.id_pelicula AS id,
-    p.titulo,
-    p.img_url AS portada,
-    p.trailer_url AS trailer,
-    p.duracion,
-    p.descripcion AS sinopsis,
-    p.anio AS año,
-    p.pais,
-    p.rating,
-    p.fecha_creacion,
-    p.fecha_modificacion,
-    p.clasificacion,
-    -- Array de géneros asociados a la película
-    (
-        SELECT 
-            JSON_ARRAYAGG(
-                JSON_OBJECT(
-                    'id', g.id_genero,
-                    'nombre', g.nombre
-                )
-            )
-        FROM 
-            Pelicula_Genero pg
-        LEFT JOIN 
-            Genero g ON pg.id_genero = g.id_genero
-        WHERE 
-            pg.id_pelicula = p.id_pelicula
-    ) AS generos,
-    -- Director (sólo uno)
-    (
-        SELECT 
-            JSON_OBJECT(
-                'id', r.id_persona,
-                'nombre', r.nombre,
-                'apellido', r.apellido
-            )
-        FROM 
-            Pelicula_Reparto pr
-        LEFT JOIN 
-            Reparto r ON pr.id_persona = r.id_persona
-        WHERE 
-            pr.id_pelicula = p.id_pelicula AND pr.rol = 'Director'
-        LIMIT 1
-    ) AS director,
-    -- Reparto completo como array de objetos
-    (
-        SELECT 
-            JSON_ARRAYAGG(
-                JSON_OBJECT(
-                    'id', r.id_persona,
-                    'nombre', r.nombre,
-                    'apellido', r.apellido,
-                    'rol', pr.rol
-                )
-            )
-        FROM 
-            Pelicula_Reparto pr
-        LEFT JOIN 
-            Reparto r ON pr.id_persona = r.id_persona
-        WHERE 
-            pr.id_pelicula = p.id_pelicula
-    ) AS reparto
-FROM 
-    Pelicula p
-GROUP BY 
-    p.id_pelicula;
-
+                    p.id_pelicula AS id,
+                    p.titulo,
+                    p.img_url AS portada,
+                    p.trailer_url AS trailer,
+                    p.duracion,
+                    p.descripcion AS sinopsis,
+                    p.anio AS año,
+                    p.pais,
+                    p.rating,
+                    p.eliminado,
+                    p.precio,
+                    p.fecha_creacion,
+                    p.fecha_modificacion,
+                    p.clasificacion,
+                    -- Array de géneros asociados a la película
+                    (
+                        SELECT 
+                            JSON_ARRAYAGG(
+                                JSON_OBJECT(
+                                    'id', g.id_genero,
+                                    'nombre', g.nombre
+                                )
+                            )
+                        FROM 
+                            Pelicula_Genero pg
+                        LEFT JOIN 
+                            Genero g ON pg.id_genero = g.id_genero
+                        WHERE 
+                            pg.id_pelicula = p.id_pelicula
+                    ) AS generos,
+                    -- Director (sólo uno)
+                    (
+                        SELECT 
+                            JSON_OBJECT(
+                                'id', r.id_persona,
+                                'nombre', r.nombre,
+                                'apellido', r.apellido
+                            )
+                        FROM 
+                            Pelicula_Reparto pr
+                        LEFT JOIN 
+                            Reparto r ON pr.id_persona = r.id_persona
+                        WHERE 
+                            pr.id_pelicula = p.id_pelicula AND pr.rol = 'Director'
+                        LIMIT 1
+                    ) AS director,
+                    -- Reparto completo como array de objetos
+                    (
+                        SELECT 
+                            JSON_ARRAYAGG(
+                                JSON_OBJECT(
+                                    'id', r.id_persona,
+                                    'nombre', r.nombre,
+                                    'apellido', r.apellido,
+                                    'rol', pr.rol
+                                )
+                            )
+                        FROM 
+                            Pelicula_Reparto pr
+                        LEFT JOIN 
+                            Reparto r ON pr.id_persona = r.id_persona
+                        WHERE 
+                            pr.id_pelicula = p.id_pelicula
+                    ) AS reparto
+                FROM 
+                    Pelicula p
+                GROUP BY 
+                    p.id_pelicula;
                 `;
+
         const resultado = await connection.query(query);
 
-        // Convert the cast data into an array
-        // const peliculas = resultado.map(pelicula => {
-        //     return {
-        //         ...pelicula,
-        //         generos: pelicula.generos ? pelicula.generos.split(", ") : [],
-        //         reparto: pelicula.reparto ? pelicula.reparto.split(", ") : []
-        //     };
-        // });
          // Parsear manualmente las columnas JSON
          const peliculas = resultado.map(pelicula => ({
             ...pelicula,
@@ -94,12 +91,14 @@ GROUP BY
             reparto: pelicula.reparto ? JSON.parse(pelicula.reparto) : []
         }));
 
-        res.send(peliculas);
-        // console.log(peliculas);
+        res.status(200).json(peliculas);
+
     } catch (error) {
         console.error("Error al obtener las películas:", error);
         res.status(500).send("Error al obtener las películas");
     }
+    
+
 }
 
 

@@ -8,8 +8,8 @@ console.log(process.env.HOST);
 const connection = mysql.createConnection({
     host: process.env.HOST,
     database: process.env.DATABASE,
-    user: process.env.DB_USER,
-    password: process.env.PASSWORD
+    user: process.env.USER,
+    password: process.env.PASSWORD,
 });
 
 const getConnection = async () => await connection;
@@ -17,10 +17,4 @@ const getConnection = async () => await connection;
 module.exports = {
     getConnection
 }
-console.log("Variables de entorno cargadas:");
-console.log({
-    host: process.env.HOST,
-    user: process.env.DB_USER,
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE
-});
+

@@ -15,8 +15,14 @@ app.use(bodyParser.json())
 
 // MIDDLEWARES
 app.use(cors({
-    origin: ["http://localhost:52330", "http://localhost:5500","*"]
+    origin: [
+        "http://localhost:52330", // Sin la barra al final
+        "http://127.0.0.1:5500", // Sin la barra al final
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
 }));
+
 
 app.use(morgan("dev"));
 
