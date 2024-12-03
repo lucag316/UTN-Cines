@@ -15,7 +15,7 @@ const getPelicula = async (req, res) => {
 
         // Consultar los datos de la película
         const pelicula = await connection.query(
-            'SELECT * FROM Pelicula WHERE id_pelicula = ? AND eliminado = FALSE',
+            'SELECT * FROM Pelicula WHERE id_pelicula = ?',
             [id]
         );
 
@@ -48,13 +48,11 @@ const getPelicula = async (req, res) => {
             generos: generos.length > 0 ? generos : [], // Lista de géneros, o un arreglo vacío si no hay
             reparto: reparto.length > 0 ? reparto : []  // Lista de reparto, o un arreglo vacío si no hay
         };
-
+        console.log(response)
         res.status(200).json(response);
     } catch (error) {
         console.error('Error fetching movie:', error);
         res.status(500).json({ message: 'Error fetching movie' });
-    } finally {
-        connection.end();
     }
 };
 
@@ -81,7 +79,7 @@ const createPelicula = async (req, res) => {
         await connection.beginTransaction();
 
         // Insertar película
-        const [result] = await connection.query(
+        const result = await connection.query(
             `INSERT INTO Pelicula 
             (titulo, duracion, clasificacion, descripcion, anio, pais, img_url, trailer_url, rating, precio) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
@@ -101,9 +99,9 @@ const createPelicula = async (req, res) => {
 
         // Insertar reparto
         for (const persona of reparto) {
-            const [resultPersona] = await connection.query(
-                `INSERT INTO Reparto (nombre, apellido) 
-                VALUES (?, ?, ?)`,
+            const resultPersona = await connection.query(
+                `INSERT IGNORE INTO Reparto (nombre, apellido) 
+                VALUES (?, ?)`,
                 [persona.nombre, persona.nombre.split(' ').slice(1).join(' ')]
             );
 
@@ -125,15 +123,14 @@ const createPelicula = async (req, res) => {
         await connection.rollback();
         console.error('Error creating movie:', error);
         res.status(500).json({ message: 'Error creating movie' });
-    } finally {
-        connection.end();
-    }
+    } 
 };
 
 
 const actualizarPelicula = async ()=>{
     
 }
+
 const eliminarPelicula = async (req,res)=>{
     let connection;
     try {
@@ -161,10 +158,39 @@ const eliminarPelicula = async (req,res)=>{
     } catch (error) {
         console.error('Error deleting movie:', error);
         res.status(500).json({ message: 'Error deleting movie' });
-    } finally {
-       connection.end();
-    }
+    } 
 }
+
+const revivePeliculaController = async (req, res) => {
+    let connection;
+    try {
+        const { id } = req.params;
+
+        // Validar que el ID sea válido
+        if (!id || isNaN(id)) {
+            return res.status(400).json({ message: 'Invalid ID parameter' });
+        }
+
+        connection = await database.getConnection();
+
+        // Actualizar el campo eliminado a false
+        const result = await connection.query(
+            'UPDATE Pelicula SET eliminado = FALSE WHERE id_pelicula = ?',
+            [id]
+        );
+
+        // Verificar si se afectó alguna fila
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ message: 'Movie not found or already active' });
+        }
+
+        res.status(200).json({ message: 'Movie revived successfully' });
+    } catch (error) {
+        console.error('Error reviving movie:', error);
+        res.status(500).json({ message: 'Error reviving movie' });
+    } 
+};
+
 
 
 
@@ -172,5 +198,6 @@ module.exports = {
     getPelicula,
     createPelicula,
     actualizarPelicula,
-    eliminarPelicula
+    eliminarPelicula,
+    revivePeliculaController
 }
