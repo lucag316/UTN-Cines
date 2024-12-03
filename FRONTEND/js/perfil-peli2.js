@@ -197,6 +197,7 @@ function getTrailerKey(url) {
     // Si se encuentra un ID de YouTube, lo retornamos
     return match ? match[1] : '';
 }
+
 async function getPeliculaPorId(id) {
     const response = await fetch(`http://localhost:5000/Pelicula/${id}`); // Endpoint para obtener los datos
     if (!response.ok) {
