@@ -28,11 +28,14 @@
 
         <!-- Contenedor donde se mostrarán los elementos del carrito -->
         <div id="cartItems"></div>
+        <button class="btn btn-primary mt-4 me-2" onclick="pay()">Pay</button>
+        <button class="btn btn-secondary mt-4" id="downloadPdf">Download PDF</button>
 
         <!-- Botón para proceder al pago -->
         <button class="btn btn-primary mt-4" onclick="pay()">Pay</button>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
     <script>
         // Recuperar los datos del carrito desde localStorage
         const cart = JSON.parse(localStorage.getItem("cart")) || []; // Si no hay carrito, se usa un arreglo vacío por defecto
