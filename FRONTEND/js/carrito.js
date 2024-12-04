@@ -9,7 +9,7 @@ const cartCount = document.getElementById("cartCount");
 const cartList = document.getElementById('cartList');
 const cartTotal = document.getElementById('cartTotal');
 const checkoutButton = document.getElementById('checkoutButton');
-
+const descPDFbtn = document.getElementById('descPDFbtn');
 
 // Actualizar el contenido del carrito (en dropdown y en detalle)
 const updateCart = () => {
@@ -51,6 +51,10 @@ const updateCart = () => {
     finalizeButton.className = "dropdown-item text-center";
     finalizeButton.innerHTML = `<button class="btn btn-success w-100" onclick="finalizePurchase()">Finalizar compra</button>`;
     cartDropdown.appendChild(finalizeButton);
+    // const descargPDFBtn = document.createElement("li");
+    // descargPDFBtn.className = "dropdown-item text-center";
+    // descargPDFBtn.innerHTML = `<button class="btn btn-success w-100" onclick="generatePDF()">Descargar PDF</button>`;
+    // cartDropdown.appendChild(descargPDFBtn);
 
     // Guardar carrito actualizado en localStorage
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -68,15 +72,17 @@ const updateCarrito = () => {
     }
 
     cart.forEach((item, index) => {
-        total += item.price * item.quantity;
+        total += parseInt(item.precio) * item.quantity;
 
         const cartItem = document.createElement('div');
         cartItem.className = "list-group-item d-flex justify-content-between align-items-center";
 
+        console.log(`Producto: ${item.title}, Precio: ${item.precio}, Cantidad: ${item.quantity}`);
+
         cartItem.innerHTML = `
             <div>
                 <h5 class="mb-1">${item.title}</h5>
-                <small>$${item.precio} c/u</small>
+                <small>$ ${item.precio} c/u</small>
             </div>
             <div class="btn-group">
                 <button class="btn btn-sm btn-outline-secondary" onclick="decreaseQuantity(${index},event)">-</button>
@@ -108,6 +114,7 @@ const addToCart = (product) => {
 
     updateCart();
     updateCarrito();
+    updateResumenCarrito()
 };
 
 // Incrementar cantidad
@@ -116,6 +123,7 @@ const increaseQuantity = (index, event) => {
     cart[index].quantity++;
     updateCart();
     updateCarrito();
+    updateResumenCarrito()
 };
 
 // Disminuir cantidad
@@ -128,6 +136,8 @@ const decreaseQuantity = (index, event) => {
     }
     updateCart();
     updateCarrito();
+    updateResumenCarrito()
+    console.log(cart)
 };
 
 // Eliminar producto del carrito
@@ -136,6 +146,7 @@ const removeFromCart = (index, event) => {
     cart.splice(index, 1);
     updateCart();
     updateCarrito();
+    updateResumenCarrito()
 
 };
 
@@ -159,7 +170,13 @@ const finalizePurchase = () => {
 updateCart();
 
 
-
+descPDFbtn.addEventListener('click',()=>{
+    if (cart.length === 0) {
+        alert("El carrito está vacío.");
+        return;
+    }
+    generatePDF()
+})
 
 // Finalizar compra
 checkoutButton.addEventListener('click', () => {
@@ -169,9 +186,122 @@ checkoutButton.addEventListener('click', () => {
     }
 
     alert("Compra finalizada. ¡Gracias por tu compra!");
+
     cart = [];
     updateCart();
+    updateCartSummary()
 });
 
 // Inicializar carrito
 updateCarrito();
+// Actualizar el resumen de compra
+const updateCartSummary = () => {
+    const cartSummary = document.getElementById('cartSummary');
+    cartSummary.innerHTML = ""; // Limpia el contenido anterior
+
+    if (cart.length === 0) {
+        cartSummary.innerHTML = `<li class="list-group-item text-muted">El carrito está vacío</li>`;
+        cartTotal.textContent = "$0.00";
+        return;
+    }
+
+    let total = 0;
+
+    cart.forEach(item => {
+        const itemTotal = item.precio * item.quantity;
+        total += itemTotal;
+
+        const summaryItem = document.createElement('li');
+        summaryItem.className = "list-group-item d-flex justify-content-between align-items-center";
+
+        summaryItem.innerHTML = `
+            <div>
+                <strong>${item.title}</strong> <br>
+                <span>$${item.precio} x ${item.quantity}</span>
+            </div>
+            <span class="text-end">$${itemTotal.toFixed(2)}</span>
+        `;
+
+        cartSummary.appendChild(summaryItem);
+    });
+
+    cartTotal.textContent = `$${total.toFixed(2)}`;
+};
+
+// Modifica las funciones para llamar también a `updateCartSummary`
+const updateResumenCarrito = () => {
+    cartList.innerHTML = "";
+    if (cart.length === 0) {
+        cartList.innerHTML = `<p class="text-muted">El carrito está vacío</p>`;
+        updateCartSummary(); // Actualizar también el resumen
+        return;
+    }
+
+    cart.forEach((item, index) => {
+        const cartItem = document.createElement('div');
+        cartItem.className = "list-group-item d-flex justify-content-between align-items-center";
+
+        cartItem.innerHTML = `
+            <div>
+                <h5 class="mb-1">${item.title}</h5>
+                <small>$${item.precio} c/u</small>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-sm btn-outline-secondary" onclick="decreaseQuantity(${index},event)">-</button>
+                <span class="mx-2">${item.quantity}</span>
+                <button class="btn btn-sm btn-outline-secondary" onclick="increaseQuantity(${index},event)">+</button>
+            </div>
+            <button class="btn btn-sm btn-danger" onclick="removeFromCart(${index})">Eliminar</button>
+        `;
+
+        cartList.appendChild(cartItem);
+    });
+
+    updateCartSummary(); // Actualizar el resumen
+};
+
+// Agrega esta llamada donde sea necesario
+updateCartSummary();
+updateResumenCarrito()
+
+function generatePDF() {
+    // Recuperar el carrito del localStorage
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    if (cart.length === 0) {
+        alert("El carrito está vacío. No hay nada para descargar.");
+        return;
+    }
+
+    // Crear un contenedor temporal para el contenido del PDF
+    const pdfContent = document.createElement("div");
+    pdfContent.innerHTML = `
+        <h1>Resumen de Compra</h1>
+        <ul style="list-style: none; padding: 0;">
+            ${cart
+                .map(
+                    (item) => `
+                <li style="margin-bottom: 10px; display: flex; justify-content: space-between; border-bottom: 1px solid #ccc; padding: 5px 0;">
+                    <span>${item.title} (x${item.quantity})</span>
+                    <span>$${(item.precio * item.quantity).toFixed(2)}</span>
+                    <img src="${item.img}" style="width: 50px; height: 50px; object-fit: cover; margin-left: 10px;" />
+                </li>
+            `
+                )
+                .join("")}
+        </ul>
+        <hr>
+        <h3>Total: $${cart.reduce((sum, item) => sum + item.precio * item.quantity, 0).toFixed(2)}</h3>
+        <p>Gracias por tu compra.</p>
+    `;
+
+    // Configuración del PDF
+    const options = {
+        margin: 1,
+        filename: "Resumen_de_Compra.pdf",
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+    };
+
+    // Generar el PDF y descargarlo
+    html2pdf().set(options).from(pdfContent).save();
+}
