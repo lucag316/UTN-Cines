@@ -48,7 +48,7 @@ const getPelicula = async (req, res) => {
             generos: generos.length > 0 ? generos : [], // Lista de géneros, o un arreglo vacío si no hay
             reparto: reparto.length > 0 ? reparto : []  // Lista de reparto, o un arreglo vacío si no hay
         };
-        console.log(response)
+
         res.status(200).json(response);
     } catch (error) {
         console.error('Error fetching movie:', error);
@@ -93,7 +93,7 @@ const createPelicula = async (req, res) => {
             await connection.query(
                 `INSERT INTO Pelicula_Genero (id_pelicula, id_genero) 
                 VALUES (?, ?)`,
-                [peliculaId, genero.id]
+                [parseInt(peliculaId), parseInt(genero.id)]
             );
         }
 
@@ -110,7 +110,7 @@ const createPelicula = async (req, res) => {
             await connection.query(
                 `INSERT INTO Pelicula_Reparto (id_pelicula, id_persona, rol) 
                 VALUES (?, ?, ?)`,
-                [peliculaId, personaId, persona.rol]
+                [parseInt(peliculaId), parseInt(personaId), persona.rol]
             );
         }
 
@@ -126,10 +126,98 @@ const createPelicula = async (req, res) => {
     } 
 };
 
+const actualizarPelicula = async (req, res) => {
+    const connection = await database.getConnection();
+    const {
+        id_pelicula,
+        titulo,
+        duracion,
+        clasificacion,
+        descripcion,
+        anio,
+        pais,
+        img_url,
+        trailer_url,
+        rating,
+        precio,
+        generos,
+        reparto,
+    } = req.body;
 
-const actualizarPelicula = async ()=>{
-    
-}
+    console.log(req.body)
+
+    try {
+        // Inicia una transacción
+        await connection.beginTransaction();
+
+        // Actualizar la tabla principal de películas
+        const updateMovieQuery = `
+            UPDATE Pelicula
+            SET 
+                titulo = ?, 
+                duracion = ?, 
+                clasificacion = ?, 
+                descripcion = ?, 
+                anio = ?, 
+                pais = ?, 
+                img_url = ?, 
+                trailer_url = ?, 
+                rating = ?, 
+                precio = ?, 
+                fecha_modificacion = NOW()
+            WHERE id_pelicula = ?
+        `;
+        await connection.query(updateMovieQuery, [
+            titulo,
+            duracion,
+            clasificacion,
+            descripcion,
+            parseInt(anio),
+            pais,
+            img_url,
+            trailer_url,
+            rating,
+            parseInt(precio),
+            parseInt(id_pelicula),
+        ]);
+
+        // Actualizar los géneros asociados
+        const deleteGenresQuery = `DELETE FROM Pelicula_Genero WHERE id_pelicula = ?`;
+        await connection.query(deleteGenresQuery, [id_pelicula]);
+
+        const insertGenresQuery = `
+            INSERT INTO Pelicula_Genero (id_pelicula, id_genero)
+            VALUES (?, ?)
+        `;
+        for (const genero of generos) {
+            await connection.query(insertGenresQuery, [parseInt(id_pelicula), parseInt(genero.id)]);
+        }
+
+        // Actualizar el reparto asociado
+        const deleteRepartoQuery = `DELETE FROM Pelicula_Reparto WHERE id_pelicula = ?`;
+        await connection.query(deleteRepartoQuery, [parseInt(id_pelicula)]);
+
+        const insertRepartoQuery = `
+            INSERT INTO Pelicula_Reparto (id_pelicula, id_persona, rol)
+            VALUES (?, ?, ?)
+        `;
+        for (const persona of reparto) {
+            await connection.query(insertRepartoQuery, [parseInt(id_pelicula), persona.id, persona.rol]);
+        }
+
+        // Confirmar la transacción
+        await connection.commit();
+        res.status(200).send({ message: "Película actualizada exitosamente." });
+
+        
+    } catch (error) {
+        // Deshacer la transacción en caso de error
+        await connection.rollback();
+        console.error("Error al actualizar la película:", error);
+        res.status(500).send({ error: "Error al actualizar la película." });
+    } 
+};
+
 
 const eliminarPelicula = async (req,res)=>{
     let connection;
