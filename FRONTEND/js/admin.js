@@ -7,10 +7,7 @@ let movies = [];
 // Función para obtener las películas junto con sus géneros
 async function fetchMovies() {
     try {
-        console.log("hola")
         movies = await getPeliculas()
-        console.log("chau")
-        console.log(movies)
         displayMovies(movies);
     } catch (error) {
         console.error("Error al obtener las películas:", error);
@@ -19,11 +16,8 @@ async function fetchMovies() {
 
 async function getPeliculas() {
     if (movies.length === 0){
-        console.log("resJson2")
-        const res = await fetch("http://localhost:5000/AllPelis");
+        const res = await fetch("http://localhost:5000/AllPelis/admin");
         const resJson = await res.json();
-        console.log("resJson")
-        console.log(resJson)
         return resJson;
     }
     return movies
@@ -34,7 +28,6 @@ function displayMovies(movies) {
     const tableBody = document.getElementById('movies-table-body');
     tableBody.innerHTML = ''; // Limpiar el contenido anterior
 
-    console.log("for each");
     console.log(movies)
     movies.forEach(movie => {
 
@@ -91,6 +84,9 @@ function showCreateMovieForm() {
                     </div>
                     <div class="modal-body">
                         <form id="createMovieForm">
+                            <!-- Campo oculto para el ID de la película -->
+                            <input type="hidden" id="id_pelicula" name="id_pelicula" />
+
                             <div class="mb-3">
                                 <label for="titulo" class="form-label">Título</label>
                                 <input type="text" class="form-control" id="titulo" name="titulo" required>
@@ -239,7 +235,6 @@ function addGenero(e) {
     e.preventDefault()
     const select = document.getElementById('generos');
     const selectedOption = select.options[select.selectedIndex];
-    console.log(selectedOption)
     const generoId = selectedOption.value;
     const generoNombre = selectedOption.textContent;
 
@@ -358,7 +353,6 @@ async function submitCreateMovie() {
     const movieData = Object.fromEntries(formData.entries());
     movieData.generos = selectedGeneros; // Agregar el array de géneros seleccionados
     movieData.reparto = selectedReparto;
-    console.log(movieData)
 
 
     try {
@@ -400,33 +394,35 @@ async function editMovie(id) {
         // Obtén los datos de la película por ID
         const response = await fetch(`${API_BASE_URL}/pelicula/${id}`);
         const movie = await response.json();
-        console.log(movie)
         // Abre el formulario
         showCreateMovieForm();
+
+        console.log("hoola")
+        console.log(movie)
 
         // Cambia el título del modal
         document.getElementById('createMovieModalLabel').textContent = 'Editar Película';
 
         // Prellena los campos del formulario
+        document.getElementById('id_pelicula').value = movie.id_pelicula; // Establece el ID
         document.getElementById('titulo').value = movie.titulo || '';
         document.getElementById('duracion').value = movie.duracion || '';
         document.getElementById('clasificacion').value = movie.clasificacion || '';
         document.getElementById('descripcion').value = movie.descripcion || '';
-        document.getElementById('anio').value = movie.año || '';
+        document.getElementById('anio').value = movie.anio || '';
         document.getElementById('pais').value = movie.pais || '';
         document.getElementById('img_url').value = movie.img_url || '';
         document.getElementById('trailer_url').value = movie.trailer || '';
         document.getElementById('rating').value = movie.rating || '';
         document.getElementById('precio').value = movie.precio || '';
 
-
         movie.generos.forEach((g)=>{
-            selectedGeneros.push({ id: g.id, nombre: g.nombre })
+            selectedGeneros.push({ id: g.id_genero, nombre: g.nombre })
         })
         updateSelectedGenerosList()
 
         movie.reparto.forEach((r)=>{
-            selectedReparto.push({ id: r.id, nombre: r.nombre, rol: r.rol })
+            selectedReparto.push({ id: r.id_persona, nombre: r.nombre, rol: r.rol })
         })
         updateSelectedRepartoList()
 
@@ -442,11 +438,13 @@ async function editMovie(id) {
 
 async function submitEditMovie(id) {
     try {
+
         const form = document.getElementById('createMovieForm');
         const formData = new FormData(form);
-
         // Convierte el formulario a JSON
         const updatedMovie = Object.fromEntries(formData);
+        updatedMovie.generos = selectedGeneros
+        updatedMovie.reparto = selectedReparto
 
         // Envía la solicitud al backend
         const response = await fetch(`${API_BASE_URL}/pelicula/${id}`, {
@@ -464,7 +462,7 @@ async function submitEditMovie(id) {
         // Cierra el modal y actualiza la lista de películas
         const modal = bootstrap.Modal.getInstance(document.getElementById('createMovieModal'));
         modal.hide();
-        loadMovies(); // Función que actualiza la lista de películas
+        //loadMovies(); // Función que actualiza la lista de películas
 
     } catch (error) {
         console.error('Error al actualizar la película:', error);
@@ -475,7 +473,6 @@ async function submitEditMovie(id) {
 async function deleteMovie(movieId) {
     if (confirm("¿Estás seguro de que deseas eliminar esta película?")) {
         try {
-            console.log(movieId)
             const response = await fetch(`${API_BASE_URL}/pelicula/${movieId}`, {
                 method: "DELETE"
             });
@@ -495,8 +492,7 @@ async function deleteMovie(movieId) {
 async function reviveMovie(movieId) {
     if (confirm("¿Estás seguro de que deseas revivir esta película?")) {
         try {
-            console.log(movieId)
-            const response = await fetch(`${API_BASE_URL}/pelicula/${movieId}`, {
+            const response = await fetch(`${API_BASE_URL}/pelicula/revive/${movieId}`, {
                 method: "PUT"
             });
             if (response.ok) {
