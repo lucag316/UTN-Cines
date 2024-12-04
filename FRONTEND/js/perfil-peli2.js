@@ -112,7 +112,8 @@ document.addEventListener('DOMContentLoaded', () => {
     mostrarPelicula();
 });
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+let cart = JSON.parse(localStorage.getItem("cart")) !== null && JSON.parse(localStorage.getItem("cart")).length > 0 ? JSON.parse(localStorage.getItem("cart")) : [];
 
 // Función para mostrar la película seleccionada en la página
 async function mostrarPelicula() {
@@ -145,6 +146,15 @@ async function mostrarPelicula() {
         console.error("No se encontró la película con el ID proporcionado");
         return;
     }
+/*
+    let peliculaInCart;
+
+    if(cart){
+        peliculaInCart = cart.find(m => m.id == pelicula.id_pelicula)
+        if(peliculaInCart){
+            peliculaInCart.index = cart.findIndex(m => m.id == pelicula.id_pelicula)
+        }
+    }*/
 
     console.log('Película encontrada:', pelicula); // Verifica si la película se encontró correctamente
     mostrarDetallesDePelicula(pelicula);
@@ -155,9 +165,9 @@ function mostrarDetallesDePelicula(pelicula) {
     const mainPelicula = document.querySelector('.main-pelicula');
     
     pelicula.director = pelicula.reparto?.find(r=>r.rol=="Director")
-    console.log("hola")
+    
     // Verificamos si la película ya está en el carrito
-    const peliculaInCart = cart.find(m => m.id === pelicula.id);
+    const peliculaInCart = cart.find(m => m.id === pelicula.id_pelicula);
     
     mainPelicula.innerHTML = `
         <div class="container-movie">
@@ -179,22 +189,32 @@ function mostrarDetallesDePelicula(pelicula) {
                 <div class="summary">
                     <p id="resumen_text">${pelicula.descripcion}</p>
                 </div>
-                ${peliculaInCart ? `
+                <!-- Botón para comprar entradas -->
+                ${
+                    peliculaInCart ? `
                     <div class="card-body d-flex flex-column justify-content-between">
                         <div class="d-flex justify-content-between align-items-center mt-2">
-                            <button class="btn btn-sm btn-secondary" onclick="decreaseQuantity('${peliculaInCart.index}', event)">-</button>
+                            <button class="btn btn-sm btn-secondary" onclick="decreaseQuantity('${peliculaInCart.index}',event)">-</button>
                             <span id="quantity_${peliculaInCart.id}" class="mx-2">${peliculaInCart.quantity}</span>
-                            <button class="btn btn-sm btn-secondary" onclick="increaseQuantity('${peliculaInCart.index}', event)">+</button>
+                            <button class="btn btn-sm btn-secondary" onclick="increaseQuantity('${peliculaInCart.index}',event)">+</button>
                         </div>
-                    </div>` : `
-                    <div class="card-body d-flex flex-column justify-content-between">
-                        <button class="btn btn-primary w-100 mt-2" onclick="addToCart('${pelicula.id}', '${pelicula.titulo}')">Agregar al carrito</button>
                     </div>
-                `}
+                    `
+                :
+                `
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <button class="btn btn-primary w-100 mt-2" onclick="addToCart('${pelicula.id_pelicula}', '${pelicula.titulo}')">Agregar al carrito</button>
+                    </div>
+                `
+                }
             </div>
         </div>
+        
     `;
 }
+
+
+
 
 // Función para obtener los detalles de la película por ID desde el servidor
 async function getPeliculaPorId(id) {
@@ -204,7 +224,7 @@ async function getPeliculaPorId(id) {
     }
     return response.json();
 }
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Función para agregar una película al carrito
 function addToCart(movieId, movieTitle) {
     const movieInCart = cart.find(movie => movie.id === movieId);
@@ -216,7 +236,9 @@ function addToCart(movieId, movieTitle) {
     }
 
     updateCart();
+    
 }
+
 
 // Función para actualizar el carrito en el dropdown
 function updateCart() {
@@ -287,6 +309,5 @@ function finalizePurchase() {
     localStorage.setItem("cart", JSON.stringify(cart));
     window.location.href = "../html/pago.html";
 }
-
 // Llamamos a la función updateCart para inicializar el carrito al cargar la página
 updateCart();
