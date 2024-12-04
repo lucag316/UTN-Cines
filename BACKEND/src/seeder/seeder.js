@@ -8,6 +8,7 @@ const seedDatabase = async () => {
   let connection;
   try {
     connection = await database.getConnection();
+
     // Insertar géneros
     for (const genero of data.generos) {
       const query = `INSERT IGNORE INTO Genero (id_genero, nombre) VALUES (?, ?)`;
@@ -16,11 +17,11 @@ const seedDatabase = async () => {
 
     // Insertar personas en el reparto
     for (const persona of data.reparto) {
-      const nombreCompleto = persona.nombre || persona.name; // Para manejar las diferencias de nombres
-      const nombre = persona.nombre.split(" ")[0] || persona.name.split(" ")[0]
-      const apellido = persona.nombre.split(" ")[1] || persona.name.split(" ")[1]; // El JSON no incluye apellido, por lo que se deja vacío
-      const query = `INSERT IGNORE INTO Reparto (id_persona,nombre_completo, nombre, apellido) VALUES (?, ?, ?)`;
-      await connection.query(query, [persona.id, nombreCompleto, apellido]);
+      const nombreCompleto = persona.nombre || persona.name;
+      const nombre = nombreCompleto.split(" ")[0];
+      const apellido = nombreCompleto.split(" ").slice(1).join(" ") || ""; // Manejo de apellidos múltiples o faltantes
+      const query = `INSERT IGNORE INTO Reparto (id_persona, nombre_completo, nombre, apellido) VALUES (?, ?, ?, ?)`;
+      await connection.query(query, [persona.id, nombreCompleto, nombre, apellido]);
     }
 
     // Insertar películas
@@ -28,8 +29,8 @@ const seedDatabase = async () => {
       const queryPelicula = `
         INSERT IGNORE INTO Pelicula (
           id_pelicula, titulo, duracion, clasificacion, descripcion, anio, pais,
-          img_url, trailer_url, rating, precio, fecha_creacion, fecha_modificacion
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())
+          img_url, trailer_url, rating, precio, eliminado, fecha_creacion, fecha_modificacion
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())
       `;
       await connection.query(queryPelicula, [
         pelicula.id,
@@ -43,7 +44,7 @@ const seedDatabase = async () => {
         pelicula.trailer_url,
         pelicula.rating,
         pelicula.precio,
-        pelicula.eliminado
+        pelicula.eliminado || false // Manejar valor predeterminado para eliminado
       ]);
 
       // Relacionar géneros con la película
@@ -54,30 +55,29 @@ const seedDatabase = async () => {
 
       // Relacionar reparto con la película y el rol
       for (const miembro of pelicula.reparto) {
-        // Verificar que el rol sea válido (uno de 'Actor', 'Director' o 'Actriz')
-        const validRoles = ['Actor', 'Director'];
+        const validRoles = ['Actor', 'Director']; // Incluye 'Actriz' como opción válida
         if (validRoles.includes(miembro.rol)) {
           const queryReparto = `
-            INSERT IGNORE INTO Pelicula_Reparto (id_pelicula, id_persona, rol, personaje)
-            VALUES (?, ?, ?, ?)
+            INSERT IGNORE INTO Pelicula_Reparto (id_pelicula, id_persona, rol)
+            VALUES (?, ?, ?)
           `;
           await connection.query(queryReparto, [
             pelicula.id,
             miembro.id,
-            miembro.rol, // Asignar el rol directamente
+            miembro.rol
           ]);
         }
       }
-      
     }
 
     console.log('Base de datos poblada exitosamente');
   } catch (error) {
     console.error('Error al poblar la base de datos:\n', error);
-  }finally{
+  } finally {
     connection.end();
   }
 };
+
 
 
 const createTables = async () => {
@@ -135,7 +135,6 @@ const createTables = async () => {
         id_pelicula INT,
         id_persona INT,
         rol ENUM('Actor', 'Director', 'Actriz') NOT NULL,
-        personaje VARCHAR(100),
         PRIMARY KEY (id_pelicula, id_persona),
         FOREIGN KEY (id_pelicula) REFERENCES Pelicula (id_pelicula),
         FOREIGN KEY (id_persona) REFERENCES Reparto (id_persona)
@@ -219,9 +218,9 @@ const createTables = async () => {
 };
 
 
-// createTables();
+//createTables();
 
 
 
 
-// seedDatabase();
+seedDatabase();
