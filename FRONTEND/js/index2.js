@@ -314,7 +314,7 @@ function updateCart() {
     // Añade un botón para finalizar la compra
     const checkoutButton = document.createElement("li");
     checkoutButton.className = "dropdown-item text-center";
-    checkoutButton.innerHTML = `<button class="btn btn-success w-100" onclick="finalizePurchase()">Finalizar compra</button>`;
+    checkoutButton.innerHTML = `<button class="btn btn-success w-100" onclick="irACarrito()">Ver resumen</button>`;
     cartDropdown2.appendChild(checkoutButton);
     localStorage.setItem("cart", JSON.stringify(cart2));
 }
@@ -352,6 +352,9 @@ function removeFromCart(index,event) {
 
 }
 
+const irACarrito = ()=>{
+    window.location.href = "./html/carrito.html";
+}
 
 function finalizePurchase() {
     // Store the cart in localStorage or sessionStorage

@@ -139,6 +139,8 @@ const removeFromCart = (index, event) => {
 
 };
 
+
+
 // Finalizar compra
 const finalizePurchase = () => {
     if (cart.length === 0) {
