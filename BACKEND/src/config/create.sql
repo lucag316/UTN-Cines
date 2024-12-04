@@ -2,15 +2,15 @@
 CREATE TABLE Pelicula (
   id_pelicula INT PRIMARY KEY AUTO_INCREMENT,
   titulo VARCHAR(200) NOT NULL,
-  duracion INT NOT NULL,
+  duracion INT,
   clasificacion VARCHAR(20) DEFAULT "PG-13",
   descripcion TEXT,
-  anio YEAR NOT NULL,
+  anio YEAR,
   pais VARCHAR(50),
   img_url VARCHAR(100),
   trailer_url VARCHAR(100),
   rating FLOAT,
-  precio INT NOT NULL,
+  precio INT NOT NULL DEFAULT 5000,
   eliminado BOOLEAN DEFAULT FALSE,
   fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
   fecha_modificacion DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP

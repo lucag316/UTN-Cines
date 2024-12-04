@@ -6,9 +6,9 @@ const {getPelicula,createPelicula,eliminarPelicula,actualizarPelicula,revivePeli
 
 router.get('/:id', getPelicula);
 router.post("/",createPelicula)
-router.put("/:id")
+router.put("/:id", actualizarPelicula)
+router.put("/revive/:id",revivePeliculaController)
 router.delete("/:id",eliminarPelicula)
-router.put("/:id",revivePeliculaController)
 
 
 
