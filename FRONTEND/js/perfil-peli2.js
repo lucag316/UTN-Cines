@@ -1,4 +1,6 @@
 
+// PONERLO EN EL DIV TRAILER <iframe id="iframe_perfil_peli" width="700" height="350" src="https://www.youtube.com/embed/${getTrailerKey(pelicula.trailer)}" frameborder="0" allowfullscreen></iframe>
+
 /*
 // Esperamos a que el contenido del DOM se haya cargado completamente
 document.addEventListener('DOMContentLoaded', () => {
@@ -98,31 +100,39 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
     `;
 }*/
+// Esperamos a que el contenido del DOM se haya cargado completamente
+document.addEventListener('DOMContentLoaded', () => {
+    // Recuperamos el tema guardado en localStorage (si no existe, usamos 'auto' por defecto)
+    const temaGuardado = localStorage.getItem('temaActual') || 'auto';
+    // Recuperamos el carrito de compras (si no existe, inicializamos un array vacío)
+    cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+    // Aplicamos el tema guardado usando la función 'changeTheme'
+    changeTheme(temaGuardado);
+    mostrarPelicula();
+});
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 // Función para mostrar la película seleccionada en la página
-window.mostrarPelicula = async function mostrarPelicula() {
+async function mostrarPelicula() {
     const urlParams = new URLSearchParams(window.location.search);
     const idPelicula = urlParams.get('id');
-    console.log('ID de la película:', idPelicula); // Verifica que se está obteniendo el ID correctamente
+    console.log('ID de la película:', idPelicula); // Verifica el valor aquí.
 
     if (!idPelicula) {
         console.error("No se proporcionó un ID de película en la URL");
         return;
     }
 
-    let pelicula;
-
     // Intentamos obtener la lista de películas desde localStorage
-    const todasLasPeliculas = JSON.parse(localStorage.getItem('todasLasPeliculas'));
+    const todasLasPeliculas = JSON.parse(localStorage.getItem('todasLasPeliculas')) || [];
 
-    if (todasLasPeliculas) {
-        // Si las películas están en localStorage, las buscamos ahí
-        pelicula = todasLasPeliculas.find(p => p.id === idPelicula);
-    }
+    let pelicula = todasLasPeliculas.find(p => p.id === idPelicula);
 
+    
+    // Si no se encontró la película en localStorage, la buscamos desde el servidor
     if (!pelicula) {
-        // Si no se encontró la película en localStorage, la buscamos desde el servidor
         try {
             pelicula = await getPeliculaPorId(idPelicula);
         } catch (error) {
@@ -137,16 +147,23 @@ window.mostrarPelicula = async function mostrarPelicula() {
     }
 
     console.log('Película encontrada:', pelicula); // Verifica si la película se encontró correctamente
+    mostrarDetallesDePelicula(pelicula);
+}
 
-    // Actualizamos el contenido de la página con los detalles de la película
+// Función para mostrar los detalles de la película en la página
+function mostrarDetallesDePelicula(pelicula) {
     const mainPelicula = document.querySelector('.main-pelicula');
+    
+    pelicula.director = pelicula.reparto?.find(r=>r.rol=="Director")
+    console.log("hola")
+    // Verificamos si la película ya está en el carrito
+    const peliculaInCart = cart.find(m => m.id === pelicula.id);
+    
     mainPelicula.innerHTML = `
         <div class="container-movie">
             <div class="left-section">
-                <!-- Mostramos la imagen de la portada de la película -->
-                <img id="img_perfil_peli" class="portada" src="${pelicula.portada}" alt="portada_img">
+                <img id="img_perfil_peli" class="portada" src="${pelicula.img_url}" alt="portada_img">
                 <div class="details">
-                    <!-- Mostramos los detalles de la película como género, duración, reparto, etc. -->
                     <div class="details-item"><h3>Género:</h3><p id="genero_text">${pelicula.generos.map(g=>g.nombre).join(', ')}</p></div>
                     <div class="details-item"><h3>Duración:</h3><p id="duracion_text">${pelicula.duracion} min</p></div>
                     <div class="details-item"><h3>Reparto:</h3><p id="reparto_text">${pelicula.reparto?.map(r=>r.nombre).join(', ') || ""}</p></div>
@@ -154,31 +171,22 @@ window.mostrarPelicula = async function mostrarPelicula() {
                     <div class="details-item"><h3>País:</h3><p id="pais_text">${pelicula.pais}</p></div>
                     <div class="details-item"><h3>Clasificación:</h3><p id="clasificacion_text">${pelicula.clasificacion}</p></div>
                     <div class="details-item"><h3>Rating:</h3><p id="rating_text">${pelicula.rating}</p></div>
-                    <div class="details-item"><h3>Año:</h3><p id="año_text">${pelicula.año}</p></div>
+                    <div class="details-item"><h3>Año:</h3><p id="año_text">${pelicula.anio}</p></div>
                 </div>
             </div>
             <div class="right-section">
-                <!-- Mostramos el video del trailer de la película en un iframe -->
-                <div class="trailer">
-                    <iframe id="iframe_perfil_peli" width="700" height="350" src="https://www.youtube.com/embed/${getTrailerKey(pelicula.trailer)}" frameborder="0" allowfullscreen></iframe>
-                </div>
-                <!-- Título de la película -->
                 <h2 id="titulo_text">${pelicula.titulo}</h2>
-                <!-- Resumen o sinopsis de la película -->
                 <div class="summary">
-                    <p id="resumen_text">${pelicula.sinopsis}</p>
+                    <p id="resumen_text">${pelicula.descripcion}</p>
                 </div>
-                <!-- Botón para comprar entradas -->
-                ${
-                    peliculaInCart ? `
+                ${peliculaInCart ? `
                     <div class="card-body d-flex flex-column justify-content-between">
                         <div class="d-flex justify-content-between align-items-center mt-2">
-                            <button class="btn btn-sm btn-secondary" onclick="decreaseQuantity('${peliculaInCart.index}',event)">-</button>
+                            <button class="btn btn-sm btn-secondary" onclick="decreaseQuantity('${peliculaInCart.index}', event)">-</button>
                             <span id="quantity_${peliculaInCart.id}" class="mx-2">${peliculaInCart.quantity}</span>
-                            <button class="btn btn-sm btn-secondary" onclick="increaseQuantity('${peliculaInCart.index}',event)">+</button>
+                            <button class="btn btn-sm btn-secondary" onclick="increaseQuantity('${peliculaInCart.index}', event)">+</button>
                         </div>
-                    </div>
-                    ` : `
+                    </div>` : `
                     <div class="card-body d-flex flex-column justify-content-between">
                         <button class="btn btn-primary w-100 mt-2" onclick="addToCart('${pelicula.id}', '${pelicula.titulo}')">Agregar al carrito</button>
                     </div>
@@ -186,63 +194,38 @@ window.mostrarPelicula = async function mostrarPelicula() {
             </div>
         </div>
     `;
-};
-/**
- * Función para obtener la clave del trailer (si el trailer es un enlace de YouTube).
- * Extrae el ID del video de YouTube a partir de la URL.
- */
-function getTrailerKey(url) {
-    // Usamos una expresión regular para extraer el ID del video de YouTube desde la URL
-    const match = url.match(/(?:youtube\.com\/(?:[^/]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
-    // Si se encuentra un ID de YouTube, lo retornamos
-    return match ? match[1] : '';
 }
 
+// Función para obtener los detalles de la película por ID desde el servidor
 async function getPeliculaPorId(id) {
-    const response = await fetch(`http://localhost:5000/Pelicula/${id}`); // Endpoint para obtener los datos
+    const response = await fetch(`http://localhost:5000/Pelicula/${id}`);
     if (!response.ok) {
         throw new Error("Error al obtener la película");
     }
     return response.json();
 }
 
-// Llamamos a la función mostrarPelicula cuando el contenido de la página se haya cargado
-document.addEventListener("DOMContentLoaded", mostrarPelicula);
-
-
-///////////////////////////////////////////////
-
-let cartData = JSON.parse(localStorage.getItem("cart"));
-let cart = cartData && cartData.length > 0 ? cartData : [];
-
-
-
-const cartDropdown = document.getElementById("cartItems");
-const cartCount = document.getElementById("cartCount");
-
+// Función para agregar una película al carrito
 function addToCart(movieId, movieTitle) {
-
-    // Busca si la película ya está en el carrito
     const movieInCart = cart.find(movie => movie.id === movieId);
 
     if (movieInCart) {
-        // Incrementa la cantidad si ya existe
         movieInCart.quantity++;
     } else {
-        // Añade la película al carrito con cantidad 1
         cart.push({ id: movieId, title: movieTitle, quantity: 1 });
     }
-    
+
     updateCart();
-    mostrarPelicula()
 }
 
-// Función para actualizar el carrito
+// Función para actualizar el carrito en el dropdown
 function updateCart() {
-    cartCount.textContent = cart.reduce((total, movie) => total + movie.quantity, 0); // Suma todas las cantidades
-    
+    const cartDropdown = document.getElementById("cartItems");
+    const cartCount = document.getElementById("cartCount");
 
-    // Limpia el contenido previo del carrito
+    // Actualizamos el número total de películas en el carrito
+    cartCount.textContent = cart.reduce((total, movie) => total + movie.quantity, 0);
+
     cartDropdown.innerHTML = "";
 
     if (cart.length === 0) {
@@ -250,76 +233,60 @@ function updateCart() {
         emptyMessage.className = "dropdown-item text-center text-muted";
         emptyMessage.textContent = "El carrito está vacío";
         cartDropdown.appendChild(emptyMessage);
-        localStorage.setItem("cart", JSON.stringify([]))
-        return;
+    } else {
+        cart.forEach((movie, index) => {
+            const cartItem = document.createElement("li");
+            cartItem.className = "dropdown-item d-flex justify-content-between align-items-center";
+            cartItem.innerHTML = `
+                <span>${movie.title} (x${movie.quantity})</span>
+                <div>
+                    <button class="btn btn-sm btn-secondary me-2" onclick="decreaseQuantity(${index}, event)">-</button>
+                    <button class="btn btn-sm btn-primary me-2" onclick="increaseQuantity(${index}, event)">+</button>
+                    <button class="btn btn-sm btn-danger" onclick="removeFromCart(${index}, event)">X</button>
+                </div>
+            `;
+            cartDropdown.appendChild(cartItem);
+        });
+
+        const checkoutButton = document.createElement("li");
+        checkoutButton.className = "dropdown-item text-center";
+        checkoutButton.innerHTML = `<button class="btn btn-success w-100" onclick="finalizePurchase()">Finalizar compra</button>`;
+        cartDropdown.appendChild(checkoutButton);
     }
 
-    // Añade las películas al carrito
-    cart.forEach((movie, index) => {
-        const cartItem = document.createElement("li");
-        cartItem.className = "dropdown-item d-flex justify-content-between align-items-center";
-
-        cartItem.innerHTML = `
-            <span>${movie.title} (x${movie.quantity})</span>
-            <div>
-                <button class="btn btn-sm btn-secondary me-2" onclick="decreaseQuantity(${index},event)">-</button>
-                <button class="btn btn-sm btn-primary me-2" onclick="increaseQuantity(${index},event)">+</button>
-                <button class="btn btn-sm btn-danger" onclick="removeFromCart(${index},event)">X</button>
-            </div>
-        `;
-
-        cartDropdown.appendChild(cartItem);
-    });
-
-    // Añade un botón para finalizar la compra
-    const checkoutButton = document.createElement("li");
-    checkoutButton.className = "dropdown-item text-center";
-    checkoutButton.innerHTML = `<button class="btn btn-success w-100" onclick="finalizePurchase()">Finalizar compra</button>`;
-    cartDropdown.appendChild(checkoutButton);
     localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-// Función para incrementar la cantidad
-function increaseQuantity(index,event) {
-    console.log(cart)
-    event.stopPropagation(); // Prevent dropdown from closing
+// Función para incrementar la cantidad de una película en el carrito
+function increaseQuantity(index, event) {
+    event.stopPropagation();
     cart[index].quantity++;
     updateCart();
-    mostrarPelicula()
-
 }
 
-// Función para disminuir la cantidad
-function decreaseQuantity(index,event) {
-    event.stopPropagation(); // Prevent dropdown from closing
+// Función para disminuir la cantidad de una película en el carrito
+function decreaseQuantity(index, event) {
+    event.stopPropagation();
     if (cart[index].quantity > 1) {
         cart[index].quantity--;
     } else {
-        // Si la cantidad llega a 0, elimina el ítem del carrito
         cart.splice(index, 1);
     }
-
     updateCart();
-    mostrarPelicula()
-
 }
 
 // Función para eliminar una película del carrito
-function removeFromCart(index,event) {
-    event.stopPropagation(); // Prevent dropdown from closing
+function removeFromCart(index, event) {
+    event.stopPropagation();
     cart.splice(index, 1);
     updateCart();
-    mostrarPelicula()
-
 }
 
-
+// Función para finalizar la compra
 function finalizePurchase() {
-    // Store the cart in localStorage or sessionStorage
     localStorage.setItem("cart", JSON.stringify(cart));
-    // Redirect to the payment page
-    const path = window.location.pathname;
     window.location.href = "../html/pago.html";
 }
 
-updateCart()
+// Llamamos a la función updateCart para inicializar el carrito al cargar la página
+updateCart();
