@@ -30,9 +30,12 @@ app.use(morgan("dev"));
 app.get("/",(req,res)=>{
     res.send("Bienvenido a utn-cines api")
 })
+//http://localhost:5000/
+
 
 // RUTAS
 app.use("/", router);
 
+//
 
 module.exports = app;
