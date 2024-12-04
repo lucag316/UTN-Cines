@@ -49,10 +49,13 @@ function mostrarPeliculas(peliculas) {
         card.addEventListener('click', (event) => {
             //guardarPelicula(event, peliculas[card.getAttribute('data-index')]);
             const idPelicula = card.getAttribute('data-id'); // Obtenemos el ID de la película
-            if (idPelicula) {
-                // Redirigimos a la página de detalles con el ID en la URL
-                window.location.href = `./html/perfil_peli2.html?id=${idPelicula}`;
-            }
+        if (idPelicula) {
+            // Guardar el ID de la película seleccionada en Local Storage
+            localStorage.setItem('peliculaSeleccionada', idPelicula);
+
+            // Redirigir a la página del perfil con el ID como parámetro en la URL
+            window.location.href = `./html/perfil_peli2.html?id=${idPelicula}`;
+        }
         });
     });
 }
