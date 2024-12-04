@@ -42,7 +42,6 @@ CREATE TABLE Pelicula_Reparto (
   id_pelicula INT,
   id_persona INT,
   rol ENUM('Actor', 'Director') NOT NULL DEFAULT "Actor",
-  personaje VARCHAR(100),
   PRIMARY KEY (id_pelicula, id_persona),
   FOREIGN KEY (id_pelicula) REFERENCES Pelicula (id_pelicula),
   FOREIGN KEY (id_persona) REFERENCES Reparto (id_persona)

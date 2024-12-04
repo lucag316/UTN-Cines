@@ -7,6 +7,7 @@ const getAllPeliController = async (req, res) => {
     try {
         connection = await database.getConnection();
 
+        
         const query = `
                 SELECT 
                     p.id_pelicula AS id,

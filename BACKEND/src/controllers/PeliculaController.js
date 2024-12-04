@@ -35,7 +35,7 @@ const getPelicula = async (req, res) => {
 
         // Consultar el reparto asociado
         const reparto = await connection.query(
-            `SELECT r.id_persona, r.nombre, r.apellido, pr.rol, pr.personaje 
+            `SELECT r.id_persona, r.nombre, r.apellido, pr.rol
              FROM Reparto r 
              INNER JOIN Pelicula_Reparto pr ON r.id_persona = pr.id_persona 
              WHERE pr.id_pelicula = ?`,
