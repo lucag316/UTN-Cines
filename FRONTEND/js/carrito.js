@@ -87,7 +87,7 @@ const updateCarrito = () => {
                 <span class="mx-2">${item.quantity}</span>
                 <button class="btn btn-sm btn-outline-secondary" onclick="increaseQuantity(${index},event)">+</button>
             </div>
-            <button class="btn btn-sm btn-danger" onclick="removeFromCart(${index})">Eliminar</button>
+            <button class="btn btn-sm btn-danger" onclick="removeFromCart(${index},event)">Eliminar</button>
         `;
 
         cartList.appendChild(cartItem);
@@ -248,7 +248,7 @@ const updateResumenCarrito = () => {
                 <span class="mx-2">${item.quantity}</span>
                 <button class="btn btn-sm btn-outline-secondary" onclick="increaseQuantity(${index},event)">+</button>
             </div>
-            <button class="btn btn-sm btn-danger" onclick="removeFromCart(${index})">Eliminar</button>
+            <button class="btn btn-sm btn-danger" onclick="removeFromCart(${index},event)">Eliminar</button>
         `;
 
         cartList.appendChild(cartItem);

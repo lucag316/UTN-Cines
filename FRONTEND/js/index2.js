@@ -15,6 +15,8 @@ let filtroPais = document.getElementById("filtro-pais");
 
 // Función para mostrar las películas en la grilla de la interfaz
 function mostrarPeliculas(peliculas) {
+
+  
     // Crear el HTML para cada tarjeta de película usando los datos proporcionados
     let tarjetas = peliculas.map((pelicula, index) => {
         // Verificar si el tema oscuro está activado
@@ -167,6 +169,7 @@ function init() {
     getPeliculas().then(peliculas => {
         console.log(peliculas); // Verifica si las películas se cargan correctamente
         todasLasPeliculas = peliculas;  // Almacenar las películas obtenidas
+        loadPage(1,todasLasPeliculas)
         mostrarPeliculas(todasLasPeliculas); // Llamar a mostrarPeliculas para visualizarlas
     }).catch(error => {
         console.error("Error al cargar las peliculas:", error);  // Mostrar error en caso de que no se carguen correctamente
@@ -190,7 +193,7 @@ document.addEventListener("DOMContentLoaded", init);
 
 // ==== Paginación ====
 // Función para crear y mostrar los botones de paginación
-function setupPagination(currentPage, totalPages) {
+function setupPagination(currentPage, totalPages,peliculas) {
     const paginationContainer = document.getElementById('pagination');
     paginationContainer.innerHTML = '';  // Limpiar los botones de paginación anteriores
 
@@ -204,7 +207,7 @@ function setupPagination(currentPage, totalPages) {
             const prevButton = document.createElement('button');
             prevButton.classList.add('page-button');
             prevButton.textContent = 'Anterior';
-            prevButton.onclick = () => loadPage(currentPage - 1);
+            prevButton.onclick = () => loadPage(currentPage - 1,peliculas);
             paginationContainer.appendChild(prevButton);
         }
 
@@ -213,7 +216,7 @@ function setupPagination(currentPage, totalPages) {
             const pageButton = document.createElement('button');
             pageButton.classList.add('page-button');
             pageButton.textContent = i;
-            pageButton.onclick = () => loadPage(i);
+            pageButton.onclick = () => loadPage(i,peliculas);
             if (i === currentPage) {
                 pageButton.classList.add('active');
             }
@@ -225,28 +228,29 @@ function setupPagination(currentPage, totalPages) {
             const nextButton = document.createElement('button');
             nextButton.classList.add('page-button');
             nextButton.textContent = 'Siguiente';
-            nextButton.onclick = () => loadPage(currentPage + 1);
+            nextButton.onclick = () => loadPage(currentPage + 1,peliculas);
             paginationContainer.appendChild(nextButton);
         }
     }
 }
 
 // Función para cargar una página específica de películas
-function loadPage(pageNumber) {
+function loadPage(pageNumber,peliculas) {
     const moviesPerPage = 10; // Número de películas por página
     const offset = (pageNumber - 1) * moviesPerPage; // Calcular el offset para la consulta
-
+    console.log("asdf")
     // Obtener las películas actuales a mostrar
-    const currentMovies = todasLasPeliculas.slice(offset, offset + moviesPerPage);
+    const currentMovies = peliculas.slice(offset, offset + moviesPerPage);
 
+    console.log(currentMovies)
     // Mostrar las películas de la página seleccionada
     mostrarPeliculas(currentMovies);
 
     // Calcular el número total de páginas
-    const totalPages = Math.ceil(todasLasPeliculas.length / moviesPerPage);
-
+    const totalPages = Math.ceil(peliculas.length / moviesPerPage);
+    console.log(totalPages)
     // Configurar la paginación
-    setupPagination(pageNumber, totalPages);
+    setupPagination(pageNumber, totalPages,peliculas);
 }
 
 
