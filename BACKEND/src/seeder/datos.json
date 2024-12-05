@@ -1296,6 +1296,11 @@
     ],
     "reparto":[
         {
+            "name": "Vicky Jenson",
+            "id": 12058,
+            "rol": "Director"
+        },
+        {
             "name": "Kelly Marcel",
             "id": 940376,
             "rol": "Director"
