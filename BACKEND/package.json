@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "build": "echo 'No hay tareas de build definidas'",
     "dev": "nodemon src/index.js",
     "start": "node src/index.js"
   },
