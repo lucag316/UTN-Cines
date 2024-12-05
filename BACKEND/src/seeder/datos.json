@@ -2,51 +2,51 @@
     "generos":[
         {
             "id": 28,
-            "name": "Acción"
+            "name": "accion"
         },
         {
             "id": 12,
-            "name": "Aventura"
+            "name": "aventura"
         },
         {
             "id": 16,
-            "name": "Animación"
+            "name": "animacion"
         },
         {
             "id": 35,
-            "name": "Comedia"
+            "name": "comedia"
         },
         {
             "id": 80,
-            "name": "Crimen"
+            "name": "crimen"
         },
         {
             "id": 99,
-            "name": "Documental"
+            "name": "documental"
         },
         {
             "id": 18,
-            "name": "Drama"
+            "name": "drama"
         },
         {
             "id": 10751,
-            "name": "Familia"
+            "name": "familia"
         },
         {
             "id": 14,
-            "name": "Fantasía"
+            "name": "fantasia"
         },
         {
             "id": 36,
-            "name": "Historia"
+            "name": "historia"
         },
         {
             "id": 27,
-            "name": "Terror"
+            "name": "terror"
         },
         {
             "id": 10402,
-            "name": "Música"
+            "name": "musica"
         },
         {
             "id": 9648,
@@ -73,6 +73,67 @@
 
     ],
     "peliculas":[
+        {
+            "id": 1,
+            "titulo": "Harry Potter y la Piedra Filosofal",
+            "duracion": 152,
+            "clasificacion": "PG",
+            "descripcion": "Un joven huérfano descubre que es un mago y es aceptado en Hogwarts, una escuela para magia. En su primer año, se encuentra en el centro de un misterio relacionado con una piedra mágica.",
+            "anio": "2001",
+            "pais": "Reino Unido",
+            "img_url": "https://es.web.img2.acsta.net/pictures/14/04/30/11/55/592219.jpg",
+            "trailer_url": "https://www.youtube.com/embed/ZgrCZVjPg9g?si=8199ti1J2r1q4Mw4",
+            "rating": 7.7,
+            "precio": 5000,
+            "eliminado": false,
+            "reparto": [
+                {
+                    "id": 1,
+                    "nombre": "Daniel Radcliffe",
+                    "rol": "actor"
+                },
+                {
+                    "id": 2,
+                    "nombre": "Emma Watson",
+                    "rol": "actor"
+                },
+                {
+                    "id": 3,
+                    "nombre": "Rupert Grint",
+                    "rol": "actor"
+                },
+                {
+                    "id": 4,
+                    "nombre": "Richard Harris",
+                    "rol": "actor"
+                },
+                {
+                    "id": 5,
+                    "nombre": "Alan Rickman",
+                    "rol": "actor"
+                },
+                {
+                    "name": "Chris Columbus",
+                    "id": 6,
+                    "rol": "Director"
+                }
+            ],
+            "generos": [
+                {
+                    "id": 14,
+                    "nombre": "fantasia"
+                },
+                {
+                    "id": 12,
+                    "nombre": "Aventura"
+                },
+                {
+                    "id": 10751,
+                    "nombre": "Familia"
+                }
+            ],
+            "fecha_estreno": "2001-11-16"
+        },
         {
             "id": 1241982,
             "titulo": "Vaiana 2",
@@ -513,7 +574,7 @@
             "anio": "2024",
             "pais": "Spain",
             "img_url": "https://image.tmdb.org/t/p/w500/jaBToJ1DZcwn5wOsQeLOXFVlBLn.jpg",
-            "trailer_url": "",
+            "trailer_url": "https://www.youtube.com/embed/nH76THmb-Kw?si=_jcXL5Y0RIsCZGBM",
             "rating": 6.782,
             "precio": 6190,
             "eliminado": false,
@@ -574,7 +635,7 @@
             "anio": "2024",
             "pais": "United States of America",
             "img_url": "https://image.tmdb.org/t/p/w500/iaGfB2itLC8exBvfLUoadS0Q6tP.jpg",
-            "trailer_url": "",
+            "trailer_url": "https://www.youtube.com/embed/P_n2W0dzp2k?si=oAXRJ-qD1C2C5x-p",
             "rating": 6.9,
             "precio": 1780,
             "eliminado": false,
@@ -1295,6 +1356,36 @@
         }
     ],
     "reparto":[
+        {
+            "id": 1,
+            "nombre": "Daniel Radcliffe",
+            "rol": "actor"
+        },
+        {
+            "id": 2,
+            "nombre": "Emma Watson",
+            "rol": "actor"
+        },
+        {
+            "id": 3,
+            "nombre": "Rupert Grint",
+            "rol": "actor"
+        },
+        {
+            "id": 4,
+            "nombre": "Richard Harris",
+            "rol": "actor"
+        },
+        {
+            "id": 5,
+            "nombre": "Alan Rickman",
+            "rol": "actor"
+        },
+        {
+            "name": "Chris Columbus",
+            "id": 6,
+            "rol": "Director"
+        },
         {
             "name": "Vicky Jenson",
             "id": 12058,

@@ -100,8 +100,14 @@ function filtrarPeliculas() {
     
     // Filtrar las películas de acuerdo a los valores de los filtros
     let peliculasFiltradas = todasLasPeliculas.filter(pelicula => {
+
         // Filtrar por género
-        let generoCoincide = generoSeleccionado === "todos" || pelicula.generos.some(genero => genero.toLowerCase() === generoSeleccionado.toLowerCase());
+        let generoCoincide = generoSeleccionado === "todos" || 
+        (Array.isArray(pelicula.generos) && 
+        pelicula.generos.some(genero => genero.nombre.toLowerCase() === generoSeleccionado.toLowerCase()));
+        
+        //console.log(generoCoincide);  // Verifica el formato de los géneros
+
 
         // Filtrar por año: Compara el año de la película con el filtro seleccionado
         let anoCoincide = anoSeleccionado === "todos" || 

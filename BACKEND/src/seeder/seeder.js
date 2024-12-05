@@ -222,7 +222,6 @@ async function main(){
   
   
   await seedDatabase();
-
-
 }
+
 main();
