@@ -83,7 +83,7 @@ const seedDatabase = async () => {
 const createTables = async () => {
   let connection;
   try {
-    connection = await database.getConnection();
+    connection = await getConnection();
 
     await connection.query(`
       CREATE TABLE Pelicula (
