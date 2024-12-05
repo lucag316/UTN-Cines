@@ -1,4 +1,5 @@
 const mysql = require('mysql2/promise');
+const mysql2 = require("promise-mysql");
 const dotenv = require('dotenv');
 
 // Cargar variables de entorno desde el archivo .env
@@ -15,7 +16,7 @@ const pool = mysql.createPool({
     port: isProduction ? process.env.MYSQL_PORT : process.env.DB_PORT || 3306,
     host: isProduction ? process.env.MYSQL_HOST : process.env.DB_HOST,
     waitForConnections: true,
-    connectionLimit: 10, // Número máximo de conexiones simultáneas
+    connectionLimit: 50, // Número máximo de conexiones simultáneas
     queueLimit: 0, // Sin límite de conexiones en cola
     authPlugins: {
         mysql_clear_password: () => () => Buffer.from(process.env.MYSQL_PASSWORD)

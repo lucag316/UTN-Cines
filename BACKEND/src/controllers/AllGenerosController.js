@@ -7,7 +7,7 @@ const getAllGenerosController = async(req,res)=>{
         connection = await database.getConnection();
     
         const query = `
-            SELECT * FROM GENERO
+            SELECT * FROM Genero
         `
 
         const resultado = await connection.query(query);
