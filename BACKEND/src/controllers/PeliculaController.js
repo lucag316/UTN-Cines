@@ -1,55 +1,25 @@
 const database = require('../database');
-
+const {getPeliculaById} = require("../models/PeliculaModel");
 
 const getPelicula = async (req, res) => {
-    let connection;
     try {
         const { id } = req.params;
-
-        connection = await database.getConnection();
 
         // Validar que el ID sea un número válido
         if (!id || isNaN(id)) {
             return res.status(400).json({ message: 'Invalid ID parameter' });
         }
 
-        // Consultar los datos de la película
-        const pelicula = await connection.query(
-            'SELECT * FROM Pelicula WHERE id_pelicula = ?',
-            [id]
-        );
+        // Obtener la película desde el modelo
+        const pelicula = await getPeliculaById(id);
 
         // Verificar si se encontró la película
-        if (pelicula.length === 0) {
+        if (!pelicula) {
             return res.status(404).json({ message: 'Movie not found' });
         }
 
-        // Consultar los géneros asociados
-        const generos = await connection.query(
-            `SELECT g.id_genero, g.nombre 
-             FROM Genero g 
-             INNER JOIN Pelicula_Genero pg ON g.id_genero = pg.id_genero 
-             WHERE pg.id_pelicula = ?`,
-            [id]
-        );
-
-        // Consultar el reparto asociado
-        const reparto = await connection.query(
-            `SELECT r.id_persona, r.nombre, r.apellido, pr.rol
-             FROM Reparto r 
-             INNER JOIN Pelicula_Reparto pr ON r.id_persona = pr.id_persona 
-             WHERE pr.id_pelicula = ?`,
-            [id]
-        );
-
-        // Construir la respuesta
-        const response = {
-            ...pelicula[0], // Incluye los datos principales de la película
-            generos: generos.length > 0 ? generos : [], // Lista de géneros, o un arreglo vacío si no hay
-            reparto: reparto.length > 0 ? reparto : []  // Lista de reparto, o un arreglo vacío si no hay
-        };
-
-        res.status(200).json(response);
+        // Enviar la respuesta con los datos de la película
+        res.status(200).json(pelicula);
     } catch (error) {
         console.error('Error fetching movie:', error);
         res.status(500).json({ message: 'Error fetching movie' });
