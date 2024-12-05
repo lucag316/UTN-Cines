@@ -8,6 +8,8 @@ dotenv.config();
 // Determinar si estás en producción o en desarrollo
 const isProduction = process.env.NODE_ENV === "production";
 
+console.log(process.env.DB_DATABASE)
+
 // Crear la configuración de conexión
 const pool = mysql.createPool({
     database: isProduction ? process.env.MYSQL_DATABASE : process.env.DB_DATABASE,
