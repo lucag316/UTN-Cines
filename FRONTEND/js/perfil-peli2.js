@@ -158,7 +158,7 @@ async function mostrarPelicula() {
         }
     }*/
 
-    //console.log('Película encontrada:', pelicula); // Verifica si la película se encontró correctamente
+    console.log('Película encontrada:', pelicula); // Verifica si la película se encontró correctamente
     mostrarDetallesDePelicula(pelicula);
 }
 
@@ -191,6 +191,10 @@ function mostrarDetallesDePelicula(pelicula) {
                 </div>
             </div>
             <div class="right-section">
+            <!-- Mostramos el video del trailer de la película en un iframe -->
+                <div class="trailer">
+                    <iframe id="iframe_perfil_peli" width="700" height="350" src="https://www.youtube.com/embed/${getTrailerKey(pelicula.trailer_url)}" frameborder="0" allowfullscreen></iframe>
+                </div>
                 <h2 id="titulo_text">${pelicula.titulo}</h2>
                 <div class="summary">
                     <p id="resumen_text">${pelicula.descripcion}</p>
@@ -235,6 +239,29 @@ async function getPeliculaPorId(id) {
     }
     return response.json();
 }
+
+
+function getTrailerKey(trailerUrl) {
+    const url = new URL(trailerUrl);
+
+    // Si ya está en formato embed, no modificamos nada
+    if (url.pathname.includes('embed')) {
+        return url.pathname.split('/').pop();
+    }
+
+    // Extraemos la clave del parámetro `v` si es una URL normal de YouTube
+    if (url.hostname.includes('youtube.com')) {
+        return url.searchParams.get('v');
+    }
+
+    // Si es un enlace abreviado
+    if (url.hostname.includes('youtu.be') || url.hostname.includes('youtube-nocookie.com')) {
+        return url.pathname.split('/').pop();
+    }
+    
+    return '';
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Función para agregar una película al carrito
 function addToCart(id_pelicula,titulo, precio,img_url) {
@@ -249,7 +276,6 @@ function addToCart(id_pelicula,titulo, precio,img_url) {
     updateCart();
     mostrarDetallesDePelicula(detallePelicula)
 }
-
 
 // Función para actualizar el carrito en el dropdown
 function updateCart() {
