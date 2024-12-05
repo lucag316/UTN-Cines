@@ -10,16 +10,15 @@ const getAllRepartoController = async(req,res)=>{
            SELECT 
                 r.id_persona,
                 CONCAT(r.nombre, ' ', r.apellido) AS nombre_completo,
-                pr.rol,
-                pr.personaje
+                pr.rol
             FROM 
                 Pelicula_Reparto pr
             INNER JOIN 
                 Reparto r ON pr.id_persona = r.id_persona
         `
 
-        const resultado = await connection.query(query);
-        res.send(resultado)
+        const [rows] = await connection.query(query);
+        res.send(rows)
     } catch (error) {
         console.error("Error al obtener las generos:", error);
         res.status(500).send("Error al obtener las generos");
