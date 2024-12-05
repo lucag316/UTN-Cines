@@ -1,7 +1,7 @@
 
 const API_BASE_URL = "http://localhost:5000"; // Cambia esto a la URL base de tu API
 const columna_btn = document.getElementById('columna_btns');
-
+let createMovieModal;
 let movies = [];
 
 // Función para obtener las películas junto con sus géneros
@@ -176,7 +176,7 @@ function showCreateMovieForm() {
     repartoList.innerHTML = ""
     populateGeneros(); // Cargar los géneros en el formulario
     populateReparto()
-    const createMovieModal = new bootstrap.Modal(document.getElementById('createMovieModal'));
+    createMovieModal = new bootstrap.Modal(document.getElementById('createMovieModal'));
     createMovieModal.show();
 }
 
@@ -366,7 +366,7 @@ async function submitCreateMovie() {
 
         if (response.ok) {
             alert("Película creada exitosamente.");
-            form.reset();
+            createMovieModal.dispose();
             document.getElementById('createMovieModal').remove();
             fetchMovies(); // Actualizar la lista de películas
         } else {
