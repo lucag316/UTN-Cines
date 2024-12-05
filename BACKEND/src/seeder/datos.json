@@ -50,15 +50,15 @@
         },
         {
             "id": 9648,
-            "name": "Misterio"
+            "name": "misterio"
         },
         {
             "id": 10749,
-            "name": "Romance"
+            "name": "romance"
         },
         {
             "id": 878,
-            "name": "Ciencia ficción"
+            "name": "ciencia ficcion"
         }
     ],
     "promociones":[
@@ -133,6 +133,311 @@
                 }
             ],
             "fecha_estreno": "2001-11-16"
+        },
+        {
+            "id": 2,
+            "titulo": "Harry Potter y la Cámara Secreta",
+            "duracion": 161,
+            "clasificacion": "PG",
+            "descripcion": "Harry Potter regresa a su segundo año en Hogwarts, donde descubre que una oscura fuerza ha comenzado a petrificar a los estudiantes. Junto con sus amigos Ron y Hermione, Harry investiga el misterio de la Cámara Secreta, enfrentándose a secretos del pasado y al legado de Voldemort.",
+            "anio": "2002",
+            "pais": "Reino Unido",
+            "img_url": "https://es.web.img3.acsta.net/pictures/14/04/30/11/50/167156.jpg",
+            "trailer_url": "https://www.youtube.com/embed/cr1Ul_7sro4?si=L6XLTNa1qr3rwzzJ",
+            "rating": 7.4,
+            "precio": 4900,
+            "eliminado": false,
+            "reparto": [
+                {
+                    "id": 1,
+                    "nombre": "Daniel Radcliffe",
+                    "rol": "actor"
+                },
+                {
+                    "id": 2,
+                    "nombre": "Emma Watson",
+                    "rol": "actor"
+                },
+                {
+                    "id": 3,
+                    "nombre": "Rupert Grint",
+                    "rol": "actor"
+                },
+                {
+                    "id": 4,
+                    "nombre": "Richard Harris",
+                    "rol": "actor"
+                },
+                {
+                    "id": 5,
+                    "nombre": "Alan Rickman",
+                    "rol": "actor"
+                },
+                {
+                    "name": "Chris Columbus",
+                    "id": 6,
+                    "rol": "Director"
+                }
+            ],
+            "generos": [
+                {
+                    "id": 14,
+                    "nombre": "fantasia"
+                },
+                {
+                    "id": 12,
+                    "nombre": "Aventura"
+                },
+                {
+                    "id": 10751,
+                    "nombre": "Familia"
+                },
+                {
+                    "id": 9648,
+                    "nombre": "misterio"
+                }
+            ],
+            "fecha_estreno": "2002-11-15"
+        },
+        {
+            "id": 3,
+            "titulo": "El Hobbit: Un viaje inesperado",
+            "duracion": 169,
+            "clasificacion": "PG-13",
+            "descripcion": "Bilbo Bolsón, un hobbit que disfruta de una vida tranquila, se ve inesperadamente reclutado por el mago Gandalf para unirse a un grupo de enanos en su misión de recuperar su hogar y el reino perdido de Erebor del temible dragón Smaug. A lo largo de su viaje, Bilbo se encuentra con criaturas peligrosas y, sin saberlo, se cruza con Gollum, obteniendo el Anillo Único que cambiará su vida y el destino de la Tierra Media.",
+            "anio": "2012",
+            "pais": "estados nidos",
+            "img_url": "https://pics.filmaffinity.com/El_Hobbit_Un_viaje_inesperado-249234415-large.jpg",
+            "trailer_url": "https://www.youtube.com/embed/sI8OQRXhcZE?si=TCPRVpSS-odM6ZKf",
+            "rating": 7.8,
+            "precio": 4500,
+            "eliminado": false,
+            "reparto": [
+                {
+                    "id": 7,
+                    "nombre": "Martin Freeman",
+                    "rol": "actor"
+                },
+                {
+                    "id": 8,
+                    "nombre": "Ian McKellen",
+                    "rol": "actor"
+                },
+                {
+                    "id": 9,
+                    "nombre": "Richard Armitage",
+                    "rol": "actor"
+                },
+                {
+                    "id":10,
+                    "nombre": "Andy Serkis",
+                    "rol": "actor"
+                },
+                {
+                    "id": 11,
+                    "nombre": "Cate Blanchett",
+                    "rol": "actor"
+                },
+                {
+                    "name": "Peter Jackson",
+                    "id": 12,
+                    "rol": "Director"
+                }
+            ],
+            "generos": [
+                {
+                    "id": 14,
+                    "nombre": "fantasia"
+                },
+                {
+                    "id": 12,
+                    "nombre": "Aventura"
+                }
+            ],
+            "fecha_estreno": "2012-12-14"
+        },
+        {
+            "id":4,
+            "titulo": "Interestelar",
+            "duracion": 169,
+            "clasificacion": "PG-13",
+            "descripcion": "En un futuro donde la Tierra enfrenta una crisis ambiental severa, un grupo de exploradores liderado por Cooper, un piloto e ingeniero, se embarca en una misión para encontrar un nuevo hogar para la humanidad. A través de un agujero de gusano en el espacio, el equipo debe enfrentar desafíos científicos, emocionales y éticos, mientras lidian con la gravedad del tiempo y las decisiones que podrían salvar o condenar a la raza humana.",
+            "anio": "2014",
+            "pais": "Estados Unidos",
+            "img_url": "https://es.web.img3.acsta.net/pictures/14/10/02/11/07/341344.jpg",
+            "trailer_url": "https://www.youtube.com/embed/zSWdZVtXT7E?si=DhkfGXnEMftklHBB",
+            "rating": 8.6,
+            "precio": 6000,
+            "eliminado": false,
+            "reparto": [
+                {
+                    "id": 13,
+                    "nombre": "Matthew McConaughey",
+                    "rol": "actor"
+                },
+                {
+                    "id": 14,
+                    "nombre": "Anne Hathaway",
+                    "rol": "actor"
+                },
+                {
+                    "id": 15,
+                    "nombre": "Jessica Chastain",
+                    "rol": "actor"
+                },
+                {
+                    "id": 16,
+                    "nombre": "Michael Caine",
+                    "rol": "actor"
+                },
+                {
+                    "id": 17,
+                    "nombre": "Matt Damon",
+                    "rol": "actor"
+                },
+                {
+                    "name": "Christopher Nolan",
+                    "id": 18,
+                    "rol": "Director"
+                }
+            ],
+            "generos": [
+                {
+                    "id": 878,
+                    "nombre": "ciencia ficcion"
+                },
+                {
+                    "id": 12,
+                    "nombre": "Aventura"
+                }
+            ],
+            "fecha_estreno": "2014-11-07"
+        },
+        {
+            "id": 5,
+            "titulo": "Piratas del Caribe: La maldición del Perla Negra",
+            "duracion": 143,
+            "clasificacion": "PG-13",
+            "descripcion": "El astuto capitán Jack Sparrow se une a Will Turner, un joven herrero, para rescatar a Elizabeth Swann, la hija del gobernador, que ha sido secuestrada por piratas liderados por el Capitán Barbossa. Sin embargo, el Perla Negra y su tripulación están malditos, transformándose en esqueletos bajo la luz de la luna, y solo un antiguo tesoro puede romper la maldición.",
+            "anio": "2003",
+            "pais": "Estados Unidos",
+            "img_url": "https://static.wikia.nocookie.net/cine/images/6/62/Piratas_del_Caribe.jpg",
+            "trailer_url": "https://www.youtube.com/embed/tnx35Z4nWWc?si=AVAAi_RMc78Rz43b",
+            "rating": 8.1,
+            "precio": 5700,
+            "eliminado": false,
+            "reparto": [
+                {
+                    "id": 19,
+                    "nombre": "Johnny Depp",
+                    "rol": "actor"
+                },
+                {
+                    "id": 20,
+                    "nombre": "Orlando Bloom",
+                    "rol": "actor"
+                },
+                {
+                    "id": 21,
+                    "nombre": "Keira Knightley",
+                    "rol": "actor"
+                },
+                {
+                    "id": 22,
+                    "nombre": "Geoffrey Rush",
+                    "rol": "actor"
+                },
+                {
+                    "id": 23,
+                    "nombre": "Jonathan Pryce",
+                    "rol": "actor"
+                },
+                {
+                    "name": "Gore Verbinski",
+                    "id": 24,
+                    "rol": "Director"
+                }
+            ],
+            "generos": [
+                {
+                    "id": 28,
+                    "nombre": "acción"
+                },
+                {
+                    "id": 12,
+                    "nombre": "aventura"
+                },
+                {
+                    "id": 35,
+                    "nombre": "comedia"
+                },
+                {
+                    "id": 14,
+                    "nombre": "Fantasía"
+                }
+            ],
+            "fecha_estreno": "2003-07-09"
+        },
+        {
+            "id": 6,
+            "titulo": "Volver al Futuro",
+            "duracion": 116,
+            "clasificacion": "PG",
+            "descripcion": "Marty McFly, un adolescente de 17 años, accidentalmente viaja al pasado en un DeLorean modificado por el excéntrico Dr. Emmett Brown. En 1955, Marty debe asegurarse de que sus padres se enamoren para garantizar su propia existencia mientras busca la manera de regresar al futuro.",
+            "anio": "1985",
+            "pais": "Estados Unidos",
+            "img_url": "https://www.ecartelera.com/carteles/1400/1460/002_m.jpg",
+            "trailer_url": "https://www.youtube.com/embed/q27OhNUzBXk?si=aVP_T5iOckR2vXBz",
+            "rating": 8.5,
+            "precio": 7000,
+            "eliminado": false,
+            "reparto": [
+                {
+                    "id": 25,
+                    "nombre": "Michael J. Fox",
+                    "rol": "actor"
+                },
+                {
+                    "id": 26,
+                    "nombre": "Christopher Lloyd",
+                    "rol": "actor"
+                },
+                {
+                    "id": 27,
+                    "nombre": "Lea Thompson",
+                    "rol": "actor"
+                },
+                {
+                    "id": 28,
+                    "nombre": "Crispin Glover",
+                    "rol": "actor"
+                },
+                {
+                    "id": 29,
+                    "nombre": "Thomas F. Wilson",
+                    "rol": "actor"
+                },
+                {
+                    "name": "Robert Zemeckis",
+                    "id": 30,
+                    "rol": "Director"
+                }
+            ],
+            "generos": [
+                {
+                    "id": 12,
+                    "nombre": "aventura"
+                },
+                {
+                    "id": 878,
+                    "nombre": "ciencia ficción"
+                },
+                {
+                    "id": 35,
+                    "nombre": "comedia"
+                }
+            ],
+            "fecha_estreno": "1985-07-03"
         },
         {
             "id": 1241982,
@@ -1384,6 +1689,126 @@
         {
             "name": "Chris Columbus",
             "id": 6,
+            "rol": "Director"
+        },
+        {
+            "id": 7,
+            "nombre": "Martin Freeman",
+            "rol": "actor"
+        },
+        {
+            "id": 8,
+            "nombre": "Ian McKellen",
+            "rol": "actor"
+        },
+        {
+            "id": 9,
+            "nombre": "Richard Armitage",
+            "rol": "actor"
+        },
+        {
+            "id":10,
+            "nombre": "Andy Serkis",
+            "rol": "actor"
+        },
+        {
+            "id": 11,
+            "nombre": "Cate Blanchett",
+            "rol": "actor"
+        },
+        {
+            "name": "Peter Jackson",
+            "id": 12,
+            "rol": "Director"
+        },
+        {
+            "id": 13,
+            "nombre": "Matthew McConaughey",
+            "rol": "actor"
+        },
+        {
+            "id": 14,
+            "nombre": "Anne Hathaway",
+            "rol": "actor"
+        },
+        {
+            "id": 15,
+            "nombre": "Jessica Chastain",
+            "rol": "actor"
+        },
+        {
+            "id": 16,
+            "nombre": "Michael Caine",
+            "rol": "actor"
+        },
+        {
+            "id": 17,
+            "nombre": "Matt Damon",
+            "rol": "actor"
+        },
+        {
+            "name": "Christopher Nolan",
+            "id": 18,
+            "rol": "Director"
+        },
+        {
+            "id": 19,
+            "nombre": "Johnny Depp",
+            "rol": "actor"
+        },
+        {
+            "id": 20,
+            "nombre": "Orlando Bloom",
+            "rol": "actor"
+        },
+        {
+            "id": 21,
+            "nombre": "Keira Knightley",
+            "rol": "actor"
+        },
+        {
+            "id": 22,
+            "nombre": "Geoffrey Rush",
+            "rol": "actor"
+        },
+        {
+            "id": 23,
+            "nombre": "Jonathan Pryce",
+            "rol": "actor"
+        },
+        {
+            "name": "Gore Verbinski",
+            "id": 24,
+            "rol": "Director"
+        },
+        {
+            "id": 25,
+            "nombre": "Michael J. Fox",
+            "rol": "actor"
+        },
+        {
+            "id": 26,
+            "nombre": "Christopher Lloyd",
+            "rol": "actor"
+        },
+        {
+            "id": 27,
+            "nombre": "Lea Thompson",
+            "rol": "actor"
+        },
+        {
+            "id": 28,
+            "nombre": "Crispin Glover",
+            "rol": "actor"
+        },
+        {
+            "id": 29,
+            "nombre": "Thomas F. Wilson",
+            "rol": "actor"
+        },
+        {
+            "name": "Robert Zemeckis",
+            "id": 30,
             "rol": "Director"
         },
         {

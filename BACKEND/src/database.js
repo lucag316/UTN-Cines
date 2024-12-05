@@ -5,10 +5,8 @@ const dotenv = require('dotenv');
 // Cargar variables de entorno desde el archivo .env
 dotenv.config();
 
-// process.env.NODE_ENV = 'production'
-
-// Determinar si estás en producción o desarrollo
-const isProduction = process.env.NODE_ENV === 'production';
+// Determinar si estás en producción o en desarrollo
+const isProduction = process.env.NODE_ENV === "production";
 
 console.log(process.env.DB_DATABASE)
 
