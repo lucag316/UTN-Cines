@@ -10,8 +10,8 @@ const getAllGenerosController = async(req,res)=>{
             SELECT * FROM Genero
         `
 
-        const resultado = await connection.query(query);
-        res.send(resultado)
+        const [rows] = await connection.query(query);
+        res.send(rows)
     } catch (error) {
         console.error("Error al obtener las generos:", error);
         res.status(500).send("Error al obtener las generos");
