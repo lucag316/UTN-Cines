@@ -1,4 +1,4 @@
 {
     "project": "UTN-CINES",
-    "root": "./BACKEND"
+    "root": "BACKEND"
 }
