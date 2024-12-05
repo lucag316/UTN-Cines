@@ -17,6 +17,7 @@ app.use(bodyParser.json())
 app.use(cors({
     origin: [
         "http://localhost:52330", // Sin la barra al final
+        "http://localhost:3000", // Sin la barra al final
         "http://127.0.0.1:5500", // Sin la barra al final
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],

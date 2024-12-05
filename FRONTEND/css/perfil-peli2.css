@@ -45,6 +45,8 @@ body {
     
 }
 
+
+
 /* Estilos para la sección de detalles */
 .details {
     margin-top: 30px; /* Separación superior */
@@ -80,6 +82,20 @@ body {
     margin: 0; /* Sin espacio adicional */
 }
 
+#precio {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente el contenido */
+    align-items: center; /* Centra los elementos horizontalmente */
+    margin-top: 200px; /* Espaciado superior */
+    margin-bottom: 20px;
+}
+
+#precio h3, #precio p {
+    font-weight: bold; /* Texto en negrita */
+    font-size: 30px; /* Tamaño del texto */
+    margin: 0 5px; /* Espaciado horizontal entre los elementos */
+}
+
 /* Sección derecha: contiene el tráiler, título y resumen */
 .right-section {
     flex: 2; /* Ocupa más espacio que la izquierda */
@@ -89,6 +105,7 @@ body {
 
 /* Contenedor del tráiler */
 .trailer {
+    margin-top: 50px;
     margin-bottom: 30px; /* Separación inferior */
     display: flex; /* Centrar el video */
     justify-content: center; /* Centrar horizontalmente */
