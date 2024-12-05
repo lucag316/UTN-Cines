@@ -77,8 +77,6 @@ const updateCarrito = () => {
         const cartItem = document.createElement('div');
         cartItem.className = "list-group-item d-flex justify-content-between align-items-center";
 
-        console.log(`Producto: ${item.title}, Precio: ${item.precio}, Cantidad: ${item.quantity}`);
-
         cartItem.innerHTML = `
             <div>
                 <h5 class="mb-1">${item.title}</h5>
@@ -137,7 +135,6 @@ const decreaseQuantity = (index, event) => {
     updateCart();
     updateCarrito();
     updateResumenCarrito()
-    console.log(cart)
 };
 
 // Eliminar producto del carrito
@@ -264,7 +261,79 @@ const updateResumenCarrito = () => {
 updateCartSummary();
 updateResumenCarrito()
 
+
+
 function generatePDF() {
+    // Recuperar el carrito del localStorage
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    if (cart.length === 0) {
+        alert("El carrito está vacío. No hay nada para descargar.");
+        return;
+    }
+
+    // Crear el contenido del PDF con imágenes convertidas
+    const createPDFContent = async () => {
+        const pdfContent = document.createElement("div");
+        pdfContent.innerHTML = `
+            <h1 style="text-align: center;">Resumen de Compra</h1>
+            <ul style="list-style: none; padding: 0; font-family: Arial, sans-serif;">`;
+
+        for (const item of cart) {
+           
+
+            pdfContent.innerHTML += `
+                <li style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ccc; padding: 10px 0;">
+                    <div style="flex: 1;">
+                        <strong>${item.title}</strong> (x${item.quantity})
+                    </div>
+                    <div style="flex: 1; text-align: center;">
+                        <span> ${item.quantity} x $${item.precio} = </span>
+                        <span>$${(item.precio * item.quantity).toFixed(2)}</span>
+                    </div>
+                   
+                </li>`;
+        }
+
+        pdfContent.innerHTML += `
+            </ul>
+            <hr>
+            <h3 style="text-align: right;">Total: $${cart
+                .reduce((sum, item) => sum + item.precio * item.quantity, 0)
+                .toFixed(2)}</h3>
+            <p style="text-align: center;">Gracias por tu compra.</p>`;
+
+        return pdfContent;
+    };
+
+    // Generar y descargar el PDF
+    createPDFContent().then((pdfContent) => {
+        const options = {
+            margin: 1,
+            filename: "Resumen_de_Compra.pdf",
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+        };
+
+        html2pdf().set(options).from(pdfContent).save();
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function generatePDF2() {
     // Recuperar el carrito del localStorage
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     if (cart.length === 0) {

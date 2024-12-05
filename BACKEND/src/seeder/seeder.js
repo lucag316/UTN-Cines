@@ -55,7 +55,7 @@ const seedDatabase = async () => {
 
       // Relacionar reparto con la película y el rol
       for (const miembro of pelicula.reparto) {
-        const validRoles = ['Actor', 'Director']; // Incluye 'Actriz' como opción válida
+        const validRoles = ['actor', 'Director']; // Incluye 'Actriz' como opción válida
         if (validRoles.includes(miembro.rol)) {
           const queryReparto = `
             INSERT IGNORE INTO Pelicula_Reparto (id_pelicula, id_persona, rol)
@@ -134,7 +134,7 @@ const createTables = async () => {
       CREATE TABLE Pelicula_Reparto (
         id_pelicula INT,
         id_persona INT,
-        rol ENUM('Actor', 'Director', 'Actriz') NOT NULL,
+        rol ENUM('actor', 'Director') NOT NULL DEFAULT "actor",
         PRIMARY KEY (id_pelicula, id_persona),
         FOREIGN KEY (id_pelicula) REFERENCES Pelicula (id_pelicula),
         FOREIGN KEY (id_persona) REFERENCES Reparto (id_persona)
@@ -210,17 +210,19 @@ const createTables = async () => {
     `);
 
     console.log('Tablas creadas exitosamente.');
-    connection.end();
   } catch (error) {
     console.error('Error al crear las tablas:\n', error);
-    connection.end();
   }
 };
 
 
-//createTables();
+async function main(){
+  
+  await createTables();
+  
+  
+  await seedDatabase();
 
 
-
-
-seedDatabase();
+}
+main();
