@@ -34,9 +34,13 @@ function mostrarPeliculas(peliculas) {
                     
                     
                     <div class="card-footer text-muted">
-                    <p class="mb-0">
+                        <p class="mb-0">
                             <span class="duracion-label ${themeClass}">Duración:</span>
                             <span class="duracion-minutos ${themeClass}">${pelicula.duracion} min</span>
+                        </p>
+                        <p class="mb-0">
+                            <span class="duracion-label ${themeClass}">Precio:</span>
+                            <span class="duracion-minutos ${themeClass}">$${pelicula.precio}</span>
                         </p>
                     </div>
                 </div>
