@@ -123,6 +123,8 @@ function filtrarPeliculas() {
         // Filtrar por rating (calificación)
         let ratingCoincide = ratingSeleccionado === "todos" || (ratingSeleccionado === "mayor-rating" && pelicula.rating) || (ratingSeleccionado === "menor-rating" && pelicula.rating);
 
+        console.log(pelicula.pais);
+        console.log(paisSeleccionado);
         // Filtrar por país
         let paisCoincide = paisSeleccionado === "todos" || pelicula.pais.toLowerCase() === paisSeleccionado.toLowerCase();
 
