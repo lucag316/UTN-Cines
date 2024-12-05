@@ -73,8 +73,8 @@ const seedDatabase = async () => {
     console.log('Base de datos poblada exitosamente');
   } catch (error) {
     console.error('Error al poblar la base de datos:\n', error);
-  } finally {
-    connection.end();
+  }finally{
+    connection.release(); // Liberar la conexión
   }
 };
 
