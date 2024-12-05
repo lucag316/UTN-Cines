@@ -82,17 +82,17 @@ const getAllPeliController = async (req, res) => {
                     p.id_pelicula;
                 `;
 
-        const resultado = await connection.query(query);
+        const [rows] = await connection.query(query);
 
          // Parsear manualmente las columnas JSON
-         const peliculas = resultado.map(pelicula => ({
-            ...pelicula,
-            generos: pelicula.generos ? JSON.parse(pelicula.generos) : [],
-            director: pelicula.director ? JSON.parse(pelicula.director) : null,
-            reparto: pelicula.reparto ? JSON.parse(pelicula.reparto) : []
-        }));
+        //  const peliculas = rows.map(pelicula => ({
+        //     ...pelicula,
+        //     generos: pelicula.generos ? JSON.parse(pelicula.generos) : [],
+        //     director: pelicula.director ? JSON.parse(pelicula.director) : null,
+        //     reparto: pelicula.reparto ? JSON.parse(pelicula.reparto) : []
+        // }));
 
-        res.status(200).json(peliculas);
+        res.status(200).json(rows);
 
     } catch (error) {
         console.error("Error al obtener las películas:", error);
@@ -181,17 +181,17 @@ const getAllPeliAdminController = async (req,res)=>{
                     p.id_pelicula;
                 `;
 
-        const resultado = await connection.query(query);
+        const [rows] = await connection.query(query);
 
-         // Parsear manualmente las columnas JSON
-         const peliculas = resultado.map(pelicula => ({
-            ...pelicula,
-            generos: pelicula.generos ? JSON.parse(pelicula.generos) : [],
-            director: pelicula.director ? JSON.parse(pelicula.director) : null,
-            reparto: pelicula.reparto ? JSON.parse(pelicula.reparto) : []
-        }));
+        //  // Parsear manualmente las columnas JSON
+        //  const peliculas = resultado.map(pelicula => ({
+        //     ...pelicula,
+        //     generos: pelicula.generos ? JSON.parse(pelicula.generos) : [],
+        //     director: pelicula.director ? JSON.parse(pelicula.director) : null,
+        //     reparto: pelicula.reparto ? JSON.parse(pelicula.reparto) : []
+        // }));
 
-        res.status(200).json(peliculas);
+        res.status(200).json(rows);
 
     } catch (error) {
         console.error("Error al obtener las películas:", error);

@@ -165,7 +165,7 @@ async function mostrarPelicula() {
 // Función para mostrar los detalles de la película en la página
 function mostrarDetallesDePelicula(pelicula) {
     const mainPelicula = document.querySelector('.main-pelicula');
-    
+    console.log(pelicula)
     pelicula.director = pelicula.reparto?.find(r=>r.rol=="Director")
     
     // Verificamos si la película ya está en el carrito
@@ -193,7 +193,7 @@ function mostrarDetallesDePelicula(pelicula) {
             <div class="right-section">
             <!-- Mostramos el video del trailer de la película en un iframe -->
                 <div class="trailer">
-                    <iframe id="iframe_perfil_peli" width="700" height="350" src="https://www.youtube.com/embed/${getTrailerKey(pelicula.trailer_url)}" frameborder="0" allowfullscreen></iframe>
+                    <iframe id="iframe_perfil_peli" width="700" height="350" src="${pelicula.trailer_url}" frameborder="0" allowfullscreen></iframe>
                 </div>
                 <h2 id="titulo_text">${pelicula.titulo}</h2>
                 <div class="summary">
