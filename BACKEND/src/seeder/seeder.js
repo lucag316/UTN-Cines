@@ -218,7 +218,7 @@ const createTables = async () => {
 
 async function main(){
   
-  //await createTables();
+  await createTables();
   
   
   await seedDatabase();

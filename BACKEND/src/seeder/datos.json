@@ -314,6 +314,67 @@
             "fecha_estreno": "2003-07-09"
         },
         {
+            "id": 5,
+            "titulo": "Volver al Futuro",
+            "duracion": 116,
+            "clasificacion": "PG",
+            "descripcion": "Marty McFly, un adolescente de 17 años, accidentalmente viaja al pasado en un DeLorean modificado por el excéntrico Dr. Emmett Brown. En 1955, Marty debe asegurarse de que sus padres se enamoren para garantizar su propia existencia mientras busca la manera de regresar al futuro.",
+            "anio": "1985",
+            "pais": "Estados Unidos",
+            "img_url": "https://static.wikia.nocookie.net/doblaje/images/0/08/Volver_al_Futuro_Poster.jpg",
+            "trailer_url": "https://www.youtube.com/embed/q27OhNUzBXk?si=aVP_T5iOckR2vXBz",
+            "rating": 8.5,
+            "precio": 7000,
+            "eliminado": false,
+            "reparto": [
+                {
+                    "id": 25,
+                    "nombre": "Michael J. Fox",
+                    "rol": "actor"
+                },
+                {
+                    "id": 26,
+                    "nombre": "Christopher Lloyd",
+                    "rol": "actor"
+                },
+                {
+                    "id": 27,
+                    "nombre": "Lea Thompson",
+                    "rol": "actor"
+                },
+                {
+                    "id": 28,
+                    "nombre": "Crispin Glover",
+                    "rol": "actor"
+                },
+                {
+                    "id": 29,
+                    "nombre": "Thomas F. Wilson",
+                    "rol": "actor"
+                },
+                {
+                    "name": "Robert Zemeckis",
+                    "id": 30,
+                    "rol": "Director"
+                }
+            ],
+            "generos": [
+                {
+                    "id": 12,
+                    "nombre": "aventura"
+                },
+                {
+                    "id": 878,
+                    "nombre": "ciencia ficción"
+                },
+                {
+                    "id": 35,
+                    "nombre": "comedia"
+                }
+            ],
+            "fecha_estreno": "1985-07-03"
+        },
+        {
             "id": 1241982,
             "titulo": "Vaiana 2",
             "duracion": 100,
@@ -1623,6 +1684,66 @@
         {
             "name": "Christopher Nolan",
             "id": 18,
+            "rol": "Director"
+        },
+        {
+            "id": 19,
+            "nombre": "Johnny Depp",
+            "rol": "actor"
+        },
+        {
+            "id": 20,
+            "nombre": "Orlando Bloom",
+            "rol": "actor"
+        },
+        {
+            "id": 21,
+            "nombre": "Keira Knightley",
+            "rol": "actor"
+        },
+        {
+            "id": 22,
+            "nombre": "Geoffrey Rush",
+            "rol": "actor"
+        },
+        {
+            "id": 23,
+            "nombre": "Jonathan Pryce",
+            "rol": "actor"
+        },
+        {
+            "name": "Gore Verbinski",
+            "id": 24,
+            "rol": "Director"
+        },
+        {
+            "id": 25,
+            "nombre": "Michael J. Fox",
+            "rol": "actor"
+        },
+        {
+            "id": 26,
+            "nombre": "Christopher Lloyd",
+            "rol": "actor"
+        },
+        {
+            "id": 27,
+            "nombre": "Lea Thompson",
+            "rol": "actor"
+        },
+        {
+            "id": 28,
+            "nombre": "Crispin Glover",
+            "rol": "actor"
+        },
+        {
+            "id": 29,
+            "nombre": "Thomas F. Wilson",
+            "rol": "actor"
+        },
+        {
+            "name": "Robert Zemeckis",
+            "id": 30,
             "rol": "Director"
         },
         {
