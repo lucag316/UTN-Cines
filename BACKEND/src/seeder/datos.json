@@ -2,51 +2,51 @@
     "generos":[
         {
             "id": 28,
-            "name": "Acción"
+            "name": "accion"
         },
         {
             "id": 12,
-            "name": "Aventura"
+            "name": "aventura"
         },
         {
             "id": 16,
-            "name": "Animación"
+            "name": "animacion"
         },
         {
             "id": 35,
-            "name": "Comedia"
+            "name": "comedia"
         },
         {
             "id": 80,
-            "name": "Crimen"
+            "name": "crimen"
         },
         {
             "id": 99,
-            "name": "Documental"
+            "name": "documental"
         },
         {
             "id": 18,
-            "name": "Drama"
+            "name": "drama"
         },
         {
             "id": 10751,
-            "name": "Familia"
+            "name": "familia"
         },
         {
             "id": 14,
-            "name": "Fantasía"
+            "name": "fantasia"
         },
         {
             "id": 36,
-            "name": "Historia"
+            "name": "historia"
         },
         {
             "id": 27,
-            "name": "Terror"
+            "name": "terror"
         },
         {
             "id": 10402,
-            "name": "Música"
+            "name": "musica"
         },
         {
             "id": 9648,
