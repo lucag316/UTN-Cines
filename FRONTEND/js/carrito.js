@@ -344,6 +344,7 @@ function generatePDF2() {
     // Crear un contenedor temporal para el contenido del PDF
     const pdfContent = document.createElement("div");
     pdfContent.innerHTML = `
+        <h1>UTN CINES</h1>
         <h1>Resumen de Compra</h1>
         <ul style="list-style: none; padding: 0;">
             ${cart
@@ -360,7 +361,8 @@ function generatePDF2() {
         </ul>
         <hr>
         <h3>Total: $${cart.reduce((sum, item) => sum + item.precio * item.quantity, 0).toFixed(2)}</h3>
-        <p>Gracias por tu compra.</p>
+        <p>¡Muchas gracias por tu compra!</p>
+        <p>¡Qué lo disfrutes!!</p>
     `;
 
     // Configuración del PDF
