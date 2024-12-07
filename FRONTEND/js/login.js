@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 alert(`¡Bienvenido, ${data.usuario.nombre}!`);
                 // Redirigir al usuario a la página de inicio
-                window.location.href = "./html/perfil_usuario.html"; // hacer relativa y ver si cambiar.
+                window.location.href = "./perfil_usuario.html"; // hacer relativa y ver si cambiar.
             } else {
                 const errorText = await response.text();
                 alert(`Error: ${errorText}`);
