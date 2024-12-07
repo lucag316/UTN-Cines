@@ -1,7 +1,7 @@
 
 const API_BASE_URL = "http://localhost:5000"; // Cambia esto a la URL base de tu API
 const columna_btn = document.getElementById('columna_btns');
-
+let createMovieModal;
 let movies = [];
 
 // Función para obtener las películas junto con sus géneros
@@ -16,7 +16,7 @@ async function fetchMovies() {
 
 async function getPeliculas() {
     if (movies.length === 0){
-        const res = await fetch("http://localhost:5000/AllPelis/admin");
+        const res = await fetch(`${API_BASE_URL}/AllPelis/admin`);
         const resJson = await res.json();
         return resJson;
     }
@@ -176,7 +176,7 @@ function showCreateMovieForm() {
     repartoList.innerHTML = ""
     populateGeneros(); // Cargar los géneros en el formulario
     populateReparto()
-    const createMovieModal = new bootstrap.Modal(document.getElementById('createMovieModal'));
+    createMovieModal = new bootstrap.Modal(document.getElementById('createMovieModal'));
     createMovieModal.show();
 }
 
@@ -216,7 +216,7 @@ async function populateGeneros() {
     const select = document.getElementById('generos');
     try {
         if(arrGeneros.length === 0){
-            const response = await fetch(`http://localhost:5000/AllGeneros`);
+            const response = await fetch(`${API_BASE_URL}/AllGeneros`);
             arrGeneros = await response.json();
         }
         arrGeneros.forEach(genero => {
@@ -282,7 +282,7 @@ async function populateReparto() {
     const select = document.getElementById('repartoContainer');
     try {
         if(arrReparto.length === 0){
-            const response = await fetch(`http://localhost:5000/AllReparto`);
+            const response = await fetch(`${API_BASE_URL}/AllReparto`);
             arrReparto = await response.json();
         }
         arrReparto.forEach(reparto => {
@@ -366,7 +366,7 @@ async function submitCreateMovie() {
 
         if (response.ok) {
             alert("Película creada exitosamente.");
-            form.reset();
+            createMovieModal.dispose();
             document.getElementById('createMovieModal').remove();
             fetchMovies(); // Actualizar la lista de películas
         } else {

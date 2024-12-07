@@ -15,11 +15,14 @@ let filtroPais = document.getElementById("filtro-pais");
 
 // Función para mostrar las películas en la grilla de la interfaz
 function mostrarPeliculas(peliculas) {
+
+  
     // Crear el HTML para cada tarjeta de película usando los datos proporcionados
     let tarjetas = peliculas.map((pelicula, index) => {
         // Verificar si el tema oscuro está activado
         const themeClass = body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
 
+        if(pelicula.titulo == "Heavenly Touch") console.log(pelicula)
 
         return `
             <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
@@ -31,9 +34,13 @@ function mostrarPeliculas(peliculas) {
                     
                     
                     <div class="card-footer text-muted">
-                    <p class="mb-0">
+                        <p class="mb-0">
                             <span class="duracion-label ${themeClass}">Duración:</span>
                             <span class="duracion-minutos ${themeClass}">${pelicula.duracion} min</span>
+                        </p>
+                        <p class="mb-0">
+                            <span class="duracion-label ${themeClass}">Precio:</span>
+                            <span class="duracion-minutos ${themeClass}">$${pelicula.precio}</span>
                         </p>
                     </div>
                 </div>
@@ -49,10 +56,13 @@ function mostrarPeliculas(peliculas) {
         card.addEventListener('click', (event) => {
             //guardarPelicula(event, peliculas[card.getAttribute('data-index')]);
             const idPelicula = card.getAttribute('data-id'); // Obtenemos el ID de la película
-            if (idPelicula) {
-                // Redirigimos a la página de detalles con el ID en la URL
-                window.location.href = `./html/perfil_peli2.html?id=${idPelicula}`;
-            }
+        if (idPelicula) {
+            // Guardar el ID de la película seleccionada en Local Storage
+            localStorage.setItem('peliculaSeleccionada', idPelicula);
+
+            // Redirigir a la página del perfil con el ID como parámetro en la URL
+            window.location.href = `./html/perfil_peli2.html?id=${idPelicula}`;
+        }
         });
     });
 }
@@ -82,7 +92,7 @@ function filtrarPeliculasBusqueda() {
     let peliculasFiltradas = todasLasPeliculas.filter(pelicula => {
         return pelicula.titulo.toLowerCase().includes(valorBusqueda); // Filtrar por el título de la película
     });
-    mostrarPeliculas(peliculasFiltradas); // Mostrar las películas filtradas
+    loadPage(1,peliculasFiltradas); // Mostrar las películas filtradas
 }
 
 // Función para filtrar las películas según los filtros seleccionados (género, duración, etc.)
@@ -96,8 +106,14 @@ function filtrarPeliculas() {
     
     // Filtrar las películas de acuerdo a los valores de los filtros
     let peliculasFiltradas = todasLasPeliculas.filter(pelicula => {
+
         // Filtrar por género
-        let generoCoincide = generoSeleccionado === "todos" || pelicula.generos.some(genero => genero.toLowerCase() === generoSeleccionado.toLowerCase());
+        let generoCoincide = generoSeleccionado === "todos" || 
+        (Array.isArray(pelicula.generos) && 
+        pelicula.generos.some(genero => genero.nombre.toLowerCase() === generoSeleccionado.toLowerCase()));
+        
+        //console.log(generoCoincide);  // Verifica el formato de los géneros
+
 
         // Filtrar por año: Compara el año de la película con el filtro seleccionado
         let anoCoincide = anoSeleccionado === "todos" || 
@@ -107,6 +123,8 @@ function filtrarPeliculas() {
         // Filtrar por rating (calificación)
         let ratingCoincide = ratingSeleccionado === "todos" || (ratingSeleccionado === "mayor-rating" && pelicula.rating) || (ratingSeleccionado === "menor-rating" && pelicula.rating);
 
+        console.log(pelicula.pais);
+        console.log(paisSeleccionado);
         // Filtrar por país
         let paisCoincide = paisSeleccionado === "todos" || pelicula.pais.toLowerCase() === paisSeleccionado.toLowerCase();
 
@@ -125,7 +143,7 @@ function filtrarPeliculas() {
     ordenarPorRating(peliculasFiltradas, ratingSeleccionado);
 
     // Mostrar las películas que cumplen con los filtros y el orden seleccionado
-    mostrarPeliculas(peliculasFiltradas);
+    loadPage(1,peliculasFiltradas);
 }
 
 // Función para ordenar las películas por duración
@@ -163,7 +181,8 @@ function init() {
     getPeliculas().then(peliculas => {
         console.log(peliculas); // Verifica si las películas se cargan correctamente
         todasLasPeliculas = peliculas;  // Almacenar las películas obtenidas
-        mostrarPeliculas(todasLasPeliculas); // Llamar a mostrarPeliculas para visualizarlas
+        loadPage(1,todasLasPeliculas)
+        // mostrarPeliculas(todasLasPeliculas); // Llamar a mostrarPeliculas para visualizarlas
     }).catch(error => {
         console.error("Error al cargar las peliculas:", error);  // Mostrar error en caso de que no se carguen correctamente
     });
@@ -186,63 +205,84 @@ document.addEventListener("DOMContentLoaded", init);
 
 // ==== Paginación ====
 // Función para crear y mostrar los botones de paginación
-function setupPagination(currentPage, totalPages) {
+function setupPagination(currentPage, totalPages, peliculas) {
     const paginationContainer = document.getElementById('pagination');
-    paginationContainer.innerHTML = '';  // Limpiar los botones de paginación anteriores
+    paginationContainer.innerHTML = ''; // Limpiar los botones de paginación anteriores
 
-    // Mostrar los botones de paginación solo si hay más de una página
     if (totalPages > 1) {
-        let startPage = Math.max(currentPage - 2, 1); // Página inicial a mostrar
-        let endPage = Math.min(currentPage + 2, totalPages); // Página final a mostrar
+        let startPage = Math.max(currentPage - 2, 1);
+        let endPage = Math.min(currentPage + 2, totalPages);
 
-        // Crear el botón "Anterior"
+        const ulElement = document.createElement('ul');
+        ulElement.classList.add('pagination', 'justify-content-center');
+
+        // Botón "Anterior"
         if (currentPage > 1) {
+            const prevLi = document.createElement('li');
+            prevLi.classList.add('page-item');
+
             const prevButton = document.createElement('button');
-            prevButton.classList.add('page-button');
+            prevButton.classList.add('page-link');
             prevButton.textContent = 'Anterior';
-            prevButton.onclick = () => loadPage(currentPage - 1);
-            paginationContainer.appendChild(prevButton);
+            prevButton.onclick = () => loadPage(currentPage - 1, peliculas);
+
+            prevLi.appendChild(prevButton);
+            ulElement.appendChild(prevLi);
         }
 
-        // Crear los botones de las páginas
+        // Botones de las páginas
         for (let i = startPage; i <= endPage; i++) {
-            const pageButton = document.createElement('button');
-            pageButton.classList.add('page-button');
-            pageButton.textContent = i;
-            pageButton.onclick = () => loadPage(i);
+            const pageLi = document.createElement('li');
+            pageLi.classList.add('page-item');
             if (i === currentPage) {
-                pageButton.classList.add('active');
+                pageLi.classList.add('active');
             }
-            paginationContainer.appendChild(pageButton);
+
+            const pageButton = document.createElement('button');
+            pageButton.classList.add('page-link');
+            pageButton.textContent = i;
+            pageButton.onclick = () => loadPage(i, peliculas);
+
+            pageLi.appendChild(pageButton);
+            ulElement.appendChild(pageLi);
         }
 
-        // Crear el botón "Siguiente"
+        // Botón "Siguiente"
         if (currentPage < totalPages) {
+            const nextLi = document.createElement('li');
+            nextLi.classList.add('page-item');
+
             const nextButton = document.createElement('button');
-            nextButton.classList.add('page-button');
+            nextButton.classList.add('page-link');
             nextButton.textContent = 'Siguiente';
-            nextButton.onclick = () => loadPage(currentPage + 1);
-            paginationContainer.appendChild(nextButton);
+            nextButton.onclick = () => loadPage(currentPage + 1, peliculas);
+
+            nextLi.appendChild(nextButton);
+            ulElement.appendChild(nextLi);
         }
+
+        paginationContainer.appendChild(ulElement);
     }
 }
 
+
 // Función para cargar una página específica de películas
-function loadPage(pageNumber) {
+function loadPage(pageNumber,peliculas) {
     const moviesPerPage = 10; // Número de películas por página
     const offset = (pageNumber - 1) * moviesPerPage; // Calcular el offset para la consulta
 
     // Obtener las películas actuales a mostrar
-    const currentMovies = todasLasPeliculas.slice(offset, offset + moviesPerPage);
+    const currentMovies = peliculas.slice(offset, offset + moviesPerPage);
 
+    console.log(currentMovies)
     // Mostrar las películas de la página seleccionada
     mostrarPeliculas(currentMovies);
 
     // Calcular el número total de páginas
-    const totalPages = Math.ceil(todasLasPeliculas.length / moviesPerPage);
+    const totalPages = Math.ceil(peliculas.length / moviesPerPage);
 
     // Configurar la paginación
-    setupPagination(pageNumber, totalPages);
+    setupPagination(pageNumber, totalPages,peliculas);
 }
 
 
@@ -311,7 +351,7 @@ function updateCart() {
     // Añade un botón para finalizar la compra
     const checkoutButton = document.createElement("li");
     checkoutButton.className = "dropdown-item text-center";
-    checkoutButton.innerHTML = `<button class="btn btn-success w-100" onclick="finalizePurchase()">Finalizar compra</button>`;
+    checkoutButton.innerHTML = `<button class="btn btn-success w-100" onclick="irACarrito()">Ver resumen</button>`;
     cartDropdown2.appendChild(checkoutButton);
     localStorage.setItem("cart", JSON.stringify(cart2));
 }
@@ -349,6 +389,9 @@ function removeFromCart(index,event) {
 
 }
 
+const irACarrito = ()=>{
+    window.location.href = "./html/carrito.html";
+}
 
 function finalizePurchase() {
     // Store the cart in localStorage or sessionStorage

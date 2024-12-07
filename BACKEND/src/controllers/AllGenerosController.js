@@ -1,17 +1,17 @@
-const database = require('../database');
+const {getConnection} = require('../database');
 
 
 const getAllGenerosController = async(req,res)=>{
     let connection;
     try {
-        connection = await database.getConnection();
+        connection = await getConnection();
     
         const query = `
-            SELECT * FROM GENERO
+            SELECT * FROM Genero
         `
 
-        const resultado = await connection.query(query);
-        res.send(resultado)
+        const [rows] = await connection.query(query);
+        res.send(rows)
     } catch (error) {
         console.error("Error al obtener las generos:", error);
         res.status(500).send("Error al obtener las generos");
