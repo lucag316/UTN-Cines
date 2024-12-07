@@ -421,7 +421,7 @@ async function editMovie(id) {
         document.getElementById('anio').value = movie.anio || '';
         document.getElementById('pais').value = movie.pais || '';
         document.getElementById('img_url').value = movie.img_url || '';
-        document.getElementById('trailer_url').value = movie.trailer || '';
+        document.getElementById('trailer_url').value = movie.trailer_url || '';
         document.getElementById('rating').value = movie.rating || '';
         document.getElementById('precio').value = movie.precio || '';
 

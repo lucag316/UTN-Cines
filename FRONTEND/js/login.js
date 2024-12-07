@@ -1,3 +1,5 @@
+const API_BASE_URL = "https://utn-cines-production.up.railway.app"; // Cambia esto a la URL base de tu API
+
 // Esperar a que el DOM esté completamente cargado
 document.addEventListener("DOMContentLoaded", () => {
     // Seleccionar el formulario de login
@@ -13,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
             // Enviar los datos al servidor
-            const response = await fetch("http://localhost:5000/user/login", {
+            const response = await fetch(`${API_BASE_URL}/user/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -32,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 alert(`¡Bienvenido, ${data.usuario.nombre}!`);
                 // Redirigir al usuario a la página de inicio
-                window.location.href = "http://127.0.0.1:3000/FRONTEND/html/perfil_usuario.html"; // hacer relativa y ver si cambiar.
+                window.location.href = "./html/perfil_usuario.html"; // hacer relativa y ver si cambiar.
             } else {
                 const errorText = await response.text();
                 alert(`Error: ${errorText}`);
