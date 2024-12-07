@@ -20,7 +20,8 @@ app.use(cors({
         "http://localhost:3000", // Sin la barra al final
         "http://127.0.0.1:5500", // Sin la barra al final
         "http://127.0.0.1:3000",
-        "http://localhost:3000"  // flor
+        "http://localhost:3000",  // flor
+        "https://utn-cines.vercel.app"
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true

@@ -37,6 +37,7 @@ const getPelicula = async (req, res) => {
 
 // Crear película
 const createPelicula = async (req, res) => {
+    let img_url = req.body.img_url;
     const {
         titulo,
         duracion,
@@ -44,7 +45,6 @@ const createPelicula = async (req, res) => {
         descripcion,
         anio,
         pais,
-        img_url,
         trailer_url,
         rating,
         precio,
@@ -56,6 +56,8 @@ const createPelicula = async (req, res) => {
 
     try {
         await connection.beginTransaction();
+
+        if(!esImagen(img_url)) img_url = "https://www.shutterstock.com/image-vector/image-not-found-failure-network-260nw-2330163829.jpg"
 
         // Insertar película
         const peliculaId = await insertPelicula([
@@ -87,6 +89,7 @@ const createPelicula = async (req, res) => {
 
 const actualizarPelicula = async (req, res) => {
     const connection = await getConnection();
+    let img_url = req.body.img_url;
     const {
         id_pelicula,
         titulo,
@@ -95,7 +98,6 @@ const actualizarPelicula = async (req, res) => {
         descripcion,
         anio,
         pais,
-        img_url,
         trailer_url,
         rating,
         precio,
@@ -107,6 +109,8 @@ const actualizarPelicula = async (req, res) => {
     try {
         await connection.beginTransaction();
 
+        if(esImagen(img_url)) img_url = "https://www.shutterstock.com/image-vector/image-not-found-failure-network-260nw-2330163829.jpg"
+        
         // Actualizar la película
         await updatePelicula([
             titulo,
@@ -204,6 +208,11 @@ const revivePeliculaController = async (req, res) => {
     } 
 };
 
+function esImagen(url) {
+    // Verifica que la URL termine con una extensión válida de imagen
+    const extensionesValidas = /\.(jpg|jpeg|png|gif|webp|bmp|svg)$/i; // Expresión regular para extensiones de imágenes
+    return extensionesValidas.test(url);
+}
 
 
 

@@ -13,8 +13,8 @@
     <!-- Favicon del sitio -->
     <link rel="shortcut icon" href="../icons/favicon1.png" type="image/x-icon">
 
-    <!-- Bootstrap CSS para estilos base y componentes responsivos -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+   <!-- Bootstrap CSS para estilos base y componentes responsivos -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Estilos personalizados del sitio -->
     <link rel="stylesheet" href="../css/general.css">
@@ -80,76 +80,106 @@
         <h1>Promociones</h1>
     </header>
 
-    <!-- El contenedor de los carruseles-->
-    <div class="carousel-container">
-
-        <!-- Filtro para carrusel 1 -->
+   <div class="container mt-5">
+        <!-- Carrusel: Promociones de Descuento -->
         <h3>Promociones de Descuento</h3>
-        <!-- carrusel 1 -->
-        <div class="carousel" id="carousel-1">
-
-            <!-- flecha izquierda -->
-            <div class="arrow left" onclick="moveCarousel('carousel-1', 'left')">
-                &#9664;
+        <div id="promocionesDescuento" class="carousel slide" data-bs-ride="carousel">
+            <!-- Indicadores -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#promocionesDescuento" data-bs-slide-to="0" class="active" aria-current="true"></button>
+                <button type="button" data-bs-target="#promocionesDescuento" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#promocionesDescuento" data-bs-slide-to="2"></button>
+                <button type="button" data-bs-target="#promocionesDescuento" data-bs-slide-to="3"></button>
             </div>
 
-            <div class="carousel-track">
-                <div class="carousel-item"><p><span>Promoción de Grupo:</span> Compra 4 entradas y recibe otra entrada gratis. Ideal para juntada con amigos.</p></div>
-                <div class="carousel-item"><p><span>Descuento en Películas Animadas:</span> 20% de descuento en películas animadas.</p></div>
-                <div class="carousel-item"><p><span>Promo de Cumpleaños:</span> Si vienes el día de tu cumpleaños, obtienes una entrada a mitad de precio.</p></div>
-                <div class="carousel-item"><p><span>Día de la Amistad:</span> Trae a tu amigo el día de la amistad y reciben un descuento exclusivo en cualquier película.</p></div>
+            <!-- Contenido del carrusel -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <p><strong>Promoción de Grupo:</strong> Compra 4 entradas y recibe otra entrada gratis. Ideal para juntada con amigos.</p>
+                </div>
+                <div class="carousel-item">
+                    <p><strong>Descuento en Películas Animadas:</strong> 20% de descuento en películas animadas.</p>
+                </div>
+                <div class="carousel-item">
+                    <p><strong>Promo de Cumpleaños:</strong> Si vienes el día de tu cumpleaños, obtienes una entrada a mitad de precio.</p>
+                </div>
+                <div class="carousel-item">
+                    <p><strong>Día de la Amistad:</strong> Trae a tu amigo el día de la amistad y reciben un descuento exclusivo en cualquier película.</p>
+                </div>
             </div>
 
-            <!-- flecha derecha -->
-            <div class="arrow right" onclick="moveCarousel('carousel-1', 'right')">
-                &#9654;
-            </div>
+            <!-- Controles del carrusel -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#promocionesDescuento" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#promocionesDescuento" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
         </div>
-
-        <!-- Filtro para carrusel 2 -->
+        <!-- --------------------------------------------------------
+        -------------------------------------------------------- -->
         <h3>Promociones de 2x1</h3>
-        <!-- carrusel 2 -->
-        <div class="carousel" id="carousel-2">
-
-            <!-- flecha izquierda -->
-            <div class="arrow left" onclick="moveCarousel('carousel-2', 'left')">
-                &#9664;
+        <div id="promociones2x1" class="carousel slide" data-bs-ride="carousel">
+            <!-- Indicadores -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#promociones2x1" data-bs-slide-to="0" class="active" aria-current="true"></button>
+                <button type="button" data-bs-target="#promociones2x1" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#promociones2x1" data-bs-slide-to="2"></button>
+                <button type="button" data-bs-target="#promociones2x1" data-bs-slide-to="3"></button>
             </div>
 
-            <div class="carousel-track">
-                <div class="carousel-item"><p><span>2x1 en Películas de Terror:</span> Los jueves en películas de terror, compra una entrada y la segunda es gratis.</p></div>
+            <!-- Contenido del carrusel -->
+            <div class="carousel-inner">
+                <div class="carousel-item active"><p><span>2x1 en Películas de Terror:</span> Los jueves en películas de terror, compra una entrada y la segunda es gratis.</p></div>
                 <div class="carousel-item"><p><span>Martes de 2x1:</span> En cualquier función de películas de estreno, obtén 2 entradas por el precio de 1 los días martes.</p></div>
                 <div class="carousel-item"><p><span>2x1 en Animación Familiar:</span> Los fines de semana, 2 entradas al precio de 1 para películas de animación.</p></div>
                 <div class="carousel-item"><p><span>2x1 en Entradas:</span> Los días Lunes y Miércoles compra 2 entradas al precio de 1.</p></div>
             </div>
 
-            <!-- flecha derecha -->
-            <div class="arrow right" onclick="moveCarousel('carousel-2', 'right')">
-                &#9654;
-            </div>
+            <!-- Controles del carrusel -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#promociones2x1" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#promociones2x1" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
         </div>
 
-        <!-- Filtro para carrusel 3 -->
+        <!-- --------------------------------------------------------
+        -------------------------------------------------------- -->
         <h3>Promociones Especiales</h3>
-        <!-- carrusel 3 -->
-        <div class="carousel" id="carousel-3">
-            <!-- flecha izquierda -->
-            <div class="arrow left" onclick="moveCarousel('carousel-3', 'left')">
-                &#9664;
+        <div id="promocionesEspeciales" class="carousel slide" data-bs-ride="carousel">
+            <!-- Indicadores -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#promocionesEspeciales" data-bs-slide-to="0" class="active" aria-current="true"></button>
+                <button type="button" data-bs-target="#promocionesEspeciales" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#promocionesEspeciales" data-bs-slide-to="2"></button>
+                <button type="button" data-bs-target="#promocionesEspeciales" data-bs-slide-to="3"></button>
             </div>
 
-            <div class="carousel-track">
-                <div class="carousel-item"><p><span>Maratón de Películas:</span> Compra tres películas en el mismo día y obtén un 30% de descuento.</p></div>
+            <!-- Contenido del carrusel -->
+            <div class="carousel-inner">
+                <div class="carousel-item active"><p><span>Maratón de Películas:</span> Compra tres películas en el mismo día y obtén un 30% de descuento.</p></div>
                 <div class="carousel-item"><p><span>Día del Cine:</span> Un día al mes, todas las entradas a mitad de precio para cualquier película.</p></div>
                 <div class="carousel-item"><p><span>Viernes de comedias:</span> "50% de descuento en comedias todos los viernes.</p></div>
                 <div class="carousel-item"><p><span>Descuento progresivo:</span> Cuantas más películas compras, más ahorras.</p></div>
             </div>
 
-            <!-- flecha derecha -->
-            <div class="arrow right" onclick="moveCarousel('carousel-3', 'right')">
-                &#9654;
-            </div>
+            <!-- Controles del carrusel -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#promocionesEspeciales" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#promocionesEspeciales" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
         </div>
+
     </div>
 
     <footer class="footer">
@@ -313,7 +343,14 @@
     <!-- Carga de scripts externos -->
     <!-- Bootstrap: Framework CSS/JS para diseño responsivo y componentes interactivos -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Carga de scripts externos -->
+    <!-- Bootstrap: Framework CSS/JS para diseño responsivo y componentes interactivos -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+
+    <script src="../js/carrito.js"></script>
     <!-- Carga de archivos js para agregar funcionalidades -->
     <script src="../js/promociones.js"></script>
 </body>

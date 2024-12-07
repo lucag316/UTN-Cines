@@ -46,15 +46,11 @@ const updateCart = () => {
     const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
     cartTotal.textContent = `$${total.toFixed(2)}`;
 
-    // Agregar botón de finalizar compra
-    const finalizeButton = document.createElement("li");
-    finalizeButton.className = "dropdown-item text-center";
-    finalizeButton.innerHTML = `<button class="btn btn-success w-100" onclick="finalizePurchase()">Finalizar compra</button>`;
-    cartDropdown.appendChild(finalizeButton);
-    // const descargPDFBtn = document.createElement("li");
-    // descargPDFBtn.className = "dropdown-item text-center";
-    // descargPDFBtn.innerHTML = `<button class="btn btn-success w-100" onclick="generatePDF()">Descargar PDF</button>`;
-    // cartDropdown.appendChild(descargPDFBtn);
+    // Añade un botón para finalizar la compra
+    const checkoutButton = document.createElement("li");
+    checkoutButton.className = "dropdown-item text-center";
+    checkoutButton.innerHTML = `<button class="btn btn-success w-100" onclick="irACarrito()">Ver resumen</button>`;
+    cartDropdown.appendChild(checkoutButton);
 
     // Guardar carrito actualizado en localStorage
     localStorage.setItem("cart", JSON.stringify(cart));
