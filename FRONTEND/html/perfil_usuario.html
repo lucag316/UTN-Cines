@@ -82,12 +82,28 @@
                 <div class="col-12 col-md-4 text-center">
                     <img src="https://via.placeholder.com/150" alt="Foto de Perfil" class="img-fluid rounded-circle mb-3" id="user-photo">
                 </div>
+               
                 <!-- Información textual del usuario -->
                 <div class="col-12 col-md-8">
-                    <h2 id="user-name">Juan Pérez</h2>
-                    <p id="user-email">juan.perez@gmail.com</p>
-                    <p id="user-address">Calle Falsa 123, Ciudad, País</p>
+                    <h1>PERFIL DEL USUARIO</h1>
+                    <p><strong>Nombre:</strong><h2></h2><span id="user-name"></span></p></h2>                   
+                    <p><strong>Email:</strong><h2></h2><span id="user-email"></span></p></h2>
                 </div>
+                <script>
+                    // Recuperar los datos del usuario del localStorage
+                    const userName = localStorage.getItem("userName");
+                    const userEmail = localStorage.getItem("userEmail");
+            
+                    // Verificar si los datos existen
+                    if (userName && userEmail) {
+                        // Inyectar los datos en el DOM
+                        document.getElementById("user-name").textContent = userName;
+                        document.getElementById("user-email").textContent = userEmail;
+                    } else {
+                        alert("No se encontraron datos del usuario. Por favor, inicie sesión nuevamente.");
+                        window.location.href = "http://127.0.0.1:3000/FRONTEND/html/login.html"; // Redirigir al login O login.html
+                    }
+                </script>
             </div>
     
             <!-- Sección de compras del usuario -->
@@ -264,5 +280,6 @@
 
     <!-- Carga de archivos js para agregar funcionalidades -->
     <script src="../js/perfil.js"></script>
+    <script src="../js/perfil-usuario.js"></script>
 </body>
 </html>

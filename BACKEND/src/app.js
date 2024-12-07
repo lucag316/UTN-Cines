@@ -23,7 +23,6 @@ app.use(cors({
         "http://localhost:3000"  // flor
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true
 }));
 
 app.options("*", cors());

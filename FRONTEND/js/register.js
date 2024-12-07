@@ -21,13 +21,19 @@ document.querySelector("form").addEventListener("submit", async (event) => {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(userData), // Convertir el objeto a JSON
+            body: JSON.stringify(userData) // Convertir el objeto a JSON
         });
 
         if (response.ok) {
             const data = await response.json();
+
+            // Guardar el nombre y email del usuario en localStorage
+            localStorage.setItem("userName", userData.nombre);
+            localStorage.setItem("userEmail", userData.email);
+
+
             alert("Registro exitoso. ¡Bienvenido!");
-            window.location.href = "http://127.0.0.1:3000/FRONTEND/html/promociones.html"; // Redirigir al login después de registrarse
+            window.location.href = "http://127.0.0.1:3000/FRONTEND/html/perfil_usuario.html"; // Redirigir al perfil después de registrarse
         } else {
             alert("Hubo un error en el registro. Intenta nuevamente.");
         }
