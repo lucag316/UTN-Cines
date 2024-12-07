@@ -7,8 +7,8 @@ CREATE TABLE Pelicula (
   descripcion TEXT,
   anio YEAR,
   pais VARCHAR(50),
-  img_url VARCHAR(100),
-  trailer_url VARCHAR(100),
+  img_url VARCHAR(255),
+  trailer_url VARCHAR(255),
   rating FLOAT,
   precio INT NOT NULL DEFAULT 5000,
   eliminado BOOLEAN DEFAULT FALSE,
@@ -60,6 +60,7 @@ CREATE TABLE Usuario (
 CREATE TABLE Promocion (
   id_descuento INT PRIMARY KEY AUTO_INCREMENT,
   nombre VARCHAR(100) NOT NULL,
+  codigo VARCHAR(50) NOT NULL,
   porcentaje DECIMAL(5,2) NOT NULL
 );
 
@@ -94,9 +95,11 @@ CREATE TABLE Consulta (
 CREATE TABLE Carrito (
   id_carrito INT PRIMARY KEY AUTO_INCREMENT,
   id_usuario INT,
+  promocion INT,
   estado ENUM('Pendiente', 'Pagado', 'Cancelado') DEFAULT 'Pendiente',
   total INT NOT NULL,
   FOREIGN KEY (id_usuario) REFERENCES Usuario (id_usuario)
+  FOREIGN KEY (promocion) REFERENCES Promocion (id_descuento)
 );
 
 -- Relación entre Carrito y Pelicula

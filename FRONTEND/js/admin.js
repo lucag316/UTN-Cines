@@ -70,9 +70,6 @@ let selectedReparto = [];// Array para almacenar el reparto seleccionado
 // Función para mostrar el pop-up para crear una película
 function showCreateMovieForm() {
 
-    
-   
-
     const modalContainer = document.createElement('div');
     modalContainer.innerHTML = `
         <div class="modal fade" id="createMovieModal" tabindex="-1" aria-labelledby="createMovieModalLabel" aria-hidden="true">
@@ -96,7 +93,7 @@ function showCreateMovieForm() {
                                 <input type="number" class="form-control" id="duracion" name="duracion" required>
                             </div>
                             <div class="mb-3">
-                                <label for="clasificacion" class="form-label">Clasificación</label>
+                                <label for="clasificacion" class="form-label">Clasificación(Ej:G, PG, PG-13, R y NC-17)</label>
                                 <input type="text" class="form-control" id="clasificacion" name="clasificacion">
                             </div>
                             <div class="mb-3">
@@ -112,7 +109,7 @@ function showCreateMovieForm() {
                                 <input type="text" class="form-control" id="pais" name="pais">
                             </div>
                             <div class="mb-3">
-                                <label for="img_url" class="form-label">URL de Imagen</label>
+                                <label for="img_url" class="form-label">URL de Imagen (sino pones una URL, hay una por default)</label>
                                 <input type="url" class="form-control" id="img_url" name="img_url">
                             </div>
                             <div class="mb-3">
@@ -174,6 +171,7 @@ function showCreateMovieForm() {
 
     const repartoList = document.getElementById('selectedRepartoList');
     repartoList.innerHTML = ""
+
     populateGeneros(); // Cargar los géneros en el formulario
     populateReparto()
     createMovieModal = new bootstrap.Modal(document.getElementById('createMovieModal'));
@@ -239,7 +237,7 @@ function addGenero(e) {
     const generoNombre = selectedOption.textContent;
 
     // Verificar si el género ya está en el array
-    if (selectedGeneros.some(g => g.id === generoId)) {
+    if (selectedGeneros.some(g => g.id === generoId) || selectedGeneros.some(g => g.nombre === generoNombre)) {
         alert("Este género ya ha sido seleccionado.");
         return;
     }
@@ -306,13 +304,13 @@ function addReparto(e) {
     const repartoRol = selectedOption.textContent.split(",")[1];
 
     // Verificar si el género ya está en el array
-    if (selectedReparto.some(r => r.id === repartoId)) {
-        alert("Este género ya ha sido seleccionado.");
+    if (selectedReparto.some(r => r.id === repartoId) || selectedReparto.some(r => r.nombre_completo === selectedOption.textContent.split(",")[0]) ) {
+        alert("Este reparto ya ha sido seleccionado.");
         return;
     }
 
     // Agregar género al array
-    selectedReparto.push({ id: repartoId, nombre: repartoNombre, rol: repartoRol });
+    selectedReparto.push({ id: repartoId, nombre: repartoNombre, rol: repartoRol, nombre_completo: selectedOption.textContent.split(",")[0] });
 
     // Actualizar la lista visual
     updateSelectedRepartoList();
@@ -326,7 +324,7 @@ function updateSelectedRepartoList() {
     selectedReparto.forEach((reparto, index) => {
         const listItem = document.createElement('li');
         listItem.className = 'list-group-item d-flex justify-content-between align-items-center';
-        listItem.textContent = `${reparto.nombre} (${reparto.rol})`;
+        listItem.textContent = `${reparto.nombre_completo} (${reparto.rol})`;
         const deleteButton = document.createElement('button');
         deleteButton.className = 'btn btn-danger btn-sm';
         deleteButton.textContent = 'Eliminar';
@@ -391,11 +389,22 @@ async function createPromotion() {
 // Funciones placeholder para editar y eliminar películas
 async function editMovie(id) {
     try {
+        console.log("hoola")
+
         // Obtén los datos de la película por ID
         const response = await fetch(`${API_BASE_URL}/pelicula/${id}`);
         const movie = await response.json();
         // Abre el formulario
         showCreateMovieForm();
+
+        const generosList = document.getElementById('selectedGenerosList');
+        generosList.innerHTML = ""
+    
+        const repartoList = document.getElementById('selectedRepartoList');
+        repartoList.innerHTML = ""
+
+        selectedGeneros = []
+        selectedReparto = []
 
         console.log("hoola")
         console.log(movie)
@@ -422,7 +431,7 @@ async function editMovie(id) {
         updateSelectedGenerosList()
 
         movie.reparto.forEach((r)=>{
-            selectedReparto.push({ id: r.id_persona, nombre: r.nombre, rol: r.rol })
+            selectedReparto.push({ id: r.id_persona, nombre: r.nombre, rol: r.rol,nombre_completo:r.nombre+" "+r.apellido })
         })
         updateSelectedRepartoList()
 

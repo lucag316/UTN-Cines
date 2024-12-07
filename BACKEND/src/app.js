@@ -8,7 +8,6 @@ const bodyParser = require("body-parser");
 // CONFIGURACION INICIAL
 const app = express();
 
-
 app.set("port", process.env.PORT || 5000); // poner PORT en mayuscula
 
 app.use(bodyParser.json())
@@ -20,7 +19,8 @@ app.use(cors({
         "http://localhost:3000", // Sin la barra al final
         "http://127.0.0.1:5500", // Sin la barra al final
         "http://127.0.0.1:3000",
-        "http://localhost:3000" 
+        "http://localhost:3000",  // flor
+        "https://utn-cines.vercel.app"
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
 }));

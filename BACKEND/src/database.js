@@ -4,7 +4,6 @@ const dotenv = require('dotenv');
 
 // Cargar variables de entorno desde el archivo .env
 dotenv.config();
-console.log(process.env.HOST);
 
 // Determinar si estás en producción o en desarrollo
 const isProduction = process.env.NODE_ENV === "production";
@@ -18,7 +17,7 @@ const pool = mysql.createPool({
     port: isProduction ? process.env.MYSQL_PORT : process.env.DB_PORT || 3306,
     host: isProduction ? process.env.MYSQL_HOST : process.env.DB_HOST,
     waitForConnections: true,
-    connectionLimit: 50, // Número máximo de conexiones simultáneas
+    connectionLimit: 100, // Número máximo de conexiones simultáneas
     queueLimit: 0, // Sin límite de conexiones en cola
     authPlugins: {
         mysql_clear_password: () => () => Buffer.from(process.env.MYSQL_PASSWORD)
@@ -28,7 +27,12 @@ const pool = mysql.createPool({
 // Función para obtener una conexión del pool
 const getConnection = async () => {
     try {
-        const connection = await pool.getConnection();
+        const connection = await pool.getConnection((err, connection) => {
+            if (err) {
+                console.error('Error obteniendo conexión:', err);
+                return;
+            };
+        });
         console.log('Conexión exitosa a la base de datos');
         return connection;
     } catch (error) {
