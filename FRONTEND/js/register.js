@@ -1,3 +1,5 @@
+const API_BASE_URL = "https://utn-cines-production.up.railway.app"; // Cambia esto a la URL base de tu API
+
 document.querySelector("form").addEventListener("submit", async (event) => {
     event.preventDefault(); // Evitar el comportamiento por defecto del formulario (refrescar la página)
     
@@ -16,7 +18,7 @@ document.querySelector("form").addEventListener("submit", async (event) => {
 
     try {
         // Enviar los datos al backend
-        const response = await fetch('http://localhost:5000/createUser/register', {
+        const response = await fetch(`${API_BASE_URL}/createUser/register`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

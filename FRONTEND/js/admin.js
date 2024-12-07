@@ -1,5 +1,5 @@
 
-const API_BASE_URL = "http://localhost:5000"; // Cambia esto a la URL base de tu API
+const API_BASE_URL = "https://utn-cines-production.up.railway.app"; // Cambia esto a la URL base de tu API
 const columna_btn = document.getElementById('columna_btns');
 let createMovieModal;
 let movies = [];
