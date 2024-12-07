@@ -60,7 +60,7 @@ El objetivo principal de **UTN-CINES** es ofrecer una plataforma accesible y fá
 - **Pdf Diseño en Canva modo escritorio:** [Diseño Modo Escritorio](./Diseño-escritorio-cines.pdf)
 - **Pdf Diseño en Canva modo celular :** [Diseño Modo Celular](./Diseño-mobile-cine.pdf)
 - **Pdf Documentacion del proyecto Frontend:** [Documentación del Proyecto](./documentación-UTN-Cines.pdf)
-- - **Pdf Documentacion del proyecto Backend:** [Documentación del Proyecto](./Documentación Backend 2da parte.pdf)
+- **Pdf Documentacion del proyecto Backend:** [Documentación del Proyecto](./Documentación-Backend-2da-parte.pdf)
 
 ---
 
