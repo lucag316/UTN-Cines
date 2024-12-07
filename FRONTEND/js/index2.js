@@ -92,7 +92,7 @@ function filtrarPeliculasBusqueda() {
     let peliculasFiltradas = todasLasPeliculas.filter(pelicula => {
         return pelicula.titulo.toLowerCase().includes(valorBusqueda); // Filtrar por el título de la película
     });
-    mostrarPeliculas(peliculasFiltradas); // Mostrar las películas filtradas
+    loadPage(1,peliculasFiltradas); // Mostrar las películas filtradas
 }
 
 // Función para filtrar las películas según los filtros seleccionados (género, duración, etc.)
@@ -143,7 +143,7 @@ function filtrarPeliculas() {
     ordenarPorRating(peliculasFiltradas, ratingSeleccionado);
 
     // Mostrar las películas que cumplen con los filtros y el orden seleccionado
-    mostrarPeliculas(peliculasFiltradas);
+    loadPage(1,peliculasFiltradas);
 }
 
 // Función para ordenar las películas por duración
@@ -182,7 +182,7 @@ function init() {
         console.log(peliculas); // Verifica si las películas se cargan correctamente
         todasLasPeliculas = peliculas;  // Almacenar las películas obtenidas
         loadPage(1,todasLasPeliculas)
-        mostrarPeliculas(todasLasPeliculas); // Llamar a mostrarPeliculas para visualizarlas
+        // mostrarPeliculas(todasLasPeliculas); // Llamar a mostrarPeliculas para visualizarlas
     }).catch(error => {
         console.error("Error al cargar las peliculas:", error);  // Mostrar error en caso de que no se carguen correctamente
     });
@@ -205,52 +205,72 @@ document.addEventListener("DOMContentLoaded", init);
 
 // ==== Paginación ====
 // Función para crear y mostrar los botones de paginación
-function setupPagination(currentPage, totalPages,peliculas) {
+function setupPagination(currentPage, totalPages, peliculas) {
     const paginationContainer = document.getElementById('pagination');
-    paginationContainer.innerHTML = '';  // Limpiar los botones de paginación anteriores
+    paginationContainer.innerHTML = ''; // Limpiar los botones de paginación anteriores
 
-    // Mostrar los botones de paginación solo si hay más de una página
     if (totalPages > 1) {
-        let startPage = Math.max(currentPage - 2, 1); // Página inicial a mostrar
-        let endPage = Math.min(currentPage + 2, totalPages); // Página final a mostrar
+        let startPage = Math.max(currentPage - 2, 1);
+        let endPage = Math.min(currentPage + 2, totalPages);
 
-        // Crear el botón "Anterior"
+        const ulElement = document.createElement('ul');
+        ulElement.classList.add('pagination', 'justify-content-center');
+
+        // Botón "Anterior"
         if (currentPage > 1) {
+            const prevLi = document.createElement('li');
+            prevLi.classList.add('page-item');
+
             const prevButton = document.createElement('button');
-            prevButton.classList.add('page-button');
+            prevButton.classList.add('page-link');
             prevButton.textContent = 'Anterior';
-            prevButton.onclick = () => loadPage(currentPage - 1,peliculas);
-            paginationContainer.appendChild(prevButton);
+            prevButton.onclick = () => loadPage(currentPage - 1, peliculas);
+
+            prevLi.appendChild(prevButton);
+            ulElement.appendChild(prevLi);
         }
 
-        // Crear los botones de las páginas
+        // Botones de las páginas
         for (let i = startPage; i <= endPage; i++) {
-            const pageButton = document.createElement('button');
-            pageButton.classList.add('page-button');
-            pageButton.textContent = i;
-            pageButton.onclick = () => loadPage(i,peliculas);
+            const pageLi = document.createElement('li');
+            pageLi.classList.add('page-item');
             if (i === currentPage) {
-                pageButton.classList.add('active');
+                pageLi.classList.add('active');
             }
-            paginationContainer.appendChild(pageButton);
+
+            const pageButton = document.createElement('button');
+            pageButton.classList.add('page-link');
+            pageButton.textContent = i;
+            pageButton.onclick = () => loadPage(i, peliculas);
+
+            pageLi.appendChild(pageButton);
+            ulElement.appendChild(pageLi);
         }
 
-        // Crear el botón "Siguiente"
+        // Botón "Siguiente"
         if (currentPage < totalPages) {
+            const nextLi = document.createElement('li');
+            nextLi.classList.add('page-item');
+
             const nextButton = document.createElement('button');
-            nextButton.classList.add('page-button');
+            nextButton.classList.add('page-link');
             nextButton.textContent = 'Siguiente';
-            nextButton.onclick = () => loadPage(currentPage + 1,peliculas);
-            paginationContainer.appendChild(nextButton);
+            nextButton.onclick = () => loadPage(currentPage + 1, peliculas);
+
+            nextLi.appendChild(nextButton);
+            ulElement.appendChild(nextLi);
         }
+
+        paginationContainer.appendChild(ulElement);
     }
 }
+
 
 // Función para cargar una página específica de películas
 function loadPage(pageNumber,peliculas) {
     const moviesPerPage = 10; // Número de películas por página
     const offset = (pageNumber - 1) * moviesPerPage; // Calcular el offset para la consulta
-    console.log("asdf")
+
     // Obtener las películas actuales a mostrar
     const currentMovies = peliculas.slice(offset, offset + moviesPerPage);
 
@@ -260,7 +280,7 @@ function loadPage(pageNumber,peliculas) {
 
     // Calcular el número total de páginas
     const totalPages = Math.ceil(peliculas.length / moviesPerPage);
-    console.log(totalPages)
+
     // Configurar la paginación
     setupPagination(pageNumber, totalPages,peliculas);
 }
