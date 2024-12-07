@@ -1,10 +1,10 @@
-const database = require('../database');
+const {getConnection} = require('../database');
 
 
 const getAllRepartoController = async(req,res)=>{
     let connection;
     try {
-        connection = await database.getConnection();
+        connection = await getConnection();
     
         const query = `
            SELECT 

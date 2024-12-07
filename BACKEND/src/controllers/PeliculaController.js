@@ -131,7 +131,7 @@ const actualizarPelicula = async (req, res) => {
         // Insertar reparto
         for (const persona of reparto) {
             const personaId = await insertReparto(persona.nombre, persona.apellido);
-            await insertPeliculaReparto(peliculaId, personaId, persona.rol);
+            await insertPeliculaReparto(parseInt(id_pelicula), personaId, persona.rol);
         }
 
         await connection.commit();
