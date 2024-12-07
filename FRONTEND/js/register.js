@@ -35,7 +35,7 @@ document.querySelector("form").addEventListener("submit", async (event) => {
 
 
             alert("Registro exitoso. ¡Bienvenido!");
-            window.location.href = "./html/perfil_usuario.html"; // Redirigir al perfil después de registrarse
+            window.location.href = "./perfil_usuario.html"; // Redirigir al perfil después de registrarse
         } else {
             alert("Hubo un error en el registro. Intenta nuevamente.");
         }
