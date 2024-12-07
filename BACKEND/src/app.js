@@ -18,11 +18,14 @@ app.use(cors({
     origin: [
         "http://localhost:52330", // Sin la barra al final
         "http://127.0.0.1:5500", // Sin la barra al final
+        "http://127.0.0.1:3000",
+        "http://localhost:3000"  // flor
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }));
 
+app.options("*", cors());
 
 app.use(morgan("dev"));
 

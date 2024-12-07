@@ -11,9 +11,10 @@ const repartoRoute = require("./AllRepartoRoute")
 router.use('/AllPelis', AllPeliRoutes);
 router.use("/pelicula",peliculaRoute)
 router.use("/AllGeneros",generosRoute)
+router.use("/createUser",usuarioRoute)
 router.use("/AllReparto",repartoRoute)
-router.use("/register",usuarioRoute)
-router.use("/login",usuarioRoute)
+router.use("/user",usuarioRoute)
+
 
 module.exports = router;
 
