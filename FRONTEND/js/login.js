@@ -24,9 +24,15 @@ document.addEventListener("DOMContentLoaded", () => {
             // Verificar la respuesta del servidor
             if (response.ok) {
                 const data = await response.json();
-                alert(`¡Bienvenido, ${data.nombre}!`);
+
+                // Guardar el nombre y email del usuario en localStorage
+                localStorage.setItem("userName", data.usuario.nombre);
+                localStorage.setItem("userEmail", data.usuario.email);
+
+
+                alert(`¡Bienvenido, ${data.usuario.nombre}!`);
                 // Redirigir al usuario a la página de inicio
-                window.location.href = "http://127.0.0.1:3000/FRONTEND/html/promociones.html"; // hacer relativa y ver si cambiar.
+                window.location.href = "http://127.0.0.1:3000/FRONTEND/html/perfil_usuario.html"; // hacer relativa y ver si cambiar.
             } else {
                 const errorText = await response.text();
                 alert(`Error: ${errorText}`);

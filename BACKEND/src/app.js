@@ -8,7 +8,6 @@ const bodyParser = require("body-parser");
 // CONFIGURACION INICIAL
 const app = express();
 
-
 app.set("port", process.env.PORT || 5000); // poner PORT en mayuscula
 
 app.use(bodyParser.json())
@@ -24,7 +23,6 @@ app.use(cors({
         "https://utn-cines.vercel.app"
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true
 }));
 
 app.options("*", cors());

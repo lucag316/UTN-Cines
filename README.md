@@ -1,6 +1,6 @@
 # UTN-CINES 🎬
 
-**Materia:** Programacion 3 (Primer parcial)
+**Materia:** Programacion 3
 
 **Alumnos:** Luca Gargiulo, Ezequiel Cura, Florencia Arando
 
@@ -59,7 +59,8 @@ El objetivo principal de **UTN-CINES** es ofrecer una plataforma accesible y fá
 - **Repositorio en GitHub:** [UTN-Cines GitHub Repository](https://github.com/lucag316/UTN-Cines)
 - **Pdf Diseño en Canva modo escritorio:** [Diseño Modo Escritorio](./Diseño-escritorio-cines.pdf)
 - **Pdf Diseño en Canva modo celular :** [Diseño Modo Celular](./Diseño-mobile-cine.pdf)
-- **Pdf Documentacion del proyecto :** [Documentación del Proyecto](./documentación-UTN-Cines.pdf)
+- **Pdf Documentacion del proyecto Frontend:** [Documentación del Proyecto](./documentación-UTN-Cines.pdf)
+- **Pdf Documentacion del proyecto Backend:** [Documentación del Proyecto](./Documentación-Backend-2da-parte.pdf)
 
 ---
 

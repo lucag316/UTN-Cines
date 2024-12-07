@@ -19,12 +19,12 @@ const getUsuarioController = async (req, res) => { // login
             return res.status(404).json({ error: "Usuario no encontrado." });
         }
         
-        const isMatch = await bcrypt.compare(contraseña, usuario.contraseña);
+        const isMatch = await bcrypt.compare(contraseña, usuario[0].contraseña);
         if (!isMatch) {
             return res.status(401).json({ error: "Contraseña incorrecta." });
         }
 
-        res.json({ message: `Inicio de sesión exitoso. ¡Bienvenido, ${usuario.nombre}!` });
+        res.json({ message: `Inicio de sesión exitoso. ¡Bienvenido, ${usuario[0].nombre}!`, usuario:usuario[0] });
     } catch (err) {
         console.error("Error en el login:", err);
         res.status(500).json({ error: "Error interno del servidor." });
@@ -48,8 +48,8 @@ const createUserController = async (req, res) => {
     try {
         // Verificamos si el usuario ya existe
         const usuarioExistente = await getUserByEmail(email);
-
-        if (usuarioExistente) {
+        console.log(usuarioExistente);
+        if (usuarioExistente.length>0) {
             return res.status(400).json({ error: "El usuario ya está registrado." });
         }
                
